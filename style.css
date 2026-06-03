@@ -110,3 +110,23 @@ footer{
     color:white;
     margin-top:30px;
 }
+.welcome{
+background:#ffffff;
+color:#071B4D;
+max-width:800px;
+margin:30px auto;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.welcome h2{
+margin-bottom:15px;
+color:#071B4D;
+}
+
+.welcome p{
+line-height:1.8;
+font-size:16px;
+}
