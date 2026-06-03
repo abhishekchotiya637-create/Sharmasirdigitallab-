@@ -188,4 +188,8 @@ footer{
     font-weight:bold;
     box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
-
+.grid-item i{
+    font-size:22px;
+    margin-right:10px;
+    color:#f4b400;
+        }
