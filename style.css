@@ -1,133 +1,168 @@
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#1f2937}
-header{background:#0f172a;color:white;padding:18px 8%;position:sticky;top:0}
-.brand{font-size:26px;font-weight:800;margin-bottom:12px}
-nav{display:flex;flex-wrap:wrap;gap:12px}
-nav a{color:white;text-decoration:none;background:#1e40af;padding:8px 12px;border-radius:20px;font-size:14px}
-.hero{padding:70px 8%;background:linear-gradient(135deg,#1e3a8a,#0f172a);color:white}
-.hero h1{font-size:48px;margin:0 0 12px}
-.hero p{font-size:20px;max-width:760px}
-.btn{display:inline-block;margin:15px 10px 0 0;padding:13px 22px;border-radius:8px;background:#facc15;color:#111827;text-decoration:none;font-weight:700}
-.btn.secondary{background:white}
-.grid{padding:45px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.card,.contact-box{background:white;border-radius:14px;padding:24px;box-shadow:0 8px 25px rgba(15,23,42,.08)}
-.card h3{color:#1e3a8a}
-.contact-box{margin:45px 8%;font-size:18px}
-footer{background:#0f172a;color:white;text-align:center;padding:24px;margin-top:40px}
-@media(max-width:600px){.hero h1{font-size:34px}.hero{padding:45px 6%}header{padding:16px 6%}}
-/* Sharma Sir Custom Theme */
-
-.logo{
-    width:250px;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,0,0,0.3);
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#071B4D,#0F2A7A);
+    color:white;
+}
 
-.profile-photo{
-    width:160px;
-    border-radius:20px;
-    border:5px solid #F4A300;
-    box-shadow:0 0 20px rgba(0,0,0,0.4);
-    .profile-photo{
-    display:block;
-    margin:20px auto;
-    }
-.telegram-qr img{
+/* Hero Section */
+.hero{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.logo{
     width:180px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.hero h1{
+    margin-top:20px;
+    font-size:48px;
+}
+
+.tagline{
+    margin-top:15px;
+    font-size:20px;
+}
+
+.subtitle{
+    margin-top:15px;
+    font-size:18px;
+}
+
+/* Buttons */
+.buttons{
+    margin-top:25px;
+}
+
+.telegram-btn,
+.whatsapp-btn,
+.email-btn{
+    display:inline-block;
+    padding:14px 25px;
+    margin:8px;
     border-radius:10px;
-    margin:20px auto;
-    display:block;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 .telegram-btn{
-    display:inline-block;
     background:#F4A300;
     color:#071B4D;
-    padding:14px 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:10px;
- rgba(0,0,0,0,2)
 }
 
-.telegram-btn:hover{
-    background:#ffffff;
-}
 .whatsapp-btn{
-    display:inline-block;
     background:#25D366;
     color:white;
-    padding:14px 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:10px;
 }
 
-.whatsapp-btn:hover{
-    background:#1EBE5D;
-}
 .email-btn{
-    display:inline-block;
     background:white;
     color:#071B4D;
-    padding:14px 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:10px;
-}
-.portal-menu{
-    margin-top:30px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
 }
 
+.telegram-btn:hover,
+.whatsapp-btn:hover,
+.email-btn:hover{
+    opacity:0.9;
+}
 
-    .menu-btn{
+/* Profile Photo */
+.profile-photo{
+    width:180px;
+    margin:25px auto;
     display:block;
-    background:#ffffff;
-    color:#0f172a;
-    padding:15px;
-    border-radius:12px;
+    border-radius:20px;
+    border:5px solid #F4A300;
+    box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* Menu Cards */
+.portal-menu{
+    max-width:700px;
+    margin:20px auto;
+}
+
+.menu-btn{
+    display:block;
+    background:white;
+    color:#071B4D;
     text-decoration:none;
+    padding:15px;
+    margin:10px 0;
+    border-radius:12px;
     font-weight:bold;
     text-align:center;
-    margin:5px 0;
-        box-shadow:0 4px 10px
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 .menu-btn:hover{
-    background:#f4a300;
+    background:#F4A300;
     color:white;
 }
-footer{
-    text-align:center;
-    padding:20px;
-    background:#071B4D;
-    color:white;
-    margin-top:30px;
-}
+
+/* Welcome Section */
 .welcome{
-background:#ffffff;
-color:#071B4D;
-max-width:800px;
-margin:30px auto;
-padding:25px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    background:white;
+    color:#071B4D;
+    max-width:900px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 .welcome h2{
-margin-bottom:15px;
-color:#071B4D;
+    margin-bottom:15px;
 }
 
 .welcome p{
-line-height:1.8;
-font-size:16px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* Footer */
+footer{
+    background:#041238;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .tagline,
+    .subtitle{
+        font-size:16px;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .profile-photo{
+        width:140px;
+    }
+
+    .telegram-btn,
+    .whatsapp-btn,
+    .email-btn{
+        display:block;
+        margin:10px auto;
+        max-width:220px;
+    }
 }
