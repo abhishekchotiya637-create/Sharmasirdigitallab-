@@ -1,45 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Sharma Sir's Digital Lab</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-<div class="brand">Sharma Sir's Digital Lab</div>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="courses.html">Courses</a>
-<a href="notes.html">Notes</a>
-<a href="current-affairs.html">Current Affairs</a>
-<a href="test-series.html">Test Series</a>
-<a href="downloads.html">PDF</a>
-<a href="contact.html">Contact</a>
-</nav>
-
-</header>
-
 <section class="hero">
-<h1>Home</h1>
-<p>Empowering RPSC aspirants with quality notes, tests and digital learning resources.</p>
-<a class="btn" href="courses.html">Explore Courses</a>
-<a class="btn secondary" href="downloads.html">Download PDFs</a>
+
+  <div class="hero-content">
+
+    <div class="hero-left">
+
+      <img src="logo.png" alt="Sharma Sir's Digital Lab" class="logo">
+
+      <h1>SHARMA SIR'S DIGITAL LAB</h1>
+
+      <p class="tagline">
+        RPSC • RSMSSB • SSC • Railway • DSSSB
+      </p>
+
+      <p class="subtitle">
+        1st Grade • 2nd Grade • REET • CET • Central Government Exams
+      </p>
+
+      <div class="buttons">
+
+        <a href="https://t.me/sharmasirdigitallab"
+           target="_blank"
+           class="telegram-btn">
+           📢 Join Telegram
+        </a>
+
+        <a href="mailto:abhishekchotiya637@gmail.com"
+           class="email-btn">
+           📧 Contact Us
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+      <img src="profile.jpg"
+           alt="Sharma Sir"
+           class="profile-photo">
+    </div>
+
+  </div>
+
 </section>
 
+.hero{
+    background:linear-gradient(135deg,#071B4D,#0B2D5C,#F4A300);
+    color:white;
+    padding:80px 20px;
+}
 
-<section class="grid">
-<div class="card"><h3>RPSC 1st Grade</h3><p>Topic-wise notes, solved papers and exam strategy.</p></div>
-<div class="card"><h3>RPSC 2nd Grade</h3><p>Mathematics, pedagogy and GK study material.</p></div>
-<div class="card"><h3>Current Affairs</h3><p>Rajasthan-focused daily and monthly updates.</p></div>
-</section>
+.hero-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
 
+.hero-left{
+    flex:1;
+    min-width:300px;
+}
 
-<footer>
-<p>© 2026 Sharma Sir's Digital Lab | RPSC Digital Learning Platform</p>
-</footer>
-</body>
-</html>
+.hero-right{
+    flex:1;
+    text-align:center;
+}
+
+.logo{
+    width:180px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:56px;
+    margin:10px 0;
+}
+
+.tagline{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.subtitle{
+    font-size:18px;
+    margin:15px 0;
+}
+
+.profile-photo{
+    width:350px;
+    border-radius:20px;
+    border:5px solid #F4A300;
+    box-shadow:0 0 25px rgba(0,0,0,.4);
+}
+
+.telegram-btn,
+.email-btn{
+    display:inline-block;
+    margin:10px;
+    padding:14px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.telegram-btn{
+    background:#F4A300;
+    color:#071B4D;
+}
+
+.email-btn{
+    background:#ffffff;
+    color:#071B4D;
+}
