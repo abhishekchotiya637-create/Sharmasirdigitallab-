@@ -168,4 +168,24 @@ footer{
         margin:10px auto;
         max-width:220px;
     }
+    .features{
+    max-width:900px;
+    margin:30px auto;
+    text-align:center;
 }
+
+.features h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+.feature-box{
+    background:white;
+    color:#071B4D;
+    padding:18px;
+    margin:12px;
+    border-radius:15px;
+    font-weight:bold;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
