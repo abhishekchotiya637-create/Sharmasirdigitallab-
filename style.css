@@ -1,4 +1,4 @@
-*{
+VC*{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -198,4 +198,27 @@ footer{
     align-items:center;
     justify-content:center;
     gap:10px;
-    }
+        .portal-menu{
+    width:90%;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.grid-item{
+    background:#ffffff;
+    color:#0a2463;
+    padding:15px;
+    margin:12px 0;
+    border-radius:12px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    cursor:pointer;
+}
+
+.grid-item:hover{
+    transform:translateY(-3px);
+}
