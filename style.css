@@ -107,27 +107,30 @@ body{
     background:#F4A300;
     color:white;
 }
-
-/* Welcome Section */
 .welcome{
-    background:white;
+    background:#ffffff;
     color:#071B4D;
     max-width:900px;
-    margin:30px auto;
-    padding:25px;
-    border-radius:15px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:20px;
     text-align:center;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
 }
 
 .welcome h2{
+    font-size:30px;
     margin-bottom:15px;
+    color:#F4A300;
 }
 
 .welcome p{
+    font-size:18px;
     line-height:1.8;
-    font-size:16px;
 }
+
+
+
 
 /* Footer */
 footer{
