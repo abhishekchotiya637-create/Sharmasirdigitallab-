@@ -28,3 +28,7 @@ function submitQuiz(){
     document.getElementById("result").innerHTML =
         "Score: " + score + "/2";
 }
+document.getElementById("review").innerHTML = `
+Q1 Correct Answer: खेजड़ी <br>
+Q2 Correct Answer: 30 मार्च
+`;
