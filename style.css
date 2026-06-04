@@ -92,7 +92,7 @@ h1{
 /* PORTAL MENU */
   .portal-menu{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:(2,1fr);
     gap:15px;
     max-width:700px;
     margin:30px auto;
