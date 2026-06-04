@@ -258,3 +258,14 @@ footer p{
     transition:0.3s;
     box-shadow:0 8px 20px rgba(0,0,0,0.25);
 }
+.portal-menu .grid-item{
+    font-size:22px;
+    font-weight:600;
+    padding:35px 20px;
+}
+
+.portal-menu .grid-item i{
+    font-size:32px;
+    margin-bottom:12px;
+    display:block;
+}
