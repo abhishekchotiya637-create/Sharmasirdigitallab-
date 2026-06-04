@@ -377,3 +377,29 @@ text-decoration:none;
 z-index:999;
 box-shadow:0 4px 10px rgba(0,0,0,.3);
 }
+.card h3{
+    color:#0d2a6b;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#333;
+    margin-bottom:15px;
+}
+
+.download-btn{
+    display:inline-block;
+    background:#f4b400;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 8px;
+    font-size:16px;
+    font-weight:bold;
+}
