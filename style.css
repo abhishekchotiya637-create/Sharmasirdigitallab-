@@ -497,3 +497,29 @@ font-weight:bold;
 display:inline-block;
 margin-top:10px;
 }
+.page-header{
+background:#0b2a6f;
+color:white;
+text-align:center;
+padding:30px 20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.download-btn{
+display:inline-block;
+background:#f4b400;
+color:white;
+padding:12px 25px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin-top:10px;
+}
