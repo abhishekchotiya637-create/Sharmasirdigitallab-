@@ -215,79 +215,58 @@ footer p{
     }
 
 }
+/* ===== PORTAL MENU ===== */
+
 .portal-menu{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    max-width:700px;
+    gap:20px;
+    max-width:900px;
     margin:30px auto;
     padding:15px;
 }
 
-@media(max-width:768px){
-    .portal-menu{
-        grid-template-columns:1fr;
-    }
-}.grid-item a{
-    font-size: 22px;   /* Font Size */
-    font-weight: 600;  /* Bold */
+.grid-item{
+    background:#fff;
+    color:#0b2460;
+    text-decoration:none;
+    text-align:center;
+    padding:35px 20px;
+    border-radius:15px;
+    font-size:22px;
+    font-weight:700;
+    box-shadow:0 5px 15px rgba(0,0,0,0.20);
+    transition:0.3s;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:130px;
 }
 
 .grid-item i{
-    font-size: 28px;   /* Icon Size */
-    margin-bottom: 10px;
-}
-.grid-item,
-.menu-item{
-    padding:25px;
-}.portal-menu a{
-    font-size:18px;
-    font-weight:600;
-    text-decoration:none;
-}
-
-.portal-menu i{
-    font-size:28px;
-}.portal-menu .grid-item{
-    padding:35px 20px;
-}.hero h1{
-    font-size:42px;
-    font-weight:700;
-}.grid-item:hover{
-    transform:translateY(-5px);
-    transition:0.3s;
-    box-shadow:0 8px 20px rgba(0,0,0,0.25);
-}
-.portal-menu .grid-item{
-    font-size:22px;
-    font-weight:600;
-    padding:35px 20px;
-}
-/* Portal Menu */
-
-.portal-menu .grid-item{
-    font-size:22px;
-    font-weight:600;
-    padding:35px 20px;
-    text-decoration:none;
-}
-
-.portal-menu .grid-item i{
-    font-size:32px;
+    font-size:40px;
+    color:#f4b400;
     margin-bottom:12px;
-    display:block;
 }
 
 .grid-item:hover{
     transform:translateY(-5px);
-    transition:0.3s;
-    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    box-shadow:0 10px 25px rgba(0,0,0,0.30);
 }
-.portal-menu .grid-item i{
-    font-size:32px;
-    margin-bottom:12px;
-    display:block;
-}
-.grid-item{
-    font-size:22px;
+
+@media (max-width:768px){
+
+    .portal-menu{
+        grid-template-columns:1fr;
+    }
+
+    .grid-item{
+        font-size:24px;
+        min-height:120px;
+    }
+
+    .grid-item i{
+        font-size:42px;
+    }
 }
