@@ -1,4 +1,5 @@
-VC*{
+/* RESET */
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -6,244 +7,192 @@ VC*{
 
 body{
     font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#071B4D,#0F2A7A);
-    color:white;
+    background:#0b2460;
+    color:#ffffff;
+    text-align:center;
+    line-height:1.6;
 }
 
-/* Hero Section */
+/* HERO SECTION */
 .hero{
     padding:40px 20px;
-    text-align:center;
 }
 
 .logo{
-    width:180px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    width:130px;
+    border-radius:12px;
+    margin-bottom:20px;
 }
 
-.hero h1{
-    margin-top:20px;
-    font-size:48px;
+h1{
+    font-size:42px;
+    margin-bottom:15px;
+    font-weight:700;
 }
 
 .tagline{
-    margin-top:15px;
     font-size:20px;
+    margin-bottom:10px;
 }
 
 .subtitle{
-    margin-top:15px;
     font-size:18px;
+    margin-bottom:25px;
+    opacity:0.9;
 }
 
-/* Buttons */
+/* BUTTONS */
 .buttons{
-    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin:25px 0;
 }
 
-.telegram-btn,
-.whatsapp-btn,
-.email-btn{
-    display:inline-block;
-    padding:14px 25px;
-    margin:8px;
-    border-radius:10px;
+.buttons a{
     text-decoration:none;
+    padding:14px 24px;
+    border-radius:10px;
     font-weight:bold;
+    transition:.3s;
 }
 
 .telegram-btn{
-    background:#F4A300;
-    color:#071B4D;
+    background:#f4b400;
+    color:#000;
 }
 
 .whatsapp-btn{
     background:#25D366;
-    color:white;
+    color:#fff;
 }
 
 .email-btn{
-    background:white;
-    color:#071B4D;
-}
-
-.telegram-btn:hover,
-.whatsapp-btn:hover,
-.email-btn:hover{
-    opacity:0.9;
-}
-
-/* Profile Photo */
-.profile-photo{
-    width:180px;
-    margin:180px auto;
-    display:block;
-    border-radius:20px;
-    border:5px solid #F4A300;
-    box-shadow:0 5px 20px rgba(0,0,0,0.4);
-}
-
-/* Menu Cards */
-.portal-menu{
-    max-width:700px;
-    margin:20px auto;
-}
-
-.menu-btn{
-    display:block;
-    background:white;
-    color:#071B4D;
-    text-decoration:none;
-    padding:15px;
-    margin:10px 0;
-    border-radius:12px;
-    font-weight:bold;
-    text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
-
-.menu-btn:hover{
-    background:#F4A300;
-    color:white;
-}
-.welcome{
     background:#ffffff;
-    color:#071B4D;
-    max-width:900px;
-    margin:40px auto;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    color:#0b2460;
 }
 
-.welcome h2{
-    font-size:30px;
-    margin-bottom:15px;
-    color:#F4A300;
-}
-
-.welcome p{
-    font-size:18px;
-    line-height:1.8;
-}
-
-
-
-
-/* Footer */
-footer{
-    background:#041238;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:40px;
-}
-
-/* Mobile */
-@media(max-width:768px){
-
-    .hero h1{
-        font-size:28px;
-    }
-
-    .tagline,
-    .subtitle{
-        font-size:16px;
-    }
-
-    .logo{
-        width:140px;
-    }
-
-    .profile-photo{
-        width:140px;
-    }
-
-    .telegram-btn,
-    .whatsapp-btn,
-    .email-btn{
-        display:block;
-        margin:10px auto;
-        max-width:220px;
-    }
-    .features{
-    max-width:900px;
-    margin:30px auto;
-    text-align:center;
-}
-
-.features h2{
-    color:white;
-    margin-bottom:20px;
-}
-
-.feature-box{
-    background:white;
-    color:#071B4D;
-    padding:18px;
-    margin:12px;
-    border-radius:15px;
-    font-weight:bold;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
-.grid-item i{
-    font-size:22px;
-    margin-right:10px;
-    color:#f4b400;
-        }
-    .grid-item{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-        .portal-menu{
-    width:90%;
-    max-width:500px;
-    margin:20px auto;
-}
-
-.grid-item{
-    background:#ffffff;
-    color:#0a2463;
-    padding:15px;
-    margin:12px 0;
-    border-radius:12px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    cursor:pointer;
-}
-
-.grid-item:hover{
+.buttons a:hover{
     transform:translateY(-3px);
 }
 
-        .portal-menu{
-    width:90%;
-    max-width:500px;
-    margin:20px auto;
+/* PROFILE PHOTO */
+.profile-photo{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #f4b400;
+    box-shadow:0 6px 15px rgba(0,0,0,0.4);
+    margin:30px auto;
+    display:block;
+}
+
+/* PORTAL MENU */
+.portal-menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    max-width:650px;
+    margin:35px auto;
+    padding:0 15px;
 }
 
 .grid-item{
-    background:white;
-    color:#0a2463;
-    padding:15px;
-    margin:12px 0;
+    background:#ffffff;
+    color:#0b2460;
+    padding:18px;
     border-radius:12px;
     font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    font-size:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    transition:.3s;
+}
+
+.grid-item:hover{
+    transform:translateY(-4px);
 }
 
 .grid-item i{
-    font-size:22px;
+    display:block;
+    font-size:24px;
+    margin-bottom:8px;
     color:#f4b400;
+}
+
+/* WELCOME */
+h2{
+    margin:35px 0 15px;
+    font-size:30px;
+}
+
+p{
+    max-width:900px;
+    margin:0 auto 20px;
+    padding:0 20px;
+    font-size:18px;
+}
+
+/* FEATURES */
+.features{
+    max-width:700px;
+    margin:40px auto;
+    padding:0 15px;
+}
+
+.feature-box{
+    background:#ffffff;
+    color:#0b2460;
+    margin:12px 0;
+    padding:18px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* FOOTER */
+footer{
+    background:#04143d;
+    padding:25px;
+    margin-top:50px;
+}
+
+footer p{
+    margin:8px 0;
+    color:#ffffff;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    h1{
+        font-size:28px;
+    }
+
+    .tagline{
+        font-size:16px;
+    }
+
+    .subtitle{
+        font-size:14px;
+    }
+
+    .portal-menu{
+        grid-template-columns:1fr;
+    }
+
+    .profile-photo{
+        width:180px;
+        height:180px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    p{
+        font-size:16px;
+    }
 }
