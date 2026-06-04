@@ -228,4 +228,16 @@ footer p{
     .portal-menu{
         grid-template-columns:1fr;
     }
+}.grid-item a{
+    font-size: 22px;   /* Font Size */
+    font-weight: 600;  /* Bold */
+}
+
+.grid-item i{
+    font-size: 28px;   /* Icon Size */
+    margin-bottom: 10px;
+}
+.grid-item,
+.menu-item{
+    padding:25px;
 }
