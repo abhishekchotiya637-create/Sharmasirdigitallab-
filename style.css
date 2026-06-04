@@ -403,3 +403,32 @@ nav a{
     font-size:16px;
     font-weight:bold;
 }
+.card{
+    background:#ffffff;
+    padding:20px;
+    margin:20px 0;
+    border-radius:12px;
+    text-align:center;
+}
+
+.card h3{
+    color:#0d2a6b !important;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#333 !important;
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+.download-btn{
+    display:inline-block;
+    background:#f4b400;
+    color:white !important;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:bold;
+}
