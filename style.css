@@ -92,25 +92,32 @@ h1{
 /* PORTAL MENU */
 .portal-menu{
     display:grid;
-    grid-template-columns:repeat(2,minmax(220px,1fr));
-    gap:20px;
-    max-width:800px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    max-width:700px;
     margin:30px auto;
     padding:15px;
 }
 
-    
 
-  .grid-item{
+    
+.grid-item{
     background:#ffffff;
     color:#0b2460;
-    padding:20px;
+    padding:25px;
     border-radius:15px;
     font-weight:bold;
     text-align:center;
     box-shadow:0 5px 15px rgba(0,0,0,.25);
-    transition:0.3s;
+    transition:.3s;
+    text-decoration:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:120px;
 }
+
 
 .grid-item:hover{
     transform:translateY(-5px);
