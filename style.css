@@ -99,8 +99,10 @@ h1{
     padding:15px;
 }
 
+.portal-menu a{
+    text-decoration:none;
+}
 
-    
 .grid-item{
     background:#ffffff;
     color:#0b2460;
@@ -109,25 +111,23 @@ h1{
     font-weight:bold;
     text-align:center;
     box-shadow:0 5px 15px rgba(0,0,0,.25);
-    transition:.3s;
-    text-decoration:none;
+    transition:0.3s;
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     min-height:120px;
-}
-
-
-.grid-item:hover{
-    transform:translateY(-5px);
+    width:100%;
 }
 
 .grid-item i{
-    display:block;
-    font-size:24px;
-    margin-bottom:8px;
+    font-size:28px;
     color:#f4b400;
+    margin-bottom:10px;
+}
+
+.grid-item:hover{
+    transform:translateY(-5px);
 }
 
 /* WELCOME */
