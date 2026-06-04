@@ -313,3 +313,50 @@ font-weight:bold;
     color:#f4b400;
     margin-bottom:12px;
 }
+/* About Page */
+
+.page-container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+    text-align:center;
+}
+
+.page-container h1{
+    color:#0d2a6b;
+    margin-bottom:20px;
+}
+
+.page-container p{
+    line-height:1.8;
+    font-size:16px;
+}
+
+.profile-pic{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:4px solid #f4b400;
+    display:block;
+    margin:20px auto;
+    object-fit:cover;
+}
+
+.card{
+    background:#ffffff;
+    padding:20px;
+    margin:15px 0;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.home-btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#f4b400;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    margin-top:20px;
+}
