@@ -461,3 +461,39 @@ justify-content:center;
 text-decoration:none;
 z-index:9999;
 }
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#001f5b;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+z-index:999;
+}
+
+.bottom-nav a{
+color:white;
+font-size:24px;
+text-decoration:none;
+}
+.card{
+background:white;
+padding:20px;
+margin:15px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.download-btn{
+background:#f4b400;
+color:white;
+padding:10px 20px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+margin-top:10px;
+}
