@@ -180,9 +180,7 @@ footer p{
         font-size:14px;
     }
 
-    .portal-menu{
-        grid-template-columns:1fr;
-    }
+    
 
     .profile-photo{
         width:180px;
