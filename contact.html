@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Sharma Sir's Digital Lab</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── CONTACT LAYOUT ── */
+    .contact-wrap {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 clamp(16px,5%,80px) 88px;
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 52px; align-items: start;
+    }
+
+    /* ── LEFT: INFO CARDS ── */
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+
+    .info-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 22px 22px; border-radius: var(--radius-lg);
+      transition: var(--transition);
+    }
+    .info-card:hover {
+      border-color: rgba(249,115,22,0.35);
+      transform: translateX(5px);
+    }
+    .info-icon {
+      width: 50px; height: 50px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .ic-tg   { background: rgba(0,136,204,0.15); border: 1px solid rgba(0,136,204,0.3); }
+    .ic-wa   { background: rgba(27,175,93,0.15);  border: 1px solid rgba(27,175,93,0.3); }
+    .ic-yt   { background: rgba(255,0,0,0.12);    border: 1px solid rgba(255,0,0,0.25); }
+    .ic-mail { background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3); }
+    .ic-loc  { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); }
+
+    .info-text h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
+    .info-text p  { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+    .info-text a  { color: var(--saffron); font-weight: 600; transition: opacity 0.2s; }
+    .info-text a:hover { opacity: 0.8; }
+
+    /* social quick-links */
+    .social-quick {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+      margin-top: 8px;
+    }
+    .sq-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 16px; border-radius: var(--radius-md);
+      font-size: 0.85rem; font-weight: 700;
+      transition: var(--transition); text-decoration: none;
+    }
+    .sq-btn:hover { transform: translateY(-2px); }
+    .sq-tg   { background: #0088CC; color: #fff; }
+    .sq-tg:hover   { box-shadow: 0 6px 20px rgba(0,136,204,0.4); }
+    .sq-wa   { background: #1BAF5D; color: #fff; }
+    .sq-wa:hover   { box-shadow: 0 6px 20px rgba(27,175,93,0.4); }
+    .sq-yt   { background: #FF0000; color: #fff; }
+    .sq-yt:hover   { box-shadow: 0 6px 20px rgba(255,0,0,0.35); }
+    .sq-mail { background: rgba(249,115,22,0.15); color: var(--saffron); border: 1px solid rgba(249,115,22,0.3); }
+    .sq-mail:hover { background: rgba(249,115,22,0.25); }
+
+    /* ── RIGHT: FORM ── */
+    .contact-form-wrap {
+      background: var(--navy-card);
+      border: 1px solid var(--border-white);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+    }
+    .form-title {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .form-subtitle { color: var(--muted); font-size: 0.88rem; margin-bottom: 28px; font-family: var(--font-hindi); }
+
+    .form-row { margin-bottom: 18px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+    .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.75); margin-bottom: 7px; letter-spacing: 0.03em; }
+    .form-input {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-white);
+      border-radius: var(--radius-md);
+      color: var(--white); font-family: var(--font-body);
+      font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .form-input::placeholder { color: var(--muted); }
+    .form-input:focus { border-color: var(--saffron); background: rgba(249,115,22,0.04); }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+
+    select.form-input option { background: var(--navy-2); color: var(--white); }
+
+    .form-submit {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+      color: var(--white); border: none; border-radius: var(--radius-md);
+      font-family: var(--font-body); font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { box-shadow: 0 6px 28px var(--saffron-glow); transform: translateY(-2px); }
+
+    /* success message */
+    .form-success {
+      display: none; text-align: center; padding: 24px;
+      background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25);
+      border-radius: var(--radius-md); margin-top: 16px;
+    }
+    .form-success .tick { font-size: 2.5rem; margin-bottom: 10px; }
+    .form-success h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #86EFAC; }
+    .form-success p  { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+
+    /* ── FAQ SECTION ── */
+    .faq-wrap {
+      max-width: 800px; margin: 0 auto;
+      padding: 0 clamp(16px,5%,80px) 88px;
+    }
+    .faq-item {
+      border: 1px solid var(--border-white);
+      border-radius: var(--radius-md); margin-bottom: 12px;
+      overflow: hidden; transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(249,115,22,0.3); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; cursor: pointer;
+      font-size: 0.95rem; font-weight: 600;
+      background: rgba(255,255,255,0.03);
+      user-select: none;
+    }
+    .faq-q:hover { background: rgba(249,115,22,0.05); }
+    .faq-arrow { font-size: 0.8rem; color: var(--saffron); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      padding: 0 22px;
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.75; font-family: var(--font-hindi);
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+    @media (max-width: 860px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row-2  { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-badge">S</div>
+    <div class="nav-brand-text">
+      <div class="line1">Sharma Sir's Digital Lab</div>
+      <div class="line2">RPSC · RSSB · SSC · Railway · REET</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html"           class="nav-link">Home</a>
+    <a href="about.html"           class="nav-link">About</a>
+    <a href="courses.html"         class="nav-link">Courses</a>
+    <a href="notes.html"           class="nav-link">Notes</a>
+    <a href="current-affairs.html" class="nav-link">Current Affairs</a>
+    <a href="test-series.html"     class="nav-link">Test Series</a>
+    <a href="downloads.html"       class="nav-link">Downloads</a>
+    <a href="contact.html"         class="nav-cta-btn active">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">👤 About</a>
+  <a href="courses.html">📚 Courses</a>
+  <a href="notes.html">📝 Notes</a>
+  <a href="current-affairs.html">📰 Current Affairs</a>
+  <a href="test-series.html">🎯 Test Series</a>
+  <a href="downloads.html">⬇️ Downloads</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html" class="active">☎️ Contact</a>
+  <a href="https://t.me/sharmasirdigitallab" target="_blank">📢 Telegram</a>
+</div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<div class="page-hero">
+  <div class="page-hero-content reveal">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:14px;">संपर्क करें</div>
+    <h1 class="display-lg">Contact <span class="text-gradient">Us</span></h1>
+    <p class="page-hero-desc">किसी भी प्रश्न, सुझाव या मार्गदर्शन के लिए Sharma Sir से सीधे संपर्क करें</p>
+  </div>
+</div>
+
+<!-- ═══ CONTACT MAIN ═══ -->
+<div class="contact-wrap">
+
+  <!-- LEFT: INFO -->
+  <div class="contact-info reveal">
+
+    <div style="margin-bottom:8px;">
+      <div class="eyebrow" style="margin-bottom:12px;">हमसे जुड़ें</div>
+      <h2 class="display-md">Get in <span class="text-gradient">Touch</span></h2>
+      <p style="color:var(--muted); font-size:0.9rem; margin-top:12px; font-family:var(--font-hindi); line-height:1.75;">
+        हम हमेशा आपकी सहायता के लिए तैयार हैं। नीचे दिए किसी भी माध्यम से संपर्क करें।
+      </p>
+    </div>
+
+    <!-- Quick Social Buttons -->
+    <div class="social-quick">
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="sq-btn sq-tg">📢 Telegram</a>
+      <a href="https://wa.me/919251242367"        target="_blank" class="sq-btn sq-wa">💬 WhatsApp</a>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="sq-btn sq-yt">🎥 YouTube</a>
+      <a href="mailto:abhishekchotiya637@gmail.com"       class="sq-btn sq-mail">📧 Email</a>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="card info-card">
+      <div class="info-icon ic-tg">📢</div>
+      <div class="info-text">
+        <h4>Telegram Channel</h4>
+        <p>Notes, Current Affairs, Test Series सबसे पहले Telegram पर।<br>
+          <a href="https://t.me/sharmasirdigitallab" target="_blank">@sharmasirdigitallab</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card info-card">
+      <div class="info-icon ic-wa">💬</div>
+      <div class="info-text">
+        <h4>WhatsApp</h4>
+        <p>सोमवार – शनिवार: सुबह 9 बजे – रात 9 बजे<br>
+          <a href="https://wa.me/919251242367" target="_blank">+91 92512 42367</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card info-card">
+      <div class="info-icon ic-yt">🎥</div>
+      <div class="info-text">
+        <h4>YouTube Channel</h4>
+        <p>200+ Free Video Lectures उपलब्ध।<br>
+          <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank">@SharmaSirsDigitalLab</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card info-card">
+      <div class="info-icon ic-mail">📧</div>
+      <div class="info-text">
+        <h4>Email</h4>
+        <p>Business/Collaboration enquiries के लिए:<br>
+          <a href="mailto:abhishekchotiya637@gmail.com">abhishekchotiya637@gmail.com</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card info-card">
+      <div class="info-icon ic-loc">📍</div>
+      <div class="info-text">
+        <h4>Location</h4>
+        <p>Rajasthan, India<br>
+          <span style="color:var(--saffron); font-weight:600;">Online Platform — Available Across India</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="contact-form-wrap reveal reveal-delay-1">
+    <div class="form-title">✉️ Message भेजें</div>
+    <div class="form-subtitle">हम 24 घंटे के अंदर जवाब देंगे।</div>
+
+    <form id="contactForm" novalidate>
+      <div class="form-row-2">
+        <div>
+          <label class="form-label" for="fname">आपका नाम *</label>
+          <input type="text" id="fname" class="form-input" placeholder="जैसे: Rahul Sharma" required>
+        </div>
+        <div>
+          <label class="form-label" for="fphone">WhatsApp / Phone *</label>
+          <input type="tel" id="fphone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="femail">Email Address</label>
+        <input type="email" id="femail" class="form-input" placeholder="yourname@gmail.com">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="fexam">आप किस परीक्षा की तैयारी कर रहे हैं?</label>
+        <select id="fexam" class="form-input">
+          <option value="" disabled selected>परीक्षा चुनें...</option>
+          <option>RPSC 1st Grade (School Lecturer)</option>
+          <option>RPSC 2nd Grade (Senior Teacher)</option>
+          <option>REET Level 1</option>
+          <option>REET Level 2</option>
+          <option>Rajasthan CET (10th Level)</option>
+          <option>Rajasthan CET (12th Level)</option>
+          <option>SSC GD Constable</option>
+          <option>SSC CHSL / MTS</option>
+          <option>Railway Group D</option>
+          <option>RRB NTPC</option>
+          <option>अन्य</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="fsubject">विषय (Subject) *</label>
+        <input type="text" id="fsubject" class="form-input" placeholder="जैसे: Notes चाहिए, Test Series, Guidance..." required>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="fmessage">आपका संदेश *</label>
+        <textarea id="fmessage" class="form-input" placeholder="अपना प्रश्न या संदेश यहाँ लिखें..." required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        📨 Message भेजें
+      </button>
+
+      <div class="form-success" id="formSuccess">
+        <div class="tick">✅</div>
+        <h4>Message भेजा गया!</h4>
+        <p>धन्यवाद! हम जल्द ही आपसे WhatsApp या Email पर संपर्क करेंगे।</p>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<!-- ═══ FAQ SECTION ═══ -->
+<section class="section section-alt">
+  <div class="section-header reveal">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:12px;">सामान्य प्रश्न</div>
+    <h2 class="display-md">Frequently Asked <span class="text-gradient">Questions</span></h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>क्या सभी Notes और PDFs बिल्कुल मुफ्त हैं?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        हाँ! Sharma Sir's Digital Lab पर 90% से अधिक Notes, PDFs और Current Affairs बिल्कुल मुफ्त उपलब्ध हैं। केवल कुछ विशेष Premium Test Series के लिए न्यूनतम शुल्क है।
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>Notes और PDFs कैसे Download करें?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        हमारा Telegram Channel join करें — सभी Notes, PDFs और Current Affairs वहाँ उपलब्ध हैं। Website पर Downloads Page से भी सीधे Download करें।
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>Test Series कैसे Access करें?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Basic Free Tests Telegram Channel पर उपलब्ध हैं। Premium Test Series के लिए WhatsApp पर संपर्क करें। Test Series का Answer Key और Detailed Solution भी दिया जाता है।
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>क्या Sharma Sir personally guidance देते हैं?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        हाँ! WhatsApp पर +91 92512 42367 पर संपर्क करें। Sharma Sir सोमवार से शनिवार सुबह 9 बजे से रात 9 बजे तक उपलब्ध रहते हैं।
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>YouTube Channel पर कौन-कौन से Videos हैं?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        YouTube Channel पर RPSC, REET, SSC, Railway, CET सभी परीक्षाओं के Video Lectures, Previous Year Paper Discussion, Current Affairs और Exam Strategy Videos उपलब्ध हैं।
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span>क्या Notes Hindi Medium में हैं?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        हाँ! सभी Notes हिंदी माध्यम में हैं और सरल भाषा में तैयार किए गए हैं ताकि हर विद्यार्थी आसानी से समझ सके।
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="nav-brand" style="margin-bottom:16px;">
+        <div class="nav-logo-badge">S</div>
+        <div class="nav-brand-text">
+          <div class="line1">Sharma Sir's Digital Lab</div>
+          <div class="line2">Educational Excellence</div>
+        </div>
+      </div>
+      <p class="footer-brand-desc">RPSC, RSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
+      <div class="footer-social">
+        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="social-icon">📢</a>
+        <a href="https://wa.me/919251242367" target="_blank" class="social-icon">💬</a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="social-icon">🎥</a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="social-icon">📧</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Exams</div>
+      <ul class="footer-links">
+        <li><a href="courses.html">RPSC</a></li>
+        <li><a href="courses.html">REET</a></li>
+        <li><a href="courses.html">SSC / CET</a></li>
+        <li><a href="courses.html">Railway</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="current-affairs.html">Current Affairs</a></li>
+        <li><a href="test-series.html">Test Series</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved. | Made with ❤️ for Students of Rajasthan</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  // Form submit
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('fname').value.trim();
+    const phone   = document.getElementById('fphone').value.trim();
+    const subject = document.getElementById('fsubject').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+    if (!name || !phone || !subject || !message) {
+      alert('कृपया सभी आवश्यक (*) फ़ील्ड भरें।');
+      return;
+    }
+    // Build WhatsApp message and redirect
+    const exam = document.getElementById('fexam').value || 'Not specified';
+    const wa = `https://wa.me/919251242367?text=${encodeURIComponent(
+      `*Sharma Sir's Digital Lab — New Query*\n\nName: ${name}\nPhone: ${phone}\nExam: ${exam}\nSubject: ${subject}\n\nMessage:\n${message}`
+    )}`;
+    document.getElementById('formSuccess').style.display = 'block';
+    this.querySelector('.form-submit').disabled = true;
+    this.querySelector('.form-submit').textContent = '✅ Sent!';
+    setTimeout(() => window.open(wa, '_blank'), 1200);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
