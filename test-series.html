@@ -1,74 +1,613 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Series | Sharma Sir's Digital Lab</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── STATS STRIP ── */
+    .ts-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 clamp(16px,5%,80px) 56px;
+    }
+    .ts-stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-white);
+      border-radius: var(--radius-lg);
+      padding: 24px 16px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .ts-stat-card:hover {
+      border-color: rgba(249,115,22,0.3);
+      transform: translateY(-4px);
+    }
+    .ts-stat-icon { font-size: 1.8rem; margin-bottom: 10px; }
 
-<title>Online Test Series</title>
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 clamp(16px,5%,80px) 44px;
+    }
+    .filter-btn {
+      padding: 9px 22px; border-radius: 50px;
+      border: 1px solid var(--border-white);
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.83rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: rgba(249,115,22,0.12);
+      border-color: rgba(249,115,22,0.4);
+      color: var(--saffron);
+    }
 
-<link rel="stylesheet"
-  href="style.css">
+    /* ── CONTENT WRAP ── */
+    .ts-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(16px,5%,80px) 88px;
+    }
+    .ts-section { margin-bottom: 60px; }
+    .ts-section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-white);
+    }
+    .ts-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 900;
+    }
 
+    /* ── TEST CARDS ── */
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .test-card {
+      display: flex; flex-direction: column;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .test-card-top {
+      padding: 22px 24px 14px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(245,158,11,0.04));
+      border-bottom: 1px solid var(--border-white);
+    }
+    .test-card-top h3 {
+      font-size: 1rem; font-weight: 700;
+      margin: 10px 0 6px; line-height: 1.4;
+    }
+    .test-card-body { padding: 16px 24px 22px; flex: 1; display: flex; flex-direction: column; }
+
+    /* info grid inside card */
+    .test-info-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 10px; margin-bottom: 14px;
+    }
+    .info-cell {
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-sm);
+      padding: 10px; text-align: center;
+    }
+    .info-cell .val {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 900;
+      background: linear-gradient(90deg, var(--saffron), var(--gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .info-cell .key { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+
+    .test-desc {
+      font-size: 0.86rem; color: rgba(255,255,255,0.72);
+      line-height: 1.7; font-family: var(--font-hindi);
+      flex: 1; margin-bottom: 18px;
+    }
+    .test-card-footer {
+      display: flex; gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-white);
+    }
+    .btn-start {
+      flex: 1; background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+      color: var(--white); padding: 10px 16px; border-radius: var(--radius-sm);
+      text-align: center; font-size: 0.83rem; font-weight: 700;
+      transition: var(--transition);
+    }
+    .btn-start:hover { box-shadow: 0 4px 18px var(--saffron-glow); transform: scale(1.02); }
+    .btn-detail {
+      padding: 10px 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-white);
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-size: 0.83rem; font-weight: 600; transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-detail:hover { border-color: var(--saffron); color: var(--saffron); }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 22px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .how-card {
+      padding: 32px 24px; text-align: center;
+      border-radius: var(--radius-lg);
+    }
+    .how-num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 900;
+      background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(245,158,11,0.1));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1; margin-bottom: 14px;
+    }
+    .how-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .how-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-family: var(--font-hindi); }
+
+    /* ── TELEGRAM BOX ── */
+    .tg-box {
+      text-align: center;
+      background: rgba(249,115,22,0.06);
+      border: 1px solid rgba(249,115,22,0.22);
+      border-radius: var(--radius-xl);
+      padding: 44px 32px;
+    }
+    .tg-box h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; margin-bottom: 10px; }
+    .tg-box p  { color: var(--muted); margin-bottom: 24px; font-family: var(--font-hindi); }
+
+    @media (max-width: 768px) {
+      .ts-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
-
 <body>
 
-<header class="hero">
-
-<h1>📝 Online Test Series</h1>
-
-<p>RPSC 1st Grade | 2nd Grade | REET</p>
-
-</header>
-<div id="timer">30:00</div>
-
-<form id="quiz">
-...
-</form>
-
-<button onclick="submitQuiz()">
-Submit Test
-</button>
-
-<div id="result"></div>
-<div class="card">
-
-<h3>RPSC 1st Grade Rajasthan GK Test-01</h3>
-
-<a href="https://forms.gle/Mee21nJyugm3NvKcA" target="_blank"
-class="download-btn">
-
-Start Rajasthan GK Test
-
-</a>
-
-</div>
-
-<div class="card">
-<div id="review"></div>
-<h3>RPSC 1st Grade Rajasthan GK Test-02</h3>
-
-<a href="https://forms.google.com"
-target="_blank"
-class="download-btn">
-
-Start Test
-
-</a>
-
-</div>
-
-<footer>
-
-<p>© 2026 Sharma Sir's Digital Lab</p>
-
-</footer>
-<nav>
-<a href="index.html">🏠 Home</a>
-<a href="notes.html">📚 Notes</a>
-<a href="downloads.html">📄 PDFs</a>
-<a href="test-series.html">📝 Tests</a>
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-badge">S</div>
+    <div class="nav-brand-text">
+      <div class="line1">Sharma Sir's Digital Lab</div>
+      <div class="line2">RPSC · RSSB · SSC · Railway · REET</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html"           class="nav-link">Home</a>
+    <a href="about.html"           class="nav-link">About</a>
+    <a href="courses.html"         class="nav-link">Courses</a>
+    <a href="notes.html"           class="nav-link">Notes</a>
+    <a href="current-affairs.html" class="nav-link">Current Affairs</a>
+    <a href="test-series.html"     class="nav-link active">Test Series</a>
+    <a href="downloads.html"       class="nav-link">Downloads</a>
+    <a href="contact.html"         class="nav-cta-btn">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">👤 About</a>
+  <a href="courses.html">📚 Courses</a>
+  <a href="notes.html">📝 Notes</a>
+  <a href="current-affairs.html">📰 Current Affairs</a>
+  <a href="test-series.html" class="active">🎯 Test Series</a>
+  <a href="downloads.html">⬇️ Downloads</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">☎️ Contact</a>
+  <a href="https://t.me/sharmasirdigitallab" target="_blank">📢 Telegram</a>
+</div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<div class="page-hero">
+  <div class="page-hero-content reveal">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:14px;">अभ्यास करें</div>
+    <h1 class="display-lg">Test <span class="text-gradient">Series</span></h1>
+    <p class="page-hero-desc">वास्तविक परीक्षा पैटर्न पर आधारित 100+ मॉक टेस्ट — अपनी तैयारी को परखें और सुधारें</p>
+  </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="ts-stats stagger-children">
+  <div class="ts-stat-card">
+    <div class="ts-stat-icon">🎯</div>
+    <div class="stat-num">100+</div>
+    <div class="stat-label">Total Tests</div>
+  </div>
+  <div class="ts-stat-card">
+    <div class="ts-stat-icon">🏆</div>
+    <div class="stat-num">50k+</div>
+    <div class="stat-label">Attempts</div>
+  </div>
+  <div class="ts-stat-card">
+    <div class="ts-stat-icon">📊</div>
+    <div class="stat-num">92%</div>
+    <div class="stat-label">Accuracy Rate</div>
+  </div>
+  <div class="ts-stat-card">
+    <div class="ts-stat-icon">🆓</div>
+    <div class="stat-num">FREE</div>
+    <div class="stat-label">Basic Tests</div>
+  </div>
+</div>
+
+<!-- ═══ FILTER ═══ -->
+<div class="filter-bar reveal">
+  <button class="filter-btn active">All Tests</button>
+  <button class="filter-btn">RPSC</button>
+  <button class="filter-btn">REET</button>
+  <button class="filter-btn">SSC</button>
+  <button class="filter-btn">Railway</button>
+  <button class="filter-btn">Current Affairs</button>
+</div>
+
+<!-- ═══ TEST SECTIONS ═══ -->
+<div class="ts-wrap">
+
+  <!-- RPSC -->
+  <div class="ts-section reveal">
+    <div class="ts-section-header">
+      <span style="font-size:1.8rem;">🏛️</span>
+      <div class="ts-section-title">RPSC <span class="text-gradient">Test Series</span></div>
+      <span class="chip chip-saffron" style="margin-left:auto;">RPSC</span>
+    </div>
+    <div class="test-grid stagger-children">
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-live">🔴 Live</span>
+            <span class="chip chip-saffron">2nd Grade</span>
+          </div>
+          <h3>RPSC 2nd Grade — GK Full Mock Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">100</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">120 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">2 Marks</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">-⅓</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">RPSC 2nd Grade Teacher परीक्षा पैटर्न पर GK + Current Affairs + Rajasthan GK का Full Mock Test। Previous Year Questions included।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-saffron">1st Grade</span>
+          </div>
+          <h3>RPSC 1st Grade — Paper-I Practice Set</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">75</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">90 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">2 Marks</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">-⅓</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">RPSC School Lecturer GK Paper-I के सिलेबस पर आधारित Practice Set। राजस्थान GK, भारत का इतिहास, भूगोल, विज्ञान।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-saffron">Rajasthan GK</span>
+          </div>
+          <h3>Rajasthan GK — Special Practice Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">50</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">45 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">2 Marks</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">No</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">इतिहास, भूगोल, कला-संस्कृति, खनिज, नदियाँ, जनजातियाँ — राजस्थान GK के सभी महत्वपूर्ण टॉपिक्स।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- REET -->
+  <div class="ts-section reveal">
+    <div class="ts-section-header">
+      <span style="font-size:1.8rem;">📖</span>
+      <div class="ts-section-title">REET <span class="text-gradient">Test Series</span></div>
+      <span class="chip chip-green" style="margin-left:auto;">REET</span>
+    </div>
+    <div class="test-grid stagger-children">
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-green">Level 1</span>
+          </div>
+          <h3>REET Level 1 — Child Development Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">30</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">30 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">1 Mark</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">No</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">REET Level 1 बाल विकास एवं शिक्षाशास्त्र — 30 MCQ अभ्यास टेस्ट। Piaget, Vygotsky, Kohlberg के सिद्धांत।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-green">Level 2</span>
+          </div>
+          <h3>REET Level 2 — Social Science Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">60</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">60 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">1 Mark</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">No</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">REET Level 2 सामाजिक विज्ञान विषय — इतिहास, भूगोल, राजनीति विज्ञान और अर्थशास्त्र।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-green">Full Mock</span>
+          </div>
+          <h3>REET Level 2 — Full Mock Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">150</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">150 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">1 Mark</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">No</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">REET Level 2 का पूर्ण मॉक टेस्ट — सभी Section (बाल विकास + भाषा I + भाषा II + विषय) शामिल।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SSC / Railway -->
+  <div class="ts-section reveal">
+    <div class="ts-section-header">
+      <span style="font-size:1.8rem;">🏢</span>
+      <div class="ts-section-title">SSC / Railway <span class="text-gradient">Test Series</span></div>
+      <span class="chip chip-gold" style="margin-left:auto;">SSC · Railway</span>
+    </div>
+    <div class="test-grid stagger-children">
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-gold">SSC GD</span>
+          </div>
+          <h3>SSC GD Constable — Full Mock Test 1</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">80</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">60 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">2 Marks</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">-0.5</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">SSC GD परीक्षा का पहला Full Mock Test — GK, Reasoning, Math, English सभी 4 Sections।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-blue">Railway GD</span>
+          </div>
+          <h3>Railway Group D — CBT Practice Set</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">100</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">90 Min</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">1 Mark</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">-⅓</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">Railway Group D CBT परीक्षा — General Science, Math, Reasoning, General Awareness।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card test-card">
+        <div class="card-accent-top"></div>
+        <div class="test-card-top">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip chip-free">FREE</span>
+            <span class="chip chip-gold">Rajasthan CET</span>
+          </div>
+          <h3>Rajasthan CET — 12th Level Mock Test</h3>
+        </div>
+        <div class="test-card-body">
+          <div class="test-info-grid">
+            <div class="info-cell"><div class="val">150</div><div class="key">Questions</div></div>
+            <div class="info-cell"><div class="val">3 Hours</div><div class="key">Duration</div></div>
+            <div class="info-cell"><div class="val">2 Marks</div><div class="key">Per Question</div></div>
+            <div class="info-cell"><div class="val">No</div><div class="key">Negative Marking</div></div>
+          </div>
+          <p class="test-desc">Rajasthan CET 12th Level — GK, Reasoning, Hindi, English, Math सभी Sections का Full Mock Test।</p>
+          <div class="test-card-footer">
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-start">Start Test →</a>
+            <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-detail">Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="margin-bottom:60px;" class="reveal">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="eyebrow" style="justify-content:center; margin-bottom:12px;">Process</div>
+      <h2 class="display-md">Test देने की <span class="text-gradient">प्रक्रिया</span></h2>
+    </div>
+    <div class="how-grid stagger-children">
+      <div class="card how-card">
+        <div class="how-num">01</div>
+        <h4>Telegram Join करें</h4>
+        <p>हमारा Telegram Channel Join करें और सभी Tests का Access पाएं।</p>
+      </div>
+      <div class="card how-card">
+        <div class="how-num">02</div>
+        <h4>Test चुनें</h4>
+        <p>अपनी परीक्षा और विषय के अनुसार मॉक टेस्ट चुनें।</p>
+      </div>
+      <div class="card how-card">
+        <div class="how-num">03</div>
+        <h4>Test दें</h4>
+        <p>निर्धारित समय में सभी प्रश्नों के उत्तर दें।</p>
+      </div>
+      <div class="card how-card">
+        <div class="how-num">04</div>
+        <h4>Result देखें</h4>
+        <p>Score, Analysis और Detailed Solution देखें और कमज़ोर Topic सुधारें।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELEGRAM CTA -->
+  <div class="tg-box reveal">
+    <h3>और 90+ Tests Telegram पर उपलब्ध हैं!</h3>
+    <p>Telegram channel join करें और सभी Free Tests तुरंत Access करें।</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn btn-tg">📢 Join Telegram — Free Tests पाएं</a>
+      <a href="https://wa.me/919251242367" target="_blank" class="btn btn-wa">💬 WhatsApp करें</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="nav-brand" style="margin-bottom:16px;">
+        <div class="nav-logo-badge">S</div>
+        <div class="nav-brand-text">
+          <div class="line1">Sharma Sir's Digital Lab</div>
+          <div class="line2">Educational Excellence</div>
+        </div>
+      </div>
+      <p class="footer-brand-desc">RPSC, RSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
+      <div class="footer-social">
+        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="social-icon">📢</a>
+        <a href="https://wa.me/919251242367" target="_blank" class="social-icon">💬</a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="social-icon">🎥</a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="social-icon">📧</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Exams</div>
+      <ul class="footer-links">
+        <li><a href="courses.html">RPSC</a></li>
+        <li><a href="courses.html">REET</a></li>
+        <li><a href="courses.html">SSC / CET</a></li>
+        <li><a href="courses.html">Railway</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="current-affairs.html">Current Affairs</a></li>
+        <li><a href="test-series.html">Test Series</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved. | Made with ❤️ for Students of Rajasthan</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
