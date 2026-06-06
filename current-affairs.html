@@ -1,129 +1,193 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Current Affairs | Sharma Sir's Digital Lab</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
-    .ca-layout { display:grid; grid-template-columns:1fr 300px; gap:36px; max-width:1200px; margin:0 auto; padding:0 clamp(16px,5%,80px) 88px; }
-    .month-tabs { display:flex; gap:10px; overflow-x:auto; scrollbar-width:none; padding:0 clamp(16px,5%,80px) 36px; }
-    .month-tabs::-webkit-scrollbar { display:none; }
-    .mtab { padding:8px 22px; border-radius:50px; border:1px solid var(--border-white); background:transparent; color:rgba(255,255,255,0.65); font-size:0.83rem; font-weight:600; cursor:pointer; transition:var(--transition); white-space:nowrap; font-family:var(--font-body); }
-    .mtab.active,.mtab:hover { background:rgba(249,115,22,0.12); border-color:rgba(249,115,22,0.4); color:var(--saffron); }
-    .ca-list { display:flex; flex-direction:column; gap:14px; }
-    .ca-article { display:flex; gap:20px; align-items:flex-start; padding:22px 24px; border-radius:var(--radius-md); transition:var(--transition); }
-    .ca-article:hover { transform:translateX(6px); border-color:rgba(249,115,22,0.35); }
-    .ca-date-box { min-width:54px; text-align:center; background:linear-gradient(135deg,var(--saffron),var(--saffron-deep)); border-radius:var(--radius-sm); padding:10px 6px; flex-shrink:0; }
-    .ca-date-box .day { font-family:var(--font-display); font-size:1.5rem; font-weight:900; line-height:1; }
-    .ca-date-box .mon { font-size:0.58rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
-    .ca-art-content { flex:1; }
-    .ca-art-content h3 { font-size:0.97rem; font-weight:700; margin:8px 0 7px; line-height:1.4; }
-    .ca-art-content p { font-size:0.85rem; color:var(--muted); line-height:1.65; font-family:var(--font-hindi); }
-    .ca-tags-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
-    .sidebar-box { background:var(--navy-card); border:1px solid var(--border-white); border-radius:var(--radius-lg); padding:22px 20px; margin-bottom:20px; }
-    .sidebar-title { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--gold-light); margin-bottom:16px; }
-    .s-link { display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--border-white); font-size:0.85rem; color:rgba(255,255,255,0.8); transition:color 0.2s; }
-    .s-link:last-child { border-bottom:none; }
-    .s-link:hover { color:var(--saffron); }
-    .topic-row { margin-bottom:12px; }
-    .topic-label { display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:5px; }
-    .topic-label span:last-child { color:var(--saffron); font-weight:700; }
-    .bar-bg { height:4px; background:rgba(255,255,255,0.08); border-radius:2px; }
-    .bar-fill { height:4px; border-radius:2px; background:linear-gradient(90deg,var(--saffron),var(--gold-light)); }
-    @media(max-width:900px){ .ca-layout{grid-template-columns:1fr;} }
-    @media(max-width:540px){ .ca-article{flex-direction:column;gap:12px;} }
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Current Affairs | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css"/>
+<style>
+body{font-size:17px;}
+.page-title{font-size:clamp(2.4rem,6vw,4.2rem)!important;}
+.page-desc{font-size:1.05rem!important;}
+.ca-layout{display:grid;grid-template-columns:1fr 300px;gap:32px;max-width:1200px;margin:0 auto;padding:0 clamp(16px,5%,80px) 80px;}
+.month-tabs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 clamp(16px,5%,80px) 32px;}
+.month-tabs::-webkit-scrollbar{display:none;}
+.mtab{padding:10px 24px;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:rgba(255,255,255,0.65);font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-family:'Sora',sans-serif;}
+.mtab.active,.mtab:hover{background:rgba(232,100,12,0.12);border-color:rgba(232,100,12,0.4);color:#E8640C;}
+.ca-list{display:flex;flex-direction:column;gap:14px;}
+.ca-art{display:flex;gap:20px;align-items:flex-start;padding:22px 24px;border-radius:16px;transition:all 0.25s;}
+.ca-art:hover{transform:translateX(6px);border-color:rgba(232,100,12,0.38);}
+.ca-date{min-width:58px;text-align:center;background:linear-gradient(135deg,#E8640C,#C5540A);border-radius:12px;padding:11px 8px;flex-shrink:0;}
+.ca-date .d{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;line-height:1;}
+.ca-date .m{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-top:5px;}
+.ca-body h3{font-size:1rem;font-weight:700;margin:8px 0 7px;line-height:1.45;}
+.ca-body p{font-size:0.9rem;color:rgba(255,255,255,0.52);line-height:1.7;font-family:'Noto Sans Devanagari',sans-serif;}
+.ca-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+/* Sidebar */
+.sidebar-box{background:rgba(14,35,71,0.9);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px 20px;margin-bottom:18px;}
+.sb-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#F0C040;margin-bottom:16px;}
+.sb-link{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.92rem;color:rgba(255,255,255,0.75);text-decoration:none;transition:color 0.2s;}
+.sb-link:last-child{border-bottom:none;}
+.sb-link:hover{color:#E8640C;}
+.topic-row{margin-bottom:12px;}
+.topic-lbl{display:flex;justify-content:space-between;font-size:0.88rem;margin-bottom:6px;}
+.topic-lbl span:last-child{color:#E8640C;font-weight:700;}
+.bar-bg{height:5px;background:rgba(255,255,255,0.08);border-radius:3px;}
+.bar-fill{height:5px;border-radius:3px;background:linear-gradient(90deg,#E8640C,#F0C040);}
+@media(max-width:900px){.ca-layout{grid-template-columns:1fr;}}
+@media(max-width:540px){.ca-art{flex-direction:column;gap:12px;}}
+</style>
 </head>
 <body>
-<nav class="navbar">
-  <a href="index.html" class="nav-brand"><div class="nav-logo-badge">S</div><div class="nav-brand-text"><div class="line1">Sharma Sir's Digital Lab</div><div class="line2">RPSC · RSSB · SSC · Railway · REET</div></div></a>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand"><img src="logo.jpg" alt="Logo" class="nav-logo"/><div class="nav-brand-text"><div class="l1">Sharma Sir's Digital Lab</div><div class="l2">RPSC · RSMSSB · SSC · Railway · REET</div></div></a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
     <a href="courses.html" class="nav-link">Courses</a><a href="notes.html" class="nav-link">Notes</a>
     <a href="current-affairs.html" class="nav-link active">Current Affairs</a><a href="test-series.html" class="nav-link">Test Series</a>
-    <a href="downloads.html" class="nav-link">Downloads</a><a href="contact.html" class="nav-cta-btn">Contact</a>
+    <a href="downloads.html" class="nav-link">Downloads</a><a href="contact.html" class="nav-cta">Contact</a>
   </div>
-  <button class="nav-hamburger"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav">
+<div class="mob-nav" id="mobNav">
   <a href="index.html">🏠 Home</a><a href="about.html">👤 About</a><a href="courses.html">📚 Courses</a>
   <a href="notes.html">📝 Notes</a><a href="current-affairs.html" class="active">📰 Current Affairs</a>
   <a href="test-series.html">🎯 Test Series</a><a href="downloads.html">⬇️ Downloads</a>
-  <div class="mobile-nav-divider"></div><a href="contact.html">☎️ Contact</a>
+  <div class="mob-div"></div><a href="contact.html">☎️ Contact</a>
 </div>
 
 <div class="page-hero">
-  <div class="page-hero-content reveal">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:14px;">ताज़ा समाचार</div>
-    <h1 class="display-lg">Current <span class="text-gradient">Affairs</span></h1>
-    <p class="page-hero-desc">परीक्षा उपयोगी नवीनतम करंट अफेयर्स — प्रतिदिन अपडेट</p>
-  </div>
+  <div class="eyebrow jc reveal">ताज़ा समाचार</div>
+  <h1 class="page-title reveal">Current <span class="grad">Affairs</span></h1>
+  <p class="page-desc reveal">परीक्षा उपयोगी नवीनतम करंट अफेयर्स — प्रतिदिन अपडेट</p>
 </div>
 
 <div class="month-tabs reveal">
-  <button class="mtab active">June 2026</button>
-  <button class="mtab">May 2026</button>
-  <button class="mtab">April 2026</button>
-  <button class="mtab">March 2026</button>
-  <button class="mtab">Feb 2026</button>
-  <button class="mtab">Jan 2026</button>
+  <button class="mtab active">June 2026</button><button class="mtab">May 2026</button>
+  <button class="mtab">April 2026</button><button class="mtab">March 2026</button>
+  <button class="mtab">Feb 2026</button><button class="mtab">Jan 2026</button>
 </div>
 
 <div class="ca-layout">
-  <div class="ca-list stagger-children">
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">05</div><div class="mon">JUN 2026</div></div><div class="ca-art-content"><span class="chip chip-saffron" style="font-size:0.65rem;">Rajasthan</span><h3>राजस्थान बजट 2026-27: 5,000 नए शिक्षक पद स्वीकृत</h3><p>राज्य सरकार ने शिक्षा क्षेत्र के लिए ₹15,000 करोड़ का प्रावधान किया। RPSC व RSSB भर्तियों में तेजी लाने की घोषणा। 5,000 नए शिक्षक पद स्वीकृत।</p><div class="ca-tags-row"><span class="chip chip-saffron" style="font-size:0.65rem;">RPSC</span><span class="chip chip-green" style="font-size:0.65rem;">Education</span></div></div></div>
+  <div class="ca-list">
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">04</div><div class="mon">JUN 2026</div></div><div class="ca-art-content"><span class="chip chip-blue" style="font-size:0.65rem;">National</span><h3>SSC GD Constable 2026 Notification: 50,000+ पदों पर भर्ती</h3><p>Staff Selection Commission ने GD Constable 2026 की अधिसूचना जारी की। ऑनलाइन आवेदन 15 जून से 15 जुलाई 2026 तक। Exam Nov–Dec 2026 में।</p><div class="ca-tags-row"><span class="chip chip-gold" style="font-size:0.65rem;">SSC</span><span class="chip chip-blue" style="font-size:0.65rem;">Recruitment</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">05</div><div class="m">JUN 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-s" style="font-size:.72rem;">🏜️ Rajasthan</span>
+        <h3>राजस्थान बजट 2026-27: शिक्षा क्षेत्र में ₹15,000 करोड़ — 5,000 नए शिक्षक पद</h3>
+        <p>राज्य सरकार ने शिक्षा बजट में भारी वृद्धि की। RPSC व RSMSSB भर्तियों में तेजी लाने की घोषणा की गई।</p>
+        <div class="ca-tags"><span class="chip chip-s" style="font-size:.68rem;">RPSC</span><span class="chip chip-gr" style="font-size:.68rem;">Education</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">03</div><div class="mon">JUN 2026</div></div><div class="ca-art-content"><span class="chip chip-green" style="font-size:0.65rem;">REET</span><h3>REET 2026: परीक्षा कैलेंडर जारी — अगस्त में परीक्षा</h3><p>माध्यमिक शिक्षा बोर्ड राजस्थान ने REET 2026 की परीक्षा अगस्त माह में आयोजित करने की घोषणा की। Level 1 व Level 2 दोनों एक साथ।</p><div class="ca-tags-row"><span class="chip chip-green" style="font-size:0.65rem;">REET</span><span class="chip chip-saffron" style="font-size:0.65rem;">Exam Date</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">04</div><div class="m">JUN 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-b" style="font-size:.72rem;">🇮🇳 National</span>
+        <h3>SSC GD Constable 2026 Notification: 50,000+ पदों पर भर्ती — आवेदन 15 जून से</h3>
+        <p>Staff Selection Commission ने GD Constable 2026 की अधिसूचना जारी की। Exam Nov–Dec 2026 में प्रस्तावित।</p>
+        <div class="ca-tags"><span class="chip chip-g" style="font-size:.68rem;">SSC</span><span class="chip chip-b" style="font-size:.68rem;">Recruitment</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">02</div><div class="mon">JUN 2026</div></div><div class="ca-art-content"><span class="chip chip-blue" style="font-size:0.65rem;">Railway</span><h3>RRB NTPC 2026: 8,113 पदों की भर्ती अधिसूचना</h3><p>Railway Recruitment Board ने NTPC Graduate और Undergraduate दोनों स्तरों के लिए 8,113 पदों की भर्ती अधिसूचना जारी की।</p><div class="ca-tags-row"><span class="chip chip-blue" style="font-size:0.65rem;">Railway</span><span class="chip chip-blue" style="font-size:0.65rem;">NTPC</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">03</div><div class="m">JUN 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-gr" style="font-size:.72rem;">📖 REET</span>
+        <h3>REET 2026: माध्यमिक शिक्षा बोर्ड ने परीक्षा कैलेंडर जारी — अगस्त में परीक्षा</h3>
+        <p>REET Level 1 और Level 2 दोनों एक साथ अगस्त 2026 में आयोजित होंगी। Syllabus में कोई बदलाव नहीं।</p>
+        <div class="ca-tags"><span class="chip chip-gr" style="font-size:.68rem;">REET</span><span class="chip chip-s" style="font-size:.68rem;">Exam Date</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">01</div><div class="mon">JUN 2026</div></div><div class="ca-art-content"><span class="chip chip-gold" style="font-size:0.65rem;">Economy</span><h3>RBI Monetary Policy: Repo Rate 5.75% — 25 bps कटौती</h3><p>भारतीय रिजर्व बैंक ने Repo Rate में 25 basis points की कटौती कर 5.75% किया। GDP Growth Forecast 7.2% रखा।</p><div class="ca-tags-row"><span class="chip chip-gold" style="font-size:0.65rem;">RBI</span><span class="chip chip-gold" style="font-size:0.65rem;">Economy</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">02</div><div class="m">JUN 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-b" style="font-size:.72rem;">🚂 Railway</span>
+        <h3>RRB NTPC 2026: 8,113 पदों की अधिसूचना — Graduate और Undergraduate दोनों</h3>
+        <p>Railway Recruitment Board ने NTPC Cycle 14 की अधिसूचना जारी की। Application जुलाई 2026 से।</p>
+        <div class="ca-tags"><span class="chip chip-b" style="font-size:.68rem;">Railway</span><span class="chip chip-b" style="font-size:.68rem;">NTPC</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">31</div><div class="mon">MAY 2026</div></div><div class="ca-art-content"><span class="chip chip-green" style="font-size:0.65rem;">Sports</span><h3>IPL 2026 Final: राजस्थान रॉयल्स तीसरी बार चैम्पियन</h3><p>IPL 2026 फाइनल में राजस्थान रॉयल्स ने मुंबई इंडियंस को 6 विकेट से हराकर तीसरी बार खिताब जीता। Sanju Samson Player of the Match।</p><div class="ca-tags-row"><span class="chip chip-green" style="font-size:0.65rem;">Sports</span><span class="chip chip-green" style="font-size:0.65rem;">IPL</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">01</div><div class="m">JUN 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-g" style="font-size:.72rem;">💰 Economy</span>
+        <h3>RBI Monetary Policy: Repo Rate 5.75% — 25 basis points की कटौती</h3>
+        <p>भारतीय रिजर्व बैंक ने तीसरी बार Repo Rate घटाया। GDP Growth Forecast 7.2% रखा गया।</p>
+        <div class="ca-tags"><span class="chip chip-g" style="font-size:.68rem;">RBI</span><span class="chip chip-g" style="font-size:.68rem;">Economy</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">30</div><div class="mon">MAY 2026</div></div><div class="ca-art-content"><span class="chip chip-blue" style="font-size:0.65rem;">Science & Tech</span><h3>ISRO का SpaDeX Mission — सफल Space Docking</h3><p>भारत ने SpaDeX Mission के तहत अंतरिक्ष में Docking Technology में महारत हासिल की। भारत दुनिया का चौथा देश बना।</p><div class="ca-tags-row"><span class="chip chip-blue" style="font-size:0.65rem;">Science</span><span class="chip chip-blue" style="font-size:0.65rem;">ISRO</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">31</div><div class="m">MAY 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-gr" style="font-size:.72rem;">🏆 Sports</span>
+        <h3>IPL 2026 Final: राजस्थान रॉयल्स ने तीसरी बार जीता खिताब — Sanju Samson MVP</h3>
+        <p>मुंबई इंडियंस को 6 विकेट से हराकर राजस्थान रॉयल्स बनी IPL 2026 चैम्पियन।</p>
+        <div class="ca-tags"><span class="chip chip-gr" style="font-size:.68rem;">Sports</span><span class="chip chip-gr" style="font-size:.68rem;">IPL 2026</span></div>
+      </div>
+    </div>
 
-    <div class="card ca-article"><div class="ca-date-box"><div class="day">29</div><div class="mon">MAY 2026</div></div><div class="ca-art-content"><span class="chip chip-saffron" style="font-size:0.65rem;">Rajasthan</span><h3>RSSB CET 2026 Result: 3.5 लाख उम्मीदवार उत्तीर्ण</h3><p>राजस्थान कर्मचारी चयन बोर्ड ने CET 12th Level 2026 का परिणाम घोषित किया। 3.5 लाख से अधिक उम्मीदवार उत्तीर्ण।</p><div class="ca-tags-row"><span class="chip chip-saffron" style="font-size:0.65rem;">RSSB</span><span class="chip chip-saffron" style="font-size:0.65rem;">CET</span></div></div></div>
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">30</div><div class="m">MAY 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-b" style="font-size:.72rem;">🚀 Science</span>
+        <h3>ISRO SpaDeX Mission: भारत ने Space Docking में महारत हासिल की</h3>
+        <p>भारत अमेरिका, रूस, चीन के बाद Space Docking Technology में सफल होने वाला विश्व का चौथा देश बना।</p>
+        <div class="ca-tags"><span class="chip chip-b" style="font-size:.68rem;">ISRO</span><span class="chip chip-b" style="font-size:.68rem;">Science</span></div>
+      </div>
+    </div>
+
+    <div class="card ca-art reveal">
+      <div class="ca-date"><div class="d">29</div><div class="m">MAY 2026</div></div>
+      <div class="ca-body">
+        <span class="chip chip-s" style="font-size:.72rem;">🏜️ Rajasthan</span>
+        <h3>RSMSSB CET 2026 Result: 3.5 लाख उम्मीदवार उत्तीर्ण — Merit List जारी</h3>
+        <p>राजस्थान कर्मचारी चयन बोर्ड ने CET 12th Level 2026 का परिणाम आधिकारिक वेबसाइट पर जारी किया।</p>
+        <div class="ca-tags"><span class="chip chip-s" style="font-size:.68rem;">RSMSSB</span><span class="chip chip-s" style="font-size:.68rem;">CET 2026</span></div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Sidebar -->
+  <!-- SIDEBAR -->
   <div>
     <div class="sidebar-box reveal">
-      <div class="sidebar-title">📥 Monthly PDF Download</div>
-      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;">📄 June 2026 PDF</a>
-      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;">📄 May 2026 PDF</a>
+      <div class="sb-title">📥 Monthly PDF Download</div>
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-brand" style="width:100%;justify-content:center;margin-bottom:10px;font-size:0.95rem;">📄 June 2026 PDF</a>
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-ghost" style="width:100%;justify-content:center;margin-top:10px;font-size:0.92rem;">📄 May 2026 PDF</a>
     </div>
     <div class="sidebar-box reveal">
-      <div class="sidebar-title">🔗 Quick Access</div>
-      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="s-link">📢 Telegram Channel</a>
-      <a href="notes.html" class="s-link">📝 Notes & PDFs</a>
-      <a href="test-series.html" class="s-link">🎯 Practice Tests</a>
-      <a href="downloads.html" class="s-link">⬇️ Free Downloads</a>
-      <a href="contact.html" class="s-link">☎️ Contact Sir</a>
+      <div class="sb-title">🔗 Quick Access</div>
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="sb-link">📢 Telegram Channel</a>
+      <a href="notes.html" class="sb-link">📝 Notes &amp; PDFs</a>
+      <a href="test-series.html" class="sb-link">🎯 Practice Tests</a>
+      <a href="downloads.html" class="sb-link">⬇️ Free Downloads</a>
+      <a href="contact.html" class="sb-link">☎️ Contact Sir</a>
     </div>
     <div class="sidebar-box reveal">
-      <div class="sidebar-title">📊 Important Topics</div>
-      <div class="topic-row"><div class="topic-label"><span>Rajasthan GK</span><span>35%</span></div><div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></div>
-      <div class="topic-row"><div class="topic-label"><span>Current Affairs</span><span>25%</span></div><div class="bar-bg"><div class="bar-fill" style="width:25%"></div></div></div>
-      <div class="topic-row"><div class="topic-label"><span>Science & Tech</span><span>20%</span></div><div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div></div>
-      <div class="topic-row"><div class="topic-label"><span>Economy</span><span>12%</span></div><div class="bar-bg"><div class="bar-fill" style="width:12%"></div></div></div>
-      <div class="topic-row"><div class="topic-label"><span>Sports</span><span>8%</span></div><div class="bar-bg"><div class="bar-fill" style="width:8%"></div></div></div>
+      <div class="sb-title">📊 Important Topics (Exam Weightage)</div>
+      <div class="topic-row"><div class="topic-lbl"><span>Rajasthan GK</span><span>35%</span></div><div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div></div>
+      <div class="topic-row"><div class="topic-lbl"><span>Current Affairs</span><span>25%</span></div><div class="bar-bg"><div class="bar-fill" style="width:25%"></div></div></div>
+      <div class="topic-row"><div class="topic-lbl"><span>Science &amp; Tech</span><span>20%</span></div><div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div></div>
+      <div class="topic-row"><div class="topic-lbl"><span>Economy</span><span>12%</span></div><div class="bar-bg"><div class="bar-fill" style="width:12%"></div></div></div>
+      <div class="topic-row"><div class="topic-lbl"><span>Sports</span><span>8%</span></div><div class="bar-bg"><div class="bar-fill" style="width:8%"></div></div></div>
     </div>
   </div>
 </div>
 
 <footer class="footer">
   <div class="footer-grid">
-    <div><div class="nav-brand" style="margin-bottom:16px;"><div class="nav-logo-badge">S</div><div class="nav-brand-text"><div class="line1">Sharma Sir's Digital Lab</div></div></div><p class="footer-brand-desc">RPSC, RSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p><div class="footer-social"><a href="https://t.me/sharmasirdigitallab" target="_blank" class="social-icon">📢</a><a href="https://wa.me/919251242367" target="_blank" class="social-icon">💬</a><a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="social-icon">🎥</a><a href="mailto:abhishekchotiya637@gmail.com" class="social-icon">📧</a></div></div>
-    <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
-    <div><div class="footer-col-title">Exams</div><ul class="footer-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
-    <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><img src="logo.jpg" alt="Logo" class="footer-logo"/><p class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p><div class="footer-socials"><a href="https://t.me/sharmasirdigitallab" target="_blank" class="f-soc">📢</a><a href="https://wa.me/919251242367" target="_blank" class="f-soc">💬</a><a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="f-soc">🎥</a><a href="mailto:abhishekchotiya637@gmail.com" class="f-soc">📧</a></div></div>
+    <div><div class="f-col-title">Quick Links</div><ul class="f-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
+    <div><div class="f-col-title">Exams</div><ul class="f-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
+    <div><div class="f-col-title">Resources</div><ul class="f-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="footer-bottom"><p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</p></div>
 </footer>
-<script src="nav.js"></script>
+<script src="shared.js"></script>
 <script>document.querySelectorAll('.mtab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.mtab').forEach(x=>x.classList.remove('active'));t.classList.add('active');}));</script>
-</body>
-</html>
+</body></html>
