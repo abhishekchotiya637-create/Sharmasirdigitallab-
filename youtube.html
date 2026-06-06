@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Channel | Sharma Sir's Digital Lab</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── CHANNEL HERO ── */
+    .yt-hero {
+      background: linear-gradient(135deg,
+        rgba(255,0,0,0.12) 0%,
+        rgba(249,115,22,0.1) 50%,
+        transparent 100%);
+      border-bottom: 1px solid var(--border-white);
+      padding: 120px clamp(16px,5%,80px) 60px;
+    }
+    .yt-channel-card {
+      max-width: 900px; margin: 0 auto;
+      display: flex; gap: 36px; align-items: center;
+    }
+    .yt-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, #FF0000, #FF6B00);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; flex-shrink: 0;
+      box-shadow: 0 0 50px rgba(255,0,0,0.3);
+      border: 3px solid rgba(255,0,0,0.3);
+    }
+    .yt-channel-info h1 {
+      font-family: var(--font-display); font-size: clamp(1.6rem,4vw,2.4rem);
+      font-weight: 900; margin-bottom: 8px;
+    }
+    .yt-channel-info p { color: var(--muted); font-size: 0.9rem; font-family: var(--font-hindi); line-height: 1.7; margin-bottom: 18px; }
+    .yt-channel-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+    .yt-stat { text-align: center; }
+    .yt-stat .n { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; color: #FF6B6B; }
+    .yt-stat .l { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .yt-subscribe {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FF0000; color: var(--white);
+      padding: 13px 28px; border-radius: var(--radius-md);
+      font-weight: 700; font-size: 0.95rem; transition: var(--transition);
+    }
+    .yt-subscribe:hover { background: #CC0000; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,0,0,0.4); }
+
+    /* ── CONTENT WRAP ── */
+    .yt-wrap {
+      max-width: 1200px; margin: 0 auto;
+      padding: 72px clamp(16px,5%,80px) 88px;
+    }
+
+    /* ── PLAYLIST TABS ── */
+    .playlist-tabs {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+    .pl-tab {
+      padding: 9px 22px; border-radius: 50px;
+      border: 1px solid var(--border-white);
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.83rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .pl-tab.active, .pl-tab:hover {
+      background: rgba(255,0,0,0.12);
+      border-color: rgba(255,80,80,0.4);
+      color: #FF8080;
+    }
+
+    /* ── VIDEO GRID ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px; margin-bottom: 56px;
+    }
+    .video-card {
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: var(--transition); cursor: pointer;
+    }
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 16px 50px rgba(0,0,0,0.4); border-color: rgba(255,80,80,0.35); }
+
+    .video-thumb {
+      position: relative; width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--navy-3);
+      overflow: hidden;
+    }
+    .video-thumb-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .video-thumb-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,0,0,0.15), rgba(249,115,22,0.1));
+    }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,0,0,0.85);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+    .video-card:hover .play-btn { transform: translate(-50%,-50%) scale(1.12); background: #FF0000; }
+    .video-duration {
+      position: absolute; bottom: 8px; right: 10px;
+      background: rgba(0,0,0,0.8); color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .video-new {
+      position: absolute; top: 10px; left: 10px;
+      background: #FF0000; color: #fff;
+      font-size: 0.65rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+
+    .video-info { padding: 16px 18px 18px; }
+    .video-category {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #FF8080; margin-bottom: 7px;
+    }
+    .video-title { font-size: 0.92rem; font-weight: 700; line-height: 1.45; margin-bottom: 8px; }
+    .video-meta { display: flex; gap: 14px; font-size: 0.75rem; color: var(--muted); }
+
+    /* ── PLAYLIST SECTION TITLE ── */
+    .pl-section { margin-bottom: 52px; }
+    .pl-section-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 24px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-white);
+    }
+    .pl-section-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; }
+
+    /* ── YOUTUBE CTA ── */
+    .yt-cta {
+      background: linear-gradient(135deg, rgba(255,0,0,0.12), rgba(249,115,22,0.08));
+      border: 1px solid rgba(255,80,80,0.22);
+      border-radius: var(--radius-xl);
+      padding: 52px 40px; text-align: center;
+    }
+    .yt-cta h2 { font-family: var(--font-display); font-size: clamp(1.5rem,3.5vw,2.2rem); font-weight: 900; margin-bottom: 12px; }
+    .yt-cta p  { color: var(--muted); max-width: 480px; margin: 0 auto 28px; font-family: var(--font-hindi); line-height: 1.75; }
+
+    /* ── WHY WATCH ── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+      gap: 18px; margin-bottom: 60px;
+    }
+    .why-card { padding: 28px 24px; text-align: center; border-radius: var(--radius-lg); }
+    .why-card .icon { font-size: 2rem; margin-bottom: 14px; }
+    .why-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .why-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.65; font-family: var(--font-hindi); }
+
+    @media (max-width: 640px) {
+      .yt-channel-card { flex-direction: column; text-align: center; }
+      .yt-channel-stats { justify-content: center; }
+      .yt-cta { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-badge">S</div>
+    <div class="nav-brand-text">
+      <div class="line1">Sharma Sir's Digital Lab</div>
+      <div class="line2">RPSC · RSSB · SSC · Railway · REET</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html"           class="nav-link">Home</a>
+    <a href="about.html"           class="nav-link">About</a>
+    <a href="courses.html"         class="nav-link">Courses</a>
+    <a href="notes.html"           class="nav-link">Notes</a>
+    <a href="current-affairs.html" class="nav-link">Current Affairs</a>
+    <a href="test-series.html"     class="nav-link">Test Series</a>
+    <a href="downloads.html"       class="nav-link">Downloads</a>
+    <a href="contact.html"         class="nav-cta-btn">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 Home</a>
+  <a href="about.html">👤 About</a>
+  <a href="courses.html">📚 Courses</a>
+  <a href="notes.html">📝 Notes</a>
+  <a href="current-affairs.html">📰 Current Affairs</a>
+  <a href="test-series.html">🎯 Test Series</a>
+  <a href="downloads.html">⬇️ Downloads</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">☎️ Contact</a>
+  <a href="https://t.me/sharmasirdigitallab" target="_blank">📢 Telegram</a>
+</div>
+
+<!-- ═══ CHANNEL HERO ═══ -->
+<div class="yt-hero">
+  <div class="yt-channel-card reveal">
+    <div class="yt-avatar">🎥</div>
+    <div class="yt-channel-info">
+      <div class="eyebrow" style="margin-bottom:10px; color:#FF8080;">YouTube Channel</div>
+      <h1>Sharma Sir's <span style="background:linear-gradient(90deg,#FF6B6B,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Digital Lab</span></h1>
+      <p>RPSC, REET, SSC, Railway सभी परीक्षाओं के Free Video Lectures। 200+ Videos, Weekly Updates।</p>
+      <div class="yt-channel-stats">
+        <div class="yt-stat"><div class="n">200+</div><div class="l">Videos</div></div>
+        <div class="yt-stat"><div class="n">50k+</div><div class="l">Views</div></div>
+        <div class="yt-stat"><div class="n">Weekly</div><div class="l">New Videos</div></div>
+        <div class="yt-stat"><div class="n">FREE</div><div class="l">Always Free</div></div>
+      </div>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="yt-subscribe">
+        ▶ Subscribe करें — Free में
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="yt-wrap">
+
+  <!-- PLAYLIST TABS -->
+  <div class="playlist-tabs reveal">
+    <button class="pl-tab active">All Videos</button>
+    <button class="pl-tab">RPSC</button>
+    <button class="pl-tab">REET</button>
+    <button class="pl-tab">Current Affairs</button>
+    <button class="pl-tab">SSC / Railway</button>
+    <button class="pl-tab">Rajasthan GK</button>
+    <button class="pl-tab">Exam Strategy</button>
+  </div>
+
+  <!-- RECENT VIDEOS -->
+  <div class="pl-section">
+    <div class="pl-section-header reveal">
+      <span style="font-size:1.6rem;">🆕</span>
+      <div class="pl-section-title">Latest <span class="text-gradient">Videos</span></div>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank"
+         style="margin-left:auto; color:var(--saffron); font-size:0.85rem; font-weight:600;">
+        सभी देखें →
+      </a>
+    </div>
+    <div class="video-grid stagger-children">
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">🏛️</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">28:45</div>
+          <div class="video-new">NEW</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">RPSC 2nd Grade</div>
+          <div class="video-title">RPSC 2nd Grade GK — राजस्थान का इतिहास Part 3</div>
+          <div class="video-meta"><span>👁 4.2k views</span><span>📅 2 days ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">📰</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">32:10</div>
+          <div class="video-new">NEW</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">Current Affairs</div>
+          <div class="video-title">June 2026 Current Affairs — Week 1 | RPSC REET SSC</div>
+          <div class="video-meta"><span>👁 6.8k views</span><span>📅 3 days ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">👶</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">45:20</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">REET Level 2</div>
+          <div class="video-title">बाल विकास — Piaget & Vygotsky Theory (Complete)</div>
+          <div class="video-meta"><span>👁 9.1k views</span><span>📅 5 days ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">🚂</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">38:55</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">Railway</div>
+          <div class="video-title">Railway Group D — General Science Complete Revision</div>
+          <div class="video-meta"><span>👁 5.3k views</span><span>📅 1 week ago</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- RPSC PLAYLIST -->
+  <div class="pl-section">
+    <div class="pl-section-header reveal">
+      <span style="font-size:1.6rem;">🏛️</span>
+      <div class="pl-section-title">RPSC <span class="text-gradient">Playlist</span></div>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank"
+         style="margin-left:auto; color:var(--saffron); font-size:0.85rem; font-weight:600;">
+        Playlist देखें →
+      </a>
+    </div>
+    <div class="video-grid stagger-children">
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">🗺️</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">55:30</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">RPSC 1st Grade</div>
+          <div class="video-title">राजस्थान का भूगोल — Complete One-Shot Lecture</div>
+          <div class="video-meta"><span>👁 12.4k views</span><span>📅 2 weeks ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">🎨</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">48:15</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">RPSC 2nd Grade</div>
+          <div class="video-title">राजस्थान कला व संस्कृति — RPSC Special</div>
+          <div class="video-meta"><span>👁 8.7k views</span><span>📅 3 weeks ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">⚖️</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">42:00</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">RPSC</div>
+          <div class="video-title">Indian Constitution — महत्वपूर्ण Articles RPSC के लिए</div>
+          <div class="video-meta"><span>👁 7.2k views</span><span>📅 1 month ago</span></div>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="card video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">💡</div>
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">35:40</div>
+        </div>
+        <div class="video-info">
+          <div class="video-category">Exam Strategy</div>
+          <div class="video-title">RPSC 2026 Exam Strategy — कैसे करें तैयारी?</div>
+          <div class="video-meta"><span>👁 15.6k views</span><span>📅 1 month ago</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- WHY WATCH -->
+  <div style="margin-bottom:60px;">
+    <div class="section-header reveal" style="margin-bottom:40px;">
+      <div class="eyebrow" style="justify-content:center; margin-bottom:12px;">हमारे Videos की विशेषताएं</div>
+      <h2 class="display-md">Why Watch <span class="text-gradient">Our Videos?</span></h2>
+    </div>
+    <div class="why-grid stagger-children">
+      <div class="card why-card">
+        <div class="icon">🆓</div>
+        <h4>100% Free</h4>
+        <p>सभी Videos बिल्कुल मुफ्त — कोई Subscription नहीं, कोई Hidden Charge नहीं।</p>
+      </div>
+      <div class="card why-card">
+        <div class="icon">🌐</div>
+        <h4>Hindi Medium</h4>
+        <p>सभी Lectures हिंदी में — ग्रामीण और शहरी सभी विद्यार्थियों के लिए उपयोगी।</p>
+      </div>
+      <div class="card why-card">
+        <div class="icon">🎯</div>
+        <h4>Exam Focused</h4>
+        <p>हर Video परीक्षा की दृष्टि से तैयार — सिर्फ Important Topics, कोई बेकार Content नहीं।</p>
+      </div>
+      <div class="card why-card">
+        <div class="icon">📅</div>
+        <h4>Weekly Updates</h4>
+        <p>हर सप्ताह नए Videos — Current Affairs, Lectures और Previous Paper Discussion।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- YT CTA -->
+  <div class="yt-cta reveal">
+    <h2>अभी Subscribe करें — <span style="color:#FF6B6B;">बिल्कुल Free!</span></h2>
+    <p>200+ Free Videos देखें। Weekly New Lectures, Current Affairs और Exam Strategy Videos।<br>Bell Icon दबाएं और कोई भी Video मिस न करें।</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank"
+         class="btn btn-yt" style="font-size:1rem; padding:14px 30px;">
+        ▶ Subscribe करें — Free
+      </a>
+      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn btn-tg">
+        📢 Telegram Join करें
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="nav-brand" style="margin-bottom:16px;">
+        <div class="nav-logo-badge">S</div>
+        <div class="nav-brand-text">
+          <div class="line1">Sharma Sir's Digital Lab</div>
+          <div class="line2">Educational Excellence</div>
+        </div>
+      </div>
+      <p class="footer-brand-desc">RPSC, RSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
+      <div class="footer-social">
+        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="social-icon">📢</a>
+        <a href="https://wa.me/919251242367" target="_blank" class="social-icon">💬</a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="social-icon">🎥</a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="social-icon">📧</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Exams</div>
+      <ul class="footer-links">
+        <li><a href="courses.html">RPSC</a></li>
+        <li><a href="courses.html">REET</a></li>
+        <li><a href="courses.html">SSC / CET</a></li>
+        <li><a href="courses.html">Railway</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="current-affairs.html">Current Affairs</a></li>
+        <li><a href="test-series.html">Test Series</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved. | Made with ❤️ for Students of Rajasthan</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.pl-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pl-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
