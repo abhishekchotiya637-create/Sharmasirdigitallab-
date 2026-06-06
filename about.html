@@ -1,65 +1,143 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Sharma Sir | Sharma Sir's Digital Lab</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .about-grid { display:grid; grid-template-columns:1fr 1.7fr; gap:64px; align-items:start; max-width:1100px; margin:0 auto; }
-    .profile-card {
-      background:var(--navy-card); border:1px solid var(--border-white); border-radius:var(--radius-xl);
-      padding:40px 32px; text-align:center; position:sticky; top:90px;
-    }
-    .profile-avatar {
-      width:160px; height:160px; border-radius:50%; margin:0 auto 20px;
-      background:linear-gradient(135deg,var(--saffron),var(--gold));
-      display:flex; align-items:center; justify-content:center;
-      font-family:var(--font-display); font-size:4.5rem; font-weight:900; color:var(--navy);
-      box-shadow:0 0 60px rgba(249,115,22,0.3);
-    }
-    .profile-name { font-family:var(--font-display); font-size:1.6rem; font-weight:900; }
-    .profile-title { color:var(--saffron); font-size:0.88rem; font-weight:600; margin:6px 0 20px; }
-    .profile-divider { height:1px; background:var(--border-white); margin:20px 0; }
-    .profile-stat { text-align:center; }
-    .profile-stat .n { font-family:var(--font-display); font-size:2rem; font-weight:900; }
-    .profile-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
-    .profile-stat-item { background:rgba(255,255,255,0.04); border-radius:var(--radius-md); padding:16px 12px; }
-    .profile-contact a {
-      display:flex; align-items:center; gap:10px; padding:11px 14px;
-      background:rgba(255,255,255,0.04); border:1px solid var(--border-white);
-      border-radius:var(--radius-md); color:rgba(255,255,255,0.8); font-size:0.85rem;
-      margin-bottom:10px; transition:var(--transition);
-    }
-    .profile-contact a:hover { border-color:var(--saffron); color:var(--white); background:rgba(249,115,22,0.08); }
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Sharma Sir | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sora:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1C3E;--navy2:#0E2347;--navy3:#132B55;--saffron:#E8640C;--gold:#C9A227;--gold2:#F0C040;--white:#fff;--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Sora',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-    .about-content h2 { font-family:var(--font-display); font-size:1.9rem; font-weight:900; margin-bottom:20px; }
-    .about-content p { color:rgba(255,255,255,0.8); font-size:0.95rem; line-height:1.85; margin-bottom:16px; font-family:var(--font-hindi); }
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;height:70px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,5%,80px);background:rgba(10,28,62,0.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background 0.3s;}
+.navbar.scrolled{background:rgba(8,22,52,0.98);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:44px;height:44px;object-fit:contain;border-radius:8px;}
+.nav-brand-text .l1{font-family:'Playfair Display',serif;font-size:0.96rem;font-weight:700;color:#fff;}
+.nav-brand-text .l2{font-size:0.66rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-link{padding:7px 13px;border-radius:8px;font-size:0.81rem;font-weight:500;color:rgba(255,255,255,0.65);transition:all 0.2s;text-decoration:none;}
+.nav-link:hover{background:rgba(255,255,255,0.06);color:#fff;}
+.nav-link.active{color:var(--saffron);background:rgba(232,100,12,0.1);}
+.nav-cta{background:linear-gradient(135deg,var(--saffron),#C5540A);color:#fff;padding:8px 18px;border-radius:8px;font-size:0.81rem;font-weight:700;transition:all 0.2s;text-decoration:none;margin-left:8px;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,100,12,0.4);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;display:block;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-nav{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,22,52,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 20px 22px;z-index:999;flex-direction:column;gap:4px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{padding:12px 16px;border-radius:8px;font-size:0.95rem;font-weight:500;color:rgba(255,255,255,0.78);text-decoration:none;transition:background 0.2s;}
+.mob-nav a:hover,.mob-nav a.active{background:rgba(232,100,12,0.1);color:var(--saffron);}
+.mob-div{height:1px;background:var(--border);margin:8px 0;}
 
-    .qual-item {
-      display:flex; gap:14px; align-items:flex-start;
-      padding:16px 20px; background:rgba(255,255,255,0.03);
-      border:1px solid var(--border-white); border-left:3px solid var(--saffron);
-      border-radius:var(--radius-md); margin-bottom:12px;
-      transition:var(--transition);
-    }
-    .qual-item:hover { background:rgba(249,115,22,0.05); border-color:rgba(249,115,22,0.3); }
-    .qual-icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
-    .qual-text strong { display:block; font-size:0.92rem; font-weight:700; margin-bottom:3px; }
-    .qual-text span { font-size:0.82rem; color:var(--muted); }
+/* ── PAGE HERO ── */
+.page-hero{padding:120px clamp(16px,5%,80px) 70px;text-align:center;background:radial-gradient(ellipse 80% 55% at 50% -10%,rgba(232,100,12,0.2) 0%,transparent 60%),linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(232,100,12,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,100,12,0.04) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 80%);}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:14px;}
+.eyebrow::before{content:'';display:block;width:22px;height:2px;background:var(--saffron);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;position:relative;z-index:1;}
+.grad{background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-desc{color:var(--muted);max-width:520px;margin:14px auto 0;font-size:0.95rem;font-family:'Noto Sans Devanagari',sans-serif;line-height:1.8;position:relative;z-index:1;}
 
-    .ach-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:18px; max-width:1100px; margin:0 auto; }
-    .ach-card { padding:30px 24px; text-align:center; border-radius:var(--radius-lg); }
-    .ach-card .icon { font-size:2.2rem; margin-bottom:12px; }
-    .ach-card .label { font-size:0.8rem; color:var(--muted); margin-top:6px; }
+/* ── ABOUT GRID ── */
+.section{padding:80px clamp(16px,5%,80px);}
+.section-alt{background:var(--navy2);}
+.about-grid{display:grid;grid-template-columns:400px 1fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto;}
 
-    @media(max-width:900px){ .about-grid{grid-template-columns:1fr;} .profile-card{position:relative;top:0;} }
-  </style>
+/* Profile Card */
+.profile-card{background:rgba(14,35,71,0.9);border:1px solid var(--border);border-radius:24px;padding:36px 28px;text-align:center;position:sticky;top:88px;}
+.profile-photo-wrap{position:relative;width:180px;height:180px;margin:0 auto 22px;}
+.profile-photo{width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:top center;border:4px solid transparent;background:linear-gradient(var(--navy2),var(--navy2)) padding-box,linear-gradient(135deg,var(--saffron),var(--gold2)) border-box;box-shadow:0 0 60px rgba(232,100,12,0.3);}
+.profile-badge{position:absolute;bottom:8px;right:4px;background:linear-gradient(135deg,var(--saffron),#C5540A);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:3px solid var(--navy2);}
+.profile-name{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;margin-bottom:5px;}
+.profile-title{color:var(--saffron);font-size:0.85rem;font-weight:600;margin-bottom:6px;}
+.profile-sub{color:var(--muted);font-size:0.78rem;margin-bottom:20px;}
+.profile-divider{height:1px;background:var(--border);margin:18px 0;}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+.ps-item{background:rgba(255,255,255,0.04);border-radius:12px;padding:14px 10px;text-align:center;}
+.ps-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ps-lbl{font-size:0.68rem;color:var(--muted);margin-top:4px;}
+.contact-links{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+.c-link{display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:11px;color:rgba(255,255,255,0.8);font-size:0.83rem;text-decoration:none;transition:all 0.2s;}
+.c-link:hover{border-color:rgba(232,100,12,0.4);background:rgba(232,100,12,0.06);color:var(--white);}
+.c-link span{color:var(--saffron);font-weight:600;}
+
+/* About Content */
+.about-content{}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin-bottom:18px;line-height:1.2;}
+.about-content p{color:rgba(255,255,255,0.75);font-size:0.94rem;line-height:1.85;margin-bottom:16px;font-family:'Noto Sans Devanagari',sans-serif;}
+.qual-list{margin-top:8px;display:flex;flex-direction:column;gap:12px;}
+.qual-item{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-left:3px solid var(--saffron);border-radius:12px;transition:all 0.25s;}
+.qual-item:hover{background:rgba(232,100,12,0.05);border-color:rgba(232,100,12,0.25);}
+.qual-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+.qual-text strong{display:block;font-size:0.92rem;font-weight:700;margin-bottom:3px;}
+.qual-text span{font-size:0.8rem;color:var(--muted);}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+.tag{padding:5px 14px;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+.tag-s{background:rgba(232,100,12,0.15);color:var(--saffron);border:1px solid rgba(232,100,12,0.3);}
+.tag-g{background:rgba(201,162,39,0.15);color:var(--gold2);border:1px solid rgba(201,162,39,0.3);}
+.tag-b{background:rgba(96,165,250,0.12);color:#93C5FD;border:1px solid rgba(96,165,250,0.25);}
+.tag-gr{background:rgba(74,222,128,0.12);color:#86EFAC;border:1px solid rgba(74,222,128,0.25);}
+
+/* ACH GRID */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;max-width:1100px;margin:0 auto;}
+.ach-card{padding:28px 20px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:18px;transition:all 0.3s;}
+.ach-card:hover{border-color:rgba(232,100,12,0.3);transform:translateY(-4px);}
+.ach-icon{font-size:2rem;margin-bottom:12px;}
+.ach-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ach-lbl{font-size:0.76rem;color:var(--muted);margin-top:6px;}
+
+/* CTA */
+.cta-wrap{margin:0 clamp(16px,5%,80px) 80px;background:linear-gradient(135deg,rgba(232,100,12,0.14),rgba(201,162,39,0.07));border:1px solid rgba(232,100,12,0.24);border-radius:26px;padding:56px 40px;text-align:center;position:relative;overflow:hidden;}
+.cta-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(232,100,12,0.09) 0%,transparent 70%);}
+.cta-wrap h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;position:relative;z-index:1;margin-bottom:12px;}
+.cta-wrap p{color:var(--muted);position:relative;z-index:1;margin-bottom:28px;font-family:'Noto Sans Devanagari',sans-serif;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-brand{background:linear-gradient(135deg,var(--saffron),#C5540A);color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 4px 20px rgba(232,100,12,0.35);}
+.btn-brand:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,100,12,0.5);}
+.btn-tg{background:#0088CC;color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-tg:hover{background:#0077BB;transform:translateY(-2px);}
+.btn-wa{background:#1BAF5D;color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-wa:hover{background:#18A056;transform:translateY(-2px);}
+
+/* FOOTER */
+.footer{background:rgba(5,14,35,0.98);border-top:1px solid var(--border);padding:56px clamp(16px,5%,80px) 26px;}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;max-width:1200px;margin:0 auto 44px;}
+.footer-logo{width:85px;object-fit:contain;margin-bottom:14px;border-radius:6px;}
+.footer-desc{color:var(--muted);font-size:0.85rem;line-height:1.8;margin-bottom:18px;font-family:'Noto Sans Devanagari',sans-serif;}
+.footer-socials{display:flex;gap:10px;}
+.f-soc{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s;text-decoration:none;}
+.f-soc:hover{background:rgba(232,100,12,0.15);border-color:var(--saffron);}
+.f-col-title{font-size:0.71rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:16px;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-links a{color:var(--muted);font-size:0.84rem;text-decoration:none;transition:color 0.2s;}
+.f-links a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;text-align:center;color:rgba(255,255,255,0.28);font-size:0.78rem;max-width:1200px;margin:0 auto;}
+
+/* SECTION HEADER */
+.section-header{text-align:center;margin-bottom:48px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}
+
+@media(max-width:960px){.about-grid{grid-template-columns:1fr;}.profile-card{position:relative;top:0;max-width:440px;margin:0 auto;}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr;gap:28px;}.cta-wrap{padding:40px 20px;}}
+</style>
 </head>
 <body>
-<nav class="navbar">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
   <a href="index.html" class="nav-brand">
-    <div class="nav-logo-badge">S</div>
-    <div class="nav-brand-text"><div class="line1">Sharma Sir's Digital Lab</div><div class="line2">RPSC · RSSB · SSC · Railway · REET</div></div>
+    <img src="logo.jpg" alt="Logo" class="nav-logo"/>
+    <div class="nav-brand-text"><div class="l1">Sharma Sir's Digital Lab</div><div class="l2">RPSC · RSMSSB · SSC · Railway · REET</div></div>
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
@@ -69,153 +147,148 @@
     <a href="current-affairs.html" class="nav-link">Current Affairs</a>
     <a href="test-series.html" class="nav-link">Test Series</a>
     <a href="downloads.html" class="nav-link">Downloads</a>
-    <a href="contact.html" class="nav-cta-btn">Contact</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
   </div>
-  <button class="nav-hamburger"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav">
+<div class="mob-nav" id="mobNav">
   <a href="index.html">🏠 Home</a><a href="about.html" class="active">👤 About</a>
   <a href="courses.html">📚 Courses</a><a href="notes.html">📝 Notes</a>
   <a href="current-affairs.html">📰 Current Affairs</a><a href="test-series.html">🎯 Test Series</a>
-  <a href="downloads.html">⬇️ Downloads</a><div class="mobile-nav-divider"></div>
-  <a href="contact.html">☎️ Contact</a>
+  <a href="downloads.html">⬇️ Downloads</a><div class="mob-div"></div><a href="contact.html">☎️ Contact</a>
 </div>
 
+<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-hero-content reveal">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:14px;">हमारे बारे में</div>
-    <h1 class="display-lg">About <span class="text-gradient">Sharma Sir</span></h1>
-    <p class="page-hero-desc">10+ वर्षों के शिक्षण अनुभव के साथ — राजस्थान के छात्रों का विश्वसनीय मार्गदर्शक</p>
-  </div>
+  <div class="eyebrow" style="justify-content:center;">हमारे बारे में</div>
+  <h1 class="page-title">Meet <span class="grad">Sharma Sir</span></h1>
+  <p class="page-desc">10+ वर्षों के शिक्षण अनुभव के साथ — राजस्थान के छात्रों का विश्वसनीय मार्गदर्शक</p>
 </div>
 
+<!-- ABOUT SECTION -->
 <section class="section">
   <div class="about-grid">
-    <!-- Profile Card -->
+
+    <!-- LEFT: PROFILE CARD WITH REAL PHOTO -->
     <div class="profile-card reveal">
-      <div class="profile-avatar">S</div>
+      <div class="profile-photo-wrap">
+        <img src="sharma-sir.jpg" alt="Sharma Sir" class="profile-photo"/>
+        <div class="profile-badge">🎓</div>
+      </div>
       <div class="profile-name">Sharma Sir</div>
       <div class="profile-title">Educator · Content Creator · Mentor</div>
+      <div class="profile-sub">Rajasthan's Trusted Online Coaching</div>
       <div class="profile-divider"></div>
-      <div class="profile-stat-grid">
-        <div class="profile-stat-item"><div class="n text-gradient">10+</div><div class="stat-label">Years Exp.</div></div>
-        <div class="profile-stat-item"><div class="n text-gradient">1000+</div><div class="stat-label">Students</div></div>
-        <div class="profile-stat-item"><div class="n text-gradient">500+</div><div class="stat-label">Notes</div></div>
-        <div class="profile-stat-item"><div class="n text-gradient">5.0★</div><div class="stat-label">Rating</div></div>
+      <div class="profile-stats">
+        <div class="ps-item"><div class="ps-num">10+</div><div class="ps-lbl">Years Exp.</div></div>
+        <div class="ps-item"><div class="ps-num">1000+</div><div class="ps-lbl">Students</div></div>
+        <div class="ps-item"><div class="ps-num">500+</div><div class="ps-lbl">Notes</div></div>
+        <div class="ps-item"><div class="ps-num">5.0★</div><div class="ps-lbl">Rating</div></div>
       </div>
       <div class="profile-divider"></div>
-      <div class="profile-contact">
-        <a href="https://t.me/sharmasirdigitallab" target="_blank">📢 <span>Telegram Channel</span></a>
-        <a href="https://wa.me/919251242367" target="_blank">💬 <span>WhatsApp: +91 92512 42367</span></a>
-        <a href="mailto:abhishekchotiya637@gmail.com">📧 <span>abhishekchotiya637@gmail.com</span></a>
-        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank">🎥 <span>YouTube Channel</span></a>
+      <div class="contact-links">
+        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="c-link">📢 <span>Telegram Channel</span></a>
+        <a href="https://wa.me/919251242367" target="_blank" class="c-link">💬 <span>+91 92512 42367</span></a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="c-link">🎥 <span>YouTube Channel</span></a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="c-link">📧 <span>Email करें</span></a>
       </div>
     </div>
 
-    <!-- About Content -->
+    <!-- RIGHT: CONTENT -->
     <div class="about-content">
       <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:14px;">परिचय</div>
-        <h2>Empowering Students with <span class="text-gradient">Quality Education</span></h2>
+        <div class="eyebrow" style="margin-bottom:16px;">परिचय</div>
+        <h2>Empowering Students with <span class="grad">Quality Education</span></h2>
         <p>Sharma Sir एक अनुभवी शिक्षाविद और कंटेंट क्रिएटर हैं जो पिछले 10+ वर्षों से राजस्थान के प्रतियोगी परीक्षाओं के अभ्यर्थियों को मार्गदर्शन दे रहे हैं।</p>
-        <p>उनका उद्देश्य है कि राजस्थान के हर विद्यार्थी को — चाहे वह शहर में हो या गाँव में — उच्च गुणवत्ता की अध्ययन सामग्री किफायती मूल्य पर मिल सके।</p>
-        <p>RPSC, RSSB, REET, SSC, Railway जैसी परीक्षाओं में उनके हजारों छात्र सफल हो चुके हैं। उनका Telegram Channel लाखों विद्यार्थियों के लिए एक विश्वसनीय शिक्षा केंद्र बन चुका है।</p>
+        <p>उनका उद्देश्य है कि राजस्थान के हर विद्यार्थी को — चाहे वह शहर में हो या गाँव में — उच्च गुणवत्ता की अध्ययन सामग्री निःशुल्क या किफायती मूल्य पर मिल सके।</p>
+        <p>RPSC, RSMSSB, REET, SSC, Railway जैसी परीक्षाओं में उनके हजारों छात्र सफल हो चुके हैं। उनका Telegram Channel और YouTube Channel लाखों विद्यार्थियों के लिए एक विश्वसनीय शिक्षा केंद्र बन चुका है।</p>
       </div>
 
-      <div style="margin-top:36px;" class="reveal">
-        <div class="eyebrow" style="margin-bottom:18px;">शैक्षणिक योग्यता</div>
-        <div class="qual-item">
-          <span class="qual-icon">🎓</span>
-          <div class="qual-text">
-            <strong>Post Graduate — MA</strong>
-            <span>Rajasthan University, Jaipur</span>
-          </div>
-        </div>
-        <div class="qual-item">
-          <span class="qual-icon">📜</span>
-          <div class="qual-text">
-            <strong>B.Ed. — Bachelor of Education</strong>
-            <span>State Teacher Training Institute, Rajasthan</span>
-          </div>
-        </div>
-        <div class="qual-item">
-          <span class="qual-icon">🏆</span>
-          <div class="qual-text">
-            <strong>REET Certified Educator</strong>
-            <span>राजस्थान माध्यमिक शिक्षा बोर्ड, अजमेर</span>
-          </div>
-        </div>
-        <div class="qual-item">
-          <span class="qual-icon">📚</span>
-          <div class="qual-text">
-            <strong>Subject Expert — GK, Current Affairs, Hindi</strong>
-            <span>Rajasthan GK · Social Science · Child Development</span>
-          </div>
+      <div style="margin-top:36px;" class="reveal reveal-d1">
+        <div class="eyebrow" style="margin-bottom:16px;">शैक्षणिक योग्यता</div>
+        <div class="qual-list">
+          <div class="qual-item"><span class="qual-icon">🎓</span><div class="qual-text"><strong>Post Graduate — MA</strong><span>Rajasthan University, Jaipur</span></div></div>
+          <div class="qual-item"><span class="qual-icon">📜</span><div class="qual-text"><strong>B.Ed. — Bachelor of Education</strong><span>State Teacher Training Institute, Rajasthan</span></div></div>
+          <div class="qual-item"><span class="qual-icon">🏆</span><div class="qual-text"><strong>REET Certified Educator</strong><span>राजस्थान माध्यमिक शिक्षा बोर्ड, अजमेर</span></div></div>
+          <div class="qual-item"><span class="qual-icon">📚</span><div class="qual-text"><strong>Subject Expert — GK, Current Affairs, Hindi</strong><span>Rajasthan GK · Social Science · Child Development</span></div></div>
         </div>
       </div>
 
-      <div style="margin-top:40px;" class="reveal">
-        <div class="eyebrow" style="margin-bottom:18px;">विशेषज्ञता</div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;">
-          <span class="chip chip-saffron">RPSC Exams</span>
-          <span class="chip chip-green">REET Level 1 & 2</span>
-          <span class="chip chip-gold">SSC / CET</span>
-          <span class="chip chip-blue">Railway</span>
-          <span class="chip chip-saffron">Rajasthan GK</span>
-          <span class="chip chip-green">Current Affairs</span>
-          <span class="chip chip-gold">Child Development</span>
-          <span class="chip chip-blue">Hindi</span>
-          <span class="chip chip-saffron">Social Science</span>
+      <div style="margin-top:36px;" class="reveal reveal-d2">
+        <div class="eyebrow" style="margin-bottom:16px;">विशेषज्ञता</div>
+        <div class="tags-wrap">
+          <span class="tag tag-s">RPSC Exams</span>
+          <span class="tag tag-gr">REET Level 1 &amp; 2</span>
+          <span class="tag tag-g">SSC / CET</span>
+          <span class="tag tag-b">Railway</span>
+          <span class="tag tag-s">Rajasthan GK</span>
+          <span class="tag tag-gr">Current Affairs</span>
+          <span class="tag tag-g">Child Development</span>
+          <span class="tag tag-b">Hindi</span>
+          <span class="tag tag-s">Social Science</span>
+          <span class="tag tag-gr">RSMSSB</span>
+          <span class="tag tag-g">DSSSB</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Achievements -->
+<!-- ACHIEVEMENTS -->
 <section class="section section-alt">
   <div class="section-header reveal">
-    <div class="eyebrow">उपलब्धियाँ</div>
-    <h2 class="display-md" style="margin-top:14px;">Our <span class="text-gradient">Achievements</span></h2>
+    <div class="eyebrow" style="justify-content:center;margin-bottom:12px;">उपलब्धियाँ</div>
+    <h2 class="section-title">Our <span class="grad">Achievements</span></h2>
   </div>
-  <div class="ach-grid stagger-children">
-    <div class="card ach-card"><div class="icon">👨‍🎓</div><div class="stat-num">1000+</div><div class="label">Successful Students</div></div>
-    <div class="card ach-card"><div class="icon">📄</div><div class="stat-num">500+</div><div class="label">PDF Notes Created</div></div>
-    <div class="card ach-card"><div class="icon">🎯</div><div class="stat-num">100+</div><div class="label">Mock Tests Published</div></div>
-    <div class="card ach-card"><div class="icon">📅</div><div class="stat-num">365+</div><div class="label">Days Daily CA</div></div>
-    <div class="card ach-card"><div class="icon">🎥</div><div class="stat-num">200+</div><div class="label">YouTube Videos</div></div>
-    <div class="card ach-card"><div class="icon">⭐</div><div class="stat-num">5.0</div><div class="label">Student Rating</div></div>
+  <div class="ach-grid">
+    <div class="ach-card reveal"><div class="ach-icon">👨‍🎓</div><div class="ach-num">1000+</div><div class="ach-lbl">Successful Students</div></div>
+    <div class="ach-card reveal reveal-d1"><div class="ach-icon">📄</div><div class="ach-num">500+</div><div class="ach-lbl">PDF Notes Created</div></div>
+    <div class="ach-card reveal reveal-d2"><div class="ach-icon">🎯</div><div class="ach-num">100+</div><div class="ach-lbl">Mock Tests Published</div></div>
+    <div class="ach-card reveal reveal-d3"><div class="ach-icon">📅</div><div class="ach-num">365+</div><div class="ach-lbl">Days Daily CA</div></div>
+    <div class="ach-card reveal"><div class="ach-icon">🎥</div><div class="ach-num">200+</div><div class="ach-lbl">YouTube Videos</div></div>
+    <div class="ach-card reveal reveal-d1"><div class="ach-icon">⭐</div><div class="ach-num">5.0</div><div class="ach-lbl">Student Rating</div></div>
   </div>
 </section>
 
-<div class="cta-wrap reveal" style="margin-top:0;">
-  <h2 class="display-md">Sharma Sir से सीधे <span class="text-gradient">जुड़ें</span></h2>
+<!-- CTA -->
+<div class="cta-wrap reveal">
+  <h2>Sharma Sir से सीधे <span class="grad">जुड़ें</span></h2>
   <p>अपने प्रश्न, सुझाव और मार्गदर्शन के लिए संपर्क करें।</p>
   <div class="cta-btns">
-    <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn btn-tg">📢 Telegram</a>
-    <a href="https://wa.me/919251242367" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
-    <a href="contact.html" class="btn btn-primary">☎️ Contact Page</a>
+    <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-tg">📢 Telegram</a>
+    <a href="https://wa.me/919251242367" target="_blank" class="btn-wa">💬 WhatsApp</a>
+    <a href="contact.html" class="btn-brand">☎️ Contact Page</a>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div>
-      <div class="nav-brand" style="margin-bottom:16px;"><div class="nav-logo-badge">S</div><div class="nav-brand-text"><div class="line1">Sharma Sir's Digital Lab</div><div class="line2">Educational Excellence</div></div></div>
-      <p class="footer-brand-desc">RPSC, RSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
-      <div class="footer-social">
-        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="social-icon">📢</a>
-        <a href="https://wa.me/919251242367" target="_blank" class="social-icon">💬</a>
-        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="social-icon">🎥</a>
-        <a href="mailto:abhishekchotiya637@gmail.com" class="social-icon">📧</a>
+      <img src="logo.jpg" alt="Logo" class="footer-logo"/>
+      <p class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway, DSSSB तथा सभी प्रतियोगी परीक्षाओं के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
+      <div class="footer-socials">
+        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="f-soc">📢</a>
+        <a href="https://wa.me/919251242367" target="_blank" class="f-soc">💬</a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="f-soc">🎥</a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="f-soc">📧</a>
       </div>
     </div>
-    <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
-    <div><div class="footer-col-title">Exams</div><ul class="footer-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
-    <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="f-col-title">Quick Links</div><ul class="f-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
+    <div><div class="f-col-title">Exams</div><ul class="f-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
+    <div><div class="f-col-title">Resources</div><ul class="f-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="footer-bottom"><p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</p></div>
 </footer>
-<script src="nav.js"></script>
+
+<script>
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+  const ham=document.getElementById('ham'),mob=document.getElementById('mobNav');
+  ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
