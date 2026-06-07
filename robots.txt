@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/sitemap.xml
