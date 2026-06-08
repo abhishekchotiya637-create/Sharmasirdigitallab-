@@ -39,7 +39,8 @@
             padding: 25px 15px;
             border-radius: 10px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            position: relative;
         }
 
         .header h1 {
@@ -49,10 +50,30 @@
             text-transform: uppercase;
         }
 
-        .header p {
-            margin: 8px 0 0 0;
-            font-size: 14px;
-            color: #ccfbf1;
+        /* लाइव टाइमर विजेट स्टाइल */
+        .timer-badge {
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .score-card {
+            background: #eff6ff;
+            border: 2px dashed #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary);
         }
 
         .quiz-box {
@@ -61,12 +82,6 @@
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             background: var(--light);
-            transition: transform 0.2s;
-        }
-
-        .quiz-box:hover {
-            transform: translateY(-2px);
-            border-color: #cbd5e1;
         }
 
         .question {
@@ -110,10 +125,6 @@
             color: var(--primary);
         }
 
-        .option-btn:disabled {
-            cursor: not-allowed;
-        }
-
         .correct {
             background: #d1fae5 !important;
             border-color: var(--success) !important;
@@ -130,28 +141,36 @@
         .explanation {
             margin-top: 15px;
             padding: 14px;
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
+            background: #e0f2fe;
+            border-left: 4px solid #0284c7;
             border-radius: 0 6px 6px 0;
             font-size: 13.5px;
-            color: #1e40af;
+            color: #0369a1;
             display: none;
             line-height: 1.5;
-            animation: fadeIn 0.4s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .footer-banner {
+        .submit-btn-container {
             text-align: center;
-            margin-top: 40px;
-            padding: 15px;
-            border-top: 1px dashed #cbd5e1;
-            color: #64748b;
-            font-size: 13px;
+            margin: 30px 0;
+        }
+
+        .submit-main-btn {
+            background: linear-gradient(135deg, #b91c1c, #991b1b);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+        .submit-main-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
     </style>
 </head>
@@ -161,59 +180,115 @@
     <div class="header">
         <h1>SHARMA SIR'S DIGITAL LAB</h1>
         <p>RPSC 2nd Grade Senior Teacher Exam - Paper 1 (100 MCQ)</p>
+        <div class="timer-badge">समय शेष: <span id="timer-display">30:00</span></div>
     </div>
+
+    <div id="score-card" class="score-card"></div>
 
     <div id="quiz-container"></div>
 
-    <div class="footer-banner">
-        <strong>Sharma Sir's Digital Lab © 2026</strong><br>नियमित अभ्यास ही आपकी सफलता का आधार है।
+    <div class="submit-btn-container">
+        <button id="final-submit-btn" class="submit-main-btn" onclick="submitQuiz()">टेस्ट फाइनल सबमिट करें</button>
     </div>
 </div>
 
 <script>
+    let timeLeft = 1800; // 30 मिनट (सेकंड में)
+    let userScore = 0;
+    let totalQuestions = 0;
+    let quizData = [];
+    let timer;
+
+    // 1. टाइमर फंक्शन शुरू करना
+    function startTimer() {
+        timer = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            
+            document.getElementById("timer-display").innerHTML = 
+                (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timer);
+                alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट किया जा रहा है।");
+                submitQuiz();
+            }
+        }, 1000);
+    }
+
+    // 2. वर्तमान डायरेक्टरी से JSON डेटा लोड करना
     async function loadQuiz() {
         const container = document.getElementById('quiz-container');
         try {
-            // स्थानीय या गिटहब पाथ से JSON लोड करना
-            const response = await fetch('quiz-data.json');
-            if (!response.ok) throw new Error('Network issue');
-            const data = await response.json();
+            const response = await fetch('./quiz-data.json');
+            if (!response.ok) throw new Error('फ़ाइल नहीं मिली');
+            quizData = await response.json();
+            totalQuestions = quizData.length;
 
-            data.forEach((q, index) => {
+            quizData.forEach((q, index) => {
                 const quizBox = document.createElement('div');
                 quizBox.className = 'quiz-box';
 
                 let optionsHTML = '';
                 q.options.forEach((opt, oIndex) => {
-                    optionsHTML += `<button class="option-btn" onclick="checkAnswer(this, ${oIndex}, ${q.correct}, 'exp-${index}')">${String.fromCharCode(65 + oIndex)}. ${opt}</button>`;
+                    optionsHTML += `<button class="option-btn" data-qindex="${index}" data-oindex="${oIndex}" onclick="selectOption(this, ${index}, ${oIndex}, ${q.correct}, 'exp-${index}')">${String.fromCharCode(65 + oIndex)}. ${opt}</button>`;
                 });
 
                 quizBox.innerHTML = `
                     <div class="question">Q${index + 1}. ${q.question}</div>
                     <div class="options-grid">${optionsHTML}</div>
-                    <div id="exp-${index}" class="explanation"><strong>सही उत्तर की व्याख्या:</strong> ${q.explanation}</div>
+                    <div id="exp-${index}" class="explanation"><strong>व्याख्या:</strong> ${q.explanation}</div>
                 `;
                 container.appendChild(quizBox);
             });
+            
+            startTimer(); // डेटा लोड होने के बाद टाइमर शुरू करें
         } catch (error) {
-            container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">त्रुटि: टेस्ट डेटा फ़ाइल 'quiz-data.json' लोड नहीं हो सकी। कृपया सुनिश्चित करें कि दोनों फाइलें एक ही फोल्डर में अपलोड हैं।</div>`;
+            container.innerHTML = `<div style="color:red; text-align:center; padding:20px; font-weight:bold;">त्रुटि: 'quiz-data.json' फ़ाइल लोड नहीं हो सकी। कृपया सुनिश्चित करें कि रिपोजिटरी में फाइल का नाम सही है।</div>`;
         }
     }
 
-    function checkAnswer(btn, selected, correct, expId) {
+    // 3. ऑप्शन सिलेक्ट करने पर एक्शन
+    function selectOption(btn, qIndex, selected, correct, expId) {
         const parent = btn.closest('.options-grid');
         const buttons = parent.querySelectorAll('.option-btn');
         
+        // उस प्रश्न के सभी बटन लॉक करें
         buttons.forEach(b => b.disabled = true);
 
         if (selected === correct) {
             btn.classList.add('correct');
+            userScore++;
         } else {
             btn.classList.add('wrong');
             buttons[correct].classList.add('correct');
         }
 
+        // व्याख्या लाइव दिखाएं
         document.getElementById(expId).style.display = 'block';
+    }
+
+    // 4. फाइनल सबमिट बटन फंक्शन
+    function submitQuiz() {
+        clearInterval(timer); // टाइमर रोकें
+        
+        // स्क्रीन पर सबसे ऊपर स्कोर कार्ड दिखाएं
+        const scoreCard = document.getElementById('score-card');
+        scoreCard.innerHTML = `आपका कुल स्कोर: ${userScore} / ${totalQuestions} (${((userScore/totalQuestions)*100).toFixed(2)}%)`;
+        scoreCard.style.display = 'block';
+        
+        // पेज को ऊपर स्क्रॉल करें ताकि रिजल्ट दिखे
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        // सबमिट बटन को डिसेबल करें
+        document.getElementById('final-submit-btn').disabled = true;
+        document.getElementById('final-submit-btn').innerText = "टेस्ट सबमिट हो चुका है";
+        document.getElementById('final-submit-btn').style.background = "#64748b";
+        
+        // सभी प्रश्नों के बटन लॉक करना (यदि कोई छूट गया हो)
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
     }
 
     window.onload = loadQuiz;
