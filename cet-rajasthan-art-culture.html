@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>राजस्थान कला एवं संस्कृति — CET 2026 | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--s2:#1a2438;--bd:rgba(255,255,255,.08);--or:#f97316;--gr:#22c55e;--bl:#3b82f6;--tx:#e2e8f0;--mu:#64748b}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;border-radius:8px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:#64748b}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;color:#94a3b8;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#f97316}
+.btn-contact{background:#f97316!important;color:#fff!important;border-radius:8px!important}
+.hamburger{display:none;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer}
+.s-link{padding:6px 14px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:13px;font-weight:600;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:32px 20px 18px;text-align:center}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0b1120;flex-direction:column;padding:12px 16px;border-bottom:1px solid rgba(249,115,22,.2);gap:4px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+</style>
+<style>
+.hero{background:radial-gradient(ellipse 70% 50% at 50% 0%,#f9731618,transparent);border-bottom:1px solid rgba(255,255,255,.06);padding:44px 20px 32px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f9731618;border:1px solid #f9731640;color:#f97316;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px}
+.hero h1 span{color:#f97316}
+.hero p{color:#64748b;font-size:14px;max-width:560px;margin:0 auto 20px}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.pill{padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+
+.wrap{max-width:860px;margin:0 auto;padding:36px 20px 60px}
+
+/* TOPIC SECTIONS */
+.topic{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:22px;margin-bottom:16px;transition:border-color .2s}
+.topic:hover{border-color:#f9731640}
+.topic-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer}
+.topic-icon{font-size:20px}
+.topic-title{font-size:15px;font-weight:800;color:#fff}
+.topic-body{font-size:14px;color:#94a3b8;line-height:1.8}
+.topic-body strong{color:#e2e8f0;font-weight:700}
+.topic-body .tag{display:inline-block;padding:2px 8px;border-radius:6px;background:#f9731615;border:1px solid #f9731630;color:#f97316;font-size:12px;font-weight:600;margin:2px 3px}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.tbl th{background:#f9731618;color:#f97316;padding:8px 12px;text-align:left;font-weight:700;border:1px solid #f9731625}
+.tbl td{padding:8px 12px;border:1px solid rgba(255,255,255,.06);color:#94a3b8}
+.tbl tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+
+/* FACTS BOX */
+.facts-box{background:#f9731608;border:1px solid #f9731625;border-radius:14px;padding:22px;margin-bottom:16px}
+.facts-title{font-size:14px;font-weight:800;color:#f97316;margin-bottom:12px}
+.fact-item{display:flex;gap:8px;font-size:13px;color:#94a3b8;margin-bottom:8px;line-height:1.6}
+.fact-item::before{content:'✅';flex-shrink:0}
+
+/* REVISION */
+.rev-box{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:22px}
+.rev-title{font-size:14px;font-weight:800;color:#22c55e;margin-bottom:12px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.rev-item{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:8px;padding:8px 12px;font-size:13px;color:#86efac}
+
+/* DOWNLOAD BAR */
+.dl-bar{background:#f9731610;border:1px solid #f9731630;border-radius:14px;padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dl-bar-text{flex:1;min-width:180px}
+.dl-bar-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.dl-bar-sub{font-size:12px;color:#64748b}
+.btn-dl{display:inline-block;padding:9px 20px;border-radius:10px;background:#f97316;color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-dl:hover{opacity:.88;transform:translateY(-1px)}
+.btn-tg{display:inline-block;padding:9px 20px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#e2e8f0;font-weight:700;font-size:13px;transition:all .2s;white-space:nowrap}
+.btn-tg:hover{border-color:#f97316;color:#f97316}
+
+.section-tag{font-size:11px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.section-tag::before{content:'';display:block;width:20px;height:2px;background:#f97316}
+.section-h{font-size:clamp(1rem,3vw,1.4rem);font-weight:900;color:#fff;margin-bottom:16px}
+.divider{height:1px;background:rgba(255,255,255,.06);margin:28px 0}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
+    </a>
+    <button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+    <ul class="nav-links" id="nl"><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="active">📝 Notes</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Test Series</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li>
+</ul>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-badge">🎨 Art & Culture</div>
+  <h1><span>राजस्थान कला एवं संस्कृति — CET 2026</span></h1>
+  <p>Sharma Sir's Digital Lab — CET 2026 | परीक्षा-उन्मुख विस्तृत नोट्स</p>
+  <div class="pills">
+    <span class="pill" style="color:#f97316;border-color:#f9731640">📝 Exam Notes</span>
+    <span class="pill" style="color:#22c55e;border-color:rgba(34,197,94,.4)">🆓 Free</span>
+    <span class="pill" style="color:#3b82f6;border-color:rgba(59,130,246,.4)">🎯 CET 2026</span>
+  </div>
+</div>
+
+<div class="wrap">
+  
+<div class="section-tag">सांस्कृतिक परिचय</div>
+<div class="section-h">1. प्रमुख बोलियाँ</div>
+<table class="tbl">
+<tr><th>बोली</th><th>क्षेत्र</th></tr>
+<tr><td>मारवाड़ी</td><td>जोधपुर, बाड़मेर <span style="color:#f97316;font-size:12px">(सर्वाधिक बोली)</span></td></tr>
+<tr><td>मेवाड़ी</td><td>उदयपुर</td></tr>
+<tr><td>ढूंढाड़ी</td><td>जयपुर</td></tr>
+<tr><td>हाड़ौती</td><td>कोटा, बूंदी</td></tr>
+<tr><td>मेवाती</td><td>अलवर, भरतपुर</td></tr>
+<tr><td>बागड़ी</td><td>श्रीगंगानगर, हनुमानगढ़</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">2. प्रमुख लोकनृत्य</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">💃</span><div class="topic-title">घूमर — राज्य नृत्य</div></div>
+<div class="topic-body">राजस्थान का सर्वाधिक प्रसिद्ध <strong>महिला नृत्य</strong> | उदयपुर क्षेत्र</div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🐍</span><div class="topic-title">कालबेलिया — UNESCO धरोहर</div></div>
+<div class="topic-body">कालबेलिया समुदाय | सर्प की चाल जैसी मुद्राएँ | <strong>UNESCO अमूर्त सांस्कृतिक धरोहर</strong></div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🔥</span><div class="topic-title">चरी, भवाई, कच्छी घोड़ी, गेर, अग्नि नृत्य</div></div>
+<div class="topic-body">
+  <strong>चरी</strong> — किशनगढ़ (सिर पर जलती चरी) |
+  <strong>भवाई</strong> — सिर पर मटके |
+  <strong>कच्छी घोड़ी</strong> — शेखावाटी |
+  <strong>गेर</strong> — भील जनजाति (होली) |
+  <strong>अग्नि नृत्य</strong> — जसनाथी सम्प्रदाय, बीकानेर
+</div></div>
+<div class="divider"></div>
+<div class="section-h">3. लोकसंगीत एवं वाद्य</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🎵</span><div class="topic-title">गायन शैलियाँ</div></div>
+<div class="topic-body">मांड | पनिहारी | <strong>लांगा</strong> | <strong>मांगणियार</strong> | तेरहताली<br>
+<span class="tag">रावणहत्था — विश्व का प्राचीनतम वाद्य</span></div></div>
+<div class="divider"></div>
+<div class="section-h">4. चित्रकला शैलियाँ</div>
+<table class="tbl">
+<tr><th>शैली</th><th>क्षेत्र</th><th>विशेषता</th></tr>
+<tr><td>मेवाड़</td><td>उदयपुर</td><td>चमकीले रंग</td></tr>
+<tr><td>किशनगढ़</td><td>किशनगढ़</td><td>बनी-ठनी — राजस्थान की मोनालिसा</td></tr>
+<tr><td>बूंदी</td><td>बूंदी</td><td>प्रकृति चित्रण</td></tr>
+<tr><td>कोटा</td><td>कोटा</td><td>शिकार दृश्य</td></tr>
+<tr><td>बीकानेर</td><td>बीकानेर</td><td>मुगल प्रभाव</td></tr>
+</table>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🎨</span><div class="topic-title">बनी-ठनी — "राजस्थान की मोनालिसा"</div></div>
+<div class="topic-body">चित्रकार: <strong>निहालचंद</strong> | आश्रयदाता: <strong>राजा सावंत सिंह</strong></div></div>
+<div class="divider"></div>
+<div class="section-h">5. प्रमुख कलाएँ एवं हस्तशिल्प</div>
+<table class="tbl">
+<tr><th>कला</th><th>स्थान</th></tr>
+<tr><td>फड़ चित्रकला</td><td>शाहपुरा (भीलवाड़ा)</td></tr>
+<tr><td>ब्लू पॉटरी</td><td>जयपुर</td></tr>
+<tr><td>थेवा कला</td><td>प्रतापगढ़</td></tr>
+<tr><td>पिछवाई</td><td>नाथद्वारा</td></tr>
+<tr><td>पत्थर नक्काशी</td><td>जैसलमेर</td></tr>
+<tr><td>कठपुतली</td><td>जयपुर, जोधपुर</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">6. प्रमुख मेले</div>
+<table class="tbl">
+<tr><th>मेला</th><th>स्थान</th><th>विशेषता</th></tr>
+<tr><td>पुष्कर मेला</td><td>अजमेर</td><td>विश्व प्रसिद्ध ऊँट मेला</td></tr>
+<tr><td>बेणेश्वर मेला</td><td>डूंगरपुर</td><td>भीलों का कुंभ</td></tr>
+<tr><td>रामदेवरा मेला</td><td>जैसलमेर</td><td>रामदेवजी</td></tr>
+<tr><td>गोगामेड़ी मेला</td><td>हनुमानगढ़</td><td>गोगाजी</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">7. लोकदेवता एवं देवियाँ</div>
+<table class="tbl">
+<tr><th>लोकदेवता</th><th>स्थान</th></tr>
+<tr><td>बाबा रामदेव</td><td>रामदेवरा</td></tr>
+<tr><td>गोगाजी</td><td>गोगामेड़ी</td></tr>
+<tr><td>तेजाजी</td><td>खरनाल</td></tr>
+<tr><td>पाबूजी</td><td>कोलू</td></tr>
+<tr><td>करणी माता</td><td>देशनोक</td></tr>
+<tr><td>जीण माता</td><td>सीकर</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">8. UNESCO विश्व धरोहर दुर्ग</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🏰</span><div class="topic-title">राजस्थान के 6 पहाड़ी दुर्ग</div></div>
+<div class="topic-body">चित्तौड़गढ़ | कुम्भलगढ़ | रणथम्भौर | <strong>गागरोन</strong> | जैसलमेर | <strong>आमेर</strong></div></div>
+  <div class="divider"></div>
+  <div class="facts-box">
+    <div class="facts-title">⚡ परीक्षा में बार-बार पूछे जाने वाले तथ्य</div>
+    
+<div class="fact-item">राज्य नृत्य — घूमर</div>
+<div class="fact-item">राज्य गीत — केसरिया बालम</div>
+<div class="fact-item">राजस्थान की मोनालिसा — बनी-ठनी</div>
+<div class="fact-item">विश्व प्रसिद्ध ऊँट मेला — पुष्कर</div>
+<div class="fact-item">ब्लू पॉटरी — जयपुर</div>
+<div class="fact-item">थेवा कला — प्रतापगढ़</div>
+<div class="fact-item">फड़ चित्रकला — शाहपुरा (भीलवाड़ा)</div>
+<div class="fact-item">कालबेलिया — UNESCO अमूर्त धरोहर</div>
+<div class="fact-item">भीलों का कुंभ — बेणेश्वर मेला</div>
+<div class="fact-item">रावणहत्था — विश्व का प्राचीनतम वाद्य</div>
+  </div>
+  <div class="divider"></div>
+  <div class="rev-box">
+    <div class="rev-title">🔄 One-Day Revision Points</div>
+    <div class="rev-grid">
+<div class="rev-item">घूमर — उदयपुर</div>
+<div class="rev-item">कालबेलिया — UNESCO</div>
+<div class="rev-item">चरी — किशनगढ़</div>
+<div class="rev-item">फड़ — शाहपुरा</div>
+<div class="rev-item">बनी-ठनी — किशनगढ़</div>
+<div class="rev-item">ब्लू पॉटरी — जयपुर</div>
+<div class="rev-item">थेवा — प्रतापगढ़</div>
+<div class="rev-item">पुष्कर — ऊँट मेला</div>
+<div class="rev-item">बेणेश्वर — डूंगरपुर</div>
+<div class="rev-item">करणी माता — देशनोक</div>
+<div class="rev-item">तेजाजी — खरनाल</div>
+<div class="rev-item">गोगाजी — गोगामेड़ी</div></div>
+  </div>
+  <div class="divider"></div>
+  <div style="text-align:center;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:14px;padding:28px">
+    <div style="font-size:17px;font-weight:800;color:#fff;margin-bottom:6px">📚 और अधिक Notes चाहिए?</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:16px">Telegram Join करें और 500+ Free Notes तुरंत पाएं।</div>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-dl">📢 Telegram Join करें</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="btn-tg" style="margin-left:10px">📝 सभी Notes</a>
+  </div>
+</div>
+<footer class="footer">
+  <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" style="width:40px;height:40px;border-radius:8px;object-fit:cover;margin-bottom:10px" onerror="this.style.display='none'">
+  <div style="font-weight:800;color:#f97316;font-size:15px;margin-bottom:6px">Sharma Sir's Digital Lab</div>
+  <div style="color:#475569;font-size:13px;max-width:480px;margin:0 auto 16px">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</div>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://wa.me/919251242367" class="s-link">💬 WhatsApp</a>
+    <a href="https://youtube.com/@SharmaSirsDigitalLab" class="s-link">🎥 YouTube</a>
+    <a href="mailto:abhishekchotiya637@gmail.com" class="s-link">📧 Email</a>
+  </div>
+  <div style="color:#334155;font-size:12px;border-top:1px solid rgba(255,255,255,.05);padding-top:12px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
+</footer>
+</body>
+</html>

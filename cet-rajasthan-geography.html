@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>राजस्थान भूगोल — CET 2026 | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--s2:#1a2438;--bd:rgba(255,255,255,.08);--or:#f97316;--gr:#22c55e;--bl:#3b82f6;--tx:#e2e8f0;--mu:#64748b}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;border-radius:8px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:#64748b}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;color:#94a3b8;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#f97316}
+.btn-contact{background:#f97316!important;color:#fff!important;border-radius:8px!important}
+.hamburger{display:none;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer}
+.s-link{padding:6px 14px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:13px;font-weight:600;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:32px 20px 18px;text-align:center}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0b1120;flex-direction:column;padding:12px 16px;border-bottom:1px solid rgba(249,115,22,.2);gap:4px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+</style>
+<style>
+.hero{background:radial-gradient(ellipse 70% 50% at 50% 0%,#3b82f618,transparent);border-bottom:1px solid rgba(255,255,255,.06);padding:44px 20px 32px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#3b82f618;border:1px solid #3b82f640;color:#3b82f6;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px}
+.hero h1 span{color:#3b82f6}
+.hero p{color:#64748b;font-size:14px;max-width:560px;margin:0 auto 20px}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.pill{padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+
+.wrap{max-width:860px;margin:0 auto;padding:36px 20px 60px}
+
+/* TOPIC SECTIONS */
+.topic{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:22px;margin-bottom:16px;transition:border-color .2s}
+.topic:hover{border-color:#3b82f640}
+.topic-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer}
+.topic-icon{font-size:20px}
+.topic-title{font-size:15px;font-weight:800;color:#fff}
+.topic-body{font-size:14px;color:#94a3b8;line-height:1.8}
+.topic-body strong{color:#e2e8f0;font-weight:700}
+.topic-body .tag{display:inline-block;padding:2px 8px;border-radius:6px;background:#3b82f615;border:1px solid #3b82f630;color:#3b82f6;font-size:12px;font-weight:600;margin:2px 3px}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.tbl th{background:#3b82f618;color:#3b82f6;padding:8px 12px;text-align:left;font-weight:700;border:1px solid #3b82f625}
+.tbl td{padding:8px 12px;border:1px solid rgba(255,255,255,.06);color:#94a3b8}
+.tbl tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+
+/* FACTS BOX */
+.facts-box{background:#3b82f608;border:1px solid #3b82f625;border-radius:14px;padding:22px;margin-bottom:16px}
+.facts-title{font-size:14px;font-weight:800;color:#3b82f6;margin-bottom:12px}
+.fact-item{display:flex;gap:8px;font-size:13px;color:#94a3b8;margin-bottom:8px;line-height:1.6}
+.fact-item::before{content:'✅';flex-shrink:0}
+
+/* REVISION */
+.rev-box{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:22px}
+.rev-title{font-size:14px;font-weight:800;color:#22c55e;margin-bottom:12px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.rev-item{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:8px;padding:8px 12px;font-size:13px;color:#86efac}
+
+/* DOWNLOAD BAR */
+.dl-bar{background:#3b82f610;border:1px solid #3b82f630;border-radius:14px;padding:18px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dl-bar-text{flex:1;min-width:180px}
+.dl-bar-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.dl-bar-sub{font-size:12px;color:#64748b}
+.btn-dl{display:inline-block;padding:9px 20px;border-radius:10px;background:#3b82f6;color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-dl:hover{opacity:.88;transform:translateY(-1px)}
+.btn-tg{display:inline-block;padding:9px 20px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#e2e8f0;font-weight:700;font-size:13px;transition:all .2s;white-space:nowrap}
+.btn-tg:hover{border-color:#3b82f6;color:#3b82f6}
+
+.section-tag{font-size:11px;color:#3b82f6;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.section-tag::before{content:'';display:block;width:20px;height:2px;background:#3b82f6}
+.section-h{font-size:clamp(1rem,3vw,1.4rem);font-weight:900;color:#fff;margin-bottom:16px}
+.divider{height:1px;background:rgba(255,255,255,.06);margin:28px 0}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
+    </a>
+    <button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+    <ul class="nav-links" id="nl"><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="active">📝 Notes</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Test Series</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li>
+<li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li>
+</ul>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-badge">🗺️ Rajasthan Geography</div>
+  <h1><span>राजस्थान भूगोल — CET 2026</span></h1>
+  <p>Sharma Sir's Digital Lab — CET 2026 | परीक्षा-उन्मुख विस्तृत नोट्स</p>
+  <div class="pills">
+    <span class="pill" style="color:#3b82f6;border-color:#3b82f640">📝 Exam Notes</span>
+    <span class="pill" style="color:#22c55e;border-color:rgba(34,197,94,.4)">🆓 Free</span>
+    <span class="pill" style="color:#3b82f6;border-color:rgba(59,130,246,.4)">🎯 CET 2026</span>
+  </div>
+</div>
+
+<div class="wrap">
+  
+<div class="section-tag">सामान्य परिचय</div>
+<div class="section-h">1. राजस्थान का परिचय</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🗺️</span><div class="topic-title">मूल तथ्य</div></div>
+<div class="topic-body">
+  <strong>क्षेत्रफल:</strong> 3,42,239 वर्ग किमी | <strong>भारत में क्षेत्रफल में प्रथम</strong><br>
+  राजधानी: <strong>जयपुर</strong> | राज्य दिवस: <strong>30 मार्च</strong><br>
+  पाकिस्तान सीमा: <strong>1070 किमी</strong> | पड़ोसी राज्य: पंजाब, हरियाणा, UP, MP, गुजरात
+</div></div>
+<div class="divider"></div>
+<div class="section-h">2. चार भौतिक प्रदेश</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🏜️</span><div class="topic-title">(1) पश्चिमी मरुस्थलीय प्रदेश (~61%)</div></div>
+<div class="topic-body">थार मरुस्थल | रेत के टीले (धोरे) | जिले: <strong>जैसलमेर, बाड़मेर, बीकानेर, जोधपुर, चूरू</strong></div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">⛰️</span><div class="topic-title">(2) अरावली पर्वतीय प्रदेश</div></div>
+<div class="topic-body">
+  लंबाई: <strong>लगभग 692 किमी</strong> | राजस्थान में: <strong>~550 किमी</strong><br>
+  <strong>गुरु शिखर — 1722 मीटर</strong> (सर्वोच्च) | सेर — 1597 मी. | अचलगढ़ — 1380 मी.<br>
+  <span class="tag">विश्व की सबसे प्राचीन वलित पर्वतमाला</span>
+</div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🌾</span><div class="topic-title">(3) पूर्वी मैदानी प्रदेश</div></div>
+<div class="topic-body">उपजाऊ भूमि | अधिक जनसंख्या | जिले: जयपुर, भरतपुर, दौसा, अलवर</div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🌿</span><div class="topic-title">(4) दक्षिण-पूर्वी पठारी प्रदेश — "राजस्थान का अन्न भंडार"</div></div>
+<div class="topic-body">जिले: कोटा, बूंदी, झालावाड़, बारां</div></div>
+<div class="divider"></div>
+<div class="section-h">3. जलवायु</div>
+<table class="tbl">
+<tr><th>विशेषता</th><th>स्थान/जिला</th></tr>
+<tr><td>सर्वाधिक गर्म जिला</td><td>श्रीगंगानगर</td></tr>
+<tr><td>सर्वाधिक ठंडा स्थान</td><td>माउंट आबू</td></tr>
+<tr><td>सर्वाधिक वर्षा</td><td>झालावाड़</td></tr>
+<tr><td>न्यूनतम वर्षा</td><td>जैसलमेर</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">4. प्रमुख नदियाँ</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🌊</span><div class="topic-title">चम्बल नदी — एकमात्र सदानीरा नदी</div></div>
+<div class="topic-body">उद्गम: जानापाव पहाड़ी | सहायक: <strong>कालीसिंध, पार्वती, बनास</strong></div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">💧</span><div class="topic-title">बनास नदी — "राजस्थान की जीवन रेखा"</div></div>
+<div class="topic-body">उद्गम: खमनोर पहाड़ी | सहायक: बेड़च, कोठारी, मेनाल</div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🏞️</span><div class="topic-title">लूनी नदी — सबसे लंबी आंतरिक प्रवाह नदी</div></div>
+<div class="topic-body">उद्गम: <strong>नाग पहाड़</strong></div></div>
+<div class="divider"></div>
+<div class="section-h">5. प्रमुख झीलें</div>
+<table class="tbl">
+<tr><th>झील</th><th>विशेषता</th></tr>
+<tr><td>सांभर झील</td><td>भारत की सबसे बड़ी अंतर्देशीय खारे पानी की झील</td></tr>
+<tr><td>जयसमंद झील</td><td>एशिया की दूसरी सबसे बड़ी कृत्रिम झील</td></tr>
+<tr><td>राजसमंद झील</td><td>निर्माता: महाराणा राज सिंह</td></tr>
+<tr><td>फतेहसागर</td><td>उदयपुर</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">6. सिंचाई परियोजनाएँ</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">🏗️</span><div class="topic-title">इंदिरा गांधी नहर परियोजना — "मरुगंगा"</div></div>
+<div class="topic-body">उद्गम: <strong>हरिके बैराज</strong> | लाभान्वित: गंगानगर, बीकानेर, जैसलमेर</div></div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">💧</span><div class="topic-title">माही बजाज सागर परियोजना — बांसवाड़ा</div></div>
+<div class="topic-body">नदी: <strong>माही</strong></div></div>
+<div class="divider"></div>
+<div class="section-h">7. खनिज संपदा</div>
+<table class="tbl">
+<tr><th>खनिज</th><th>प्रमुख जिला</th></tr>
+<tr><td>जस्ता</td><td>उदयपुर</td></tr>
+<tr><td>संगमरमर</td><td>राजसमंद</td></tr>
+<tr><td>ग्रेनाइट</td><td>जालौर</td></tr>
+<tr><td>तांबा</td><td>खेतड़ी (झुंझुनूं)</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">8. वन्यजीव एवं राष्ट्रीय उद्यान</div>
+<table class="tbl">
+<tr><th>उद्यान</th><th>विशेषता</th></tr>
+<tr><td>रणथम्भौर</td><td>बाघ संरक्षण</td></tr>
+<tr><td>केवलादेव (भरतपुर)</td><td>UNESCO विश्व धरोहर</td></tr>
+<tr><td>Desert NP</td><td>गोडावण संरक्षण</td></tr>
+</table>
+<div class="divider"></div>
+<div class="section-h">9. ऊर्जा संसाधन</div>
+<div class="topic"><div class="topic-head"><span class="topic-icon">☀️</span><div class="topic-title">भड़ला सोलर पार्क — जोधपुर</div></div>
+<div class="topic-body"><strong>विश्व के सबसे बड़े सौर पार्कों में से एक</strong> | पवन ऊर्जा: जैसलमेर, बाड़मेर</div></div>
+  <div class="divider"></div>
+  <div class="facts-box">
+    <div class="facts-title">⚡ परीक्षा में बार-बार पूछे जाने वाले तथ्य</div>
+    
+<div class="fact-item">गुरु शिखर — 1722 मीटर</div>
+<div class="fact-item">अरावली — विश्व की प्राचीनतम पर्वतमाला</div>
+<div class="fact-item">चम्बल — एकमात्र सदानीरा नदी</div>
+<div class="fact-item">लूनी — सबसे लंबी आंतरिक प्रवाह नदी</div>
+<div class="fact-item">सांभर — सबसे बड़ी खारी झील</div>
+<div class="fact-item">इंदिरा गांधी नहर — मरुगंगा (उद्गम: हरिके बैराज)</div>
+<div class="fact-item">भड़ला सोलर पार्क — जोधपुर</div>
+<div class="fact-item">सर्वाधिक गर्म — श्रीगंगानगर | न्यूनतम वर्षा — जैसलमेर</div>
+<div class="fact-item">तांबा — खेतड़ी | जस्ता — उदयपुर | संगमरमर — राजसमंद</div>
+<div class="fact-item">राजस्थान क्षेत्रफल — 3,42,239 वर्ग किमी (भारत में प्रथम)</div>
+  </div>
+  <div class="divider"></div>
+  <div class="rev-box">
+    <div class="rev-title">🔄 One-Day Revision Points</div>
+    <div class="rev-grid">
+<div class="rev-item">गुरु शिखर — 1722 मी</div>
+<div class="rev-item">चम्बल — सदानीरा</div>
+<div class="rev-item">लूनी — नाग पहाड़</div>
+<div class="rev-item">सांभर — खारी झील</div>
+<div class="rev-item">इंदिरा नहर — मरुगंगा</div>
+<div class="rev-item">सर्वाधिक वर्षा — झालावाड़</div>
+<div class="rev-item">ठंडा — माउंट आबू</div>
+<div class="rev-item">तांबा — खेतड़ी</div>
+<div class="rev-item">भड़ला — जोधपुर</div>
+<div class="rev-item">राजसमंद झील — राज सिंह</div></div>
+  </div>
+  <div class="divider"></div>
+  <div style="text-align:center;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:14px;padding:28px">
+    <div style="font-size:17px;font-weight:800;color:#fff;margin-bottom:6px">📚 और अधिक Notes चाहिए?</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:16px">Telegram Join करें और 500+ Free Notes तुरंत पाएं।</div>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-dl">📢 Telegram Join करें</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="btn-tg" style="margin-left:10px">📝 सभी Notes</a>
+  </div>
+</div>
+<footer class="footer">
+  <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" style="width:40px;height:40px;border-radius:8px;object-fit:cover;margin-bottom:10px" onerror="this.style.display='none'">
+  <div style="font-weight:800;color:#f97316;font-size:15px;margin-bottom:6px">Sharma Sir's Digital Lab</div>
+  <div style="color:#475569;font-size:13px;max-width:480px;margin:0 auto 16px">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</div>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://wa.me/919251242367" class="s-link">💬 WhatsApp</a>
+    <a href="https://youtube.com/@SharmaSirsDigitalLab" class="s-link">🎥 YouTube</a>
+    <a href="mailto:abhishekchotiya637@gmail.com" class="s-link">📧 Email</a>
+  </div>
+  <div style="color:#334155;font-size:12px;border-top:1px solid rgba(255,255,255,.05);padding-top:12px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
+</footer>
+</body>
+</html>

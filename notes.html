@@ -1,173 +1,418 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Notes & PDFs | Sharma Sir's Digital Lab</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css"/>
-  <meta name="description" content="Sharma Sir's Digital Lab — RPSC, REET, SSC, Railway के लिए Free Notes, Test Series और Current Affairs।"/>
-
-<meta name="keywords" content="RPSC Notes, REET Notes, SSC Notes, Railway Notes, Rajasthan GK, Current Affairs 2026"/>
-
-<meta name="author" content="Sharma Sir's Digital Lab"/>
+<meta name="description" content="Sharma Sir's Digital Lab — RPSC, REET, SSC, Railway के लिए Free Notes, CET 2026 नोट्स, Test Series और Current Affairs।">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* BIG FONT OVERRIDES */
-body{font-size:17px;}
-.nav-link{font-size:0.9rem!important;}
-.page-title{font-size:clamp(2.4rem,6vw,4.2rem)!important;}
-.page-desc{font-size:1.05rem!important;}
-.cat-title{font-size:1.6rem!important;}
-.ntitle{font-size:1rem!important;}
-.nmeta{font-size:0.82rem!important;}
-.cbody p,.tdesc,.section-desc{font-size:0.97rem!important;line-height:1.85!important;}
-.chip{font-size:0.78rem!important;padding:5px 14px!important;}
-/* Search */
-.search-wrap{max-width:700px;margin:0 auto;padding:0 clamp(16px,5%,80px) 44px;position:relative;}
-.si{position:absolute;left:clamp(32px,calc(5% + 16px),96px);top:50%;transform:translateY(-50%);font-size:1.2rem;pointer-events:none;}
-.sfield{width:100%;padding:16px 20px 16px 52px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;color:#fff;font-family:'Sora',sans-serif;font-size:1rem;outline:none;transition:border-color 0.2s;}
-.sfield::placeholder{color:rgba(255,255,255,0.38);}
-.sfield:focus{border-color:#E8640C;}
-/* Notes */
-.notes-section{max-width:1200px;margin:0 auto;padding:0 clamp(16px,5%,80px) 88px;}
-.notes-cat{margin-bottom:56px;}
-.cat-hdr{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.cat-title{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;}
-.notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
-.ncard{padding:22px 24px;border-radius:16px;display:flex;flex-direction:column;gap:11px;transition:all 0.3s;}
-.ncard:hover{transform:translateY(-5px);border-color:rgba(232,100,12,0.38);box-shadow:0 14px 44px rgba(0,0,0,0.42);}
-.ntype{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
-.t-pdf{color:#FCA5A5;}.t-notes{color:#86EFAC;}.t-quiz{color:#F0C040;}
-.ntitle{font-size:1rem;font-weight:700;line-height:1.45;}
-.nmeta{display:flex;gap:14px;font-size:0.82rem;color:rgba(255,255,255,0.45);}
-.nfooter{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
-.dl-btn{background:linear-gradient(135deg,#E8640C,#C5540A);color:#fff;padding:9px 18px;border-radius:9px;font-size:0.84rem;font-weight:700;transition:all 0.2s;text-decoration:none;}
-.dl-btn:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(232,100,12,0.42);}
-/* Join box */
-.join-box{text-align:center;background:rgba(232,100,12,0.07);border:1px solid rgba(232,100,12,0.22);border-radius:22px;padding:44px 32px;}
-.join-box h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;margin-bottom:12px;}
-.join-box p{color:rgba(255,255,255,0.55);margin-bottom:24px;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem;max-width:480px;margin-left:auto;margin-right:auto;}
-.jbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--s2:#1a2438;--bd:rgba(255,255,255,.08);--or:#f97316;--gr:#22c55e;--bl:#3b82f6;--tx:#e2e8f0;--mu:#64748b}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;border-radius:8px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:#64748b}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;color:#94a3b8;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#f97316}
+.btn-contact{background:#f97316!important;color:#fff!important;border-radius:8px!important;padding:6px 12px!important}
+.hamburger{display:none;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer}
+.s-link{padding:6px 14px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:13px;font-weight:600;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:32px 20px 18px;text-align:center}
+.hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(249,115,22,.12),transparent);border-bottom:1px solid rgba(255,255,255,.06)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:8px}
+.hero h1 span{color:#f97316}
+.hero p{color:#64748b;font-size:14px;max-width:540px;margin:0 auto 20px}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pill{padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.pill.o{border-color:rgba(249,115,22,.4);color:#f97316}
+.pill.g{border-color:rgba(34,197,94,.4);color:#22c55e}
+.pill.b{border-color:rgba(59,130,246,.4);color:#3b82f6}
+.main{max-width:1100px;margin:0 auto;padding:36px 20px 60px}
+.sec-tag{font-size:11px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sec-tag::before{content:'';display:block;width:20px;height:2px;background:#f97316}
+.sec-h{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:900;color:#fff;margin-bottom:16px}
+.sec-h span{color:#f97316}
+.divider{height:1px;background:rgba(255,255,255,.06);margin:32px 0}
+
+/* NEW CET NOTE CARDS */
+.cet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:32px}
+.cet-card{border-radius:16px;padding:24px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.cet-card:hover{transform:translateY(-4px)}
+.cet-card-new{position:absolute;top:14px;right:14px;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px}
+.cet-icon{font-size:36px;margin-bottom:12px}
+.cet-exam{font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;display:inline-block}
+.cet-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.4}
+.cet-desc{font-size:13px;color:#94a3b8;margin-bottom:14px;line-height:1.6}
+.cet-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.cet-tag{font-size:11px;color:#64748b;background:rgba(255,255,255,.05);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.08)}
+.cet-btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-read{display:inline-block;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .2s}
+.btn-tgs{display:inline-block;padding:9px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-size:13px;font-weight:600;transition:all .2s}
+.btn-tgs:hover{border-color:#f97316;color:#f97316}
+
+/* EXISTING NOTE CARDS */
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px}
+.note-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:20px;transition:all .2s;display:flex;flex-direction:column;gap:10px}
+.note-card:hover{border-color:rgba(249,115,22,.3);transform:translateY(-2px)}
+.note-type{font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block;width:fit-content}
+.note-title{font-size:14px;font-weight:700;color:#fff;line-height:1.5}
+.note-meta{display:flex;gap:8px;flex-wrap:wrap}
+.note-info{font-size:11px;color:#64748b;background:rgba(255,255,255,.04);padding:2px 8px;border-radius:6px}
+.note-btn{display:inline-block;padding:8px 16px;border-radius:9px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#fb923c;font-size:12px;font-weight:700;transition:all .2s;width:fit-content}
+.note-btn:hover{background:#f97316;color:#fff}
+
+/* SEARCH BAR */
+.search-wrap{max-width:500px;margin:0 auto 32px;position:relative}
+.search-input{width:100%;padding:12px 18px 12px 44px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-size:14px;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:rgba(249,115,22,.5)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#64748b}
+
+/* DOWNLOADS specific */
+.dl-feat{border-radius:18px;padding:26px;margin-bottom:20px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.dl-icon{min-width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.dl-body{flex:1;min-width:200px}
+.dl-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+.dl-desc{font-size:13px;color:#94a3b8;margin-bottom:10px;line-height:1.6}
+.dl-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.dl-tag{font-size:11px;color:#64748b;background:rgba(255,255,255,.04);padding:2px 8px;border-radius:6px}
+.dl-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;transition:all .2s}
+.dl-card:hover{border-color:rgba(249,115,22,.25);transform:translateY(-1px)}
+.btn-dl-g{display:inline-block;padding:9px 18px;border-radius:10px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#22c55e;font-size:13px;font-weight:700;transition:all .2s}
+.btn-dl-g:hover{background:#22c55e;color:#fff}
+.btn-dl-o{display:inline-block;padding:9px 18px;border-radius:10px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#f97316;font-size:13px;font-weight:700;transition:all .2s}
+.btn-dl-o:hover{background:#f97316;color:#fff}
+.btn-dl-b{display:inline-block;padding:9px 18px;border-radius:10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:#3b82f6;font-size:13px;font-weight:700;transition:all .2s}
+.btn-dl-b:hover{background:#3b82f6;color:#fff}
+.cta-box{background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:18px;padding:32px;text-align:center;margin-top:36px}
+.btn-main{display:inline-block;padding:11px 24px;border-radius:11px;background:#f97316;color:#fff;font-weight:700;font-size:14px;transition:all .2s;margin:4px}
+.btn-main:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.btn-sec{display:inline-block;padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px;transition:all .2s;margin:4px}
+.btn-sec:hover{border-color:#f97316;color:#f97316}
+
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0b1120;flex-direction:column;padding:12px 16px;border-bottom:1px solid rgba(249,115,22,.2);gap:4px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .dl-feat{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<nav class="navbar" id="navbar">
-  <a href="index.html" class="nav-brand"><img src="logo.jpg" alt="Logo" class="nav-logo"/><div class="nav-brand-text"><div class="l1">Sharma Sir's Digital Lab</div><div class="l2">RPSC · RSMSSB · SSC · Railway · REET</div></div></a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
-    <a href="courses.html" class="nav-link">Courses</a><a href="notes.html" class="nav-link active">Notes</a>
-    <a href="current-affairs.html" class="nav-link">Current Affairs</a><a href="test-series.html" class="nav-link">Test Series</a>
-    <a href="downloads.html" class="nav-link">Downloads</a><a href="contact.html" class="nav-cta">Contact</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
+    </a>
+    <button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+    <ul class="nav-links" id="nl">
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="active">📝 Notes</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Test Series</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li>
+    </ul>
   </div>
-  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
 </nav>
-<div class="mob-nav" id="mobNav">
-  <a href="index.html">🏠 Home</a><a href="about.html">👤 About</a><a href="courses.html">📚 Courses</a>
-  <a href="notes.html" class="active">📝 Notes</a><a href="current-affairs.html">📰 Current Affairs</a>
-  <a href="test-series.html">🎯 Test Series</a><a href="downloads.html">⬇️ Downloads</a>
-  <div class="mob-div"></div><a href="contact.html">☎️ Contact</a>
+
+<div class="hero">
+  <div class="hero-badge">📝 Notes & PDFs</div>
+  <h1>Free <span>Study Material</span></h1>
+  <p>500+ PDF नोट्स — परीक्षा की दृष्टि से महत्वपूर्ण, सरल हिंदी भाषा में। अभी पढ़ें या Download करें।</p>
+  <div class="pills">
+    <span class="pill o">📄 500+ PDFs</span>
+    <span class="pill g">🆓 Free</span>
+    <span class="pill b">🎯 CET / RPSC / REET</span>
+  </div>
 </div>
 
-<div class="page-hero">
-  <div class="eyebrow jc reveal">Study Material</div>
-  <h1 class="page-title reveal">Notes &amp; <span class="grad">PDFs</span></h1>
-  <p class="page-desc reveal">500+ PDF नोट्स — परीक्षा की दृष्टि से महत्वपूर्ण, सरल हिंदी भाषा में</p>
-</div>
+<div class="main">
 
-<div class="search-wrap reveal">
-  <span class="si">🔍</span>
-  <input type="text" class="sfield" id="nsearch" placeholder="Notes खोजें... जैसे: Rajasthan GK, REET, SSC..."/>
-</div>
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" type="text" placeholder="Notes खोजें... (e.g. Rajasthan GK, History, Geography)" oninput="filterNotes(this.value)">
+  </div>
 
-<div class="notes-section">
+  <!-- ★ NEW CET 2026 NOTES -->
+  <div class="sec-tag">🆕 नये नोट्स — CET 2026</div>
+  <div class="sec-h">⭐ Rajasthan CET 2026 — <span>Complete Notes Series</span></div>
+  <div style="background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.18);border-radius:14px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#94a3b8;line-height:1.7">
+    📌 <strong style="color:#fff">Sharma Sir द्वारा तैयार CET 2026 नोट्स</strong> — इतिहास, कला-संस्कृति, भूगोल, संविधान — सभी परीक्षा-उन्मुख, One-Day Revision Ready। <strong style="color:#f97316">अभी पढ़ें — बिल्कुल Free!</strong>
+  </div>
+  <div class="cet-grid"><div class="cet-card" style="background:linear-gradient(135deg,#e74c3c12,#e74c3c04);border:1.5px solid #e74c3c35">
+  <div class="cet-card-new" style="background:#e74c3c20;border:1px solid #e74c3c40;color:#e74c3c">🆕 New</div>
+  <div class="cet-icon">🏛️</div>
+  <span class="cet-exam" style="background:#e74c3c15;border:1px solid #e74c3c30;color:#e74c3c">CET / RPSC / REET</span>
+  <div class="cet-title">राजस्थान इतिहास — CET 2026</div>
+  <div class="cet-desc">कालीबंगा से एकीकरण तक — प्रमुख राजवंश, हल्दीघाटी, किसान आंदोलन, दुर्ग। परीक्षा-उन्मुख सम्पूर्ण नोट्स।</div>
+  <div class="cet-meta">
+    <span class="cet-tag">📑 85+ Pages</span>
+    <span class="cet-tag">📚 10 Topics</span>
+    <span class="cet-tag">🆓 Free</span>
+    <span class="cet-tag">🎯 CET 2026</span>
+  </div>
+  <div class="cet-btns">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/cet-rajasthan-history.html" class="btn-read" style="background:#e74c3c;color:#fff;box-shadow:0 4px 14px #e74c3c40">📖 अभी पढ़ें →</a>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-tgs">📢 PDF Download</a>
+  </div>
+</div><div class="cet-card" style="background:linear-gradient(135deg,#f9731612,#f9731604);border:1.5px solid #f9731635">
+  <div class="cet-card-new" style="background:#f9731620;border:1px solid #f9731640;color:#f97316">🆕 New</div>
+  <div class="cet-icon">🎨</div>
+  <span class="cet-exam" style="background:#f9731615;border:1px solid #f9731630;color:#f97316">CET / RPSC / REET</span>
+  <div class="cet-title">राजस्थान कला एवं संस्कृति — CET 2026</div>
+  <div class="cet-desc">लोकनृत्य, चित्रकला, हस्तशिल्प, मेले, लोकदेवता, UNESCO धरोहर — सम्पूर्ण विस्तृत नोट्स।</div>
+  <div class="cet-meta">
+    <span class="cet-tag">📑 72+ Pages</span>
+    <span class="cet-tag">📚 18 Topics</span>
+    <span class="cet-tag">🆓 Free</span>
+    <span class="cet-tag">🎯 CET 2026</span>
+  </div>
+  <div class="cet-btns">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/cet-rajasthan-art-culture.html" class="btn-read" style="background:#f97316;color:#fff;box-shadow:0 4px 14px #f9731640">📖 अभी पढ़ें →</a>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-tgs">📢 PDF Download</a>
+  </div>
+</div><div class="cet-card" style="background:linear-gradient(135deg,#3b82f612,#3b82f604);border:1.5px solid #3b82f635">
+  <div class="cet-card-new" style="background:#3b82f620;border:1px solid #3b82f640;color:#3b82f6">🆕 New</div>
+  <div class="cet-icon">🗺️</div>
+  <span class="cet-exam" style="background:#3b82f615;border:1px solid #3b82f630;color:#3b82f6">CET / RPSC / REET</span>
+  <div class="cet-title">राजस्थान भूगोल — CET 2026</div>
+  <div class="cet-desc">भौतिक प्रदेश, नदियाँ, झीलें, जलवायु, खनिज, सिंचाई परियोजनाएँ — Top 50 Revision Facts सहित।</div>
+  <div class="cet-meta">
+    <span class="cet-tag">📑 60+ Pages</span>
+    <span class="cet-tag">📚 14 Topics</span>
+    <span class="cet-tag">🆓 Free</span>
+    <span class="cet-tag">🎯 CET 2026</span>
+  </div>
+  <div class="cet-btns">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/cet-rajasthan-geography.html" class="btn-read" style="background:#3b82f6;color:#fff;box-shadow:0 4px 14px #3b82f640">📖 अभी पढ़ें →</a>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-tgs">📢 PDF Download</a>
+  </div>
+</div><div class="cet-card" style="background:linear-gradient(135deg,#22c55e12,#22c55e04);border:1.5px solid #22c55e35">
+  <div class="cet-card-new" style="background:#22c55e20;border:1px solid #22c55e40;color:#22c55e">🆕 New</div>
+  <div class="cet-icon">⚖️</div>
+  <span class="cet-exam" style="background:#22c55e15;border:1px solid #22c55e30;color:#22c55e">CET / RPSC / REET</span>
+  <div class="cet-title">भारतीय संविधान एवं राजनीति — CET 2026</div>
+  <div class="cet-desc">मौलिक अधिकार, नीति निर्देशक तत्व, संसद, न्यायपालिका, पंचायती राज — सम्पूर्ण नोट्स।</div>
+  <div class="cet-meta">
+    <span class="cet-tag">📑 55+ Pages</span>
+    <span class="cet-tag">📚 20 Topics</span>
+    <span class="cet-tag">🆓 Free</span>
+    <span class="cet-tag">🎯 CET 2026</span>
+  </div>
+  <div class="cet-btns">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/cet-indian-constitution.html" class="btn-read" style="background:#22c55e;color:#fff;box-shadow:0 4px 14px #22c55e40">📖 अभी पढ़ें →</a>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-tgs">📢 PDF Download</a>
+  </div>
+</div></div>
 
-  <!-- Rajasthan GK -->
-  <div class="notes-cat reveal">
-    <div class="cat-hdr">
-      <span style="font-size:2rem;">🏜️</span>
-      <div class="cat-title">Rajasthan <span class="grad">GK Notes</span></div>
-      <span class="chip chip-free" style="margin-left:auto;">FREE</span>
+  <div class="divider"></div>
+
+  <!-- RAJASTHAN GK -->
+  <div class="sec-tag">Rajasthan GK Notes</div>
+  <div class="sec-h">🏜️ <span>Rajasthan GK Notes</span></div>
+  <div class="notes-grid" id="notes-container">
+
+    <div class="note-card" data-title="राजस्थान का इतिहास">
+      <span class="note-type" style="background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.3)">📄 PDF</span>
+      <div class="note-title">राजस्थान का इतिहास — सम्पूर्ण नोट्स (RPSC / REET)</div>
+      <div class="note-meta"><span class="note-info">📑 85 Pages</span><span class="note-info">⬇️ 12.3k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
-    <div class="notes-grid">
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">राजस्थान का इतिहास — सम्पूर्ण नोट्स (RPSC / REET)</div><div class="nmeta"><span>📑 85 Pages</span><span>⬇️ 12.3k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">राजस्थान का भूगोल — मानचित्र एवं विस्तृत नोट्स</div><div class="nmeta"><span>📑 60 Pages</span><span>⬇️ 9.8k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">राजस्थान कला, संस्कृति एवं लोक संगीत — Complete</div><div class="nmeta"><span>📑 72 Pages</span><span>⬇️ 8.5k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">राजस्थान का राजनीतिक एवं प्रशासनिक ढाँचा</div><div class="nmeta"><span>📑 45 Pages</span><span>⬇️ 7.2k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-notes">📗 Notes</div><div class="ntitle">राजस्थान की नदियाँ, झीलें एवं जल परियोजनाएँ</div><div class="nmeta"><span>📑 38 Pages</span><span>⬇️ 6.4k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-quiz">📝 Quiz PDF</div><div class="ntitle">राजस्थान GK — 500 Important MCQs Bank</div><div class="nmeta"><span>📑 95 Pages</span><span>⬇️ 15.1k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
+
+    <div class="note-card" data-title="राजस्थान का भूगोल">
+      <span class="note-type" style="background:rgba(59,130,246,.12);color:#3b82f6;border:1px solid rgba(59,130,246,.3)">📄 PDF</span>
+      <div class="note-title">राजस्थान का भूगोल — मानचित्र एवं विस्तृत नोट्स</div>
+      <div class="note-meta"><span class="note-info">📑 60 Pages</span><span class="note-info">⬇️ 9.8k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+
+    <div class="note-card" data-title="राजस्थान कला संस्कृति">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📄 PDF</span>
+      <div class="note-title">राजस्थान कला, संस्कृति एवं लोक संगीत — Complete</div>
+      <div class="note-meta"><span class="note-info">📑 72 Pages</span><span class="note-info">⬇️ 8.5k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+
+    <div class="note-card" data-title="राजस्थान राजनीतिक प्रशासन">
+      <span class="note-type" style="background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)">📄 PDF</span>
+      <div class="note-title">राजस्थान का राजनीतिक एवं प्रशासनिक ढाँचा</div>
+      <div class="note-meta"><span class="note-info">📑 45 Pages</span><span class="note-info">⬇️ 7.2k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+
+    <div class="note-card" data-title="राजस्थान नदियाँ झीलें">
+      <span class="note-type" style="background:rgba(59,130,246,.12);color:#3b82f6;border:1px solid rgba(59,130,246,.3)">📗 Notes</span>
+      <div class="note-title">राजस्थान की नदियाँ, झीलें एवं जल परियोजनाएँ</div>
+      <div class="note-meta"><span class="note-info">📑 38 Pages</span><span class="note-info">⬇️ 6.4k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+
+    <div class="note-card" data-title="राजस्थान GK MCQ">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📝 Quiz PDF</span>
+      <div class="note-title">राजस्थान GK — 500 Important MCQs Bank</div>
+      <div class="note-meta"><span class="note-info">📑 95 Pages</span><span class="note-info">⬇️ 15.1k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NEP PDF FEATURED -->
+  <div class="sec-tag">NEP-2020 Special</div>
+  <div class="sec-h">📋 <span>NEP-2020 Rajasthan Analysis</span> — Direct Download</div>
+  <div style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.03));border:1.5px solid rgba(59,130,246,.4);border-radius:16px;padding:24px;margin-bottom:28px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+    <div style="font-size:40px">📋</div>
+    <div style="flex:1;min-width:200px">
+      <div style="display:inline-block;padding:3px 10px;border-radius:999px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.35);color:#3b82f6;font-size:11px;font-weight:700;margin-bottom:8px">🆕 New Upload</div>
+      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px">NEP-2020 राजस्थान में क्रियान्वयन — विश्लेषण</div>
+      <div style="font-size:13px;color:#94a3b8;margin-bottom:12px">प्रखर राजस्थान 2.0, परख राष्ट्रीय सर्वेक्षण 2024 — RPSC, REET परीक्षाओं के लिए अत्यंत महत्वपूर्ण।</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <span class="note-info">📑 2 Pages</span><span class="note-info">🎯 RPSC/REET</span><span class="note-info">🆓 Free</span>
+      </div>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/nep_rajasthan_analysis.pdf" target="_blank" class="btn-read" style="display:inline-block;padding:9px 20px;border-radius:10px;background:#3b82f6;color:#fff;font-weight:700;font-size:13px">⬇️ PDF Download करें</a>
     </div>
   </div>
 
-  <!-- Child Development REET -->
-  <div class="notes-cat reveal">
-    <div class="cat-hdr">
-      <span style="font-size:2rem;">👶</span>
-      <div class="cat-title">Child Development <span class="grad">(REET)</span></div>
-      <span class="chip chip-free" style="margin-left:auto;">FREE</span>
+  <div class="divider"></div>
+
+  <!-- REET Notes -->
+  <div class="sec-tag">REET Notes</div>
+  <div class="sec-h">👶 Child Development <span>(REET)</span></div>
+  <div class="notes-grid">
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)">📗 Notes</span>
+      <div class="note-title">बाल विकास एवं शिक्षाशास्त्र — REET Level 1 & 2 Complete</div>
+      <div class="note-meta"><span class="note-info">📑 90 Pages</span><span class="note-info">⬇️ 18.4k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
-    <div class="notes-grid">
-      <div class="card ncard"><div class="ntype t-notes">📗 Notes</div><div class="ntitle">बाल विकास एवं शिक्षाशास्त्र — REET Level 1 &amp; 2 Complete</div><div class="nmeta"><span>📑 90 Pages</span><span>⬇️ 18.4k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-notes">📗 Notes</div><div class="ntitle">Piaget, Vygotsky, Kohlberg — Learning Theories (Hindi)</div><div class="nmeta"><span>📑 38 Pages</span><span>⬇️ 11.2k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">शिक्षण विधियाँ एवं मूल्यांकन प्रक्रियाएँ — REET Special</div><div class="nmeta"><span>📑 55 Pages</span><span>⬇️ 9.7k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">समावेशी शिक्षा एवं विशेष आवश्यकता वाले बच्चे</div><div class="nmeta"><span>📑 32 Pages</span><span>⬇️ 7.1k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)">📗 Notes</span>
+      <div class="note-title">Piaget, Vygotsky, Kohlberg — Learning Theories (Hindi)</div>
+      <div class="note-meta"><span class="note-info">📑 38 Pages</span><span class="note-info">⬇️ 11.2k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)">📄 PDF</span>
+      <div class="note-title">शिक्षण विधियाँ एवं मूल्यांकन प्रक्रियाएँ — REET Special</div>
+      <div class="note-meta"><span class="note-info">📑 55 Pages</span><span class="note-info">⬇️ 9.7k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)">📄 PDF</span>
+      <div class="note-title">समावेशी शिक्षा एवं विशेष आवश्यकता वाले बच्चे</div>
+      <div class="note-meta"><span class="note-info">📑 32 Pages</span><span class="note-info">⬇️ 7.1k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
   </div>
+
+  <div class="divider"></div>
 
   <!-- Current Affairs -->
-  <div class="notes-cat reveal">
-    <div class="cat-hdr">
-      <span style="font-size:2rem;">📰</span>
-      <div class="cat-title">Current Affairs <span class="grad">Compilations</span></div>
-      <span class="chip chip-free" style="margin-left:auto;">FREE</span>
+  <div class="sec-tag">Current Affairs PDFs</div>
+  <div class="sec-h">📰 Monthly <span>Current Affairs</span></div>
+  <div class="notes-grid">
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📄 PDF 🆕</span>
+      <div class="note-title">Monthly Current Affairs — June 2026 (Latest)</div>
+      <div class="note-meta"><span class="note-info">📑 52 Pages</span><span class="note-info">⬇️ 22.4k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
-    <div class="notes-grid">
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">Monthly Current Affairs — June 2026 (Latest)</div><div class="nmeta"><span>📑 52 Pages</span><span>⬇️ 22.4k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">Monthly Current Affairs — May 2026</div><div class="nmeta"><span>📑 48 Pages</span><span>⬇️ 19.2k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">Rajasthan Current Affairs — Jan to June 2026</div><div class="nmeta"><span>📑 72 Pages</span><span>⬇️ 14.8k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-quiz">📝 Quiz</div><div class="ntitle">Current Affairs 2026 — 500 MCQs Practice Set</div><div class="nmeta"><span>📑 88 Pages</span><span>⬇️ 17.3k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📄 PDF</span>
+      <div class="note-title">Monthly Current Affairs — May 2026</div>
+      <div class="note-meta"><span class="note-info">📑 48 Pages</span><span class="note-info">⬇️ 19.2k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📄 PDF</span>
+      <div class="note-title">Rajasthan Current Affairs — Jan to June 2026</div>
+      <div class="note-meta"><span class="note-info">📑 72 Pages</span><span class="note-info">⬇️ 14.8k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.3)">📝 Quiz</span>
+      <div class="note-title">Current Affairs 2026 — 500 MCQs Practice Set</div>
+      <div class="note-meta"><span class="note-info">📑 88 Pages</span><span class="note-info">⬇️ 17.3k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
   </div>
+
+  <div class="divider"></div>
 
   <!-- Math & Reasoning -->
-  <div class="notes-cat reveal">
-    <div class="cat-hdr">
-      <span style="font-size:2rem;">🔢</span>
-      <div class="cat-title">Math &amp; Reasoning <span class="grad">Notes</span></div>
+  <div class="sec-tag">Math & Reasoning</div>
+  <div class="sec-h">🔢 Math &amp; <span>Reasoning Notes</span></div>
+  <div class="notes-grid">
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(139,92,246,.12);color:#8b5cf6;border:1px solid rgba(139,92,246,.3)">📗 Notes</span>
+      <div class="note-title">Quantitative Aptitude — Shortcuts & Tricks (Hindi)</div>
+      <div class="note-meta"><span class="note-info">📑 80 Pages</span><span class="note-info">⬇️ 13.6k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
-    <div class="notes-grid">
-      <div class="card ncard"><div class="ntype t-notes">📗 Notes</div><div class="ntitle">Quantitative Aptitude — Shortcuts &amp; Tricks (Hindi)</div><div class="nmeta"><span>📑 80 Pages</span><span>⬇️ 13.6k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-notes">📗 Notes</div><div class="ntitle">Reasoning — Verbal &amp; Non-Verbal Complete (Hindi)</div><div class="nmeta"><span>📑 65 Pages</span><span>⬇️ 11.1k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-pdf">📄 PDF</div><div class="ntitle">General Science — Physics, Chemistry, Biology (Hindi)</div><div class="nmeta"><span>📑 95 Pages</span><span>⬇️ 10.4k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
-      <div class="card ncard"><div class="ntype t-quiz">📝 Quiz</div><div class="ntitle">SSC / Railway — 500 Important Questions PDF</div><div class="nmeta"><span>📑 120 Pages</span><span>⬇️ 16.5k Downloads</span></div><div class="nfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="dl-btn">⬇️ Download</a></div></div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(139,92,246,.12);color:#8b5cf6;border:1px solid rgba(139,92,246,.3)">📗 Notes</span>
+      <div class="note-title">Reasoning — Verbal & Non-Verbal Complete (Hindi)</div>
+      <div class="note-meta"><span class="note-info">📑 65 Pages</span><span class="note-info">⬇️ 11.1k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(139,92,246,.12);color:#8b5cf6;border:1px solid rgba(139,92,246,.3)">📄 PDF</span>
+      <div class="note-title">General Science — Physics, Chemistry, Biology (Hindi)</div>
+      <div class="note-meta"><span class="note-info">📑 95 Pages</span><span class="note-info">⬇️ 10.4k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
+    </div>
+    <div class="note-card">
+      <span class="note-type" style="background:rgba(139,92,246,.12);color:#8b5cf6;border:1px solid rgba(139,92,246,.3)">📝 Quiz</span>
+      <div class="note-title">SSC / Railway — 500 Important Questions PDF</div>
+      <div class="note-meta"><span class="note-info">📑 120 Pages</span><span class="note-info">⬇️ 16.5k</span><span class="note-info">🆓 Free</span></div>
+      <a href="https://t.me/sharmasirdigitallab" class="note-btn">⬇️ Download</a>
     </div>
   </div>
 
-  <!-- JOIN BOX -->
-  <div class="join-box reveal">
-    <h3>और 500+ Notes Telegram पर उपलब्ध हैं! 📚</h3>
-    <p>Telegram channel join करें और सम्पूर्ण Notes Library access करें — बिल्कुल मुफ्त।</p>
-    <div class="jbtns">
-      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-tg" style="font-size:1rem;padding:14px 28px;">📢 Telegram Join करें</a>
-      <a href="https://wa.me/919251242367" target="_blank" class="btn-wa" style="font-size:1rem;padding:14px 28px;">💬 WhatsApp</a>
-    </div>
+  <!-- CTA -->
+  <div class="cta-box">
+    <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:6px">📚 और 500+ Notes Telegram पर उपलब्ध हैं!</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:18px">Telegram channel join करें और सम्पूर्ण Notes Library access करें — बिल्कुल मुफ्त।</div>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-main">📢 Telegram Join करें</a>
+    <a href="https://wa.me/919251242367" class="btn-sec">💬 WhatsApp</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="btn-main" style="background:#22c55e;box-shadow:0 4px 14px rgba(34,197,94,.3)">🎯 Mock Test दें</a>
   </div>
+
 </div>
 
 <footer class="footer">
-  <div class="footer-grid">
-    <div><img src="logo.jpg" alt="Logo" class="footer-logo"/><p class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway, DSSSB — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p><div class="footer-socials"><a href="https://t.me/sharmasirdigitallab" target="_blank" class="f-soc">📢</a><a href="https://wa.me/919251242367" target="_blank" class="f-soc">💬</a><a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="f-soc">🎥</a><a href="mailto:abhishekchotiya637@gmail.com" class="f-soc">📧</a></div></div>
-    <div><div class="f-col-title">Quick Links</div><ul class="f-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
-    <div><div class="f-col-title">Exams</div><ul class="f-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
-    <div><div class="f-col-title">Resources</div><ul class="f-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" style="width:40px;height:40px;border-radius:8px;object-fit:cover;margin-bottom:10px" onerror="this.style.display='none'">
+  <div style="font-weight:800;color:#f97316;font-size:15px;margin-bottom:6px">Sharma Sir's Digital Lab</div>
+  <div style="color:#475569;font-size:13px;max-width:480px;margin:0 auto 16px">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</div>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://wa.me/919251242367" class="s-link">💬 WhatsApp</a>
+    <a href="https://youtube.com/@SharmaSirsDigitalLab" class="s-link">🎥 YouTube</a>
+    <a href="mailto:abhishekchotiya637@gmail.com" class="s-link">📧 Email</a>
   </div>
-  <div class="footer-bottom"><p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</p></div>
+  <div style="color:#334155;font-size:12px;border-top:1px solid rgba(255,255,255,.05);padding-top:12px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
 </footer>
-<script src="shared.js"></script>
 <script>
-document.getElementById('nsearch').addEventListener('input',function(){
-  const q=this.value.toLowerCase();
-  document.querySelectorAll('.ncard').forEach(c=>{
-    c.style.display=(!q||c.querySelector('.ntitle').textContent.toLowerCase().includes(q))?'':'none';
+function filterNotes(val) {
+  var cards = document.querySelectorAll('.note-card[data-title]');
+  val = val.toLowerCase();
+  cards.forEach(function(c) {
+    c.style.display = c.dataset.title.toLowerCase().includes(val) || val === '' ? '' : 'none';
   });
-});
+}
 </script>
-</body></html>
+</body>
+</html>
