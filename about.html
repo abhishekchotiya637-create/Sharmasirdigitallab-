@@ -1,311 +1,263 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>About Sharma Sir | Sharma Sir's Digital Lab</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sora:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="description" content="Sharma Sir's Digital Lab — RPSC, REET, SSC, Railway के लिए Free Notes, Test Series और Current Affairs।"/>
-
-<meta name="keywords" content="RPSC Notes, REET Notes, SSC Notes, Railway Notes, Rajasthan GK, Current Affairs 2026"/>
-
-<meta name="author" content="Sharma Sir's Digital Lab"/>
+<meta name="description" content="Sharma Sir — 10+ वर्षों के शिक्षण अनुभव के साथ RPSC, REET, SSC के लिए राजस्थान के विश्वसनीय शिक्षक।">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0A1C3E;--navy2:#0E2347;--navy3:#132B55;--saffron:#E8640C;--gold:#C9A227;--gold2:#F0C040;--white:#fff;--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08);}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Sora',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1120;--surface:#111827;--surface2:#1a2438;
+  --border:rgba(255,255,255,0.08);--orange:#f97316;
+  --orange-glow:rgba(249,115,22,0.25);--green:#22c55e;
+  --red:#ef4444;--blue:#3b82f6;--text:#e2e8f0;--muted:#64748b;
+}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
 
-/* ── NAVBAR ── */
-.navbar{position:fixed;top:0;left:0;right:0;height:70px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,5%,80px);background:rgba(10,28,62,0.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background 0.3s;}
-.navbar.scrolled{background:rgba(8,22,52,0.98);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav-logo{width:44px;height:44px;object-fit:contain;border-radius:8px;}
-.nav-brand-text .l1{font-family:'Playfair Display',serif;font-size:0.96rem;font-weight:700;color:#fff;}
-.nav-brand-text .l2{font-size:0.66rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;}
-.nav-links{display:flex;align-items:center;gap:2px;}
-.nav-link{padding:7px 13px;border-radius:8px;font-size:0.81rem;font-weight:500;color:rgba(255,255,255,0.65);transition:all 0.2s;text-decoration:none;}
-.nav-link:hover{background:rgba(255,255,255,0.06);color:#fff;}
-.nav-link.active{color:var(--saffron);background:rgba(232,100,12,0.1);}
-.nav-cta{background:linear-gradient(135deg,var(--saffron),#C5540A);color:#fff;padding:8px 18px;border-radius:8px;font-size:0.81rem;font-weight:700;transition:all 0.2s;text-decoration:none;margin-left:8px;}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,100,12,0.4);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
-.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;display:block;transition:all 0.3s;}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob-nav{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,22,52,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 20px 22px;z-index:999;flex-direction:column;gap:4px;}
-.mob-nav.open{display:flex;}
-.mob-nav a{padding:12px 16px;border-radius:8px;font-size:0.95rem;font-weight:500;color:rgba(255,255,255,0.78);text-decoration:none;transition:background 0.2s;}
-.mob-nav a:hover,.mob-nav a.active{background:rgba(232,100,12,0.1);color:var(--saffron);}
-.mob-div{height:1px;background:var(--border);margin:8px 0;}
-
-/* ── PAGE HERO ── */
-.page-hero{padding:120px clamp(16px,5%,80px) 70px;text-align:center;background:radial-gradient(ellipse 80% 55% at 50% -10%,rgba(232,100,12,0.2) 0%,transparent 60%),linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);position:relative;overflow:hidden;}
-.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(232,100,12,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,100,12,0.04) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 20%,transparent 80%);}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:14px;}
-.eyebrow::before{content:'';display:block;width:22px;height:2px;background:var(--saffron);}
-.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;position:relative;z-index:1;}
-.grad{background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.page-desc{color:var(--muted);max-width:520px;margin:14px auto 0;font-size:0.95rem;font-family:'Noto Sans Devanagari',sans-serif;line-height:1.8;position:relative;z-index:1;}
-
-/* ── ABOUT GRID ── */
-.section{padding:80px clamp(16px,5%,80px);}
-.section-alt{background:var(--navy2);}
-.about-grid{display:grid;grid-template-columns:400px 1fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto;}
-
-/* Profile Card */
-.profile-card{background:rgba(14,35,71,0.9);border:1px solid var(--border);border-radius:24px;padding:36px 28px;text-align:center;position:sticky;top:88px;}
-.profile-photo-wrap{position:relative;width:180px;height:180px;margin:0 auto 22px;}
-.profile-photo{width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:top center;border:4px solid transparent;background:linear-gradient(var(--navy2),var(--navy2)) padding-box,linear-gradient(135deg,var(--saffron),var(--gold2)) border-box;box-shadow:0 0 60px rgba(232,100,12,0.3);}
-.profile-badge{position:absolute;bottom:8px;right:4px;background:linear-gradient(135deg,var(--saffron),#C5540A);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:3px solid var(--navy2);}
-.profile-name{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;margin-bottom:5px;}
-.profile-title{color:var(--saffron);font-size:0.85rem;font-weight:600;margin-bottom:6px;}
-.profile-sub{color:var(--muted);font-size:0.78rem;margin-bottom:20px;}
-.profile-divider{height:1px;background:var(--border);margin:18px 0;}
-.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
-.ps-item{background:rgba(255,255,255,0.04);border-radius:12px;padding:14px 10px;text-align:center;}
-.ps-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.ps-lbl{font-size:0.68rem;color:var(--muted);margin-top:4px;}
-.contact-links{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
-.c-link{display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:11px;color:rgba(255,255,255,0.8);font-size:0.83rem;text-decoration:none;transition:all 0.2s;}
-.c-link:hover{border-color:rgba(232,100,12,0.4);background:rgba(232,100,12,0.06);color:var(--white);}
-.c-link span{color:var(--saffron);font-weight:600;}
-
-/* About Content */
-.about-content{}
-.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin-bottom:18px;line-height:1.2;}
-.about-content p{color:rgba(255,255,255,0.75);font-size:0.94rem;line-height:1.85;margin-bottom:16px;font-family:'Noto Sans Devanagari',sans-serif;}
-.qual-list{margin-top:8px;display:flex;flex-direction:column;gap:12px;}
-.qual-item{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-left:3px solid var(--saffron);border-radius:12px;transition:all 0.25s;}
-.qual-item:hover{background:rgba(232,100,12,0.05);border-color:rgba(232,100,12,0.25);}
-.qual-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
-.qual-text strong{display:block;font-size:0.92rem;font-weight:700;margin-bottom:3px;}
-.qual-text span{font-size:0.8rem;color:var(--muted);}
-.tags-wrap{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
-.tag{padding:5px 14px;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
-.tag-s{background:rgba(232,100,12,0.15);color:var(--saffron);border:1px solid rgba(232,100,12,0.3);}
-.tag-g{background:rgba(201,162,39,0.15);color:var(--gold2);border:1px solid rgba(201,162,39,0.3);}
-.tag-b{background:rgba(96,165,250,0.12);color:#93C5FD;border:1px solid rgba(96,165,250,0.25);}
-.tag-gr{background:rgba(74,222,128,0.12);color:#86EFAC;border:1px solid rgba(74,222,128,0.25);}
-
-/* ACH GRID */
-.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;max-width:1100px;margin:0 auto;}
-.ach-card{padding:28px 20px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:18px;transition:all 0.3s;}
-.ach-card:hover{border-color:rgba(232,100,12,0.3);transform:translateY(-4px);}
-.ach-icon{font-size:2rem;margin-bottom:12px;}
-.ach-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:linear-gradient(110deg,var(--saffron),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.ach-lbl{font-size:0.76rem;color:var(--muted);margin-top:6px;}
-
-/* CTA */
-.cta-wrap{margin:0 clamp(16px,5%,80px) 80px;background:linear-gradient(135deg,rgba(232,100,12,0.14),rgba(201,162,39,0.07));border:1px solid rgba(232,100,12,0.24);border-radius:26px;padding:56px 40px;text-align:center;position:relative;overflow:hidden;}
-.cta-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(232,100,12,0.09) 0%,transparent 70%);}
-.cta-wrap h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;position:relative;z-index:1;margin-bottom:12px;}
-.cta-wrap p{color:var(--muted);position:relative;z-index:1;margin-bottom:28px;font-family:'Noto Sans Devanagari',sans-serif;}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
-.btn-brand{background:linear-gradient(135deg,var(--saffron),#C5540A);color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 4px 20px rgba(232,100,12,0.35);}
-.btn-brand:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,100,12,0.5);}
-.btn-tg{background:#0088CC;color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
-.btn-tg:hover{background:#0077BB;transform:translateY(-2px);}
-.btn-wa{background:#1BAF5D;color:#fff;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
-.btn-wa:hover{background:#18A056;transform:translateY(-2px);}
+/* NAV */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,0.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;border-radius:8px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:#64748b}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{padding:6px 11px;border-radius:8px;font-size:12.5px;font-weight:600;color:#94a3b8;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:#f97316}
+.btn-contact{background:#f97316!important;color:#fff!important;border-radius:8px;padding:6px 14px!important}
+.hamburger{display:none;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;padding:4px 8px}
 
 /* FOOTER */
-.footer{background:rgba(5,14,35,0.98);border-top:1px solid var(--border);padding:56px clamp(16px,5%,80px) 26px;}
-.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;max-width:1200px;margin:0 auto 44px;}
-.footer-logo{width:85px;object-fit:contain;margin-bottom:14px;border-radius:6px;}
-.footer-desc{color:var(--muted);font-size:0.85rem;line-height:1.8;margin-bottom:18px;font-family:'Noto Sans Devanagari',sans-serif;}
-.footer-socials{display:flex;gap:10px;}
-.f-soc{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s;text-decoration:none;}
-.f-soc:hover{background:rgba(232,100,12,0.15);border-color:var(--saffron);}
-.f-col-title{font-size:0.71rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:16px;}
-.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.f-links a{color:var(--muted);font-size:0.84rem;text-decoration:none;transition:color 0.2s;}
-.f-links a:hover{color:#fff;}
-.footer-bottom{border-top:1px solid var(--border);padding-top:22px;text-align:center;color:rgba(255,255,255,0.28);font-size:0.78rem;max-width:1200px;margin:0 auto;}
+.footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.06);padding:36px 20px 20px;text-align:center}
+.footer-logo{width:42px;height:42px;border-radius:8px;object-fit:cover;margin-bottom:10px}
+.footer-brand{font-weight:800;color:#f97316;font-size:16px;margin-bottom:6px}
+.footer-desc{color:#475569;font-size:13px;max-width:480px;margin:0 auto 18px}
+.footer-socials{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.s-link{padding:6px 16px;border-radius:999px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);color:#fb923c;font-size:13px;font-weight:600;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+.footer-copy{color:#334155;font-size:12px;border-top:1px solid rgba(255,255,255,0.05);padding-top:14px}
 
-/* SECTION HEADER */
-.section-header{text-align:center;margin-bottom:48px;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0b1120;flex-direction:column;padding:12px 16px;border-bottom:1px solid rgba(249,115,22,0.2);gap:4px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+</style>
+<style>
+.hero{text-align:center;padding:56px 20px 40px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(249,115,22,.12),transparent);border-bottom:1px solid rgba(255,255,255,.06)}
+.hero-label{color:#64748b;font-size:13px;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;color:#fff;margin-bottom:8px}
+.hero h1 span{color:#f97316}
+.hero-sub{color:#64748b;max-width:520px;margin:0 auto 32px;font-size:14px}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.65s ease,transform 0.65s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}
+/* PROFILE PHOTO */
+.profile-wrap{position:relative;display:inline-block;margin-bottom:16px}
+.profile-img{
+  width:180px;height:180px;border-radius:50%;
+  object-fit:cover;object-position:center 8%;
+  border:4px solid #f97316;
+  box-shadow:0 0 0 8px rgba(249,115,22,.12),0 12px 48px rgba(249,115,22,.35);
+  display:block;
+}
+.profile-badge{
+  position:absolute;bottom:10px;right:6px;
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#f97316,#facc15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;border:3px solid #0b1120;
+}
+.profile-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:4px}
+.profile-role{color:#f97316;font-size:14px;font-weight:600;margin-bottom:4px}
+.profile-tagline{color:#64748b;font-size:13px;margin-bottom:20px}
 
-@media(max-width:960px){.about-grid{grid-template-columns:1fr;}.profile-card{position:relative;top:0;max-width:440px;margin:0 auto;}}
-@media(max-width:768px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr;gap:28px;}.cta-wrap{padding:40px 20px;}}
+.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.soc-btn{padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid rgba(249,115,22,.3);background:rgba(249,115,22,.08);color:#fb923c;transition:all .2s}
+.soc-btn:hover{background:#f97316;color:#fff;border-color:#f97316}
+
+/* STATS ROW */
+.stats-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:28px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;max-width:600px;margin:32px auto}
+.stat-item{text-align:center}
+.stat-val{font-size:26px;font-weight:900;color:#f97316;line-height:1}
+.stat-label{font-size:12px;color:#64748b;margin-top:4px}
+
+/* MAIN SECTIONS */
+.main{max-width:900px;margin:0 auto;padding:48px 20px 60px}
+.section-tag{font-size:12px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.section-tag::before{content:'';display:block;width:24px;height:2px;background:#f97316}
+.section-h{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:#fff;margin-bottom:8px}
+.section-h span{color:#f97316}
+.section-desc{color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:6px}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .2s}
+.card:hover{border-color:rgba(249,115,22,.3);transform:translateY(-2px)}
+.card-icon{font-size:28px;margin-bottom:10px}
+.card-title{font-weight:700;color:#fff;margin-bottom:4px}
+.card-sub{font-size:13px;color:#64748b}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{padding:6px 14px;border-radius:999px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#fb923c;font-size:13px;font-weight:600}
+
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:24px}
+.ach-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.ach-icon{font-size:28px;margin-bottom:8px}
+.ach-val{font-size:24px;font-weight:900;color:#f97316}
+.ach-label{font-size:12px;color:#64748b;margin-top:4px}
+
+.cta-box{background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.15);border-radius:18px;padding:36px 24px;text-align:center;margin-top:48px}
+.cta-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
+.cta-desc{color:#64748b;font-size:14px;margin-bottom:20px}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-p{padding:10px 22px;border-radius:10px;background:#f97316;color:#fff;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.btn-s{padding:10px 22px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#e2e8f0;font-weight:700;font-size:14px;transition:all .2s}
+.btn-s:hover{border-color:#f97316;color:#f97316}
+
+.divider{height:1px;background:rgba(255,255,255,.06);margin:48px 0}
 </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <a href="index.html" class="nav-brand">
-    <img src="logo.jpg" alt="Logo" class="nav-logo"/>
-    <div class="nav-brand-text"><div class="l1">Sharma Sir's Digital Lab</div><div class="l2">RPSC · RSMSSB · SSC · Railway · REET</div></div>
-  </a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link active">About</a>
-    <a href="courses.html" class="nav-link">Courses</a>
-    <a href="notes.html" class="nav-link">Notes</a>
-    <a href="current-affairs.html" class="nav-link">Current Affairs</a>
-    <a href="test-series.html" class="nav-link">Test Series</a>
-    <a href="downloads.html" class="nav-link">Downloads</a>
-    <a href="contact.html" class="nav-cta">Contact</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div>
+        <div class="brand-name">Sharma Sir's Digital Lab</div>
+        <div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div>
+      </div>
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html">📝 Notes</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Test Series</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li>
+      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li>
+    </ul>
   </div>
-  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
 </nav>
-<div class="mob-nav" id="mobNav">
-  <a href="index.html">🏠 Home</a><a href="about.html" class="active">👤 About</a>
-  <a href="courses.html">📚 Courses</a><a href="notes.html">📝 Notes</a>
-  <a href="current-affairs.html">📰 Current Affairs</a><a href="test-series.html">🎯 Test Series</a>
-  <a href="downloads.html">⬇️ Downloads</a><div class="mob-div"></div><a href="contact.html">☎️ Contact</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">हमारे बारे में</div>
+  <h1>Meet <span>Sharma Sir</span></h1>
+  <p class="hero-sub">10+ वर्षों के शिक्षण अनुभव के साथ — राजस्थान के छात्रों का विश्वसनीय मार्गदर्शक</p>
+
+  <div class="profile-wrap">
+    <img src="data:image/jpeg;base64,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"
+         alt="Sharma Sir" class="profile-img"
+         onerror="this.src='https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/sharma-sir.jpg'">
+    <div class="profile-badge">🎓</div>
+  </div>
+  <div class="profile-name">Sharma Sir</div>
+  <div class="profile-role">Educator · Content Creator · Mentor</div>
+  <div class="profile-tagline">Rajasthan's Trusted Online Coaching</div>
+
+  <div class="socials">
+    <a href="https://t.me/sharmasirdigitallab" class="soc-btn">📢 Telegram Channel</a>
+    <a href="https://wa.me/919251242367" class="soc-btn">💬 +91 92512 42367</a>
+    <a href="https://youtube.com/@SharmaSirsDigitalLab" class="soc-btn">🎥 YouTube Channel</a>
+    <a href="mailto:abhishekchotiya637@gmail.com" class="soc-btn">📧 Email करें</a>
+  </div>
 </div>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="eyebrow" style="justify-content:center;">हमारे बारे में</div>
-  <h1 class="page-title">Meet <span class="grad">Sharma Sir</span></h1>
-  <p class="page-desc">10+ वर्षों के शिक्षण अनुभव के साथ — राजस्थान के छात्रों का विश्वसनीय मार्गदर्शक</p>
-</div>
+<!-- MAIN -->
+<div class="main">
 
-<!-- ABOUT SECTION -->
-<section class="section">
-  <div class="about-grid">
-
-    <!-- LEFT: PROFILE CARD WITH REAL PHOTO -->
-    <div class="profile-card reveal">
-      <div class="profile-photo-wrap">
-        <img 
-  src="sharma-sir.jpg" 
-  alt="Sharma Sir"
-  style="
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 15%;
-    border: 4px solid #f97316;
-    box-shadow: 0 8px 40px rgba(249,115,22,0.4);
-  "
->
-        <div class="profile-badge">🎓</div>
-      </div>
-      <div class="profile-name">Sharma Sir</div>
-      <div class="profile-title">Educator · Content Creator · Mentor</div>
-      <div class="profile-sub">Rajasthan's Trusted Online Coaching</div>
-      <div class="profile-divider"></div>
-      <div class="profile-stats">
-        <div class="ps-item"><div class="ps-num">10+</div><div class="ps-lbl">Years Exp.</div></div>
-        <div class="ps-item"><div class="ps-num">1000+</div><div class="ps-lbl">Students</div></div>
-        <div class="ps-item"><div class="ps-num">500+</div><div class="ps-lbl">Notes</div></div>
-        <div class="ps-item"><div class="ps-num">5.0★</div><div class="ps-lbl">Rating</div></div>
-      </div>
-      <div class="profile-divider"></div>
-      <div class="contact-links">
-        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="c-link">📢 <span>Telegram Channel</span></a>
-        <a href="https://wa.me/919251242367" target="_blank" class="c-link">💬 <span>+91 92512 42367</span></a>
-        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="c-link">🎥 <span>YouTube Channel</span></a>
-        <a href="mailto:abhishekchotiya637@gmail.com" class="c-link">📧 <span>Email करें</span></a>
-      </div>
-    </div>
-
-    <!-- RIGHT: CONTENT -->
-    <div class="about-content">
-      <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:16px;">परिचय</div>
-        <h2>Empowering Students with <span class="grad">Quality Education</span></h2>
-        <p>Sharma Sir एक अनुभवी शिक्षाविद और कंटेंट क्रिएटर हैं जो पिछले 10+ वर्षों से राजस्थान के प्रतियोगी परीक्षाओं के अभ्यर्थियों को मार्गदर्शन दे रहे हैं।</p>
-        <p>उनका उद्देश्य है कि राजस्थान के हर विद्यार्थी को — चाहे वह शहर में हो या गाँव में — उच्च गुणवत्ता की अध्ययन सामग्री निःशुल्क या किफायती मूल्य पर मिल सके।</p>
-        <p>RPSC, RSMSSB, REET, SSC, Railway जैसी परीक्षाओं में उनके हजारों छात्र सफल हो चुके हैं। उनका Telegram Channel और YouTube Channel लाखों विद्यार्थियों के लिए एक विश्वसनीय शिक्षा केंद्र बन चुका है।</p>
-      </div>
-
-      <div style="margin-top:36px;" class="reveal reveal-d1">
-        <div class="eyebrow" style="margin-bottom:16px;">शैक्षणिक योग्यता</div>
-        <div class="qual-list">
-          <div class="qual-item"><span class="qual-icon">🎓</span><div class="qual-text"><strong>Post Graduate — MA</strong><span>Rajasthan University, Jaipur</span></div></div>
-          <div class="qual-item"><span class="qual-icon">📜</span><div class="qual-text"><strong>B.Ed. — Bachelor of Education</strong><span>State Teacher Training Institute, Rajasthan</span></div></div>
-          <div class="qual-item"><span class="qual-icon">🏆</span><div class="qual-text"><strong>REET Certified Educator</strong><span>राजस्थान माध्यमिक शिक्षा बोर्ड, अजमेर</span></div></div>
-          <div class="qual-item"><span class="qual-icon">📚</span><div class="qual-text"><strong>Subject Expert — GK, Current Affairs, Hindi</strong><span>Rajasthan GK · Social Science · Child Development</span></div></div>
-        </div>
-      </div>
-
-      <div style="margin-top:36px;" class="reveal reveal-d2">
-        <div class="eyebrow" style="margin-bottom:16px;">विशेषज्ञता</div>
-        <div class="tags-wrap">
-          <span class="tag tag-s">RPSC Exams</span>
-          <span class="tag tag-gr">REET Level 1 &amp; 2</span>
-          <span class="tag tag-g">SSC / CET</span>
-          <span class="tag tag-b">Railway</span>
-          <span class="tag tag-s">Rajasthan GK</span>
-          <span class="tag tag-gr">Current Affairs</span>
-          <span class="tag tag-g">Child Development</span>
-          <span class="tag tag-b">Hindi</span>
-          <span class="tag tag-s">Social Science</span>
-          <span class="tag tag-gr">RSMSSB</span>
-          <span class="tag tag-g">DSSSB</span>
-        </div>
-      </div>
-    </div>
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-val">10+</div><div class="stat-label">Years Exp.</div></div>
+    <div class="stat-item"><div class="stat-val">1000+</div><div class="stat-label">Students</div></div>
+    <div class="stat-item"><div class="stat-val">500+</div><div class="stat-label">Notes</div></div>
+    <div class="stat-item"><div class="stat-val">5.0★</div><div class="stat-label">Rating</div></div>
   </div>
-</section>
 
-<!-- ACHIEVEMENTS -->
-<section class="section section-alt">
-  <div class="section-header reveal">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:12px;">उपलब्धियाँ</div>
-    <h2 class="section-title">Our <span class="grad">Achievements</span></h2>
+  <div class="divider"></div>
+
+  <!-- Intro -->
+  <div style="max-width:680px;margin:0 auto;text-align:center;margin-bottom:48px">
+    <div class="section-tag" style="justify-content:center">परिचय</div>
+    <div class="section-h">Empowering Students with <span>Quality Education</span></div>
+    <p class="section-desc">Sharma Sir एक अनुभवी शिक्षाविद और कंटेंट क्रिएटर हैं जो पिछले 10+ वर्षों से राजस्थान के प्रतियोगी परीक्षाओं के अभ्यर्थियों को मार्गदर्शन दे रहे हैं।</p>
+    <p class="section-desc">उनका उद्देश्य है कि राजस्थान के हर विद्यार्थी को — चाहे वह शहर में हो या गाँव में — उच्च गुणवत्ता की अध्ययन सामग्री निःशुल्क या किफायती मूल्य पर मिल सके।</p>
+    <p class="section-desc">RPSC, RSMSSB, REET, SSC, Railway जैसी परीक्षाओं में उनके हजारों छात्र सफल हो चुके हैं।</p>
   </div>
+
+  <!-- Qualifications -->
+  <div class="section-tag">शैक्षणिक योग्यता</div>
+  <div class="section-h">Academic <span>Qualifications</span></div>
+  <div class="grid2">
+    <div class="card"><div class="card-icon">🎓</div><div class="card-title">Post Graduate — MA</div><div class="card-sub">Rajasthan University, Jaipur</div></div>
+    <div class="card"><div class="card-icon">📜</div><div class="card-title">B.Ed. — Bachelor of Education</div><div class="card-sub">State Teacher Training Institute, Rajasthan</div></div>
+    <div class="card"><div class="card-icon">🏆</div><div class="card-title">REET Certified Educator</div><div class="card-sub">राजस्थान माध्यमिक शिक्षा बोर्ड, अजमेर</div></div>
+    <div class="card"><div class="card-icon">📚</div><div class="card-title">Subject Expert — GK, Current Affairs, Hindi</div><div class="card-sub">Rajasthan GK · Social Science · Child Development</div></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Skills -->
+  <div class="section-tag">विशेषज्ञता</div>
+  <div class="section-h">Expert <span>Subjects</span></div>
+  <div class="chips">
+    <span class="chip">RPSC Exams</span><span class="chip">REET Level 1 &amp; 2</span>
+    <span class="chip">SSC / CET</span><span class="chip">Railway</span>
+    <span class="chip">Rajasthan GK</span><span class="chip">Current Affairs</span>
+    <span class="chip">Child Development</span><span class="chip">Hindi</span>
+    <span class="chip">Social Science</span><span class="chip">RSMSSB</span><span class="chip">DSSSB</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Achievements -->
+  <div class="section-tag">उपलब्धियाँ</div>
+  <div class="section-h">Our <span>Achievements</span></div>
   <div class="ach-grid">
-    <div class="ach-card reveal"><div class="ach-icon">👨‍🎓</div><div class="ach-num">1000+</div><div class="ach-lbl">Successful Students</div></div>
-    <div class="ach-card reveal reveal-d1"><div class="ach-icon">📄</div><div class="ach-num">500+</div><div class="ach-lbl">PDF Notes Created</div></div>
-    <div class="ach-card reveal reveal-d2"><div class="ach-icon">🎯</div><div class="ach-num">100+</div><div class="ach-lbl">Mock Tests Published</div></div>
-    <div class="ach-card reveal reveal-d3"><div class="ach-icon">📅</div><div class="ach-num">365+</div><div class="ach-lbl">Days Daily CA</div></div>
-    <div class="ach-card reveal"><div class="ach-icon">🎥</div><div class="ach-num">200+</div><div class="ach-lbl">YouTube Videos</div></div>
-    <div class="ach-card reveal reveal-d1"><div class="ach-icon">⭐</div><div class="ach-num">5.0</div><div class="ach-lbl">Student Rating</div></div>
+    <div class="ach-card"><div class="ach-icon">👨‍🎓</div><div class="ach-val">1000+</div><div class="ach-label">Successful Students</div></div>
+    <div class="ach-card"><div class="ach-icon">📄</div><div class="ach-val">500+</div><div class="ach-label">PDF Notes Created</div></div>
+    <div class="ach-card"><div class="ach-icon">🎯</div><div class="ach-val">100+</div><div class="ach-label">Mock Tests Published</div></div>
+    <div class="ach-card"><div class="ach-icon">📅</div><div class="ach-val">365+</div><div class="ach-label">Days Daily CA</div></div>
+    <div class="ach-card"><div class="ach-icon">🎥</div><div class="ach-val">200+</div><div class="ach-label">YouTube Videos</div></div>
+    <div class="ach-card"><div class="ach-icon">⭐</div><div class="ach-val">5.0</div><div class="ach-label">Student Rating</div></div>
   </div>
-</section>
 
-<!-- CTA -->
-<div class="cta-wrap reveal">
-  <h2>Sharma Sir से सीधे <span class="grad">जुड़ें</span></h2>
-  <p>अपने प्रश्न, सुझाव और मार्गदर्शन के लिए संपर्क करें।</p>
-  <div class="cta-btns">
-    <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-tg">📢 Telegram</a>
-    <a href="https://wa.me/919251242367" target="_blank" class="btn-wa">💬 WhatsApp</a>
-    <a href="contact.html" class="btn-brand">☎️ Contact Page</a>
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-title">Sharma Sir से सीधे जुड़ें</div>
+    <div class="cta-desc">अपने प्रश्न, सुझाव और मार्गदर्शन के लिए संपर्क करें।</div>
+    <div class="cta-btns">
+      <a href="https://t.me/sharmasirdigitallab" class="btn-p">📢 Telegram</a>
+      <a href="https://wa.me/919251242367" class="btn-p">💬 WhatsApp</a>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-s">☎️ Contact Page</a>
+    </div>
   </div>
+
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <img src="logo.jpg" alt="Logo" class="footer-logo"/>
-      <p class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway, DSSSB तथा सभी प्रतियोगी परीक्षाओं के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p>
-      <div class="footer-socials">
-        <a href="https://t.me/sharmasirdigitallab" target="_blank" class="f-soc">📢</a>
-        <a href="https://wa.me/919251242367" target="_blank" class="f-soc">💬</a>
-        <a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="f-soc">🎥</a>
-        <a href="mailto:abhishekchotiya637@gmail.com" class="f-soc">📧</a>
-      </div>
+  <div class="footer-inner">
+    <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="footer-logo" alt="Logo" onerror="this.style.display='none'">
+    <div class="footer-brand">Sharma Sir's Digital Lab</div>
+    <div class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</div>
+    <div class="footer-socials">
+      <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+      <a href="https://wa.me/919251242367" class="s-link">💬 WhatsApp</a>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" class="s-link">🎥 YouTube</a>
+      <a href="mailto:abhishekchotiya637@gmail.com" class="s-link">📧 Email</a>
     </div>
-    <div><div class="f-col-title">Quick Links</div><ul class="f-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
-    <div><div class="f-col-title">Exams</div><ul class="f-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
-    <div><div class="f-col-title">Resources</div><ul class="f-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-copy">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
   </div>
-  <div class="footer-bottom"><p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</p></div>
 </footer>
-
 <script>
-  const nav=document.getElementById('navbar');
-  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-  const ham=document.getElementById('ham'),mob=document.getElementById('mobNav');
-  ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
-  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function toggleMenu(){
+  var nl=document.getElementById('nav-links');
+  nl.classList.toggle('open');
+}
 </script>
 </body>
 </html>
