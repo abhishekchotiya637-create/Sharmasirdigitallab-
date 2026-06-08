@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPSC 2nd Grade GK Mock Test 2026 - Sharma Sir's Digital Lab</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0d9488;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 10px;
+            color: #334155;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 15px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            margin: 8px 0 0 0;
+            font-size: 14px;
+            color: #ccfbf1;
+        }
+
+        .quiz-box {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: var(--light);
+            transition: transform 0.2s;
+        }
+
+        .quiz-box:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+        }
+
+        .question {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media (min-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 14px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #475569;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            color: var(--primary);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .correct {
+            background: #d1fae5 !important;
+            border-color: var(--success) !important;
+            color: #065f46 !important;
+            font-weight: 700;
+        }
+
+        .wrong {
+            background: #fee2e2 !important;
+            border-color: var(--danger) !important;
+            color: #991b1b !important;
+        }
+
+        .explanation {
+            margin-top: 15px;
+            padding: 14px;
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            border-radius: 0 6px 6px 0;
+            font-size: 13.5px;
+            color: #1e40af;
+            display: none;
+            line-height: 1.5;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer-banner {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            border-top: 1px dashed #cbd5e1;
+            color: #64748b;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>SHARMA SIR'S DIGITAL LAB</h1>
+        <p>RPSC 2nd Grade Senior Teacher Exam - Paper 1 (100 MCQ)</p>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div class="footer-banner">
+        <strong>Sharma Sir's Digital Lab © 2026</strong><br>नियमित अभ्यास ही आपकी सफलता का आधार है।
+    </div>
+</div>
+
+<script>
+    async function loadQuiz() {
+        const container = document.getElementById('quiz-container');
+        try {
+            // स्थानीय या गिटहब पाथ से JSON लोड करना
+            const response = await fetch('quiz-data.json');
+            if (!response.ok) throw new Error('Network issue');
+            const data = await response.json();
+
+            data.forEach((q, index) => {
+                const quizBox = document.createElement('div');
+                quizBox.className = 'quiz-box';
+
+                let optionsHTML = '';
+                q.options.forEach((opt, oIndex) => {
+                    optionsHTML += `<button class="option-btn" onclick="checkAnswer(this, ${oIndex}, ${q.correct}, 'exp-${index}')">${String.fromCharCode(65 + oIndex)}. ${opt}</button>`;
+                });
+
+                quizBox.innerHTML = `
+                    <div class="question">Q${index + 1}. ${q.question}</div>
+                    <div class="options-grid">${optionsHTML}</div>
+                    <div id="exp-${index}" class="explanation"><strong>सही उत्तर की व्याख्या:</strong> ${q.explanation}</div>
+                `;
+                container.appendChild(quizBox);
+            });
+        } catch (error) {
+            container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">त्रुटि: टेस्ट डेटा फ़ाइल 'quiz-data.json' लोड नहीं हो सकी। कृपया सुनिश्चित करें कि दोनों फाइलें एक ही फोल्डर में अपलोड हैं।</div>`;
+        }
+    }
+
+    function checkAnswer(btn, selected, correct, expId) {
+        const parent = btn.closest('.options-grid');
+        const buttons = parent.querySelectorAll('.option-btn');
+        
+        buttons.forEach(b => b.disabled = true);
+
+        if (selected === correct) {
+            btn.classList.add('correct');
+        } else {
+            btn.classList.add('wrong');
+            buttons[correct].classList.add('correct');
+        }
+
+        document.getElementById(expId).style.display = 'block';
+    }
+
+    window.onload = loadQuiz;
+</script>
+
+</body>
+</html>
