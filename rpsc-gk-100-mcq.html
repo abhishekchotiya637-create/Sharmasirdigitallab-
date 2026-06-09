@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RPSC 2nd Grade — सामान्य ज्ञान 100 MCQ | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--tx:#e2e8f0;--mu:#64748b;--ac:#e74c3c;--gr:#22c55e;--rd:#ef4444}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
+/* NAV */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px}
+.nav-logo{width:34px;height:34px;border-radius:7px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:14px;line-height:1.2}
+.brand-sub{font-size:9px;color:#64748b}
+.back-btn{padding:6px 14px;border-radius:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;font-size:12px;font-weight:600;transition:all .2s}
+.back-btn:hover{background:#f97316;color:#fff}
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+/* START PAGE */
+.start-hero{text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,#e74c3c15,transparent)}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;background:#e74c3c18;border:1px solid #e74c3c40;color:#e74c3c;font-size:12px;font-weight:700;margin-bottom:14px}
+.start-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:6px}
+.start-hero h1 span{color:#e74c3c}
+.start-hero p{color:#64748b;font-size:13px;max-width:520px;margin:0 auto 20px}
+.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.mp{padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.mp.ac{color:#e74c3c;border-color:#e74c3c40}
+.mp.gr{color:#22c55e;border-color:rgba(34,197,94,.35)}
+.mp.bl{color:#3b82f6;border-color:rgba(59,130,246,.35)}
+/* START CARD */
+.start-card{max-width:600px;margin:24px auto 0;background:var(--s);border:1px solid var(--bd);border-radius:18px;padding:28px}
+.rules-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:22px}
+.rule{display:flex;gap:10px;font-size:13px;color:#94a3b8;margin-bottom:8px}
+.rule:last-child{margin-bottom:0}
+.rule-dot{color:#e74c3c;font-weight:800;flex-shrink:0}
+.btn-start{width:100%;padding:14px;border-radius:13px;background:#e74c3c;color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px #e74c3c40}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px #e74c3c55}
+/* TIMER BAR */
+.timer-bar{max-width:800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;align-items:center}
+.timer-box{display:flex;align-items:center;gap:8px;background:var(--s);border:1px solid var(--bd);padding:8px 16px;border-radius:11px;font-weight:700;flex-shrink:0}
+.t-label{color:#64748b;font-size:12px}
+.t-val{color:#e74c3c;font-size:18px;font-family:monospace}
+.t-val.urgent{color:#ef4444;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.prog-wrap{flex:1}
+.prog-info{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:5px}
+.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#e74c3c,#facc15);border-radius:999px;transition:width .3s}
+/* NAVIGATOR */
+.main-wrap{max-width:800px;margin:0 auto;padding:18px 20px 60px}
+.nav-grid-wrap{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px}
+.nav-grid-title{font-size:12px;color:#64748b;font-weight:600;margin-bottom:10px}
+.nav-grid{display:flex;flex-wrap:wrap;gap:5px}
+.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:rgba(255,255,255,.02);font-size:10px;font-weight:700;cursor:pointer;color:#64748b;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ndot:hover{border-color:#e74c3c;color:#e74c3c}
+.ndot.answered{background:#e74c3c18;border-color:#e74c3c;color:#e74c3c}
+.ndot.current{background:#e74c3c;border-color:#e74c3c;color:#fff}
+/* QUESTION CARD */
+.q-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:16px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.q-card:hover{border-color:#e74c3c25}
+.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.q-num{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#e74c3c,#facc15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-top:3px}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid var(--bd);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;user-select:none}
+.opt:hover{background:#e74c3c08;border-color:#e74c3c40}
+.opt.sel{background:#e74c3c12;border-color:#e74c3c;color:#fff}
+.opt.correct{background:rgba(34,197,94,.1);border-color:#22c55e;color:#22c55e}
+.opt.wrong{background:rgba(239,68,68,.1);border-color:#ef4444;color:#ef4444}
+.opt.show-ok{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.35);color:#22c55e}
+.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;background:rgba(255,255,255,.03)}
+.opt.sel .ol{background:#e74c3c;border-color:#e74c3c;color:#fff}
+.opt.correct .ol{background:#22c55e;border-color:#22c55e;color:#fff}
+.opt.wrong .ol{background:#ef4444;border-color:#ef4444;color:#fff}
+/* NAV BTNS */
+.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .18s}
+.btn-prev{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#64748b}
+.btn-prev:hover{border-color:#e74c3c;color:#e74c3c}
+.btn-next{background:#e74c3c;color:#fff;box-shadow:0 4px 14px #e74c3c40}
+.btn-next:hover{transform:translateY(-1px)}
+.btn-sub{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
+.btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+/* RESULT */
+.result-hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 60% 50% at 50% 0%,#e74c3c15,transparent)}
+.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px #e74c3c35;position:relative}
+.score-inner{width:122px;height:122px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:32px;font-weight:900;color:#e74c3c;line-height:1}
+.score-den{font-size:13px;color:#64748b}
+.grade-badge{display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:16px}
+.grade-A{background:rgba(34,197,94,.12);border:2px solid #22c55e;color:#22c55e}
+.grade-B{background:#e74c3c12;border:2px solid #e74c3c;color:#e74c3c}
+.grade-C{background:rgba(239,68,68,.12);border:2px solid #ef4444;color:#ef4444}
+.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto 24px;padding:0 20px}
+.r-stat{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;text-align:center}
+.r-val{font-size:24px;font-weight:900;margin-bottom:3px}
+.r-label{font-size:11px;color:#64748b}
+.r-stat.c .r-val{color:#22c55e}
+.r-stat.w .r-val{color:#ef4444}
+.r-stat.s .r-val{color:#64748b}
+.r-stat.p .r-val{color:#e74c3c}
+/* REVIEW */
+.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}
+.rev-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:12px}
+.rev-card.ok{border-color:rgba(34,197,94,.3)}
+.rev-card.bad{border-color:rgba(239,68,68,.3)}
+.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.st-ok{background:rgba(34,197,94,.15);color:#22c55e}
+.st-bad{background:rgba(239,68,68,.15);color:#ef4444}
+.st-sk{background:rgba(255,255,255,.06);color:#64748b}
+.rev-q{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
+.rev-ans{font-size:12px;margin-top:4px}
+.rev-correct{color:#22c55e}
+.rev-wrong{color:#ef4444}
+.rev-skip{color:#64748b}
+.rev-exp{font-size:12px;color:#64748b;margin-top:6px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;line-height:1.6}
+/* FOOTER */
+.footer{background:rgba(0,0,0,.4);border-top:1px solid var(--bd);padding:28px 20px 18px;text-align:center}
+.s-link{padding:5px 13px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+/* ACTION BTNS */
+.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px 24px}
+.btn-restart{padding:11px 24px;border-radius:11px;background:#e74c3c;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;box-shadow:0 4px 16px #e74c3c40;transition:all .2s}
+.btn-restart:hover{transform:translateY(-1px)}
+.btn-rev{padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-rev:hover{border-color:#e74c3c;color:#e74c3c}
+@media(max-width:500px){
+  .q-card{padding:16px 14px}
+  .timer-bar{flex-direction:column;align-items:stretch}
+  .nav-btns{justify-content:center}
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
+    </a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="back-btn">← Test Series</a>
+  </div>
+</nav>
+
+<!-- START PAGE -->
+<div id="pg-start" class="page active">
+  <div class="start-hero">
+    <div class="badge">RPSC 2nd Grade</div>
+    <h1>RPSC 2nd Grade — <span>सामान्य ज्ञान 100 MCQ</span></h1>
+    <p>राजस्थान GK + इतिहास + कला-संस्कृति + राजव्यवस्था + शिक्षा मनोविज्ञान</p>
+    <div class="meta-pills">
+      <span class="mp ac">📝 90 प्रश्न</span>
+      <span class="mp gr">⏱️ 100 मिनट</span>
+      <span class="mp bl">🆓 Free Test</span>
+      <span class="mp ac">📊 Instant Score</span>
+    </div>
+  </div>
+  <div class="start-card">
+    <div class="rules-box">
+      <div class="rule"><span class="rule-dot">●</span><span>कुल <strong>90 प्रश्न</strong> — प्रत्येक 1 अंक।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>समय सीमा: <strong>100 मिनट</strong>।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>किसी भी प्रश्न पर जा सकते हैं — Navigator से।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation दिखेगी।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>कोई Negative Marking नहीं।</span></div>
+    </div>
+    <button class="btn-start" onclick="startTest()">🚀 Test शुरू करें</button>
+  </div>
+</div>
+
+<!-- TEST PAGE -->
+<div id="pg-test" class="page">
+  <div class="timer-bar">
+    <div class="timer-box">
+      <span class="t-label">⏱️</span>
+      <span class="t-val" id="timer">00:00</span>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-info">
+        <span id="q-label">प्रश्न 1/90</span>
+        <span id="ans-count">0 उत्तर</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="main-wrap">
+    <div class="nav-grid-wrap">
+      <div class="nav-grid-title">प्रश्न नेविगेटर</div>
+      <div class="nav-grid" id="nav-grid"></div>
+    </div>
+    <div class="q-card" id="q-card">
+      <div class="q-header">
+        <div class="q-num" id="q-num">1</div>
+        <div class="q-text" id="q-text"></div>
+      </div>
+      <div class="options" id="opts"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
+      <button class="btn btn-next" id="btn-next" onclick="nav(1)">अगला →</button>
+      <button class="btn btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT PAGE -->
+<div id="pg-result" class="page">
+  <div class="result-hero">
+    <div class="score-ring" id="score-ring">
+      <div class="score-inner">
+        <div class="score-num" id="score-num">0</div>
+        <div class="score-den">/ 90</div>
+      </div>
+    </div>
+    <div class="grade-badge" id="grade-badge">—</div>
+    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px" id="r-title">—</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:24px" id="r-sub">—</div>
+  </div>
+  <div class="r-stats">
+    <div class="r-stat c"><div class="r-val" id="r-c">0</div><div class="r-label">✅ सही</div></div>
+    <div class="r-stat w"><div class="r-val" id="r-w">0</div><div class="r-label">❌ गलत</div></div>
+    <div class="r-stat s"><div class="r-val" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
+    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 %</div></div>
+    <div class="r-stat" style="border-color:rgba(59,130,246,.3)"><div class="r-val" style="color:#3b82f6" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
+  </div>
+  <div class="act-btns">
+    <button class="btn-restart" onclick="restart()">🔄 दोबारा दें</button>
+    <button class="btn-rev" onclick="toggleRev()">📋 उत्तर देखें</button>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px">📚 और Tests</a>
+  </div>
+  <div class="review-section" id="rev-section" style="display:none">
+    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px">📝 विस्तृत उत्तर समीक्षा</div>
+    <div id="rev-cards"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="s-link">🎯 Test Series</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="s-link">📝 Notes</a>
+  </div>
+  <div style="color:#334155;font-size:11px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
+</footer>
+
+<script>
+const QS = [{"q": "'मत्स्य संघ' में शामिल जिले राजस्थान के किस भौतिक भाग में थे?", "o": ["हाड़ौती का पठार", "पूर्वी मैदानी भाग", "शेखावाटी क्षेत्र", "घग्घर का मैदान"], "a": 1, "e": "18 मार्च 1948 को मत्स्य संघ (अलवर, भरतपुर, धौलपुर, करौली) का गठन हुआ — यह भौगोलिक रूप से पूर्वी मैदानी भाग है।"}, {"q": "अरावली पर्वतमाला की दूसरी सबसे ऊँची चोटी कौन सी है?", "o": ["गुरुशिखर", "सेर", "दिलवाड़ा", "जरगा"], "a": 1, "e": "गुरुशिखर (1722 मी) सर्वोच्च है; सेर (1597 मी) दूसरी — दोनों सिरोही में।"}, {"q": "राजस्थान की किस नदी को 'मृत नदी' कहा जाता है?", "o": ["बनास", "चम्बल", "लूनी", "घग्घर"], "a": 3, "e": "घग्घर प्राचीन सरस्वती के पेटे में बहती है, वर्षा के अलावा सूखी रहती है — इसलिए 'मृत नदी'।"}, {"q": "केवलादेव राष्ट्रीय उद्यान राजस्थान के किस जिले में है?", "o": ["अलवर", "भरतपुर", "सवाई माधोपुर", "धौलपुर"], "a": 1, "e": "भरतपुर में केवलादेव घना पक्षी विहार UNESCO विश्व धरोहर है।"}, {"q": "राजस्थान में टंगस्टन का सर्वाधिक उत्पादन कहाँ होता है?", "o": ["नागौर", "भीलवाड़ा", "उदयपुर", "जयपुर"], "a": 0, "e": "नागौर जिले का डेगाना (भाकरी) टंगस्टन उत्पादन का प्रमुख केंद्र है।"}, {"q": "राजस्थान का पहला राष्ट्रीय उद्यान कौन सा है?", "o": ["केवलादेव", "रणथम्भौर", "सरिस्का", "मुकुंदरा"], "a": 1, "e": "रणथम्भौर को 1980 में राजस्थान का पहला राष्ट्रीय उद्यान घोषित किया गया।"}, {"q": "'छप्पन का मैदान' राजस्थान के किस भाग में है?", "o": ["उत्तरी", "पूर्वी", "दक्षिणी", "पश्चिमी"], "a": 2, "e": "प्रतापगढ़ और बांसवाड़ा के बीच 56 गांवों का यह मैदान दक्षिणी राजस्थान में माही बेसिन का हिस्सा है।"}, {"q": "राजस्थान में सर्वाधिक वर्षा प्राप्त करने वाला स्थान कौन सा है?", "o": ["झालावाड़", "माउंट आबू", "बांसवाड़ा", "उदयपुर"], "a": 1, "e": "विशेष स्थान के रूप में माउंट आबू (सिरोही) में सर्वाधिक वर्षा होती है; जिले के रूप में झालावाड़।"}, {"q": "'मावट' का संबंध किससे है?", "o": ["बंगाल की खाड़ी के मानसून से", "अरब सागर के मानसून से", "भूमध्यसागरीय चक्रवातों से", "दक्षिण-पश्चिमी मानसून से"], "a": 2, "e": "शीतकाल में भूमध्य सागर से उठने वाले पश्चिमी विक्षोभों से होने वाली वर्षा 'मावट' कहलाती है।"}, {"q": "चम्बल नदी राजस्थान के किस जिले से प्रवेश करती है?", "o": ["झालावाड़", "बारां", "चित्तौड़गढ़", "कोटा"], "a": 2, "e": "चम्बल राजस्थान में चित्तौड़गढ़ जिले के चौरासीगढ़ के पास से प्रवेश करती है।"}, {"q": "कालीबंगा सभ्यता की खोज किसने की थी?", "o": ["बी.बी. लाल", "बी.के. थापर", "अमलानंद घोष", "आर.सी. अग्रवाल"], "a": 2, "e": "हनुमानगढ़ में घग्घर किनारे कालीबंगा की खोज 1952 में अमलानंद घोष ने की थी।"}, {"q": "महाराणा प्रताप का राज्याभिषेक कहाँ हुआ था?", "o": ["चित्तौड़गढ़", "कुम्भलगढ़", "गोगुंदा", "चावंड"], "a": 2, "e": "1572 ई. में गोगुंदा में प्रताप का प्रथम राज्याभिषेक हुआ था।"}, {"q": "बिजौलिया किसान आंदोलन के प्रमुख नेता कौन थे?", "o": ["साधु सीताराम दास", "विजय सिंह पथिक", "माणिक्य लाल वर्मा", "जमुनालाल बजाज"], "a": 1, "e": "1916 में विजय सिंह पथिक (भूप सिंह) ने बिजौलिया आंदोलन का नेतृत्व संभाला — भारत का सबसे लंबा अहिंसात्मक किसान आंदोलन।"}, {"q": "1857 की क्रांति के समय राजस्थान में कितनी छावनियाँ थीं?", "o": ["4", "5", "6", "8"], "a": 2, "e": "6 छावनियाँ: नसीराबाद, नीमच, देवली, ब्यावर, एरिनपुरा और खैरवाड़ा।"}, {"q": "एकी (भोमट भील) आंदोलन के प्रवर्तक कौन थे?", "o": ["गोविंद गिरी", "मोतीलाल तेजावत", "भोगीलाल पंड्या", "हरिभाऊ उपाध्याय"], "a": 1, "e": "1921 में मोतीलाल तेजावत ने मातृकुंडिया (चित्तौड़गढ़) से एकी आंदोलन शुरू किया।"}, {"q": "राजस्थान के एकीकरण में जयपुर को राजधानी बनाने की सिफारिश किस समिति ने की?", "o": ["फजल अली", "सत्यनारायण राव", "शंकरराव देव", "पी.के. थंगन"], "a": 1, "e": "बी. सत्यनारायण राव समिति की सिफारिश पर 30 मार्च 1949 को जयपुर स्थायी राजधानी बनी।"}, {"q": "हल्दीघाटी का युद्ध किस वर्ष हुआ?", "o": ["1565", "1572", "1576", "1582"], "a": 2, "e": "18 जून 1576 को अकबर के सेनापति मानसिंह और महाराणा प्रताप के बीच हल्दीघाटी का युद्ध हुआ।"}, {"q": "'वागड़ के गांधी' किसे कहा जाता है?", "o": ["अर्जुन लाल सेठी", "भोगीलाल पंड्या", "गोकुल भाई भट्ट", "जयनारायण व्यास"], "a": 1, "e": "डूंगरपुर के स्वतंत्रता सेनानी भोगीलाल पंड्या को 'वागड़ का गांधी' कहते हैं।"}, {"q": "अलाउद्दीन खिलजी ने चित्तौड़गढ़ का क्या नाम रखा था?", "o": ["जलालाबाद", "खैराबाद", "खिज़राबाद", "मोमिनाबाद"], "a": 2, "e": "1303 में प्रथम साके के बाद अलाउद्दीन ने दुर्ग अपने पुत्र खिज़्र खाँ को देकर 'खिज़राबाद' नाम दिया।"}, {"q": "मानगढ़ आंदोलन (1913) के नेता कौन थे?", "o": ["मोतीलाल तेजावत", "गोविन्द गुरु", "भोगीलाल पंड्या", "विजय सिंह पथिक"], "a": 1, "e": "गोविन्द गुरु के नेतृत्व में मानगढ़ हत्याकांड हुआ — 'राजस्थान का जलियांवाला बाग'।"}, {"q": "'चरी नृत्य' किस जाति से मुख्य रूप से संबंधित है?", "o": ["भील", "गुर्जर", "कालबेलिया", "मीणा"], "a": 1, "e": "चरी नृत्य किशनगढ़ (अजमेर) क्षेत्र में गुर्जर महिलाएँ करती हैं। प्रसिद्ध नृत्यांगना फलकू बाई।"}, {"q": "'ऊंट महोत्सव' राजस्थान के किस जिले में होता है?", "o": ["जैसलमेर", "बाड़मेर", "बीकानेर", "जोधपुर"], "a": 2, "e": "बीकानेर में प्रतिवर्ष जनवरी में ऊंट महोत्सव होता है। जैसलमेर में मरु महोत्सव।"}, {"q": "लोक देवता तेजाजी का मुख्य मेला कहाँ भरता है?", "o": ["परबतसर (नागौर)", "कतरियासर (बीकानेर)", "गोगामेड़ी (हनुमानगढ़)", "पोकरण (जैसलमेर)"], "a": 0, "e": "भाद्रपद शुक्ल दशमी को परबतसर (नागौर) में वीर तेजाजी पशु मेला लगता है।"}, {"q": "'थेवा कला' के लिए राजस्थान का कौन सा जिला प्रसिद्ध है?", "o": ["बाड़मेर", "प्रतापगढ़", "जयपुर", "नाथद्वारा"], "a": 1, "e": "प्रतापगढ़ का सोनी परिवार थेवा कला के लिए विख्यात है — हरे बेल्जियम कांच पर सोने का काम।"}, {"q": "'बनी-ठनी' किस चित्र शैली से संबंधित है?", "o": ["मेवाड़", "मारवाड़", "किशनगढ़", "बूंदी"], "a": 2, "e": "किशनगढ़ शैली में चित्रकार निहालचंद द्वारा बनाई बनी-ठनी को 'भारत की मोनालिसा' कहते हैं।"}, {"q": "करणी माता मंदिर (चूहा देवी) कहाँ है?", "o": ["देशनोक (बीकानेर)", "ओसियां (जोधपुर)", "आमेर (जयपुर)", "जमवा रामगढ़"], "a": 0, "e": "बीकानेर के देशनोक में करणी माता मंदिर — सफेद चूहों को 'काबा' कहते हैं।"}, {"q": "मेहरानगढ़ दुर्ग किस पहाड़ी पर है?", "o": ["त्रिकूट पहाड़ी", "चिड़ियाटूंक पहाड़ी", "सुवर्णगिरि पहाड़ी", "ईगल की पहाड़ी"], "a": 1, "e": "जोधपुर का मेहरानगढ़ चिड़ियाटूंक पहाड़ी पर — 1459 में राव जोधा द्वारा निर्मित।"}, {"q": "'दादू पंथ' का मुख्य पीठ कहाँ है?", "o": ["शाहपुरा", "कतरियासर", "नरेना (नारायणा)", "पीपासर"], "a": 2, "e": "जयपुर के पास नरेना (नारायणा) में संत दादू दयाल की मुख्य पीठ है।"}, {"q": "'तारकीन का उर्स' कहाँ होता है?", "o": ["अजमेर", "नागौर", "झुंझुनूं", "गलियाकोट"], "a": 1, "e": "सूफी संत हमीदुद्दीन नागोरी की दरगाह — नागौर में तारकीन का उर्स।"}, {"q": "घूमर, झेला, जमेला, पीपलपत्रा — ये आभूषण शरीर के किस अंग के हैं?", "o": ["कान", "गला", "हाथ", "पैर"], "a": 0, "e": "ये सभी महिलाओं के कान के पारंपरिक आभूषण हैं।"}, {"q": "मनोविज्ञान को सर्वप्रथम 'आत्मा का विज्ञान' किसने माना?", "o": ["जे.बी. वाटसन", "चेतना", "आत्मा", "व्यवहार"], "a": 0, "e": "प्लेटो और अरस्तू ने प्राचीन काल में मनोविज्ञान को 'आत्मा का विज्ञान' माना था।"}, {"q": "'मुझे कोई भी बच्चा दो, मैं कुछ भी बना सकता हूँ' — यह कथन किसका है?", "o": ["जे.बी. वाटसन", "बी.एफ. स्किनर", "थार्नडाइक", "पियाजे"], "a": 0, "e": "व्यवहारवाद के जनक जे.बी. वाटसन — पर्यावरण को सर्वोपरि मानते थे।"}, {"q": "पियाजे की 'मूर्त संक्रियात्मक अवस्था' की आयु सीमा क्या है?", "o": ["0-2 वर्ष", "2-7 वर्ष", "7-11 वर्ष", "11 वर्ष से अधिक"], "a": 2, "e": "पियाजे की चार अवस्थाएं: संवेदी-पेशीय (0-2), पूर्व-संक्रियात्मक (2-7), मूर्त संक्रियात्मक (7-11), औपचारिक (11+)।"}, {"q": "बुद्धि का 'द्वि-कारक सिद्धांत' किसने दिया?", "o": ["अल्फ्रेड बिने", "चार्ल्स स्पीयरमैन", "थर्स्टन", "हावर्ड गार्डनर"], "a": 1, "e": "स्पीयरमैन ने G-factor (सामान्य) और S-factor (विशिष्ट) — दो कारक बताए।"}, {"q": "थार्नडाइक के 'मुख्य नियमों' में कौन सा शामिल नहीं है?", "o": ["तत्परता का नियम", "अभ्यास का नियम", "प्रभाव का नियम", "बहु-अनुक्रिया का नियम"], "a": 3, "e": "तत्परता, अभ्यास, प्रभाव — तीन मुख्य नियम हैं। बहु-अनुक्रिया गौण नियम है।"}, {"q": "क्रियाप्रसूत अनुबंधन सिद्धांत के प्रतिपादक कौन हैं?", "o": ["इवान पावलव", "बी.एफ. स्किनर", "अल्बर्ट बांडुरा", "कर्ट लेविन"], "a": 1, "e": "स्किनर ने चूहों और कबूतरों पर प्रयोग कर क्रियाप्रसूत अनुबंधन दिया — पुनर्बलन महत्वपूर्ण।"}, {"q": "व्यक्तित्व को 'अंतर्मुखी-बहिर्मुखी' में किसने बांटा?", "o": ["सिगमंड फ्रायड", "कार्ल जुंग", "कर्ट कोफ्का", "गॉर्डन ऑलपोर्ट"], "a": 1, "e": "कार्ल जुंग ने सामाजिक अंतःक्रिया के आधार पर अंतर्मुखी, बहिर्मुखी और उभयमुखी वर्गीकरण किया।"}, {"q": "सृजनात्मकता किस प्रकार के चिंतन से संबंधित है?", "o": ["अभिसारी चिंतन", "अपसारी चिंतन", "मॉडलिंग", "अनुकरण"], "a": 1, "e": "गिलफोर्ड के अनुसार अपसारी चिंतन (Divergent Thinking) सृजनात्मकता का आधार है।"}, {"q": "'अंतर्दृष्टि का सिद्धांत' किस संप्रदाय की देन है?", "o": ["व्यवहारवाद", "गेस्टाल्टवाद", "मनोविश्लेषणवाद", "निर्मितिवाद"], "a": 1, "e": "कोहलर, कोफ्का, वर्दीमर (गेस्टाल्टवादी) ने सुल्तान चिंपांजी पर प्रयोग कर यह सिद्धांत दिया।"}, {"q": "IQ का सही सूत्र क्या है?", "o": ["CA/MA × 100", "MA/CA × 100", "MA/CA + 100", "MA × CA"], "a": 1, "e": "IQ = (मानसिक आयु / वास्तविक आयु) × 100 — विलियम स्टर्न का विचार, टर्मन ने पूर्ण किया।"}, {"q": "राजस्थान के प्रथम मुख्यमंत्री कौन थे?", "o": ["हीरालाल शास्त्री", "टीकाराम पालीवाल", "जयनारायण व्यास", "मोहनलाल सुखाड़िया"], "a": 0, "e": "हीरालाल शास्त्री प्रथम मनोनीत मुख्यमंत्री थे; टीकाराम पालीवाल प्रथम निर्वाचित।"}, {"q": "RPSC का मुख्यालय कहाँ है?", "o": ["जयपुर", "अजमेर", "जोधपुर", "बीकानेर"], "a": 1, "e": "सत्यनारायण राव समिति की सिफारिश पर RPSC का मुख्यालय जयपुर से अजमेर स्थानांतरित।"}, {"q": "राजस्थान विधानसभा में कुल सीटें?", "o": ["160", "180", "200", "250"], "a": 2, "e": "राजस्थान एकसदनीय राज्य — विधानसभा में कुल 200 सीटें।"}, {"q": "राज्य की कार्यपालिका का संवैधानिक प्रमुख कौन होता है?", "o": ["मुख्यमंत्री", "राज्यपाल", "मुख्य सचिव", "विधानसभा अध्यक्ष"], "a": 1, "e": "अनुच्छेद 154 — राज्य की कार्यपालिका शक्ति राज्यपाल में निहित; वास्तविक प्रमुख मुख्यमंत्री।"}, {"q": "राजस्थान में पंचायती राज कब और कहाँ शुरू हुआ?", "o": ["2 अक्टूबर 1959, नागौर", "15 अगस्त 1947, जयपुर", "26 जनवरी 1950, जोधपुर", "2 अक्टूबर 1961, सीकर"], "a": 0, "e": "नेहरू ने 2 अक्टूबर 1959 को नागौर के बगदरी गाँव से त्रिस्तरीय पंचायती राज शुरू किया।"}, {"q": "राजस्थान के राज्यपाल की नियुक्ति कौन करता है?", "o": ["मुख्यमंत्री", "प्रधानमंत्री", "राष्ट्रपति", "उच्च न्यायालय मुख्य न्यायाधीश"], "a": 2, "e": "अनुच्छेद 155 — राज्यपाल की नियुक्ति केंद्रीय कैबिनेट की सिफारिश पर राष्ट्रपति करते हैं।"}, {"q": "राजस्थान का उच्च न्यायालय कहाँ है?", "o": ["जयपुर", "जोधपुर", "अजमेर", "उदयपुर"], "a": 1, "e": "राजस्थान उच्च न्यायालय मुख्य पीठ जोधपुर; खंडपीठ जयपुर में।"}, {"q": "विधानसभा चुनाव के लिए न्यूनतम आयु?", "o": ["18 वर्ष", "21 वर्ष", "25 वर्ष", "30 वर्ष"], "a": 2, "e": "MLA या MP का चुनाव लड़ने के लिए न्यूनतम आयु 25 वर्ष; स्थानीय निकाय के लिए 21 वर्ष।"}, {"q": "राजस्थान की प्रथम महिला मुख्यमंत्री कौन थीं?", "o": ["सुमित्रा सिंह", "कमला बेनीवाल", "वसुंधरा राजे", "कुशल सिंह"], "a": 2, "e": "2003 में वसुंधरा राजे राजस्थान की पहली महिला मुख्यमंत्री बनीं।"}, {"q": "राजस्थान के प्रथम लोकायुक्त कौन थे?", "o": ["के.पी.यू. मेनन", "आई.डी. दुआ", "एम.बी. शर्मा", "प्रताप कृष्ण लोहरा"], "a": 1, "e": "1973 में लोकायुक्त अध्यादेश; न्यायमूर्ति आई.डी. दुआ राजस्थान के प्रथम लोकायुक्त।"}, {"q": "ओजोन परत किस वायुमंडलीय परत में होती है?", "o": ["क्षोभमंडल", "समतापमंडल", "मध्यमंडल", "बाह्यमंडल"], "a": 1, "e": "समतापमंडल में 15-35 किमी ऊँचाई पर ओजोन परत — सूर्य की UV किरणें अवशोषित करती है।"}, {"q": "क्षेत्रफल की दृष्टि से भारत का विश्व में कौन सा स्थान है?", "o": ["पाँचवाँ", "छठा", "सातवाँ", "आठवाँ"], "a": 2, "e": "भारत सातवाँ सबसे बड़ा देश; इससे बड़े: रूस, कनाडा, चीन, अमेरिका, ब्राजील, ऑस्ट्रेलिया।"}, {"q": "काजीरंगा राष्ट्रीय उद्यान किसके लिए प्रसिद्ध है?", "o": ["असम - एक सींग वाले गेंडे", "गुजरात - एशियाई शेर", "उत्तराखंड - बाघ", "पश्चिम बंगाल - रॉयल टाइगर"], "a": 0, "e": "असम का काजीरंगा — एक सींग वाले गैंडों की दुनिया में सर्वाधिक आबादी।"}, {"q": "केंद्र-राज्य शक्तियों का विभाजन किस अनुसूची में है?", "o": ["पाँचवीं", "सातवीं", "आठवीं", "दसवीं"], "a": 1, "e": "सातवीं अनुसूची — संघ सूची, राज्य सूची और समवर्ती सूची।"}, {"q": "भारत में मूल अधिकार किस देश से प्रेरित हैं?", "o": ["सोवियत संघ", "ब्रिटेन", "USA", "ऑस्ट्रेलिया"], "a": 2, "e": "भारत के मूल अधिकार अमेरिका के 'बिल ऑफ राइट्स' से प्रभावित हैं।"}, {"q": "विश्व की सबसे गहरी झील कौन सी है?", "o": ["सुपीरियर झील", "बैकाल झील", "कैस्पियन सागर", "मृत सागर"], "a": 1, "e": "रूस के साइबेरिया में बैकाल झील — विश्व की सबसे पुरानी और गहरी ताजे पानी की झील।"}, {"q": "स्वेज नहर किन दो सागरों को जोड़ती है?", "o": ["लाल और भूमध्य सागर", "अरब और लाल सागर", "कैरेबियन और प्रशांत", "काला और भूमध्य सागर"], "a": 0, "e": "स्वेज नहर (मिस्र) भूमध्य सागर को लाल सागर से जोड़ती है — एशिया-यूरोप दूरी कम।"}, {"q": "नीति आयोग का पदेन अध्यक्ष कौन होता है?", "o": ["राष्ट्रपति", "वित्त मंत्री", "प्रधानमंत्री", "योजना मंत्री"], "a": 2, "e": "1 जनवरी 2015 को नीति आयोग बना — प्रधानमंत्री स्वतः इसके अध्यक्ष होते हैं।"}, {"q": "भाखड़ा नांगल परियोजना किस नदी पर है?", "o": ["झेलम", "सतलुज", "व्यास", "रावी"], "a": 1, "e": "भाखड़ा नांगल बाँध सतलुज नदी पर हिमाचल प्रदेश के भाखड़ा में बना है।"}, {"q": "'संविधान की आत्मा' किस अनुच्छेद को कहते हैं?", "o": ["अनुच्छेद 14", "अनुच्छेद 19", "अनुच्छेद 32", "अनुच्छेद 21"], "a": 2, "e": "अनुच्छेद 32 (संवैधानिक उपचारों का अधिकार) को डॉ. अम्बेडकर ने 'संविधान की आत्मा' कहा।"}, {"q": "कर्क रेखा राजस्थान के किन जिलों से गुजरती है?", "o": ["उदयपुर और प्रतापगढ़", "बांसवाड़ा और डूंगरपुर", "झालावाड़ और बारां", "सिरोही और जालौर"], "a": 1, "e": "कर्क रेखा डूंगरपुर की दक्षिणी सीमा और बांसवाड़ा के मध्य से गुजरती है।"}, {"q": "राजस्थान का क्षेत्रफल भारत के कुल क्षेत्रफल का कितना प्रतिशत है?", "o": ["9.57%", "10.41%", "11.22%", "12.50%"], "a": 1, "e": "राजस्थान 3,42,239 वर्ग किमी — भारत के कुल क्षेत्रफल का 10.41%।"}, {"q": "राजस्थान की सबसे बड़ी कृत्रिम मीठे पानी की झील?", "o": ["राजसमंद", "जयसमंद (डेबर)", "नक्की", "पिछोला"], "a": 1, "e": "जयसमंद (उदयपुर) — महाराजा जयसिंह ने 1685-91 में गोमती नदी पर बनवाई; भारत की दूसरी सबसे बड़ी।"}, {"q": "अर्धचन्द्राकार गतिशील बालुका स्तूप को क्या कहते हैं?", "o": ["अनुप्रस्थ", "बरखान", "अनुदैर्ध्य", "सीफ"], "a": 1, "e": "बरखान — अर्धचन्द्राकार, अत्यधिक गतिशील, मरुस्थलीकरण के लिए जिम्मेदार।"}, {"q": "राजस्थान में सर्वाधिक वन क्षेत्र वाला जिला?", "o": ["करौली", "उदयपुर", "बारां", "अलवर"], "a": 1, "e": "ISFR के अनुसार उदयपुर जिले में सर्वाधिक वन क्षेत्रफल और प्रतिशत दोनों।"}, {"q": "'मंगला', 'भाग्यम', 'ऐश्वर्या' किससे संबंधित हैं?", "o": ["तांबा क्षेत्र", "लिग्नाइट परियोजना", "पेट्रोलियम कुएँ", "सौर ऊर्जा पार्क"], "a": 2, "e": "बाड़मेर-सांचौर बेसिन में खोजे गए कच्चे तेल के कुएँ (Oil Fields)।"}, {"q": "जनगणना 2011 में राजस्थान का न्यूनतम जनघनत्व वाला जिला?", "o": ["बाड़मेर", "जैसलमेर", "बीकानेर", "जोधपुर"], "a": 1, "e": "जैसलमेर — मात्र 17 व्यक्ति प्रति वर्ग किमी; राज्य औसत 200।"}, {"q": "राजस्थान में 'कुबड़ पट्टी' किन जिलों में है?", "o": ["बाड़मेर और जालौर", "नागौर और अजमेर", "कोटा और बूंदी", "भरतपुर और धौलपुर"], "a": 1, "e": "नागौर-अजमेर सीमा पर भूजल में फ्लोराइड अधिक — फ्लोरोसिस से हड्डियाँ टेढ़ी — 'कुबड़ पट्टी'।"}, {"q": "चम्बल नदी पर कौन सा बाँध राजस्थान में नहीं है?", "o": ["गांधी सागर", "राणा प्रताप सागर", "जवाहर सागर", "कोटा बैराज"], "a": 0, "e": "गांधी सागर बाँध मध्य प्रदेश के मंदसौर में है; बाकी तीन राजस्थान में।"}, {"q": "इंदिरा गांधी नहर को 'मरुगंगा' क्यों कहते हैं?", "o": ["गंगा नदी से जुड़ी है", "मरुस्थल में जीवन लाती है", "गंगा जैसी पवित्र है", "गंगा का पानी लाती है"], "a": 1, "e": "पश्चिमी मरुस्थलीय जिलों में पेयजल व सिंचाई लाने के कारण IGNP को 'मरुगंगा' कहते हैं।"}, {"q": "राजस्थान के प्रथम राज्यपाल कौन थे?", "o": ["मानसिंह द्वितीय", "गुरुमुख निहाल सिंह", "संपूर्णानंद", "दरबारा सिंह"], "a": 1, "e": "1 नवम्बर 1956 को श्री गुरुमुख निहाल सिंह राजस्थान के प्रथम राज्यपाल बने।"}, {"q": "राजस्थान के प्रथम निर्वाचित मुख्यमंत्री?", "o": ["हीरालाल शास्त्री", "टीकाराम पालीवाल", "जयनारायण व्यास", "मोहनलाल सुखाड़िया"], "a": 1, "e": "1952 के पहले आम चुनावों के बाद टीकाराम पालीवाल प्रथम निर्वाचित मुख्यमंत्री बने।"}, {"q": "'आधुनिक राजस्थान का निर्माता' किसे कहते हैं?", "o": ["भैरोंसिंह शेखावत", "मोहनलाल सुखाड़िया", "हरिदेव जोशी", "अशोक गहलोत"], "a": 1, "e": "मोहनलाल सुखाड़िया ने 1954-71 में ~17 वर्ष शासन किया — 'आधुनिक राजस्थान का निर्माता'।"}, {"q": "राज्यपाल को शपथ कौन दिलाता है?", "o": ["राष्ट्रपति", "भारत का मुख्य न्यायाधीश", "उच्च न्यायालय का मुख्य न्यायाधीश", "निवर्तमान राज्यपाल"], "a": 2, "e": "अनुच्छेद 159 — राज्य के उच्च न्यायालय का मुख्य न्यायाधीश राज्यपाल को शपथ दिलाता है।"}, {"q": "राजस्थान में विधानसभा सीटें 200 कब हुईं?", "o": ["प्रथम विधानसभा (1952)", "चतुर्थ विधानसभा", "छठी विधानसभा (1977)", "पाँचवीं विधानसभा"], "a": 2, "e": "1977 में 'छठी विधानसभा' में परिसीमन के बाद सीटें 200 हुईं।"}, {"q": "73वें संशोधन द्वारा संविधान में कौन सी अनुसूची जोड़ी गई?", "o": ["9वीं", "10वीं", "11वीं", "12वीं"], "a": 2, "e": "73वें संशोधन — 11वीं अनुसूची (29 विषय, पंचायत); 74वें — 12वीं अनुसूची (18 विषय, नगरपालिका)।"}, {"q": "RPSC के अध्यक्ष और सदस्यों की नियुक्ति कौन करता है?", "o": ["राष्ट्रपति", "राज्यपाल", "मुख्यमंत्री", "उच्च न्यायालय"], "a": 1, "e": "अनुच्छेद 316 — RPSC अध्यक्ष व सदस्यों की नियुक्ति राज्यपाल; हटाने का अधिकार राष्ट्रपति को।"}, {"q": "राजस्थान में राष्ट्रपति शासन कितनी बार लगा?", "o": ["दो बार", "तीन बार", "चार बार", "पाँच बार"], "a": 2, "e": "1967, 1977, 1980 और 1992 — चार बार राजस्थान में राष्ट्रपति शासन।"}, {"q": "राज्यपाल को अध्यादेश जारी करने की शक्ति किस अनुच्छेद से मिलती है?", "o": ["अनुच्छेद 123", "अनुच्छेद 213", "अनुच्छेद 226", "अनुच्छेद 167"], "a": 1, "e": "अनुच्छेद 213 — विधानमंडल सत्र न हो तो राज्यपाल अध्यादेश जारी कर सकता है।"}, {"q": "राजस्थान से लोकसभा और राज्यसभा में कितनी सीटें हैं?", "o": ["25 और 10", "200 और 25", "10 और 25", "30 और 15"], "a": 0, "e": "राजस्थान — लोकसभा में 25 सीटें और राज्यसभा में 10 सीटें।"}, {"q": "किशोरावस्था को 'तनाव और तूफान का काल' किसने कहा?", "o": ["ई.ए. किलपैट्रिक", "जी. स्टैनले हॉल", "क्रो एंड क्रो", "एलिजाबेथ हरलॉक"], "a": 1, "e": "जी. स्टैनले हॉल ने 'Adolescence' (1904) में किशोरावस्था को Sturm und Drang (तनाव व तूफान) कहा।"}, {"q": "'प्रयास एवं त्रुटि का सिद्धांत' (बिल्ली पर प्रयोग) किसने दिया?", "o": ["इवान पावलव", "बी.एफ. स्किनर", "ई.एल. थार्नडाइक", "कर्ट लेविन"], "a": 2, "e": "थार्नडाइक ने भूखी बिल्ली और मछली पर प्रयोग कर S-R Bond (उद्दीपक-अनुक्रिया) सिद्धांत दिया।"}, {"q": "पावलव के प्रयोग में भोजन किस प्रकार का उद्दीपक है?", "o": ["अनुबंधित (CS)", "अननुबंधित (UCS)", "कृत्रिम", "तटस्थ"], "a": 1, "e": "भोजन = अननुबंधित उद्दीपक (UCS); घंटी = अनुबंधित उद्दीपक (CS); लार = UCR।"}, {"q": "'सामाजिक अधिगम सिद्धांत' में किस पर बल दिया गया?", "o": ["अंतर्दृष्टि", "प्रेक्षण और मॉडलिंग", "पुरस्कार-दंड", "उद्दीपन सामान्यीकरण"], "a": 1, "e": "अल्बर्ट बांडुरा — बोबो डॉल प्रयोग से सिद्ध किया कि बच्चे मॉडल देखकर सीखते हैं।"}, {"q": "हावर्ड गार्डनर की 'अंतःवैयक्तिक बुद्धि' किससे संबंधित है?", "o": ["दूसरों को समझना", "स्वयं को समझना", "संगीत", "तार्किक"], "a": 1, "e": "Intrapersonal Intelligence = स्वयं की भावनाओं/क्षमताओं को समझना। Interpersonal = दूसरों को समझना।"}, {"q": "फ्रायड के सिद्धांत में 'इदम् (Id)' किस पर काम करता है?", "o": ["वास्तविकता", "नैतिकता", "आनंद के सिद्धांत", "समाज के नियम"], "a": 2, "e": "Id = आनंद सिद्धांत (Pleasure Principle), पूर्णतः अचेतन। Ego = वास्तविकता सिद्धांत।"}, {"q": "'डिस्लेक्सिया' किस प्रकार की अधिगम अक्षमता है?", "o": ["डिस्ग्राफिया — लेखन", "डिस्लेक्सिया — पठन", "डिस्कैलकुलिया — गणित", "डिस्टीमिया — संवेग"], "a": 1, "e": "डिस्लेक्सिया = पठन विकार (saw को was पढ़ना); डिस्ग्राफिया = लेखन; डिस्कैलकुलिया = गणित।"}, {"q": "मैस्लो के आवश्यकता पदानुक्रम की सर्वोच्च आवश्यकता?", "o": ["शारीरिक", "सुरक्षा", "आत्म-सिद्धि", "सम्मान"], "a": 2, "e": "मैस्लो का 5-स्तरीय पिरामिड — सबसे शीर्ष: Self-Actualization (आत्म-सिद्धि)।"}, {"q": "NCF-2005 का मुख्य मार्गदर्शी सिद्धांत?", "o": ["विषय-केंद्रित शिक्षण", "बिना बोझ के सीखना", "रटने की पद्धति", "कड़ा अनुशासन"], "a": 1, "e": "यशपाल समिति रिपोर्ट 'Learning Without Burden' पर आधारित NCF-2005 — रटन मुक्ति।"}, {"q": "RTE-2009 में कक्षा 1-5 के लिए शिक्षक-छात्र अनुपात?", "o": ["30:1", "35:1", "40:1", "45:1"], "a": 0, "e": "RTE-2009 — प्राथमिक स्तर (Class 1-5): 30:1; उच्च प्राथमिक (Class 6-8): 35:1।"}];
+const TOTAL = QS.length;
+const TIME_LIMIT = 100 * 60;
+const LBL = ['A','B','C','D'];
+let ans = new Array(TOTAL).fill(-1);
+let cur = 0, tLeft = TIME_LIMIT, tInterval = null, startTime = null, revVisible = false;
+
+function startTest() {
+  document.getElementById('pg-start').classList.remove('active');
+  document.getElementById('pg-test').classList.add('active');
+  buildGrid(); renderQ(0); startTimer(); startTime = Date.now();
+}
+function startTimer() {
+  tInterval = setInterval(() => {
+    tLeft--;
+    const m = String(Math.floor(tLeft/60)).padStart(2,'0');
+    const s = String(tLeft%60).padStart(2,'0');
+    const el = document.getElementById('timer');
+    el.textContent = m+':'+s;
+    el.className = 't-val' + (tLeft <= 300 ? ' urgent' : '');
+    if (tLeft <= 0) { clearInterval(tInterval); submitTest(true); }
+  }, 1000);
+}
+function buildGrid() {
+  const g = document.getElementById('nav-grid'); g.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'ndot'; d.textContent = i+1; d.id = 'nd'+i;
+    d.onclick = () => renderQ(i); g.appendChild(d);
+  }
+  updateUI();
+}
+function updateUI() {
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.getElementById('nd'+i);
+    d.className = 'ndot' + (i===cur?' current':ans[i]!==-1?' answered':'');
+  }
+  const done = ans.filter(a=>a!==-1).length;
+  document.getElementById('ans-count').textContent = done+' उत्तर';
+  document.getElementById('prog').style.width = (done/TOTAL*100)+'%';
+  document.getElementById('q-label').textContent = 'प्रश्न '+(cur+1)+'/'+TOTAL;
+}
+function renderQ(i) {
+  cur = i;
+  const q = QS[i];
+  document.getElementById('q-num').textContent = i+1;
+  document.getElementById('q-text').textContent = q.q;
+  const c = document.getElementById('opts'); c.innerHTML = '';
+  q.o.forEach((opt,j) => {
+    const d = document.createElement('div');
+    d.className = 'opt' + (ans[i]===j?' sel':'');
+    d.innerHTML = '<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';
+    d.onclick = () => { ans[i]=j; renderQ(i); };
+    c.appendChild(d);
+  });
+  const card = document.getElementById('q-card');
+  card.style.animation='none'; card.offsetHeight; card.style.animation='fadeIn .3s ease';
+  document.getElementById('btn-prev').disabled = i===0;
+  const last = i===TOTAL-1;
+  document.getElementById('btn-next').style.display = last?'none':'';
+  document.getElementById('btn-sub').style.display = last?'':'none';
+  updateUI();
+}
+function nav(d) { const n=cur+d; if(n>=0&&n<TOTAL) renderQ(n); }
+function confirmSub() {
+  const skip = ans.filter(a=>a===-1).length;
+  if (skip>0 && !confirm(skip+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?')) return;
+  submitTest(false);
+}
+function submitTest(timeUp) {
+  clearInterval(tInterval);
+  const taken = Math.round((Date.now()-startTime)/1000);
+  let correct=0,wrong=0,skip=0;
+  ans.forEach((a,i)=>{ if(a===-1) skip++; else if(a===QS[i].a) correct++; else wrong++; });
+  const pct = Math.round(correct/TOTAL*100);
+  document.getElementById('pg-test').classList.remove('active');
+  document.getElementById('pg-result').classList.add('active');
+  document.getElementById('score-num').textContent = correct;
+  document.getElementById('r-c').textContent = correct;
+  document.getElementById('r-w').textContent = wrong;
+  document.getElementById('r-s').textContent = skip;
+  document.getElementById('r-p').textContent = pct+'%';
+  const mm=Math.floor(taken/60), ss=taken%60;
+  document.getElementById('r-t').textContent = mm+'म '+ss+'स';
+  const ring = document.getElementById('score-ring');
+  ring.style.background = 'conic-gradient(var(--ac) 0% '+pct+'%, rgba(255,255,255,.06) 0%)';
+  let grade,gcls,title,sub;
+  if(pct>=80){ grade='🏆 Excellent — A Grade'; gcls='grade-A'; title='शानदार प्रदर्शन!'; sub='आप RPSC 2nd Grade के लिए बेहतरीन तैयारी कर रहे हैं!'; }
+  else if(pct>=60){ grade='👍 Good — B Grade'; gcls='grade-B'; title='अच्छा प्रदर्शन!'; sub='थोड़ी और मेहनत से आप बहुत आगे जाएंगे।'; }
+  else{ grade='📚 Keep Practicing — C Grade'; gcls='grade-C'; title='और अभ्यास करें!'; sub='Sharma Sir के Notes पढ़ें और दोबारा Test दें।'; }
+  document.getElementById('grade-badge').textContent = grade;
+  document.getElementById('grade-badge').className = 'grade-badge '+gcls;
+  document.getElementById('r-title').textContent = (timeUp?'⏰ समय समाप्त! ':'')+title;
+  document.getElementById('r-sub').textContent = sub;
+  buildReview();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function buildReview() {
+  const c = document.getElementById('rev-cards'); c.innerHTML = '';
+  QS.forEach((q,i) => {
+    const ua=ans[i], ok=ua===q.a, sk=ua===-1;
+    const div = document.createElement('div');
+    div.className = 'rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);
+    let st = sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';
+    let ahtml = sk?'<div class="rev-ans rev-skip">आपने छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ आपका उत्तर: '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ आपका: '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';
+    const expHtml = q.e ? '<div class="rev-exp">💡 '+q.e+'</div>' : '';
+    div.innerHTML = st+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ahtml+expHtml;
+    c.appendChild(div);
+  });
+}
+function toggleRev() {
+  revVisible = !revVisible;
+  const rs = document.getElementById('rev-section');
+  rs.style.display = revVisible?'block':'none';
+  if(revVisible) rs.scrollIntoView({behavior:'smooth'});
+}
+function restart() {
+  ans = new Array(TOTAL).fill(-1); cur=0; tLeft=TIME_LIMIT; revVisible=false;
+  document.getElementById('rev-section').style.display='none';
+  document.getElementById('pg-result').classList.remove('active');
+  document.getElementById('pg-test').classList.add('active');
+  buildGrid(); renderQ(0); startTimer(); startTime=Date.now();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
