@@ -4,191 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Test Series | Sharma Sir's Digital Lab</title>
-<meta name="description" content="RPSC, SSC, REET, Railway Free Mock Tests — 300+ MCQs with Auto Scoring">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg:#FAFAF8; --bg2:#F3F2EF; --bg3:#ECEAE5;
+  --surface:#FFFFFF; --border:#E2DDD5; --border2:#D0CAC0;
+  --navy:#1A1F36; --navy2:#2D3561;
+  --saffron:#E8610A; --saffron2:#FF7A2B; --saffron-light:#FFF0E8;
+  --green:#0A7D4B; --green-light:#E6F5EE;
+  --blue:#1A5FA8; --blue-light:#E8F0FB;
+  --purple:#6C3FC1; --purple-light:#F0EAFB;
+  --red:#C0392B; --red-light:#FDECEA;
+  --gold:#C17D11; --gold-light:#FEF3E2;
+  --text:#1A1F36; --text2:#4A5070; --text3:#8890A8;
+  --shadow:0 2px 16px rgba(26,31,54,0.08);
+  --shadow-lg:0 8px 40px rgba(26,31,54,0.12);
+  --radius:14px; --radius-lg:20px;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--or:#f97316;--tx:#e2e8f0;--mu:#64748b}
-body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
 a{text-decoration:none;color:inherit}
-.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
-.brand{display:flex;align-items:center;gap:10px}
-.nav-logo{width:38px;height:38px;border-radius:8px;object-fit:cover}
-.brand-name{font-weight:800;color:#f97316;font-size:15px;line-height:1.2}
-.brand-sub{font-size:10px;color:#64748b}
-.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
-.nav-links a{padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;color:#94a3b8;transition:all .2s}
-.nav-links a:hover,.nav-links a.active{color:#f97316}
-.btn-contact{background:#f97316!important;color:#fff!important;border-radius:8px!important;padding:6px 12px!important}
-.hamburger{display:none;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer}
-
-/* HERO */
-.hero{text-align:center;padding:52px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(249,115,22,.12),transparent);border-bottom:1px solid rgba(255,255,255,.06)}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
-.hero h1{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:8px}
-.hero h1 span{color:#f97316}
-.hero p{color:#64748b;font-size:14px;max-width:540px;margin:0 auto 20px}
-.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.pill{padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
-.pill.o{border-color:rgba(249,115,22,.4);color:#f97316}
-.pill.g{border-color:rgba(34,197,94,.4);color:#22c55e}
-.pill.b{border-color:rgba(59,130,246,.4);color:#3b82f6}
-.pill.p{border-color:rgba(139,92,246,.4);color:#8b5cf6}
-
-/* MAIN */
-.main{max-width:1100px;margin:0 auto;padding:36px 20px 60px}
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:36px}
-.stat-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;text-align:center;transition:border-color .2s}
-.stat-card:hover{border-color:rgba(249,115,22,.3)}
-.stat-val{font-size:26px;font-weight:900;color:#f97316}
-.stat-label{font-size:12px;color:#64748b;margin-top:3px}
-
-/* SECTION HEADER */
-.sec-wrap{margin-bottom:40px}
-.sec-tag{font-size:11px;color:#f97316;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.sec-tag::before{content:'';display:block;width:20px;height:2px;background:#f97316}
-.sec-h{font-size:clamp(1.1rem,3vw,1.6rem);font-weight:900;color:#fff;margin-bottom:6px}
-.sec-h span{color:#f97316}
-.sec-desc{color:#64748b;font-size:13px;margin-bottom:20px}
-
-/* TEST GRID */
-.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.test-card{background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:22px;transition:transform .2s,border-color .2s}
-.test-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:10px;border:1px solid transparent}
-.test-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.4}
-.test-desc{font-size:13px;color:#64748b;margin-bottom:12px;line-height:1.6}
-.test-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.test-info{font-size:11px;color:#64748b;background:rgba(255,255,255,.04);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.06)}
-.btn-test{display:inline-block;padding:9px 20px;border-radius:10px;color:#fff;font-weight:700;font-size:13px;transition:all .2s}
-.btn-test:hover{transform:translateY(-1px);opacity:.9}
-
-/* DIVIDER */
-.divider{height:1px;background:rgba(255,255,255,.06);margin:40px 0}
-
-/* NEP PDF BAR */
-.nep-bar{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.03));border:1.5px solid rgba(59,130,246,.4);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.nep-body{flex:1;min-width:180px}
-.nep-title{font-size:14px;font-weight:800;color:#fff;margin-bottom:3px}
-.nep-sub{font-size:12px;color:#64748b;margin-bottom:10px}
-
-/* COMING SOON */
-.soon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:32px}
-.soon-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:20px;opacity:.55}
-.soon-badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:8px}
-.soon-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
-.soon-label{font-size:12px;color:#f97316;font-weight:700}
-
-/* CTA */
-.cta-box{background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:16px;padding:32px 24px;text-align:center;margin-top:8px}
-.btn-main{display:inline-block;padding:11px 24px;border-radius:11px;background:#f97316;color:#fff;font-weight:700;font-size:14px;margin:4px;transition:all .2s;box-shadow:0 4px 14px rgba(249,115,22,.35)}
-.btn-main:hover{transform:translateY(-1px)}
-.btn-sec{display:inline-block;padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px;margin:4px;transition:all .2s}
-.btn-sec:hover{border-color:#f97316;color:#f97316}
-
-/* FOOTER */
-.footer{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:32px 20px 18px;text-align:center}
-.s-link{padding:6px 14px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:13px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
-.s-link:hover{background:#f97316;color:#fff}
-
+img{max-width:100%}
+.navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(26,31,54,0.07)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(232,97,10,0.2)}
+.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:var(--text3)}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center}
+.nav-links a{padding:7px 12px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--text2);transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--saffron);background:var(--saffron-light)}
+.btn-contact{background:var(--saffron)!important;color:#fff!important;border-radius:9px!important;padding:7px 16px!important;box-shadow:0 3px 12px rgba(232,97,10,0.3)!important}
+.btn-contact:hover{background:var(--saffron2)!important;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;padding:4px 8px}
+.hero-dark{background:linear-gradient(135deg,#1A1F36 0%,#2D3561 60%,#1A1F36 100%);position:relative;overflow:hidden;padding:72px 24px 56px;text-align:center}
+.hero-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
+.hero-eyebrow{display:inline-block;padding:6px 18px;border-radius:999px;background:rgba(232,97,10,0.15);border:1px solid rgba(232,97,10,0.35);color:#FF7A2B;font-size:13px;font-weight:700;margin-bottom:18px;position:relative;z-index:1}
+.hero-h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;color:#fff;margin-bottom:10px;position:relative;z-index:1;line-height:1.1}
+.hero-h1 span{color:var(--saffron2)}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:15px;max-width:560px;margin:0 auto 28px;position:relative;z-index:1}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;position:relative;z-index:1}
+.pill{padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.85)}
+.pill.or{background:rgba(232,97,10,0.2);border-color:rgba(232,97,10,0.4);color:#FF7A2B}
+.pill.gr{background:rgba(10,125,75,0.2);border-color:rgba(10,125,75,0.4);color:#2ECC71}
+.pill.bl{background:rgba(26,95,168,0.2);border-color:rgba(26,95,168,0.4);color:#5DADE2}
+.section{padding:64px 24px}
+.section-inner{max-width:1160px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:700;color:var(--saffron);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.section-eyebrow::before{content:'';width:20px;height:2px;background:var(--saffron);display:block;border-radius:2px}
+.section-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--navy);margin-bottom:10px}
+.section-title span{color:var(--saffron)}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:32px;max-width:560px}
+.divider{height:1px;background:var(--border);margin:0}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent}
+.badge-or{background:var(--saffron-light);color:var(--saffron);border-color:rgba(232,97,10,0.25)}
+.badge-gr{background:var(--green-light);color:var(--green);border-color:rgba(10,125,75,0.25)}
+.badge-bl{background:var(--blue-light);color:var(--blue);border-color:rgba(26,95,168,0.25)}
+.badge-pu{background:var(--purple-light);color:var(--purple);border-color:rgba(108,63,193,0.25)}
+.badge-rd{background:var(--red-light);color:var(--red);border-color:rgba(192,57,43,0.25)}
+.btn-primary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--saffron);color:#fff;font-weight:700;font-size:14px;transition:all .2s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,97,10,0.35)}
+.btn-primary:hover{background:var(--saffron2);transform:translateY(-1px)}
+.btn-secondary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--surface);color:var(--text);font-weight:700;font-size:14px;transition:all .2s;border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--saffron);color:var(--saffron)}
+.btn-ghost-dark{display:inline-block;padding:11px 24px;border-radius:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-weight:700;font-size:14px;transition:all .2s}
+.btn-ghost-dark:hover{background:rgba(255,255,255,0.18)}
+.cta-dark{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius-lg);padding:40px 32px;text-align:center;position:relative;overflow:hidden;margin-top:48px}
+.cta-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,97,10,0.2),transparent)}
+.cta-dark-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;position:relative}
+.cta-dark-sub{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:22px;position:relative}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+.footer{background:var(--navy);color:rgba(255,255,255,0.85);padding:52px 24px 28px}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.footer-brand-logo{width:44px;height:44px;border-radius:10px;object-fit:cover;margin-bottom:12px}
+.footer-brand-name{font-weight:800;color:var(--saffron2);font-size:16px;margin-bottom:6px}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:16px}
+.footer-socials{display:flex;gap:8px;flex-wrap:wrap}
+.footer-soc{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;transition:all .2s}
+.footer-soc:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--saffron2);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:9px;transition:color .2s}
+.footer-link:hover{color:var(--saffron2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}}
 @media(max-width:700px){
-  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0b1120;flex-direction:column;padding:12px 16px;border-bottom:1px solid rgba(249,115,22,.2);gap:4px;align-items:flex-start}
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;flex-direction:column;padding:12px 20px;border-bottom:1px solid var(--border);gap:2px;align-items:flex-start;box-shadow:0 8px 24px rgba(26,31,54,0.1)}
   .nav-links.open{display:flex}
   .hamburger{display:block}
-  .nep-bar{flex-direction:column}
+  .footer-top{grid-template-columns:1fr;gap:24px}
+  .section{padding:44px 20px}
 }
+
+.test-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:all .2s;position:relative}
+.test-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.test-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4}
+.test-desc{font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.6}
+.test-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.test-info{font-size:11px;color:var(--text3);background:var(--bg2);padding:3px 9px;border-radius:6px;border:1px solid var(--border)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:40px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center;transition:all .2s}
+.stat-card:hover{border-color:var(--saffron);box-shadow:var(--shadow)}
+.stat-val{font-size:26px;font-weight:900;color:var(--saffron)}
+.stat-label{font-size:12px;color:var(--text3);margin-top:3px}
+.sec-label{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px}
+.soon-card{background:var(--bg2);border:1px dashed var(--border2);border-radius:var(--radius);padding:20px;opacity:0.65}
+.soon-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
 </style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
-      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
-      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
-    </a>
-    <button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
-    <ul class="nav-links" id="nl">
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html">📝 Notes</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="active">🎯 Test Series</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li>
-      <li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">🎯 Free Mock Tests</div>
-  <h1>RPSC · SSC · REET <span>Test Series</span></h1>
-  <p>300+ MCQs — Auto Scoring, Timer, Answer Key और Explanation — बिल्कुल Free!</p>
-  <div class="pills">
-    <span class="pill o">🎯 10 Live Tests</span>
-    <span class="pill g">📝 300+ MCQs</span>
-    <span class="pill b">🆓 100% Free</span>
-    <span class="pill p">📊 Instant Result</span>
+</head><body><nav class="navbar"><div class="nav-inner"><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand"><img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'"><div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div></a><button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button><ul class="nav-links" id="nl"><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html">📚 Courses</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html">📝 Notes</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="active">🎯 Test Series</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li></ul></div></nav>
+<div class="hero-dark" style="padding:52px 24px 40px">
+  <div class="hero-eyebrow">🎯 Free Mock Tests</div>
+  <h1 class="hero-h1" style="font-size:clamp(1.6rem,4vw,2.8rem)">RPSC · SSC <span>Test Series</span></h1>
+  <p class="hero-sub">300+ MCQs — Auto Scoring, Timer, Answer Key, Explanation — बिल्कुल Free!</p>
+  <div class="hero-pills">
+    <span class="pill or">🎯 10 Live Tests</span>
+    <span class="pill gr">📝 300+ MCQs</span>
+    <span class="pill bl">🆓 Free Forever</span>
+    <span class="pill">📊 Instant Result</span>
   </div>
 </div>
 
-<div class="main">
-
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">10</div><div class="stat-label">🎯 Live Tests</div></div>
-    <div class="stat-card"><div class="stat-val">300+</div><div class="stat-label">📝 Total MCQs</div></div>
-    <div class="stat-card"><div class="stat-val">6</div><div class="stat-label">📚 Subjects</div></div>
-    <div class="stat-card"><div class="stat-val">RPSC</div><div class="stat-label">🏛️ + SSC Tests</div></div>
-    <div class="stat-card"><div class="stat-val">🆓</div><div class="stat-label">💰 Free Forever</div></div>
-  </div>
-
-  <!-- NEP PDF -->
-  <div class="nep-bar">
-    <div style="font-size:32px">📋</div>
-    <div class="nep-body">
-      <div class="nep-title">NEP-2020 राजस्थान में क्रियान्वयन — PDF Download करें</div>
-      <div class="nep-sub">प्रखर राजस्थान 2.0, परख सर्वेक्षण 2024 — RPSC/REET के लिए अत्यंत महत्वपूर्ण</div>
-      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/nep_rajasthan_analysis.pdf" target="_blank" style="display:inline-block;padding:7px 16px;border-radius:9px;background:#3b82f6;color:#fff;font-weight:700;font-size:12px">⬇️ PDF Download</a>
+<div class="section">
+  <div class="section-inner">
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-val">10</div><div class="stat-label">🎯 Live Tests</div></div>
+      <div class="stat-card"><div class="stat-val">300+</div><div class="stat-label">📝 Total MCQs</div></div>
+      <div class="stat-card"><div class="stat-val">6</div><div class="stat-label">📚 Subjects</div></div>
+      <div class="stat-card"><div class="stat-val">RPSC+SSC</div><div class="stat-label">🏛️ Both Exams</div></div>
+      <div class="stat-card"><div class="stat-val">🆓</div><div class="stat-label">💰 Free Forever</div></div>
     </div>
-  </div>
 
-  <div class="divider"></div>
+    <!-- NEP Bar -->
+    <div style="background:linear-gradient(135deg,#EBF4FF,#F0F7FF);border:1.5px solid #BFDBFE;border-radius:var(--radius);padding:18px 22px;margin-bottom:36px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:32px">📋</span>
+      <div style="flex:1;min-width:180px">
+        <div style="font-weight:700;color:var(--navy);font-size:14px">NEP-2020 राजस्थान — PDF Download करें</div>
+        <div style="font-size:12px;color:var(--text2)">RPSC/REET के लिए अत्यंत महत्वपूर्ण</div>
+      </div>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/nep_rajasthan_analysis.pdf" target="_blank" class="btn-primary" style="font-size:12px;padding:8px 18px;background:#1A5FA8;flex-shrink:0">⬇️ PDF Download</a>
+    </div>
 
-  <!-- RPSC SECTION -->
-  <div class="sec-wrap">
-    <div class="sec-tag">RPSC / REET / CET</div>
-    <div class="sec-h">🏛️ RPSC 2nd Grade <span>Mock Tests</span></div>
-    <div class="sec-desc">राजस्थान GK, इतिहास, भूगोल, राजव्यवस्था, शिक्षा मनोविज्ञान — सम्पूर्ण अभ्यास।</div>
-    <div class="test-grid"><div class="test-card" style="border-color:#e74c3c30" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#e74c3c60'" onmouseout="this.style.transform='';this.style.borderColor='#e74c3c30'">
-  <span class="test-badge" style="background:#e74c3c15;color:#e74c3c;border-color:#e74c3c30">RPSC 2nd Grade</span>
+    <div class="divider" style="margin:0 0 36px"></div>
+
+    <!-- RPSC -->
+    <div style="margin-bottom:40px">
+      <div class="section-eyebrow">RPSC / REET / CET Tests</div>
+      <div class="section-title">🏛️ RPSC 2nd Grade <span>Mock Tests</span></div>
+      <div class="section-sub">राजस्थान GK, इतिहास, भूगोल, राजव्यवस्था, शिक्षा मनोविज्ञान — सम्पूर्ण अभ्यास।</div>
+      <div class="test-grid"><div class="test-card" style="border-top:3px solid #C0392B">
+  <span class="badge" style="background:#C0392B12;color:#C0392B;border-color:#C0392B25;margin-bottom:10px;display:inline-block">RPSC</span>
   <div class="test-title">RPSC 2nd Grade — सामान्य GK 90 MCQ</div>
-  <div class="test-desc">राजस्थान GK + इतिहास + कला-संस्कृति + शिक्षा मनोविज्ञान + राजव्यवस्था + भारत भूगोल</div>
+  <div class="test-desc">राजस्थान GK + इतिहास + कला-संस्कृति + शिक्षा मनोविज्ञान + राजव्यवस्था</div>
   <div class="test-meta">
     <span class="test-info">📝 90 Qs</span>
     <span class="test-info">⏱️ 90 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-gk-100-mcq.html" class="btn-test" style="background:#e74c3c;box-shadow:0 4px 14px #e74c3c40">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-gk-100-mcq.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#C0392B;box-shadow:0 4px 14px #C0392B35">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#3b82f630" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#3b82f660'" onmouseout="this.style.transform='';this.style.borderColor='#3b82f630'">
-  <span class="test-badge" style="background:#3b82f615;color:#3b82f6;border-color:#3b82f630">Rajasthan Geography</span>
-  <div class="test-title">राजस्थान भूगोल — 30 MCQ</div>
-  <div class="test-desc">कर्क रेखा, नदियाँ, झीलें, खनिज, सिंचाई — Advanced अभ्यास सेट</div>
+<div class="test-card" style="border-top:3px solid #1A5FA8">
+  <span class="badge" style="background:#1A5FA812;color:#1A5FA8;border-color:#1A5FA825;margin-bottom:10px;display:inline-block">Geography</span>
+  <div class="test-title">राजस्थान भूगोल — 30 MCQ Advanced</div>
+  <div class="test-desc">कर्क रेखा, नदियाँ, झीलें, खनिज, सिंचाई, जनगणना — विस्तृत अभ्यास</div>
   <div class="test-meta">
     <span class="test-info">📝 30 Qs</span>
     <span class="test-info">⏱️ 30 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-rajasthan-geo-30.html" class="btn-test" style="background:#3b82f6;box-shadow:0 4px 14px #3b82f640">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-rajasthan-geo-30.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#1A5FA8;box-shadow:0 4px 14px #1A5FA835">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#22c55e30" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#22c55e60'" onmouseout="this.style.transform='';this.style.borderColor='#22c55e30'">
-  <span class="test-badge" style="background:#22c55e15;color:#22c55e;border-color:#22c55e30">Rajasthan Polity</span>
-  <div class="test-title">राजस्थान राजव्यवस्था — 30 MCQ</div>
+<div class="test-card" style="border-top:3px solid #0A7D4B">
+  <span class="badge" style="background:#0A7D4B12;color:#0A7D4B;border-color:#0A7D4B25;margin-bottom:10px;display:inline-block">Polity</span>
+  <div class="test-title">राजस्थान राजव्यवस्था — 30 MCQ Advanced</div>
   <div class="test-desc">राज्यपाल, CM, RPSC, विधानसभा, लोकायुक्त, निर्वाचन आयोग</div>
   <div class="test-meta">
     <span class="test-info">📝 30 Qs</span>
@@ -196,151 +188,134 @@ a{text-decoration:none;color:inherit}
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-rajasthan-polity-30.html" class="btn-test" style="background:#22c55e;box-shadow:0 4px 14px #22c55e40">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-rajasthan-polity-30.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#0A7D4B;box-shadow:0 4px 14px #0A7D4B35">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#8b5cf630" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#8b5cf660'" onmouseout="this.style.transform='';this.style.borderColor='#8b5cf630'">
-  <span class="test-badge" style="background:#8b5cf615;color:#8b5cf6;border-color:#8b5cf630">Edu. Psychology</span>
-  <div class="test-title">शिक्षा मनोविज्ञान — 30 MCQ</div>
-  <div class="test-desc">अधिगम, बुद्धि, व्यक्तित्व, NCF-2005, RTE-2009 — RPSC/REET</div>
+<div class="test-card" style="border-top:3px solid #6C3FC1">
+  <span class="badge" style="background:#6C3FC112;color:#6C3FC1;border-color:#6C3FC125;margin-bottom:10px;display:inline-block">Edu. Psych</span>
+  <div class="test-title">शिक्षा मनोविज्ञान — 30 MCQ Advanced</div>
+  <div class="test-desc">अधिगम, बुद्धि, व्यक्तित्व, NCF-2005, RTE-2009</div>
   <div class="test-meta">
     <span class="test-info">📝 30 Qs</span>
     <span class="test-info">⏱️ 30 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-edu-psychology-30.html" class="btn-test" style="background:#8b5cf6;box-shadow:0 4px 14px #8b5cf640">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-edu-psychology-30.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#6C3FC1;box-shadow:0 4px 14px #6C3FC135">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#f9731630" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#f9731660'" onmouseout="this.style.transform='';this.style.borderColor='#f9731630'">
-  <span class="test-badge" style="background:#f9731615;color:#f97316;border-color:#f9731630">Indian Geography</span>
+<div class="test-card" style="border-top:3px solid #C17D11">
+  <span class="badge" style="background:#C17D1112;color:#C17D11;border-color:#C17D1125;margin-bottom:10px;display:inline-block">India Geo</span>
   <div class="test-title">भारत का भूगोल — 20 MCQ</div>
-  <div class="test-desc">हिमालय, नदियाँ, मिट्टी, जलवायु — RPSC/SSC/CET सभी के लिए</div>
+  <div class="test-desc">हिमालय, नदियाँ, मिट्टी, जलवायु — RPSC/SSC/CET</div>
   <div class="test-meta">
     <span class="test-info">📝 20 Qs</span>
     <span class="test-info">⏱️ 20 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-india-geo-20.html" class="btn-test" style="background:#f97316;box-shadow:0 4px 14px #f9731640">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rpsc-india-geo-20.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#C17D11;box-shadow:0 4px 14px #C17D1135">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#e74c3c30" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#e74c3c60'" onmouseout="this.style.transform='';this.style.borderColor='#e74c3c30'">
-  <span class="test-badge" style="background:#e74c3c15;color:#e74c3c;border-color:#e74c3c30">Rajasthan GK</span>
+<div class="test-card" style="border-top:3px solid #E8610A">
+  <span class="badge" style="background:#E8610A12;color:#E8610A;border-color:#E8610A25;margin-bottom:10px;display:inline-block">Rajasthan GK</span>
   <div class="test-title">राजस्थान GK Mock Test — 50 MCQ</div>
-  <div class="test-desc">RPSC Paper-I | इतिहास, भूगोल, कला-संस्कृति — Auto Score + Key</div>
+  <div class="test-desc">RPSC Paper-I | इतिहास, भूगोल, कला-संस्कृति — Live Test</div>
   <div class="test-meta">
     <span class="test-info">📝 50 Qs</span>
     <span class="test-info">⏱️ 50 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rajasthan-gk-test.html" class="btn-test" style="background:#e74c3c;box-shadow:0 4px 14px #e74c3c40">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/rajasthan-gk-test.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#E8610A;box-shadow:0 4px 14px #E8610A35">🚀 Test दें →</a>
 </div></div>
-  </div>
+    </div>
 
-  <div class="divider"></div>
+    <div class="divider" style="margin:0 0 36px"></div>
 
-  <!-- SSC SECTION -->
-  <div class="sec-wrap">
-    <div class="sec-tag">SSC CGL / CHSL / MTS</div>
-    <div class="sec-h">🏢 SSC <span>Mock Tests</span></div>
-    <div class="sec-desc">Maths, Reasoning, General Awareness, English — SSC CGL/CHSL/MTS स्तर के सम्पूर्ण Tests।</div>
-    <div class="test-grid"><div class="test-card" style="border-color:#e74c3c30" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#e74c3c60'" onmouseout="this.style.transform='';this.style.borderColor='#e74c3c30'">
-  <span class="test-badge" style="background:#e74c3c15;color:#e74c3c;border-color:#e74c3c30">SSC Maths</span>
+    <!-- SSC -->
+    <div style="margin-bottom:40px">
+      <div class="section-eyebrow">SSC CGL / CHSL / MTS Tests</div>
+      <div class="section-title">🏢 SSC <span>Mock Tests</span></div>
+      <div class="section-sub">Maths, Reasoning, GA, English — SSC CGL/CHSL/MTS स्तर के सम्पूर्ण Tests।</div>
+      <div class="test-grid"><div class="test-card" style="border-top:3px solid #C0392B">
+  <span class="badge" style="background:#C0392B12;color:#C0392B;border-color:#C0392B25;margin-bottom:10px;display:inline-block">SSC Maths</span>
   <div class="test-title">SSC Maths — 40 MCQ</div>
-  <div class="test-desc">Profit-Loss, CI/SI, Mensuration, Trigonometry, Speed — CGL/CHSL स्तर</div>
+  <div class="test-desc">Profit-Loss, CI/SI, Mensuration, Trigonometry — CGL/CHSL</div>
   <div class="test-meta">
     <span class="test-info">📝 40 Qs</span>
     <span class="test-info">⏱️ 50 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-maths-40.html" class="btn-test" style="background:#e74c3c;box-shadow:0 4px 14px #e74c3c40">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-maths-40.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#C0392B;box-shadow:0 4px 14px #C0392B35">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#f9731630" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#f9731660'" onmouseout="this.style.transform='';this.style.borderColor='#f9731630'">
-  <span class="test-badge" style="background:#f9731615;color:#f97316;border-color:#f9731630">SSC Reasoning</span>
+<div class="test-card" style="border-top:3px solid #E8610A">
+  <span class="badge" style="background:#E8610A12;color:#E8610A;border-color:#E8610A25;margin-bottom:10px;display:inline-block">SSC Reasoning</span>
   <div class="test-title">SSC Reasoning — 40 MCQ</div>
-  <div class="test-desc">Analogy, Series, Blood Relation, Direction, Syllogism, Clock — सम्पूर्ण</div>
+  <div class="test-desc">Analogy, Series, Blood Relation, Direction, Syllogism, Clock</div>
   <div class="test-meta">
     <span class="test-info">📝 40 Qs</span>
     <span class="test-info">⏱️ 40 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-reasoning-40.html" class="btn-test" style="background:#f97316;box-shadow:0 4px 14px #f9731640">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-reasoning-40.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#E8610A;box-shadow:0 4px 14px #E8610A35">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#22c55e30" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#22c55e60'" onmouseout="this.style.transform='';this.style.borderColor='#22c55e30'">
-  <span class="test-badge" style="background:#22c55e15;color:#22c55e;border-color:#22c55e30">SSC GA</span>
+<div class="test-card" style="border-top:3px solid #0A7D4B">
+  <span class="badge" style="background:#0A7D4B12;color:#0A7D4B;border-color:#0A7D4B25;margin-bottom:10px;display:inline-block">SSC GA</span>
   <div class="test-title">SSC General Awareness — 30 MCQ</div>
-  <div class="test-desc">इतिहास, भूगोल, संविधान, विज्ञान, अर्थशास्त्र, Static GK</div>
+  <div class="test-desc">History, Geography, Constitution, Science, Economy</div>
   <div class="test-meta">
     <span class="test-info">📝 30 Qs</span>
     <span class="test-info">⏱️ 30 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-general-awareness-30.html" class="btn-test" style="background:#22c55e;box-shadow:0 4px 14px #22c55e40">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-general-awareness-30.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#0A7D4B;box-shadow:0 4px 14px #0A7D4B35">🚀 Test दें →</a>
 </div>
-<div class="test-card" style="border-color:#3b82f630" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#3b82f660'" onmouseout="this.style.transform='';this.style.borderColor='#3b82f630'">
-  <span class="test-badge" style="background:#3b82f615;color:#3b82f6;border-color:#3b82f630">SSC English</span>
+<div class="test-card" style="border-top:3px solid #1A5FA8">
+  <span class="badge" style="background:#1A5FA812;color:#1A5FA8;border-color:#1A5FA825;margin-bottom:10px;display:inline-block">SSC English</span>
   <div class="test-title">SSC English — 25 MCQ</div>
-  <div class="test-desc">Error, Fill in Blank, Synonym, Antonym, Idiom, Voice, Narration — CGL/CHSL</div>
+  <div class="test-desc">Error, Synonym, Antonym, Idiom, Voice, Narration</div>
   <div class="test-meta">
     <span class="test-info">📝 25 Qs</span>
     <span class="test-info">⏱️ 25 Min</span>
     <span class="test-info">🆓 Free</span>
     <span class="test-info">📊 Auto Score</span>
   </div>
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-english-25.html" class="btn-test" style="background:#3b82f6;box-shadow:0 4px 14px #3b82f640">🚀 Test दें →</a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/ssc-english-25.html" class="btn-primary" style="font-size:13px;padding:9px 20px;background:#1A5FA8;box-shadow:0 4px 14px #1A5FA835">🚀 Test दें →</a>
 </div></div>
-  </div>
+    </div>
 
-  <div class="divider"></div>
+    <div class="divider" style="margin:0 0 36px"></div>
 
-  <!-- COMING SOON -->
-  <div class="sec-tag">जल्द आ रहे हैं</div>
-  <div class="sec-h">🔜 <span>Coming Soon</span></div>
-  <div class="soon-grid">
-    <div class="soon-card">
-      <span class="soon-badge" style="background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25)">RPSC 1st Grade</span>
-      <div class="soon-title">RPSC 1st Grade GK — 75 MCQ</div>
-      <div class="soon-label">🔜 जल्द आ रहा है</div>
+    <!-- Coming Soon -->
+    <div class="section-eyebrow">जल्द आ रहे हैं</div>
+    <div class="section-title">🔜 <span>Coming Soon</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:40px">
+      <div class="soon-card"><span class="badge badge-rd" style="margin-bottom:8px;display:inline-block">RPSC 1st Grade</span><div class="soon-title">RPSC 1st Grade GK — 75 MCQ</div><div style="font-size:12px;color:var(--saffron);font-weight:700">🔜 जल्द आ रहा है</div></div>
+      <div class="soon-card"><span class="badge badge-gr" style="margin-bottom:8px;display:inline-block">REET Level 1</span><div class="soon-title">REET बाल विकास — 30 MCQ</div><div style="font-size:12px;color:var(--saffron);font-weight:700">🔜 जल्द आ रहा है</div></div>
+      <div class="soon-card"><span class="badge badge-bl" style="margin-bottom:8px;display:inline-block">SSC Full Mock</span><div class="soon-title">SSC CGL Full Mock — 100 MCQ</div><div style="font-size:12px;color:var(--saffron);font-weight:700">🔜 जल्द आ रहा है</div></div>
+      <div class="soon-card"><span class="badge badge-pu" style="margin-bottom:8px;display:inline-block">Railway</span><div class="soon-title">Railway Group D — 50 MCQ</div><div style="font-size:12px;color:var(--saffron);font-weight:700">🔜 जल्द आ रहा है</div></div>
     </div>
-    <div class="soon-card">
-      <span class="soon-badge" style="background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.25)">REET Level 1</span>
-      <div class="soon-title">REET बाल विकास — 30 MCQ</div>
-      <div class="soon-label">🔜 जल्द आ रहा है</div>
-    </div>
-    <div class="soon-card">
-      <span class="soon-badge" style="background:rgba(59,130,246,.1);color:#3b82f6;border:1px solid rgba(59,130,246,.25)">SSC Full Mock</span>
-      <div class="soon-title">SSC CGL Full Mock Test — 100 MCQ</div>
-      <div class="soon-label">🔜 जल्द आ रहा है</div>
-    </div>
-    <div class="soon-card">
-      <span class="soon-badge" style="background:rgba(249,115,22,.1);color:#f97316;border:1px solid rgba(249,115,22,.25)">Railway</span>
-      <div class="soon-title">Railway Group D / NTPC — 50 MCQ</div>
-      <div class="soon-label">🔜 जल्द आ रहा है</div>
+
+    <div class="cta-dark">
+      <div class="cta-dark-title">📢 Telegram पर 100+ और Tests!</div>
+      <div class="cta-dark-sub">Join करें और रोज नए Tests, Current Affairs, Notes पाएं।</div>
+      <div class="cta-btns">
+        <a href="https://t.me/sharmasirdigitallab" class="btn-primary">📢 Telegram Join करें</a>
+        <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="btn-ghost-dark">📝 Notes</a>
+        <a href="https://wa.me/919251242367" class="btn-ghost-dark">💬 WhatsApp</a>
+      </div>
     </div>
   </div>
-
-  <!-- CTA -->
-  <div class="cta-box">
-    <div style="font-size:17px;font-weight:800;color:#fff;margin-bottom:6px">📢 Telegram पर 100+ और Tests!</div>
-    <div style="color:#64748b;font-size:13px;margin-bottom:18px">Join करें और रोज नए Tests, Current Affairs, Notes पाएं।</div>
-    <a href="https://t.me/sharmasirdigitallab" class="btn-main">📢 Telegram Join करें</a>
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="btn-sec">📝 Notes देखें</a>
-    <a href="https://wa.me/919251242367" class="btn-sec">💬 WhatsApp</a>
-  </div>
-
 </div>
-
-<footer class="footer">
-  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
-    <a href="https://wa.me/919251242367" class="s-link">💬 WhatsApp</a>
-    <a href="https://youtube.com/@SharmaSirsDigitalLab" class="s-link">🎥 YouTube</a>
-    <a href="mailto:abhishekchotiya637@gmail.com" class="s-link">📧 Email</a>
-  </div>
-  <div style="color:#334155;font-size:12px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
-</footer>
-<script>function toggleMenu(){document.getElementById('nl').classList.toggle('open')}</script>
-</body>
-</html>
+<footer class="footer"><div class="footer-inner">
+<div class="footer-top">
+<div><img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="footer-brand-logo" onerror="this.style.display='none'"><div class="footer-brand-name">Sharma Sir's Digital Lab</div><div class="footer-tagline">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</div><div class="footer-socials"><a href="https://t.me/sharmasirdigitallab" class="footer-soc">📢 Telegram</a><a href="https://wa.me/919251242367" class="footer-soc">💬 WhatsApp</a><a href="https://youtube.com/@SharmaSirsDigitalLab" class="footer-soc">🎥 YouTube</a><a href="mailto:abhishekchotiya637@gmail.com" class="footer-soc">📧 Email</a></div></div>
+<div><div class="footer-col-title">Exams</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">RPSC 1st &amp; 2nd Grade</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">REET Level 1 &amp; 2</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">SSC / CET / RSMSSB</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">Railway Group D</a></div>
+<div><div class="footer-col-title">Study Material</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="footer-link">📝 Notes &amp; PDFs</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html" class="footer-link">📰 Current Affairs</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="footer-link">🎯 Test Series</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html" class="footer-link">⬇️ Free Downloads</a></div>
+<div><div class="footer-col-title">Quick Links</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html" class="footer-link">👤 About Sharma Sir</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="footer-link">☎️ Contact Us</a><a href="https://t.me/sharmasirdigitallab" class="footer-link">📢 Join Telegram</a><a href="https://wa.me/919251242367" class="footer-link">💬 WhatsApp</a></div>
+</div>
+<div class="footer-bottom"><div class="footer-copy">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div><div class="footer-copy">RPSC · REET · SSC · Railway · RSMSSB</div></div>
+</div></footer>
+<script>function tm(){document.getElementById('nl').classList.toggle('open')}</script>
+</body></html>
