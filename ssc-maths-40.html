@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SSC Maths — 40 MCQ | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--tx:#e2e8f0;--mu:#64748b;--ac:#e74c3c;--gr:#22c55e;--rd:#ef4444}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px}
+.nav-logo{width:34px;height:34px;border-radius:7px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:14px;line-height:1.2}
+.brand-sub{font-size:9px;color:#64748b}
+.back-btn{padding:6px 14px;border-radius:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;font-size:12px;font-weight:600;transition:all .2s}
+.back-btn:hover{background:#f97316;color:#fff}
+.page{display:none}.page.active{display:block}
+.start-hero{text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,#e74c3c15,transparent)}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;background:#e74c3c18;border:1px solid #e74c3c40;color:#e74c3c;font-size:12px;font-weight:700;margin-bottom:14px}
+.start-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:6px}
+.start-hero h1 span{color:#e74c3c}
+.start-hero p{color:#64748b;font-size:13px;max-width:520px;margin:0 auto 20px}
+.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.mp{padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.mp.ac{color:#e74c3c;border-color:#e74c3c40}.mp.gr{color:#22c55e;border-color:rgba(34,197,94,.35)}.mp.bl{color:#3b82f6;border-color:rgba(59,130,246,.35)}
+.start-card{max-width:600px;margin:24px auto 0;background:var(--s);border:1px solid var(--bd);border-radius:18px;padding:28px}
+.rules-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:22px}
+.rule{display:flex;gap:10px;font-size:13px;color:#94a3b8;margin-bottom:8px}.rule:last-child{margin-bottom:0}
+.rule-dot{color:#e74c3c;font-weight:800;flex-shrink:0}
+.btn-start{width:100%;padding:14px;border-radius:13px;background:#e74c3c;color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px #e74c3c40}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px #e74c3c55}
+.timer-bar{max-width:800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;align-items:center}
+.timer-box{display:flex;align-items:center;gap:8px;background:var(--s);border:1px solid var(--bd);padding:8px 16px;border-radius:11px;font-weight:700;flex-shrink:0}
+.t-label{color:#64748b;font-size:12px}.t-val{color:#e74c3c;font-size:18px;font-family:monospace}
+.t-val.urgent{color:#ef4444;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.prog-wrap{flex:1}.prog-info{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:5px}
+.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#e74c3c,#facc15);border-radius:999px;transition:width .3s}
+.main-wrap{max-width:800px;margin:0 auto;padding:18px 20px 60px}
+.nav-grid-wrap{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px}
+.nav-grid-title{font-size:12px;color:#64748b;font-weight:600;margin-bottom:10px}
+.nav-grid{display:flex;flex-wrap:wrap;gap:5px}
+.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:rgba(255,255,255,.02);font-size:10px;font-weight:700;cursor:pointer;color:#64748b;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ndot:hover{border-color:#e74c3c;color:#e74c3c}.ndot.answered{background:#e74c3c18;border-color:#e74c3c;color:#e74c3c}.ndot.current{background:#e74c3c;border-color:#e74c3c;color:#fff}
+.q-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:16px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.q-num{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#e74c3c,#facc15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-top:3px}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid var(--bd);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;user-select:none}
+.opt:hover{background:#e74c3c08;border-color:#e74c3c40}.opt.sel{background:#e74c3c12;border-color:#e74c3c;color:#fff}
+.opt.correct{background:rgba(34,197,94,.1);border-color:#22c55e;color:#22c55e}
+.opt.wrong{background:rgba(239,68,68,.1);border-color:#ef4444;color:#ef4444}
+.opt.show-ok{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.35);color:#22c55e}
+.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;background:rgba(255,255,255,.03)}
+.opt.sel .ol{background:#e74c3c;border-color:#e74c3c;color:#fff}
+.opt.correct .ol{background:#22c55e;border-color:#22c55e;color:#fff}
+.opt.wrong .ol{background:#ef4444;border-color:#ef4444;color:#fff}
+.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .18s}
+.btn-prev{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#64748b}
+.btn-prev:hover{border-color:#e74c3c;color:#e74c3c}
+.btn-next{background:#e74c3c;color:#fff;box-shadow:0 4px 14px #e74c3c40}.btn-next:hover{transform:translateY(-1px)}
+.btn-sub{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
+.btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+.result-hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 60% 50% at 50% 0%,#e74c3c15,transparent)}
+.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px #e74c3c35}
+.score-inner{width:122px;height:122px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:32px;font-weight:900;color:#e74c3c;line-height:1}.score-den{font-size:13px;color:#64748b}
+.grade-badge{display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:16px}
+.grade-A{background:rgba(34,197,94,.12);border:2px solid #22c55e;color:#22c55e}
+.grade-B{background:#e74c3c12;border:2px solid #e74c3c;color:#e74c3c}
+.grade-C{background:rgba(239,68,68,.12);border:2px solid #ef4444;color:#ef4444}
+.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto 24px;padding:0 20px}
+.r-stat{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;text-align:center}
+.r-val{font-size:24px;font-weight:900;margin-bottom:3px}.r-label{font-size:11px;color:#64748b}
+.r-stat.c .r-val{color:#22c55e}.r-stat.w .r-val{color:#ef4444}.r-stat.s .r-val{color:#64748b}.r-stat.p .r-val{color:#e74c3c}
+.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}
+.rev-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:12px}
+.rev-card.ok{border-color:rgba(34,197,94,.3)}.rev-card.bad{border-color:rgba(239,68,68,.3)}
+.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.st-ok{background:rgba(34,197,94,.15);color:#22c55e}.st-bad{background:rgba(239,68,68,.15);color:#ef4444}.st-sk{background:rgba(255,255,255,.06);color:#64748b}
+.rev-q{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
+.rev-ans{font-size:12px;margin-top:4px}.rev-correct{color:#22c55e}.rev-wrong{color:#ef4444}.rev-skip{color:#64748b}
+.rev-exp{font-size:12px;color:#64748b;margin-top:6px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;line-height:1.6}
+.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px 24px}
+.btn-restart{padding:11px 24px;border-radius:11px;background:#e74c3c;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;box-shadow:0 4px 16px #e74c3c40;transition:all .2s}
+.btn-restart:hover{transform:translateY(-1px)}
+.btn-rev{padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-rev:hover{border-color:#e74c3c;color:#e74c3c}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid var(--bd);padding:28px 20px 18px;text-align:center}
+.s-link{padding:5px 13px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+@media(max-width:500px){.q-card{padding:16px 14px}.timer-bar{flex-direction:column}.nav-btns{justify-content:center}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">SSC · Railway · RPSC · REET</div></div>
+    </a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="back-btn">← Test Series</a>
+  </div>
+</nav>
+
+<div id="pg-start" class="page active">
+  <div class="start-hero">
+    <div class="badge">Mathematics</div>
+    <h1>SSC Maths — <span>40 MCQ</span></h1>
+    <p>SSC CGL / CHSL / MTS — गणित Mock Test</p>
+    <div class="meta-pills">
+      <span class="mp ac">📝 40 प्रश्न</span>
+      <span class="mp gr">⏱️ 50 मिनट</span>
+      <span class="mp bl">🆓 Free</span>
+      <span class="mp ac">📊 Instant Score</span>
+    </div>
+  </div>
+  <div class="start-card">
+    <div class="rules-box">
+      <div class="rule"><span class="rule-dot">●</span><span>कुल <strong>40 प्रश्न</strong> — प्रत्येक 1 अंक।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>समय: <strong>50 मिनट</strong>।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Navigator से किसी भी प्रश्न पर जाएं।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation दिखेगी।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>कोई Negative Marking नहीं।</span></div>
+    </div>
+    <button class="btn-start" onclick="startTest()">🚀 Test शुरू करें</button>
+  </div>
+</div>
+
+<div id="pg-test" class="page">
+  <div class="timer-bar">
+    <div class="timer-box"><span class="t-label">⏱️</span><span class="t-val" id="timer">00:00</span></div>
+    <div class="prog-wrap">
+      <div class="prog-info"><span id="q-label">प्रश्न 1/40</span><span id="ans-count">0 उत्तर</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="main-wrap">
+    <div class="nav-grid-wrap">
+      <div class="nav-grid-title">प्रश्न नेविगेटर</div>
+      <div class="nav-grid" id="nav-grid"></div>
+    </div>
+    <div class="q-card" id="q-card">
+      <div class="q-header">
+        <div class="q-num" id="q-num">1</div>
+        <div class="q-text" id="q-text"></div>
+      </div>
+      <div class="options" id="opts"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
+      <button class="btn btn-next" id="btn-next" onclick="nav(1)">अगला →</button>
+      <button class="btn btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit</button>
+    </div>
+  </div>
+</div>
+
+<div id="pg-result" class="page">
+  <div class="result-hero">
+    <div class="score-ring" id="score-ring">
+      <div class="score-inner">
+        <div class="score-num" id="score-num">0</div>
+        <div class="score-den">/ 40</div>
+      </div>
+    </div>
+    <div class="grade-badge" id="grade-badge">—</div>
+    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px" id="r-title">—</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:24px" id="r-sub">—</div>
+  </div>
+  <div class="r-stats">
+    <div class="r-stat c"><div class="r-val" id="r-c">0</div><div class="r-label">✅ सही</div></div>
+    <div class="r-stat w"><div class="r-val" id="r-w">0</div><div class="r-label">❌ गलत</div></div>
+    <div class="r-stat s"><div class="r-val" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
+    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 %</div></div>
+    <div class="r-stat" style="border-color:rgba(59,130,246,.3)"><div class="r-val" style="color:#3b82f6" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
+  </div>
+  <div class="act-btns">
+    <button class="btn-restart" onclick="restart()">🔄 दोबारा दें</button>
+    <button class="btn-rev" onclick="toggleRev()">📋 उत्तर देखें</button>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px">📚 और Tests</a>
+  </div>
+  <div class="review-section" id="rev-section" style="display:none">
+    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px">📝 विस्तृत उत्तर समीक्षा</div>
+    <div id="rev-cards"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="s-link">🎯 Test Series</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="s-link">📝 Notes</a>
+  </div>
+  <div style="color:#334155;font-size:11px">© 2026 Sharma Sir's Digital Lab.</div>
+</footer>
+
+<script>
+const QS=[{"q": "किसी संख्या का 37.5% उसमें जोड़ने पर 1320 — मूल संख्या?", "o": ["840", "960", "720", "1080"], "a": 1, "e": "37.5% = 3/8। माना 8x → 8x+3x=11x=1320 → x=120 → 8×120=960।"}, {"q": "दुकानदार CP से 20% अधिक MP, 10% छूट — लाभ%?", "o": ["8%", "10%", "12%", "15%"], "a": 0, "e": "CP=100, MP=120, SP=120×0.9=108 → Profit=8%।"}, {"q": "दो संख्याएं 3:4, HCF=4 → LCM?", "o": ["12", "24", "48", "36"], "a": 2, "e": "संख्याएं 3×4=12 और 4×4=16। LCM(12,16)=48।"}, {"q": "A 12 दिन, B 18 दिन → मिलकर?", "o": ["7⅕ दिन", "6½ दिन", "8 दिन", "5⅔ दिन"], "a": 0, "e": "1/12+1/18=3/36+2/36=5/36। समय=36/5=7⅕ दिन।"}, {"q": "150 मीटर ट्रेन, 54 किमी/घंटा → खंभा पार करने में?", "o": ["15 सेकंड", "10 सेकंड", "12 सेकंड", "8 सेकंड"], "a": 1, "e": "54 km/h = 15 m/s। समय=150/15=10 सेकंड।"}, {"q": "₹8000, 10% वार्षिक, 2 वर्ष CI?", "o": ["₹1600", "₹1680", "₹1720", "₹1800"], "a": 1, "e": "CI = 8000[(1.1)²-1] = 8000×0.21 = ₹1680।"}, {"q": "tan θ = 4/3 → sin θ + cos θ?", "o": ["7/5", "1/5", "5/7", "3/4"], "a": 0, "e": "Hypotenuse=5। sin=4/5, cos=3/5 → 4/5+3/5=7/5।"}, {"q": "प्रथम 50 प्राकृतिक संख्याओं का औसत?", "o": ["25", "25.5", "26", "24.5"], "a": 1, "e": "औसत=(n+1)/2=(50+1)/2=25.5।"}, {"q": "आयत: लंबाई 20% बढ़ी, चौड़ाई 10% घटी → क्षेत्रफल परिवर्तन?", "o": ["10% वृद्धि", "8% वृद्धि", "8% कमी", "12% वृद्धि"], "a": 1, "e": "x+y+xy/100 = 20-10+(20×(-10)/100) = 10-2 = +8% वृद्धि।"}, {"q": "x + 1/x = 5 → x² + 1/x²?", "o": ["25", "27", "23", "20"], "a": 2, "e": "(x+1/x)²=25 → x²+1/x²+2=25 → x²+1/x²=23।"}, {"q": "₹5000, 8%, 3 वर्ष SI?", "o": ["₹1200", "₹1500", "₹1000", "₹800"], "a": 0, "e": "SI=P×R×T/100=5000×8×3/100=₹1200।"}, {"q": "उत्तीर्ण 36%, 190 अंक मिले, 26 से फेल → अधिकतम अंक?", "o": ["500", "600", "700", "800"], "a": 1, "e": "पास अंक=190+26=216=36% → 100%=216×100/36=600।"}, {"q": "A:B=2:3, B:C=4:5 → A:B:C?", "o": ["8:12:15", "6:9:15", "8:10:15", "2:4:5"], "a": 0, "e": "B समान करें: A:B=8:12, B:C=12:15 → A:B:C=8:12:15।"}, {"q": "परिधि 44 सेमी → क्षेत्रफल (π=22/7)?", "o": ["154 वर्ग सेमी", "44 वर्ग सेमी", "616 वर्ग सेमी", "308 वर्ग सेमी"], "a": 0, "e": "2πr=44 → r=7। Area=π×7²=22/7×49=154।"}, {"q": "11 वस्तुएं ₹10 में, 10 वस्तुएं ₹11 में बेचे → लाभ%?", "o": ["10%", "11%", "21%", "15%"], "a": 2, "e": "110 वस्तुएं: CP=₹100, SP=₹121 → Profit=21%।"}, {"q": "√(1+x/144)=13/12 → x?", "o": ["1", "13", "25", "27"], "a": 2, "e": "1+x/144=169/144 → x/144=25/144 → x=25।"}, {"q": "A:B:C की आयु=2:3:4, योग=90 → B की आयु?", "o": ["20", "30", "40", "25"], "a": 1, "e": "2+3+4=9x=90 → x=10 → B=3×10=30।"}, {"q": "गोले की त्रिज्या दोगुनी → आयतन में वृद्धि?", "o": ["2 गुना", "4 गुना", "8 गुना", "6 गुना"], "a": 2, "e": "V∝r³ → (2r)³=8r³ → 8 गुना।"}, {"q": "नाव की शांत गति 10 किमी/घं, धारा 2 किमी/घं। Downstream 48 किमी में समय?", "o": ["4 घंटे", "6 घंटे", "5 घंटे", "8 घंटे"], "a": 0, "e": "Downstream speed=10+2=12। Time=48/12=4 घंटे।"}, {"q": "12, 15, 20, 54 से विभाजित करने पर 4 शेष — सबसे छोटी संख्या?", "o": ["544", "540", "536", "504"], "a": 0, "e": "LCM(12,15,20,54)=540। अभीष्ट संख्या=540+4=544।"}, {"q": "Cuboid: 16×12×9 सेमी → गलाकर घन → TSA?", "o": ["864 वर्ग सेमी", "576 वर्ग सेमी", "1728 वर्ग सेमी", "432 वर्ग सेमी"], "a": 0, "e": "Volume=1728=a³ → a=12। TSA=6a²=6×144=864 वर्ग सेमी।"}, {"q": "sin θ - cos θ = 0 → sin⁴θ + cos⁴θ?", "o": ["1", "½", "¼", "¾"], "a": 1, "e": "sin θ=cos θ → θ=45°। sin⁴45+cos⁴45=2×(1/√2)⁴=2×¼=½।"}, {"q": "10 संख्याओं का औसत 30, हर में 5 जोड़ें → नया औसत?", "o": ["30", "35", "25", "40"], "a": 1, "e": "सभी में 5 जुड़ने पर औसत भी 5 बढ़ता है → 30+5=35।"}, {"q": "₹69 में बेचने पर 8% हानि, ₹78 में बेचें → लाभ/हानि%?", "o": ["4% लाभ", "4% हानि", "5% लाभ", "कोई नहीं"], "a": 0, "e": "CP: 69=92% → CP=75। SP=78 → Profit=3/75×100=4% लाभ।"}, {"q": "A कार्य का ¼ भाग 10 दिन में, B 40% कार्य 20 दिन में → दोनों मिलकर?", "o": ["22 2/9 दिन", "25 दिन", "20 दिन", "18 दिन"], "a": 0, "e": "A पूरा=40 दिन, B पूरा=50 दिन। मिलकर=40×50/90=2000/90=22 2/9 दिन।"}, {"q": "भुजाएं 3:4:5, परिमाप 36 → क्षेत्रफल?", "o": ["54 वर्ग सेमी", "60 वर्ग सेमी", "72 वर्ग सेमी", "48 वर्ग सेमी"], "a": 0, "e": "12x=36→x=3। भुजाएं 9,12,15 (Rt triangle)। Area=½×9×12=54।"}, {"q": "समरूप त्रिभुजों का क्षेत्रफल अनुपात 9:16 → भुजाओं का अनुपात?", "o": ["3:4", "9:16", "4:3", "16:9"], "a": 0, "e": "भुजाओं का अनुपात = √(क्षेत्रफल अनुपात) = √9:√16 = 3:4।"}, {"q": "a³+b³=72, ab=8 → a+b?", "o": ["6", "8", "12", "4"], "a": 0, "e": "(a+b)³=72+3×8×(a+b)। x³-24x-72=0। x=6 रखें: 216-144-72=0 ✓।"}, {"q": "पाइप X: 5 घंटे भरे, Y: 4 घंटे खाली। टंकी भरी, दोनों खुले → खाली होने में?", "o": ["10 घंटे", "20 घंटे", "9 घंटे", "15 घंटे"], "a": 1, "e": "भरना: +4/20, खाली: -5/20 → Net = -1/20 प्रति घंटे। समय=20 घंटे।"}, {"q": "7¹⁰⁵ का इकाई अंक?", "o": ["1", "3", "7", "9"], "a": 2, "e": "7 की unit digit cycle: 7,9,3,1 (period 4)। 105÷4 शेष 1 → unit digit=7।"}, {"q": "₹12000, 20% वार्षिक, 9 महीने quarterly CI?", "o": ["₹1891.50", "₹1902", "₹1860", "₹1972"], "a": 0, "e": "Quarterly rate=5%, 3 periods। CI=12000[(1.05)³-1]=12000×0.157625=₹1891.50।"}, {"q": "दूध:पानी=4:3। 6 लीटर पानी मिलाने पर 8:7 → मूल मिश्रण?", "o": ["42 लीटर", "84 लीटर", "36 लीटर", "48 लीटर"], "a": 0, "e": "मूल: दूध=4k, पानी=3k। 4k/(3k+6)=8/7 → 28k=24k+48 → k=12 → 7×6=42।"}, {"q": "बेलन: त्रिज्या आधी, ऊंचाई दोगुनी → नया:पुराना आयतन?", "o": ["1:2", "2:1", "1:4", "1:1"], "a": 0, "e": "V_new=π(r/2)²(2h)=πr²h/2 → ratio=1:2।"}, {"q": "100 से 200 के बीच 3 और 4 दोनों से विभाज्य संख्याएं?", "o": ["8", "9", "10", "11"], "a": 0, "e": "LCM(3,4)=12। 108 से 192 तक: (192-108)/12+1=7+1=8।"}, {"q": "sec θ + tan θ = 3 → sec θ?", "o": ["5/3", "4/3", "5/4", "2"], "a": 0, "e": "sec²θ-tan²θ=1 → sec θ-tan θ=1/3। दोनों जोड़ें: 2sec θ=3+1/3=10/3 → sec θ=5/3।"}, {"q": "दुकानदार 1 kg के बजाय 960g तोले → लाभ%?", "o": ["4%", "4⅙%", "4⅔%", "5%"], "a": 1, "e": "Profit%=40/960×100=25/6=4⅙%।"}, {"q": "₹P पर 2 वर्ष 5% का SI-CI अंतर ₹25 → P?", "o": ["₹10,000", "₹8,000", "₹12,000", "₹15,000"], "a": 0, "e": "D=P×R²/100²=P×25/10000=25 → P=₹10,000।"}, {"q": "x:y=3:2 → (5x+2y):(3x-y)?", "o": ["19:7", "19:5", "17:7", "15:4"], "a": 0, "e": "x=3, y=2 → (15+4):(9-2)=19:7।"}, {"q": "∠APB=60° (बाहरी बिंदु से दो स्पर्श रेखाएं) → ∠AOB?", "o": ["120°", "60°", "90°", "150°"], "a": 0, "e": "∠APB+∠AOB=180° → ∠AOB=180-60=120°।"}, {"q": "25-[20-{10-(7-ओवरलाइन(5-3))}] = ?", "o": ["12", "10", "15", "18"], "a": 1, "e": "5-3=2, 7-2=5, 10-5=5, 20-5=15, 25-15=10।"}];
+const TOTAL=QS.length,TIME_LIMIT=50*60,LBL=['A','B','C','D'];
+let ans=new Array(TOTAL).fill(-1),cur=0,tLeft=TIME_LIMIT,tInterval=null,startTime=null,revVisible=false;
+function startTest(){document.getElementById('pg-start').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();}
+function startTimer(){tInterval=setInterval(()=>{tLeft--;const m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');const el=document.getElementById('timer');el.textContent=m+':'+s;el.className='t-val'+(tLeft<=300?' urgent':'');if(tLeft<=0){clearInterval(tInterval);submitTest(true);}},1000);}
+function buildGrid(){const g=document.getElementById('nav-grid');g.innerHTML='';for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='ndot';d.textContent=i+1;d.id='nd'+i;d.onclick=()=>renderQ(i);g.appendChild(d);}updateUI();}
+function updateUI(){for(let i=0;i<TOTAL;i++){const d=document.getElementById('nd'+i);d.className='ndot'+(i===cur?' current':ans[i]!==-1?' answered':'');}const done=ans.filter(a=>a!==-1).length;document.getElementById('ans-count').textContent=done+' उत्तर';document.getElementById('prog').style.width=(done/TOTAL*100)+'%';document.getElementById('q-label').textContent='प्रश्न '+(cur+1)+'/'+TOTAL;}
+function renderQ(i){cur=i;const q=QS[i];document.getElementById('q-num').textContent=i+1;document.getElementById('q-text').textContent=q.q;const c=document.getElementById('opts');c.innerHTML='';q.o.forEach((opt,j)=>{const d=document.createElement('div');d.className='opt'+(ans[i]===j?' sel':'');d.innerHTML='<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';d.onclick=()=>{ans[i]=j;renderQ(i);};c.appendChild(d);});const card=document.getElementById('q-card');card.style.animation='none';card.offsetHeight;card.style.animation='fadeIn .3s ease';document.getElementById('btn-prev').disabled=i===0;const last=i===TOTAL-1;document.getElementById('btn-next').style.display=last?'none':'';document.getElementById('btn-sub').style.display=last?'':'none';updateUI();}
+function nav(d){const n=cur+d;if(n>=0&&n<TOTAL)renderQ(n);}
+function confirmSub(){const skip=ans.filter(a=>a===-1).length;if(skip>0&&!confirm(skip+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?'))return;submitTest(false);}
+function submitTest(timeUp){clearInterval(tInterval);const taken=Math.round((Date.now()-startTime)/1000);let correct=0,wrong=0,skip=0;ans.forEach((a,i)=>{if(a===-1)skip++;else if(a===QS[i].a)correct++;else wrong++;});const pct=Math.round(correct/TOTAL*100);document.getElementById('pg-test').classList.remove('active');document.getElementById('pg-result').classList.add('active');document.getElementById('score-num').textContent=correct;document.getElementById('r-c').textContent=correct;document.getElementById('r-w').textContent=wrong;document.getElementById('r-s').textContent=skip;document.getElementById('r-p').textContent=pct+'%';const mm=Math.floor(taken/60),ss=taken%60;document.getElementById('r-t').textContent=mm+'म '+ss+'स';const ring=document.getElementById('score-ring');ring.style.background='conic-gradient(var(--ac) 0% '+pct+'%, rgba(255,255,255,.06) 0%)';let grade,gcls,title,sub;if(pct>=80){grade='🏆 Excellent — A Grade';gcls='grade-A';title='शानदार!';sub='SSC परीक्षा के लिए बेहतरीन तैयारी!';}else if(pct>=60){grade='👍 Good — B Grade';gcls='grade-B';title='अच्छा!';sub='थोड़ी और मेहनत से बहुत आगे जाएंगे।';}else{grade='📚 Keep Practicing';gcls='grade-C';title='और अभ्यास करें!';sub='Sharma Sir के Notes पढ़ें और दोबारा दें।';}document.getElementById('grade-badge').textContent=grade;document.getElementById('grade-badge').className='grade-badge '+gcls;document.getElementById('r-title').textContent=(timeUp?'⏰ ':'')+title;document.getElementById('r-sub').textContent=sub;buildReview();window.scrollTo({top:0,behavior:'smooth'});}
+function buildReview(){const c=document.getElementById('rev-cards');c.innerHTML='';QS.forEach((q,i)=>{const ua=ans[i],ok=ua===q.a,sk=ua===-1;const div=document.createElement('div');div.className='rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);let st=sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';let ah=sk?'<div class="rev-ans rev-skip">आपने छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ आपका: '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ आपका: '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';const exp=q.e?'<div class="rev-exp">💡 '+q.e+'</div>':'';div.innerHTML=st+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ah+exp;c.appendChild(div);});}
+function toggleRev(){revVisible=!revVisible;const rs=document.getElementById('rev-section');rs.style.display=revVisible?'block':'none';if(revVisible)rs.scrollIntoView({behavior:'smooth'});}
+function restart(){ans=new Array(TOTAL).fill(-1);cur=0;tLeft=TIME_LIMIT;revVisible=false;document.getElementById('rev-section').style.display='none';document.getElementById('pg-result').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+</body>
+</html>

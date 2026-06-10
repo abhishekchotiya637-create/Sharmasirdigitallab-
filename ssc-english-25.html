@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SSC English — 25 MCQ | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--tx:#e2e8f0;--mu:#64748b;--ac:#3b82f6;--gr:#22c55e;--rd:#ef4444}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px}
+.nav-logo{width:34px;height:34px;border-radius:7px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:14px;line-height:1.2}
+.brand-sub{font-size:9px;color:#64748b}
+.back-btn{padding:6px 14px;border-radius:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;font-size:12px;font-weight:600;transition:all .2s}
+.back-btn:hover{background:#f97316;color:#fff}
+.page{display:none}.page.active{display:block}
+.start-hero{text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,#3b82f615,transparent)}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;background:#3b82f618;border:1px solid #3b82f640;color:#3b82f6;font-size:12px;font-weight:700;margin-bottom:14px}
+.start-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:6px}
+.start-hero h1 span{color:#3b82f6}
+.start-hero p{color:#64748b;font-size:13px;max-width:520px;margin:0 auto 20px}
+.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.mp{padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.mp.ac{color:#3b82f6;border-color:#3b82f640}.mp.gr{color:#22c55e;border-color:rgba(34,197,94,.35)}.mp.bl{color:#3b82f6;border-color:rgba(59,130,246,.35)}
+.start-card{max-width:600px;margin:24px auto 0;background:var(--s);border:1px solid var(--bd);border-radius:18px;padding:28px}
+.rules-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:22px}
+.rule{display:flex;gap:10px;font-size:13px;color:#94a3b8;margin-bottom:8px}.rule:last-child{margin-bottom:0}
+.rule-dot{color:#3b82f6;font-weight:800;flex-shrink:0}
+.btn-start{width:100%;padding:14px;border-radius:13px;background:#3b82f6;color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px #3b82f640}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px #3b82f655}
+.timer-bar{max-width:800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;align-items:center}
+.timer-box{display:flex;align-items:center;gap:8px;background:var(--s);border:1px solid var(--bd);padding:8px 16px;border-radius:11px;font-weight:700;flex-shrink:0}
+.t-label{color:#64748b;font-size:12px}.t-val{color:#3b82f6;font-size:18px;font-family:monospace}
+.t-val.urgent{color:#ef4444;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.prog-wrap{flex:1}.prog-info{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:5px}
+.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#3b82f6,#facc15);border-radius:999px;transition:width .3s}
+.main-wrap{max-width:800px;margin:0 auto;padding:18px 20px 60px}
+.nav-grid-wrap{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px}
+.nav-grid-title{font-size:12px;color:#64748b;font-weight:600;margin-bottom:10px}
+.nav-grid{display:flex;flex-wrap:wrap;gap:5px}
+.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:rgba(255,255,255,.02);font-size:10px;font-weight:700;cursor:pointer;color:#64748b;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ndot:hover{border-color:#3b82f6;color:#3b82f6}.ndot.answered{background:#3b82f618;border-color:#3b82f6;color:#3b82f6}.ndot.current{background:#3b82f6;border-color:#3b82f6;color:#fff}
+.q-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:16px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.q-num{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#3b82f6,#facc15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-top:3px}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid var(--bd);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;user-select:none}
+.opt:hover{background:#3b82f608;border-color:#3b82f640}.opt.sel{background:#3b82f612;border-color:#3b82f6;color:#fff}
+.opt.correct{background:rgba(34,197,94,.1);border-color:#22c55e;color:#22c55e}
+.opt.wrong{background:rgba(239,68,68,.1);border-color:#ef4444;color:#ef4444}
+.opt.show-ok{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.35);color:#22c55e}
+.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;background:rgba(255,255,255,.03)}
+.opt.sel .ol{background:#3b82f6;border-color:#3b82f6;color:#fff}
+.opt.correct .ol{background:#22c55e;border-color:#22c55e;color:#fff}
+.opt.wrong .ol{background:#ef4444;border-color:#ef4444;color:#fff}
+.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .18s}
+.btn-prev{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#64748b}
+.btn-prev:hover{border-color:#3b82f6;color:#3b82f6}
+.btn-next{background:#3b82f6;color:#fff;box-shadow:0 4px 14px #3b82f640}.btn-next:hover{transform:translateY(-1px)}
+.btn-sub{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
+.btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+.result-hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 60% 50% at 50% 0%,#3b82f615,transparent)}
+.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px #3b82f635}
+.score-inner{width:122px;height:122px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:32px;font-weight:900;color:#3b82f6;line-height:1}.score-den{font-size:13px;color:#64748b}
+.grade-badge{display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:16px}
+.grade-A{background:rgba(34,197,94,.12);border:2px solid #22c55e;color:#22c55e}
+.grade-B{background:#3b82f612;border:2px solid #3b82f6;color:#3b82f6}
+.grade-C{background:rgba(239,68,68,.12);border:2px solid #ef4444;color:#ef4444}
+.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto 24px;padding:0 20px}
+.r-stat{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;text-align:center}
+.r-val{font-size:24px;font-weight:900;margin-bottom:3px}.r-label{font-size:11px;color:#64748b}
+.r-stat.c .r-val{color:#22c55e}.r-stat.w .r-val{color:#ef4444}.r-stat.s .r-val{color:#64748b}.r-stat.p .r-val{color:#3b82f6}
+.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}
+.rev-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:12px}
+.rev-card.ok{border-color:rgba(34,197,94,.3)}.rev-card.bad{border-color:rgba(239,68,68,.3)}
+.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.st-ok{background:rgba(34,197,94,.15);color:#22c55e}.st-bad{background:rgba(239,68,68,.15);color:#ef4444}.st-sk{background:rgba(255,255,255,.06);color:#64748b}
+.rev-q{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
+.rev-ans{font-size:12px;margin-top:4px}.rev-correct{color:#22c55e}.rev-wrong{color:#ef4444}.rev-skip{color:#64748b}
+.rev-exp{font-size:12px;color:#64748b;margin-top:6px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;line-height:1.6}
+.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px 24px}
+.btn-restart{padding:11px 24px;border-radius:11px;background:#3b82f6;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;box-shadow:0 4px 16px #3b82f640;transition:all .2s}
+.btn-restart:hover{transform:translateY(-1px)}
+.btn-rev{padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-rev:hover{border-color:#3b82f6;color:#3b82f6}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid var(--bd);padding:28px 20px 18px;text-align:center}
+.s-link{padding:5px 13px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+@media(max-width:500px){.q-card{padding:16px 14px}.timer-bar{flex-direction:column}.nav-btns{justify-content:center}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">SSC · Railway · RPSC · REET</div></div>
+    </a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="back-btn">← Test Series</a>
+  </div>
+</nav>
+
+<div id="pg-start" class="page active">
+  <div class="start-hero">
+    <div class="badge">SSC English</div>
+    <h1>SSC English — <span>25 MCQ</span></h1>
+    <p>SSC CGL / CHSL / MTS — अंग्रेजी भाषा Mock Test</p>
+    <div class="meta-pills">
+      <span class="mp ac">📝 25 प्रश्न</span>
+      <span class="mp gr">⏱️ 25 मिनट</span>
+      <span class="mp bl">🆓 Free</span>
+      <span class="mp ac">📊 Instant Score</span>
+    </div>
+  </div>
+  <div class="start-card">
+    <div class="rules-box">
+      <div class="rule"><span class="rule-dot">●</span><span>कुल <strong>25 प्रश्न</strong> — प्रत्येक 1 अंक।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>समय: <strong>25 मिनट</strong>।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Navigator से किसी भी प्रश्न पर जाएं।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation दिखेगी।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>कोई Negative Marking नहीं।</span></div>
+    </div>
+    <button class="btn-start" onclick="startTest()">🚀 Test शुरू करें</button>
+  </div>
+</div>
+
+<div id="pg-test" class="page">
+  <div class="timer-bar">
+    <div class="timer-box"><span class="t-label">⏱️</span><span class="t-val" id="timer">00:00</span></div>
+    <div class="prog-wrap">
+      <div class="prog-info"><span id="q-label">प्रश्न 1/25</span><span id="ans-count">0 उत्तर</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="main-wrap">
+    <div class="nav-grid-wrap">
+      <div class="nav-grid-title">प्रश्न नेविगेटर</div>
+      <div class="nav-grid" id="nav-grid"></div>
+    </div>
+    <div class="q-card" id="q-card">
+      <div class="q-header">
+        <div class="q-num" id="q-num">1</div>
+        <div class="q-text" id="q-text"></div>
+      </div>
+      <div class="options" id="opts"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
+      <button class="btn btn-next" id="btn-next" onclick="nav(1)">अगला →</button>
+      <button class="btn btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit</button>
+    </div>
+  </div>
+</div>
+
+<div id="pg-result" class="page">
+  <div class="result-hero">
+    <div class="score-ring" id="score-ring">
+      <div class="score-inner">
+        <div class="score-num" id="score-num">0</div>
+        <div class="score-den">/ 25</div>
+      </div>
+    </div>
+    <div class="grade-badge" id="grade-badge">—</div>
+    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px" id="r-title">—</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:24px" id="r-sub">—</div>
+  </div>
+  <div class="r-stats">
+    <div class="r-stat c"><div class="r-val" id="r-c">0</div><div class="r-label">✅ सही</div></div>
+    <div class="r-stat w"><div class="r-val" id="r-w">0</div><div class="r-label">❌ गलत</div></div>
+    <div class="r-stat s"><div class="r-val" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
+    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 %</div></div>
+    <div class="r-stat" style="border-color:rgba(59,130,246,.3)"><div class="r-val" style="color:#3b82f6" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
+  </div>
+  <div class="act-btns">
+    <button class="btn-restart" onclick="restart()">🔄 दोबारा दें</button>
+    <button class="btn-rev" onclick="toggleRev()">📋 उत्तर देखें</button>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px">📚 और Tests</a>
+  </div>
+  <div class="review-section" id="rev-section" style="display:none">
+    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px">📝 विस्तृत उत्तर समीक्षा</div>
+    <div id="rev-cards"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="s-link">🎯 Test Series</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="s-link">📝 Notes</a>
+  </div>
+  <div style="color:#334155;font-size:11px">© 2026 Sharma Sir's Digital Lab.</div>
+</footer>
+
+<script>
+const QS=[{"q": "'The modern youth is more smarter than their forefathers.' — Error?", "o": ["The modern youth", "is more smarter", "than their", "forefathers"], "a": 1, "e": "Double Comparative गलत है। 'Smarter' खुद Comparative है, इसलिए 'more smarter' नहीं — सही: 'is smarter than'।"}, {"q": "The teacher congratulated Rohit ______ his grand success.", "o": ["for", "on", "at", "about"], "a": 1, "e": "'Congratulate' के साथ Fixed Preposition 'on' आता है। Congratulate someone ON something।"}, {"q": "Synonym of COMPASSIONATE:", "o": ["Cruel", "Indifferent", "Sympathetic", "Hardhearted"], "a": 2, "e": "Compassionate = दयालु/सहानुभूति रखने वाला। Sympathetic इसका सही synonym है।"}, {"q": "Antonym of AMBIGUOUS:", "o": ["Clear", "Vague", "Obscure", "Uncertain"], "a": 0, "e": "Ambiguous = अस्पष्ट/द्विअर्थी। इसका विलोम Clear (स्पष्ट) है। बाकी options synonyms हैं।"}, {"q": "Meaning of idiom 'To turn a deaf ear':", "o": ["To become deaf", "To listen carefully", "To ignore or refuse to listen", "To misbehave"], "a": 2, "e": "'To turn a deaf ear' = सुनी-अनसुनी कर देना, किसी की बात पर ध्यान न देना।"}, {"q": "One word for 'A person who eats human flesh':", "o": ["Carnivore", "Cannibal", "Herbivore", "Omnivore"], "a": 1, "e": "Cannibal = नरभक्षी। Carnivore = मांसाहारी, Herbivore = शाकाहारी, Omnivore = सर्वाहारी।"}, {"q": "He _____ a large family to support. (Improve underlined: 'is having')", "o": ["has", "have", "is possess", "No improvement"], "a": 0, "e": "'Have' possession दर्शाए तो Continuous Tense नहीं। Subject 'He' singular है → 'has' सही।"}, {"q": "Passive voice: 'The police caught the thief.'", "o": ["The thief is caught by the police.", "The thief was caught by the police.", "The thief had been caught by the police.", "The thief was being caught by the police."], "a": 1, "e": "Simple Past → Passive: Object + was/were + V3 + by + Subject। 'The thief was caught by the police.'"}, {"q": "Indirect speech: She said to me, 'What are you doing?'", "o": ["She told me what I am doing.", "She asked me what I was doing.", "She asked me that what I was doing.", "She asked me what was I doing."], "a": 1, "e": "Interrogative → 'said to' को 'asked' में बदलें। Wh-word के बाद 'that' नहीं। Assertive order → 'what I was doing'।"}, {"q": "Select the correctly spelled word:", "o": ["Definition", "Defination", "Diffinition", "Defenition"], "a": 0, "e": "'Definition' की सही spelling D-E-F-I-N-I-T-I-O-N। 'Defination' common गलती है।"}, {"q": "'Hardly had I arrived at the station than the train left.' — Error?", "o": ["Hardly had I", "arrived at the station", "than the train", "left"], "a": 2, "e": "'Hardly/Scarcely' के साथ 'when' या 'before' आता है, 'than' नहीं। 'than' → 'when'।"}, {"q": "She is ______ untidy girl.", "o": ["a", "an", "the", "No article"], "a": 1, "e": "'untidy' की शुरुआत vowel sound ('अ') से → 'an' आएगा।"}, {"q": "Synonym of DILIGENT:", "o": ["Lazy", "Careless", "Industrious", "Incompetent"], "a": 2, "e": "Diligent = परिश्रमी। Industrious भी परिश्रमी है → correct synonym।"}, {"q": "Antonym of HOSTILITY:", "o": ["Enmity", "Friendship", "Hatred", "Sympathy"], "a": 1, "e": "Hostility = शत्रुता। विपरीत Friendship (मित्रता)। Enmity/Hatred synonyms हैं।"}, {"q": "Meaning of 'At the eleventh hour':", "o": ["At 11:00 PM", "Too early", "At the very last moment", "At midnight"], "a": 2, "e": "'At the eleventh hour' = बिल्कुल अंतिम समय पर, ऐन वक्त पर।"}, {"q": "One word for 'A place where bees are kept':", "o": ["Aviary", "Aquarium", "Apiary", "Kennel"], "a": 2, "e": "Apiary = मधुमक्खीशाला। Aviary = पक्षिशाला, Kennel = कुत्तों का घर।"}, {"q": "'If I was you, I would not accept this offer.' — Improve 'was you'", "o": ["am you", "had been you", "were you", "No improvement"], "a": 2, "e": "काल्पनिक वाक्य में Subject चाहे singular हो, हमेशा 'were' आता है। 'If I were you' — सही।"}, {"q": "Passive voice: 'They are painting the wall.'", "o": ["The wall is painted by them.", "The wall is being painted by them.", "The wall was being painted by them.", "The wall has been painted by them."], "a": 1, "e": "Present Continuous Passive: is/am/are + being + V3। 'The wall is being painted by them.'"}, {"q": "Indirect speech: 'The doctor said to the patient, Take medicines on time.'", "o": ["The doctor ordered the patient to take medicines on time.", "The doctor advised the patient to take medicines on time.", "The doctor suggested the patient for taking medicines on time.", "The doctor told to the patient to take medicines on time."], "a": 1, "e": "Doctor मरीज को 'सलाह' देता है → 'advised'। Imperative → 'to + V1' structure।"}, {"q": "Select the INCORRECTLY spelled word:", "o": ["Foreign", "Receive", "Believe", "Seperate"], "a": 3, "e": "'Seperate' गलत है। सही spelling S-E-P-A-R-A-T-E (Separate)। परीक्षा में बार-बार आती है।"}, {"q": "'The percentage of illiterate people are decreasing day by day.' — Error?", "o": ["The percentage of", "illiterate people", "are decreasing", "day by day"], "a": 2, "e": "'The percentage of...' के बाद verb singular होती है। 'are' → 'is' होना चाहिए।"}, {"q": "He prefers coffee ______ tea.", "o": ["than", "to", "for", "over"], "a": 1, "e": "'Prefer' के साथ तुलना में 'than' नहीं, Fixed Preposition 'to' आता है।"}, {"q": "Synonym of TRANSIENT:", "o": ["Permanent", "Temporary", "Endless", "Stable"], "a": 1, "e": "Transient = क्षणिक/अस्थायी। Temporary इसका सही synonym है।"}, {"q": "One word for 'The study of birds':", "o": ["Zoology", "Ornithology", "Entomology", "Anthropology"], "a": 1, "e": "Ornithology = पक्षी विज्ञान। Entomology = कीट विज्ञान, Anthropology = मानव विज्ञान।"}, {"q": "Meaning of 'A blessing in disguise':", "o": ["A hidden problem", "An apparent misfortune that eventually has good results", "A gift from a stranger", "A clear advantage"], "a": 1, "e": "'A blessing in disguise' = छिपा वरदान — जो शुरू में बुरा लगे पर अंत में अच्छा निकले।"}];
+const TOTAL=QS.length,TIME_LIMIT=25*60,LBL=['A','B','C','D'];
+let ans=new Array(TOTAL).fill(-1),cur=0,tLeft=TIME_LIMIT,tInterval=null,startTime=null,revVisible=false;
+function startTest(){document.getElementById('pg-start').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();}
+function startTimer(){tInterval=setInterval(()=>{tLeft--;const m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');const el=document.getElementById('timer');el.textContent=m+':'+s;el.className='t-val'+(tLeft<=300?' urgent':'');if(tLeft<=0){clearInterval(tInterval);submitTest(true);}},1000);}
+function buildGrid(){const g=document.getElementById('nav-grid');g.innerHTML='';for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='ndot';d.textContent=i+1;d.id='nd'+i;d.onclick=()=>renderQ(i);g.appendChild(d);}updateUI();}
+function updateUI(){for(let i=0;i<TOTAL;i++){const d=document.getElementById('nd'+i);d.className='ndot'+(i===cur?' current':ans[i]!==-1?' answered':'');}const done=ans.filter(a=>a!==-1).length;document.getElementById('ans-count').textContent=done+' उत्तर';document.getElementById('prog').style.width=(done/TOTAL*100)+'%';document.getElementById('q-label').textContent='प्रश्न '+(cur+1)+'/'+TOTAL;}
+function renderQ(i){cur=i;const q=QS[i];document.getElementById('q-num').textContent=i+1;document.getElementById('q-text').textContent=q.q;const c=document.getElementById('opts');c.innerHTML='';q.o.forEach((opt,j)=>{const d=document.createElement('div');d.className='opt'+(ans[i]===j?' sel':'');d.innerHTML='<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';d.onclick=()=>{ans[i]=j;renderQ(i);};c.appendChild(d);});const card=document.getElementById('q-card');card.style.animation='none';card.offsetHeight;card.style.animation='fadeIn .3s ease';document.getElementById('btn-prev').disabled=i===0;const last=i===TOTAL-1;document.getElementById('btn-next').style.display=last?'none':'';document.getElementById('btn-sub').style.display=last?'':'none';updateUI();}
+function nav(d){const n=cur+d;if(n>=0&&n<TOTAL)renderQ(n);}
+function confirmSub(){const skip=ans.filter(a=>a===-1).length;if(skip>0&&!confirm(skip+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?'))return;submitTest(false);}
+function submitTest(timeUp){clearInterval(tInterval);const taken=Math.round((Date.now()-startTime)/1000);let correct=0,wrong=0,skip=0;ans.forEach((a,i)=>{if(a===-1)skip++;else if(a===QS[i].a)correct++;else wrong++;});const pct=Math.round(correct/TOTAL*100);document.getElementById('pg-test').classList.remove('active');document.getElementById('pg-result').classList.add('active');document.getElementById('score-num').textContent=correct;document.getElementById('r-c').textContent=correct;document.getElementById('r-w').textContent=wrong;document.getElementById('r-s').textContent=skip;document.getElementById('r-p').textContent=pct+'%';const mm=Math.floor(taken/60),ss=taken%60;document.getElementById('r-t').textContent=mm+'म '+ss+'स';const ring=document.getElementById('score-ring');ring.style.background='conic-gradient(var(--ac) 0% '+pct+'%, rgba(255,255,255,.06) 0%)';let grade,gcls,title,sub;if(pct>=80){grade='🏆 Excellent — A Grade';gcls='grade-A';title='शानदार!';sub='SSC परीक्षा के लिए बेहतरीन तैयारी!';}else if(pct>=60){grade='👍 Good — B Grade';gcls='grade-B';title='अच्छा!';sub='थोड़ी और मेहनत से बहुत आगे जाएंगे।';}else{grade='📚 Keep Practicing';gcls='grade-C';title='और अभ्यास करें!';sub='Sharma Sir के Notes पढ़ें और दोबारा दें।';}document.getElementById('grade-badge').textContent=grade;document.getElementById('grade-badge').className='grade-badge '+gcls;document.getElementById('r-title').textContent=(timeUp?'⏰ ':'')+title;document.getElementById('r-sub').textContent=sub;buildReview();window.scrollTo({top:0,behavior:'smooth'});}
+function buildReview(){const c=document.getElementById('rev-cards');c.innerHTML='';QS.forEach((q,i)=>{const ua=ans[i],ok=ua===q.a,sk=ua===-1;const div=document.createElement('div');div.className='rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);let st=sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';let ah=sk?'<div class="rev-ans rev-skip">आपने छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ आपका: '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ आपका: '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';const exp=q.e?'<div class="rev-exp">💡 '+q.e+'</div>':'';div.innerHTML=st+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ah+exp;c.appendChild(div);});}
+function toggleRev(){revVisible=!revVisible;const rs=document.getElementById('rev-section');rs.style.display=revVisible?'block':'none';if(revVisible)rs.scrollIntoView({behavior:'smooth'});}
+function restart(){ans=new Array(TOTAL).fill(-1);cur=0;tLeft=TIME_LIMIT;revVisible=false;document.getElementById('rev-section').style.display='none';document.getElementById('pg-result').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+</body>
+</html>

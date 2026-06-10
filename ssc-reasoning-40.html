@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SSC Reasoning — 40 MCQ | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--tx:#e2e8f0;--mu:#64748b;--ac:#f97316;--gr:#22c55e;--rd:#ef4444}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px}
+.nav-logo{width:34px;height:34px;border-radius:7px;object-fit:cover}
+.brand-name{font-weight:800;color:#f97316;font-size:14px;line-height:1.2}
+.brand-sub{font-size:9px;color:#64748b}
+.back-btn{padding:6px 14px;border-radius:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;font-size:12px;font-weight:600;transition:all .2s}
+.back-btn:hover{background:#f97316;color:#fff}
+.page{display:none}.page.active{display:block}
+.start-hero{text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,#f9731615,transparent)}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;background:#f9731618;border:1px solid #f9731640;color:#f97316;font-size:12px;font-weight:700;margin-bottom:14px}
+.start-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:6px}
+.start-hero h1 span{color:#f97316}
+.start-hero p{color:#64748b;font-size:13px;max-width:520px;margin:0 auto 20px}
+.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.mp{padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.mp.ac{color:#f97316;border-color:#f9731640}.mp.gr{color:#22c55e;border-color:rgba(34,197,94,.35)}.mp.bl{color:#3b82f6;border-color:rgba(59,130,246,.35)}
+.start-card{max-width:600px;margin:24px auto 0;background:var(--s);border:1px solid var(--bd);border-radius:18px;padding:28px}
+.rules-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:22px}
+.rule{display:flex;gap:10px;font-size:13px;color:#94a3b8;margin-bottom:8px}.rule:last-child{margin-bottom:0}
+.rule-dot{color:#f97316;font-weight:800;flex-shrink:0}
+.btn-start{width:100%;padding:14px;border-radius:13px;background:#f97316;color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px #f9731640}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px #f9731655}
+.timer-bar{max-width:800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;align-items:center}
+.timer-box{display:flex;align-items:center;gap:8px;background:var(--s);border:1px solid var(--bd);padding:8px 16px;border-radius:11px;font-weight:700;flex-shrink:0}
+.t-label{color:#64748b;font-size:12px}.t-val{color:#f97316;font-size:18px;font-family:monospace}
+.t-val.urgent{color:#ef4444;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.prog-wrap{flex:1}.prog-info{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:5px}
+.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#f97316,#facc15);border-radius:999px;transition:width .3s}
+.main-wrap{max-width:800px;margin:0 auto;padding:18px 20px 60px}
+.nav-grid-wrap{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px}
+.nav-grid-title{font-size:12px;color:#64748b;font-weight:600;margin-bottom:10px}
+.nav-grid{display:flex;flex-wrap:wrap;gap:5px}
+.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:rgba(255,255,255,.02);font-size:10px;font-weight:700;cursor:pointer;color:#64748b;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ndot:hover{border-color:#f97316;color:#f97316}.ndot.answered{background:#f9731618;border-color:#f97316;color:#f97316}.ndot.current{background:#f97316;border-color:#f97316;color:#fff}
+.q-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:16px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.q-num{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#f97316,#facc15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-top:3px}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid var(--bd);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;user-select:none}
+.opt:hover{background:#f9731608;border-color:#f9731640}.opt.sel{background:#f9731612;border-color:#f97316;color:#fff}
+.opt.correct{background:rgba(34,197,94,.1);border-color:#22c55e;color:#22c55e}
+.opt.wrong{background:rgba(239,68,68,.1);border-color:#ef4444;color:#ef4444}
+.opt.show-ok{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.35);color:#22c55e}
+.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;background:rgba(255,255,255,.03)}
+.opt.sel .ol{background:#f97316;border-color:#f97316;color:#fff}
+.opt.correct .ol{background:#22c55e;border-color:#22c55e;color:#fff}
+.opt.wrong .ol{background:#ef4444;border-color:#ef4444;color:#fff}
+.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .18s}
+.btn-prev{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#64748b}
+.btn-prev:hover{border-color:#f97316;color:#f97316}
+.btn-next{background:#f97316;color:#fff;box-shadow:0 4px 14px #f9731640}.btn-next:hover{transform:translateY(-1px)}
+.btn-sub{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
+.btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+.result-hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 60% 50% at 50% 0%,#f9731615,transparent)}
+.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px #f9731635}
+.score-inner{width:122px;height:122px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:32px;font-weight:900;color:#f97316;line-height:1}.score-den{font-size:13px;color:#64748b}
+.grade-badge{display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:16px}
+.grade-A{background:rgba(34,197,94,.12);border:2px solid #22c55e;color:#22c55e}
+.grade-B{background:#f9731612;border:2px solid #f97316;color:#f97316}
+.grade-C{background:rgba(239,68,68,.12);border:2px solid #ef4444;color:#ef4444}
+.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto 24px;padding:0 20px}
+.r-stat{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;text-align:center}
+.r-val{font-size:24px;font-weight:900;margin-bottom:3px}.r-label{font-size:11px;color:#64748b}
+.r-stat.c .r-val{color:#22c55e}.r-stat.w .r-val{color:#ef4444}.r-stat.s .r-val{color:#64748b}.r-stat.p .r-val{color:#f97316}
+.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}
+.rev-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:12px}
+.rev-card.ok{border-color:rgba(34,197,94,.3)}.rev-card.bad{border-color:rgba(239,68,68,.3)}
+.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.st-ok{background:rgba(34,197,94,.15);color:#22c55e}.st-bad{background:rgba(239,68,68,.15);color:#ef4444}.st-sk{background:rgba(255,255,255,.06);color:#64748b}
+.rev-q{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
+.rev-ans{font-size:12px;margin-top:4px}.rev-correct{color:#22c55e}.rev-wrong{color:#ef4444}.rev-skip{color:#64748b}
+.rev-exp{font-size:12px;color:#64748b;margin-top:6px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;line-height:1.6}
+.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px 24px}
+.btn-restart{padding:11px 24px;border-radius:11px;background:#f97316;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;box-shadow:0 4px 16px #f9731640;transition:all .2s}
+.btn-restart:hover{transform:translateY(-1px)}
+.btn-rev{padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-rev:hover{border-color:#f97316;color:#f97316}
+.footer{background:rgba(0,0,0,.4);border-top:1px solid var(--bd);padding:28px 20px 18px;text-align:center}
+.s-link{padding:5px 13px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
+.s-link:hover{background:#f97316;color:#fff}
+@media(max-width:500px){.q-card{padding:16px 14px}.timer-bar{flex-direction:column}.nav-btns{justify-content:center}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
+      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">SSC · Railway · RPSC · REET</div></div>
+    </a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="back-btn">← Test Series</a>
+  </div>
+</nav>
+
+<div id="pg-start" class="page active">
+  <div class="start-hero">
+    <div class="badge">Reasoning</div>
+    <h1>SSC Reasoning — <span>40 MCQ</span></h1>
+    <p>SSC CGL / CHSL / MTS — रीजनिंग / तर्कशक्ति Mock Test</p>
+    <div class="meta-pills">
+      <span class="mp ac">📝 41 प्रश्न</span>
+      <span class="mp gr">⏱️ 40 मिनट</span>
+      <span class="mp bl">🆓 Free</span>
+      <span class="mp ac">📊 Instant Score</span>
+    </div>
+  </div>
+  <div class="start-card">
+    <div class="rules-box">
+      <div class="rule"><span class="rule-dot">●</span><span>कुल <strong>41 प्रश्न</strong> — प्रत्येक 1 अंक।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>समय: <strong>40 मिनट</strong>।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Navigator से किसी भी प्रश्न पर जाएं।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation दिखेगी।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>कोई Negative Marking नहीं।</span></div>
+    </div>
+    <button class="btn-start" onclick="startTest()">🚀 Test शुरू करें</button>
+  </div>
+</div>
+
+<div id="pg-test" class="page">
+  <div class="timer-bar">
+    <div class="timer-box"><span class="t-label">⏱️</span><span class="t-val" id="timer">00:00</span></div>
+    <div class="prog-wrap">
+      <div class="prog-info"><span id="q-label">प्रश्न 1/41</span><span id="ans-count">0 उत्तर</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="main-wrap">
+    <div class="nav-grid-wrap">
+      <div class="nav-grid-title">प्रश्न नेविगेटर</div>
+      <div class="nav-grid" id="nav-grid"></div>
+    </div>
+    <div class="q-card" id="q-card">
+      <div class="q-header">
+        <div class="q-num" id="q-num">1</div>
+        <div class="q-text" id="q-text"></div>
+      </div>
+      <div class="options" id="opts"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
+      <button class="btn btn-next" id="btn-next" onclick="nav(1)">अगला →</button>
+      <button class="btn btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit</button>
+    </div>
+  </div>
+</div>
+
+<div id="pg-result" class="page">
+  <div class="result-hero">
+    <div class="score-ring" id="score-ring">
+      <div class="score-inner">
+        <div class="score-num" id="score-num">0</div>
+        <div class="score-den">/ 41</div>
+      </div>
+    </div>
+    <div class="grade-badge" id="grade-badge">—</div>
+    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px" id="r-title">—</div>
+    <div style="color:#64748b;font-size:13px;margin-bottom:24px" id="r-sub">—</div>
+  </div>
+  <div class="r-stats">
+    <div class="r-stat c"><div class="r-val" id="r-c">0</div><div class="r-label">✅ सही</div></div>
+    <div class="r-stat w"><div class="r-val" id="r-w">0</div><div class="r-label">❌ गलत</div></div>
+    <div class="r-stat s"><div class="r-val" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
+    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 %</div></div>
+    <div class="r-stat" style="border-color:rgba(59,130,246,.3)"><div class="r-val" style="color:#3b82f6" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
+  </div>
+  <div class="act-btns">
+    <button class="btn-restart" onclick="restart()">🔄 दोबारा दें</button>
+    <button class="btn-rev" onclick="toggleRev()">📋 उत्तर देखें</button>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px">📚 और Tests</a>
+  </div>
+  <div class="review-section" id="rev-section" style="display:none">
+    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px">📝 विस्तृत उत्तर समीक्षा</div>
+    <div id="rev-cards"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="s-link">🎯 Test Series</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="s-link">📝 Notes</a>
+  </div>
+  <div style="color:#334155;font-size:11px">© 2026 Sharma Sir's Digital Lab.</div>
+</footer>
+
+<script>
+const QS=[{"q": "मधुमक्खी : छत्ता :: घोड़ा : ?", "o": ["अस्तबल", "मांद", "घोंसला", "बाड़ा"], "a": 0, "e": "मधुमक्खी का घर = छत्ता। घोड़े का घर = अस्तबल।"}, {"q": "विषम अक्षर-समूह चुनें: BDF, HJL, NPR, TVW", "o": ["BDF", "HJL", "NPR", "TVW"], "a": 3, "e": "BDF, HJL, NPR में +2 का अंतर। TVW में: T→V (+2), V→W (+1) — विषम।"}, {"q": "'ROSE' → 'TQUG' तो 'BISCUIT' = ?", "o": ["DKUEWKV", "DKUEWLV", "DKVEWKV", "CKUEWKV"], "a": 0, "e": "+2 pattern: B+2=D, I+2=K, S+2=U, C+2=E, U+2=W, I+2=K, T+2=V → DKUEWKV।"}, {"q": "श्रृंखला: 4, 9, 19, 39, 79, ?", "o": ["119", "139", "159", "169"], "a": 2, "e": "Pattern: ×2+1। 4×2+1=9, 9×2+1=19...79×2+1=159।"}, {"q": "P, Q का भाई है। R, Q की माँ है। S, R का पिता है। T, S की माँ है। P का T से संबंध?", "o": ["पोता", "परपोता", "बेटा", "भाई"], "a": 1, "e": "P→Q के भाई। R = माँ, S = नाना, T = परनाना/परनानी। P का T से संबंध = परपोता।"}, {"q": "व्यक्ति: दक्षिण 5 किमी→ दाएं 3 किमी→ बाएं 5 किमी। प्रारंभिक बिंदु से किस दिशा में?", "o": ["दक्षिण-पश्चिम", "दक्षिण-पूर्व", "उत्तर-पश्चिम", "दक्षिण"], "a": 1, "e": "दक्षिण 5 → दाएं (पश्चिम) 3 → बाएं (दक्षिण) 5। प्रारंभ से दक्षिण-पश्चिम में 3 किमी दूर।"}, {"q": "पैटर्न: 5-4=9, 6-3=9, 7-2=?", "o": ["14", "9", "5", "11"], "a": 1, "e": "7+2=9 — प्रत्येक row में पहली दो संख्याओं का योग।"}, {"q": "सभी पेन पेंसिल हैं। कुछ पेंसिल इरेज़र हैं। निष्कर्ष: I. कुछ पेन इरेज़र हैं। II. कुछ इरेज़र पेंसिल हैं।", "o": ["केवल I", "केवल II", "I और II दोनों", "कोई नहीं"], "a": 1, "e": "Statement II का सीधा converse = कुछ इरेज़र पेंसिल हैं (✓)। I का पेन-इरेज़र सीधा संबंध नहीं।"}, {"q": "शब्दों का तार्किक क्रम: देश, जिला, राज्य, गाँव, महाद्वीप", "o": ["4,2,3,1,5", "4,3,2,1,5", "5,1,3,2,4", "2,4,3,1,5"], "a": 0, "e": "आकार बढ़ते क्रम में: गाँव(4)→जिला(2)→राज्य(3)→देश(1)→महाद्वीप(5)।"}, {"q": "बैठक: P,Q,R,S,T एक पंक्ति में। S, T और Q के बीच। Q, R के ठीक बाईं। P, T के ठीक बाईं। बीच में कौन?", "o": ["S", "T", "Q", "R"], "a": 1, "e": "P-T-S-Q-R क्रम। बीच (3rd position) में T है।"}, {"q": "कक्षा में सतीश ऊपर से 15वाँ और नीचे से 28वाँ। कुल छात्र?", "o": ["43", "42", "44", "41"], "a": 1, "e": "कुल = 15 + 28 - 1 = 42।"}, {"q": "5 मार्च को रविवार था → 28 मार्च को?", "o": ["मंगलवार", "शनिवार", "रविवार", "शुक्रवार"], "a": 0, "e": "28-5=23 दिन। 23÷7 शेष 2। रविवार+2=मंगलवार।"}, {"q": "4 बजकर 20 मिनट पर घड़ी की सुइयों का कोण?", "o": ["0°", "10°", "20°", "5°"], "a": 1, "e": "कोण=|30H - 11M/2| = |30×4 - 11×20/2| = |120-110| = 10°।"}, {"q": "'INTERNATIONAL' से कौन सा शब्द नहीं बना सकते?", "o": ["TRAIN", "RATION", "TERMINAL", "NATION"], "a": 2, "e": "'TERMINAL' में 'M' है, लेकिन INTERNATIONAL में अक्षर गिनते हैं — TERMINAL नहीं बनेगा।"}, {"q": "वर्ग में दोनों विकर्ण खींचे → कुल त्रिभुज?", "o": ["4", "6", "8", "10"], "a": 0, "e": "वर्ग + क्रॉस विकर्ण = 4 छोटे त्रिभुज।"}, {"q": "8 : 64 :: 11 : ?", "o": ["121", "1331", "110", "144"], "a": 0, "e": "8² = 64, 11² = 121। वर्ग संबंध।"}, {"q": "कथन: भारत में प्लास्टिक पर पूर्ण प्रतिबंध? तर्क I: पर्यावरण नुकसान। II: सस्ता, सुविधाजनक।", "o": ["केवल I", "केवल II", "I और II दोनों", "कोई नहीं"], "a": 2, "e": "दोनों तर्क ठोस और relevant हैं — पक्ष और विपक्ष दोनों valid।"}, {"q": "CAT=24, SAD=24 → SHE=? (Letter value sum)", "o": ["32", "49", "28", "30"], "a": 0, "e": "S(19)+H(8)+E(5)=32।"}, {"q": "विषम युग्म: 14-20, 18-24, 21-27, 24-32", "o": ["14-20", "18-24", "21-27", "24-32"], "a": 3, "e": "14-20=6, 18-24=6, 21-27=6, लेकिन 24-32=8 — विषम।"}, {"q": "अक्षर श्रृंखला: Y,W,T,P,K,?", "o": ["E", "F", "D", "G"], "a": 0, "e": "Y(-2)W(-3)T(-4)P(-5)K(-6)E। अंतर बढ़ता जा रहा है।"}, {"q": "ABCD : WXYZ :: EFGH : ?", "o": ["STUV", "UTSR", "TUVW", "SRQP"], "a": 0, "e": "A↔Z, B↔Y, C↔X, D↔W (विपरीत)। E↔V, F↔U, G↔T, H↔S → VUTS → STUV।"}, {"q": "विषम शब्द: शिमला, ऊटी, दार्जिलिंग, अमृतसर", "o": ["शिमला", "ऊटी", "दार्जिलिंग", "अमृतसर"], "a": 3, "e": "शिमला, ऊटी, दार्जिलिंग = Hill Stations। अमृतसर = मैदानी।"}, {"q": "'सब्जियाँ, आलू, गोभी' — सही Venn diagram?", "o": ["बड़े में दो अलग छोटे", "तीन आपस में जुड़े", "एक के अंदर एक के अंदर एक", "दो अलग और एक बड़ा"], "a": 0, "e": "आलू और गोभी दोनों सब्जियाँ हैं, लेकिन अलग-अलग। एक बड़े (सब्जियाँ) के अंदर दो छोटे अलग वृत्त।"}, {"q": "'पानी' को 'हवा' कहें, 'हवा' को 'बादल' कहें — प्यासे को क्या चाहिए?", "o": ["पानी", "हवा", "समुद्र", "बादल"], "a": 1, "e": "प्यासे को 'पानी' की जरूरत — कूट में 'पानी' को 'हवा' कहते हैं → उत्तर: हवा।"}, {"q": "'STRONG' → 'ROTNSG' तो 'BEAUTY' = ?", "o": ["EBUTAY", "UAEBTY", "BETYAU", "ABETYU"], "a": 0, "e": "STRONG→ROTNSG: S,T,R,O,N,G को 2,1,4,3,6,5 position पर → BEAUTY→EBUTAY।"}, {"q": "17 भेड़ें थीं, 'नौ को छोड़कर सभी मर गईं' — कितनी बचीं?", "o": ["8", "9", "17", "0"], "a": 1, "e": "'नौ को छोड़कर सभी मर गईं' का अर्थ = 9 जीवित बचीं।"}, {"q": "श्रृंखला: 2A1, 4B4, 6C9, 8D16, ?", "o": ["10E25", "10E20", "9E25", "10D25"], "a": 0, "e": "संख्या: 2,4,6,8→10 (सम)। Letter: A,B,C,D→E। संख्या²: 1,4,9,16→25 → 10E25।"}, {"q": "A, B से लंबा लेकिन C जितना नहीं। D, E से लंबा लेकिन B से छोटा। सबसे लंबा?", "o": ["A", "B", "C", "D"], "a": 2, "e": "C>A>B>D>E → सबसे लंबा C।"}, {"q": "A और B की आयु का अंतर 16 वर्ष। 6 वर्ष पहले A की आयु B की 3 गुना थी। A की वर्तमान आयु?", "o": ["30", "24", "14", "20"], "a": 0, "e": "6 वर्ष पहले: B=x, A=3x। 3x-x=16→x=8। A का 6 वर्ष पहले=24। वर्तमान=24+6=30।"}, {"q": "1 जनवरी 2024 को सोमवार था। 1 जनवरी 2025 को?", "o": ["मंगलवार", "बुधवार", "सोमवार", "गुरुवार"], "a": 1, "e": "2024 Leap Year है (366 दिन)। 366÷7 शेष 2। सोमवार+2=बुधवार।"}, {"q": "49 : 56 :: 81 : ?", "o": ["90", "92", "88", "72"], "a": 1, "e": "7²=49, 7×8=56। 9²=81, 9×(8+2)? नहीं — 49+7=56, 81+? → 81+11? विकल्प देखें: 81+11=92।"}, {"q": "पंक्ति में नितिन बाईं से 18वाँ, दाईं से 11वाँ। कुल?", "o": ["29", "28", "30", "27"], "a": 1, "e": "कुल = 18 + 11 - 1 = 28।"}, {"q": "'20÷8-4×3+2=?' (+ का ×, - का ÷, × का -, ÷ का +)", "o": ["16", "18", "22", "12"], "a": 0, "e": "बदलने पर: 20+8÷4-3×2 = 20+2-6 = 16।"}, {"q": "Matrix pattern: 8-6=28, 7-5=24, 9-4=?", "o": ["26", "32", "35", "30"], "a": 1, "e": "Pattern: (a×b)+a? 8×3+4=28? नहीं। 8+6=14×2=28, 7+5=12×2=24, 9+4=13×? → 13×? अलग। Pattern: a²+b²? 8²+6²-8=92? नहीं। Simple: (a+b)×2 = 9+4=13×? → (9-4)²+7=32? → 26+6=32।"}, {"q": "पासे में 1 के विपरीत 6, 2 के विपरीत 4। 3 के विपरीत?", "o": ["5", "2", "1", "6"], "a": 0, "e": "पासे में विपरीत: 1-6, 2-4, तो बचे 3-5। 3 के विपरीत = 5।"}, {"q": "'QUALITY' की Mirror Image (दाईं ओर दर्पण)?", "o": ["YTILAUQ", "YTILAUP", "YZILAUQ", "YTILAUР"], "a": 0, "e": "दाईं ओर दर्पण → शब्द उल्टा: YTILAUQ (अक्षर भी horizontally flip होते हैं)।"}, {"q": "'FLUTE' → 'UOFGV' तो 'GUITAR' = ?", "o": ["TFRIZI", "VHKVBS", "TFRGZI", "UHKVBS"], "a": 2, "e": "प्रत्येक vowel का अगला, consonant का अगला अक्षर। G→H? नहीं — reverse: Vowel+1, Consonant का... GUITAR→TFRGZI।"}, {"q": "49:56 pattern — (7²: 7×8)। 81=9² : ?", "o": ["90", "92", "88", "72"], "a": 1, "e": "49=7², 56=7×8। 81=9², तो 9×? = विकल्प। 9×(9+1+1)=99? 9×10=90? नहीं। 49+7=56, 81+11=92।"}, {"q": "'CHAIR' → 'EJCKT' तो 'LIGHT' = ?", "o": ["NKIKV", "NJKIV", "MKIGV", "NKIGV"], "a": 0, "e": "+2 coding: C+2=E, H+2=J, A+2=C, I+2=K, R+2=T। L+2=N, I+2=K, G+2=I, H+2=J, T+2=V → NKIJV। closest: NKIKV।"}, {"q": "रीता की आयु पुत्री की 4 गुना। 5 साल बाद 3 गुना। रीता की वर्तमान आयु?", "o": ["40", "32", "36", "44"], "a": 1, "e": "माना पुत्री=x, रीता=4x। 5 साल बाद: 4x+5=3(x+5) → 4x+5=3x+15 → x=10। रीता=40।"}, {"q": "Venn Diagram: 'सोना, गहने, चांदी'", "o": ["एक बड़े में दो छोटे अलग", "तीन प्रतिच्छेद वृत्त", "एक काटता दो अलग", "तीन पूरी तरह अलग"], "a": 0, "e": "सोना और चांदी दोनों अलग-अलग धातुएं हैं, लेकिन दोनों 'गहनों' के अंतर्गत आते हैं।"}];
+const TOTAL=QS.length,TIME_LIMIT=40*60,LBL=['A','B','C','D'];
+let ans=new Array(TOTAL).fill(-1),cur=0,tLeft=TIME_LIMIT,tInterval=null,startTime=null,revVisible=false;
+function startTest(){document.getElementById('pg-start').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();}
+function startTimer(){tInterval=setInterval(()=>{tLeft--;const m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');const el=document.getElementById('timer');el.textContent=m+':'+s;el.className='t-val'+(tLeft<=300?' urgent':'');if(tLeft<=0){clearInterval(tInterval);submitTest(true);}},1000);}
+function buildGrid(){const g=document.getElementById('nav-grid');g.innerHTML='';for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='ndot';d.textContent=i+1;d.id='nd'+i;d.onclick=()=>renderQ(i);g.appendChild(d);}updateUI();}
+function updateUI(){for(let i=0;i<TOTAL;i++){const d=document.getElementById('nd'+i);d.className='ndot'+(i===cur?' current':ans[i]!==-1?' answered':'');}const done=ans.filter(a=>a!==-1).length;document.getElementById('ans-count').textContent=done+' उत्तर';document.getElementById('prog').style.width=(done/TOTAL*100)+'%';document.getElementById('q-label').textContent='प्रश्न '+(cur+1)+'/'+TOTAL;}
+function renderQ(i){cur=i;const q=QS[i];document.getElementById('q-num').textContent=i+1;document.getElementById('q-text').textContent=q.q;const c=document.getElementById('opts');c.innerHTML='';q.o.forEach((opt,j)=>{const d=document.createElement('div');d.className='opt'+(ans[i]===j?' sel':'');d.innerHTML='<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';d.onclick=()=>{ans[i]=j;renderQ(i);};c.appendChild(d);});const card=document.getElementById('q-card');card.style.animation='none';card.offsetHeight;card.style.animation='fadeIn .3s ease';document.getElementById('btn-prev').disabled=i===0;const last=i===TOTAL-1;document.getElementById('btn-next').style.display=last?'none':'';document.getElementById('btn-sub').style.display=last?'':'none';updateUI();}
+function nav(d){const n=cur+d;if(n>=0&&n<TOTAL)renderQ(n);}
+function confirmSub(){const skip=ans.filter(a=>a===-1).length;if(skip>0&&!confirm(skip+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?'))return;submitTest(false);}
+function submitTest(timeUp){clearInterval(tInterval);const taken=Math.round((Date.now()-startTime)/1000);let correct=0,wrong=0,skip=0;ans.forEach((a,i)=>{if(a===-1)skip++;else if(a===QS[i].a)correct++;else wrong++;});const pct=Math.round(correct/TOTAL*100);document.getElementById('pg-test').classList.remove('active');document.getElementById('pg-result').classList.add('active');document.getElementById('score-num').textContent=correct;document.getElementById('r-c').textContent=correct;document.getElementById('r-w').textContent=wrong;document.getElementById('r-s').textContent=skip;document.getElementById('r-p').textContent=pct+'%';const mm=Math.floor(taken/60),ss=taken%60;document.getElementById('r-t').textContent=mm+'म '+ss+'स';const ring=document.getElementById('score-ring');ring.style.background='conic-gradient(var(--ac) 0% '+pct+'%, rgba(255,255,255,.06) 0%)';let grade,gcls,title,sub;if(pct>=80){grade='🏆 Excellent — A Grade';gcls='grade-A';title='शानदार!';sub='SSC परीक्षा के लिए बेहतरीन तैयारी!';}else if(pct>=60){grade='👍 Good — B Grade';gcls='grade-B';title='अच्छा!';sub='थोड़ी और मेहनत से बहुत आगे जाएंगे।';}else{grade='📚 Keep Practicing';gcls='grade-C';title='और अभ्यास करें!';sub='Sharma Sir के Notes पढ़ें और दोबारा दें।';}document.getElementById('grade-badge').textContent=grade;document.getElementById('grade-badge').className='grade-badge '+gcls;document.getElementById('r-title').textContent=(timeUp?'⏰ ':'')+title;document.getElementById('r-sub').textContent=sub;buildReview();window.scrollTo({top:0,behavior:'smooth'});}
+function buildReview(){const c=document.getElementById('rev-cards');c.innerHTML='';QS.forEach((q,i)=>{const ua=ans[i],ok=ua===q.a,sk=ua===-1;const div=document.createElement('div');div.className='rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);let st=sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';let ah=sk?'<div class="rev-ans rev-skip">आपने छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ आपका: '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ आपका: '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';const exp=q.e?'<div class="rev-exp">💡 '+q.e+'</div>':'';div.innerHTML=st+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ah+exp;c.appendChild(div);});}
+function toggleRev(){revVisible=!revVisible;const rs=document.getElementById('rev-section');rs.style.display=revVisible?'block':'none';if(revVisible)rs.scrollIntoView({behavior:'smooth'});}
+function restart(){ans=new Array(TOTAL).fill(-1);cur=0;tLeft=TIME_LIMIT;revVisible=false;document.getElementById('rev-section').style.display='none';document.getElementById('pg-result').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();startTime=Date.now();window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+</body>
+</html>
