@@ -1,99 +1,423 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Courses | Sharma Sir's Digital Lab</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sora:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css"/>
-  <meta name="description" content="Sharma Sir's Digital Lab — RPSC, REET, SSC, Railway के लिए Free Notes, Test Series और Current Affairs।"/>
-
-<meta name="keywords" content="RPSC Notes, REET Notes, SSC Notes, Railway Notes, Rajasthan GK, Current Affairs 2026"/>
-
-<meta name="author" content="Sharma Sir's Digital Lab"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#FAFAF8;--bg2:#F3F2EF;--bg3:#ECEAE5;
+  --surface:#FFFFFF;--border:#E2DDD5;--border2:#D0CAC0;
+  --navy:#1A1F36;--navy2:#2D3561;
+  --saffron:#E8610A;--saffron2:#FF7A2B;--saffron-light:#FFF0E8;
+  --green:#0A7D4B;--green-light:#E6F5EE;
+  --blue:#1A5FA8;--blue-light:#E8F0FB;
+  --purple:#6C3FC1;--purple-light:#F0EAFB;
+  --red:#C0392B;--red-light:#FDECEA;
+  --gold:#C17D11;--gold-light:#FEF3E2;
+  --text:#1A1F36;--text2:#4A5070;--text3:#8890A8;
+  --shadow:0 2px 16px rgba(26,31,54,0.08);
+  --shadow-lg:0 8px 40px rgba(26,31,54,0.12);
+  --radius:14px;--radius-lg:20px;
+}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+.navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(26,31,54,0.07)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(232,97,10,0.2)}
+.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:var(--text3)}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center}
+.nav-links a{padding:7px 12px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--text2);transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--saffron);background:var(--saffron-light)}
+.btn-contact{background:var(--saffron)!important;color:#fff!important;border-radius:9px!important;padding:7px 16px!important;box-shadow:0 3px 12px rgba(232,97,10,0.3)!important}
+.btn-contact:hover{background:var(--saffron2)!important;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;padding:4px 8px}
+.hero-dark{background:linear-gradient(135deg,#1A1F36 0%,#2D3561 60%,#1A1F36 100%);position:relative;overflow:hidden;padding:64px 24px 48px;text-align:center}
+.hero-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
+.hero-eyebrow{display:inline-block;padding:6px 18px;border-radius:999px;background:rgba(232,97,10,0.15);border:1px solid rgba(232,97,10,0.35);color:#FF7A2B;font-size:13px;font-weight:700;margin-bottom:18px;position:relative;z-index:1}
+.hero-h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;color:#fff;margin-bottom:10px;position:relative;z-index:1;line-height:1.1}
+.hero-h1 span{color:var(--saffron2)}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:15px;max-width:560px;margin:0 auto 28px;position:relative;z-index:1}
+.section{padding:64px 24px}
+.section-inner{max-width:1160px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:700;color:var(--saffron);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.section-eyebrow::before{content:'';width:20px;height:2px;background:var(--saffron);display:block;border-radius:2px}
+.section-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--navy);margin-bottom:10px}
+.section-title span{color:var(--saffron)}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:32px;max-width:560px}
+.divider{height:1px;background:var(--border);margin:0}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent}
+.badge-or{background:var(--saffron-light);color:var(--saffron);border-color:rgba(232,97,10,0.25)}
+.badge-gr{background:var(--green-light);color:var(--green);border-color:rgba(10,125,75,0.25)}
+.badge-bl{background:var(--blue-light);color:var(--blue);border-color:rgba(26,95,168,0.25)}
+.badge-pu{background:var(--purple-light);color:var(--purple);border-color:rgba(108,63,193,0.25)}
+.badge-rd{background:var(--red-light);color:var(--red);border-color:rgba(192,57,43,0.25)}
+.btn-primary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--saffron);color:#fff;font-weight:700;font-size:14px;transition:all .2s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,97,10,0.35)}
+.btn-primary:hover{background:var(--saffron2);transform:translateY(-1px)}
+.btn-secondary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--surface);color:var(--text);font-weight:700;font-size:14px;transition:all .2s;border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--saffron);color:var(--saffron)}
+.btn-ghost-dark{display:inline-block;padding:11px 24px;border-radius:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-weight:700;font-size:14px;transition:all .2s}
+.btn-ghost-dark:hover{background:rgba(255,255,255,0.18)}
+.cta-dark{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius-lg);padding:40px 32px;text-align:center;position:relative;overflow:hidden;margin-top:48px}
+.cta-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,97,10,0.2),transparent)}
+.cta-dark-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;position:relative}
+.cta-dark-sub{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:22px;position:relative}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+.footer{background:var(--navy);color:rgba(255,255,255,0.85);padding:52px 24px 28px}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.footer-brand-logo{width:44px;height:44px;border-radius:10px;object-fit:cover;margin-bottom:12px}
+.footer-brand-name{font-weight:800;color:var(--saffron2);font-size:16px;margin-bottom:6px}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:16px}
+.footer-socials{display:flex;gap:8px;flex-wrap:wrap}
+.footer-soc{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;transition:all .2s}
+.footer-soc:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--saffron2);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:9px;transition:color .2s}
+.footer-link:hover{color:var(--saffron2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;flex-direction:column;padding:12px 20px;border-bottom:1px solid var(--border);gap:2px;align-items:flex-start;box-shadow:0 8px 24px rgba(26,31,54,0.1)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .footer-top{grid-template-columns:1fr;gap:24px}
+  .section{padding:44px 20px}
+}
+.filter-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.filter-btn{padding:8px 18px;border-radius:999px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.exam-section{margin-bottom:52px}
+.exam-sec-head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;border-left:4px solid var(--saffron)}
+.exam-sec-icon{font-size:32px}
+.exam-sec-name{font-size:20px;font-weight:900;color:var(--navy)}
+.exam-sec-name span{color:var(--saffron)}
+.exam-sec-sub{font-size:13px;color:var(--text3)}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.course-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all .2s;position:relative;overflow:hidden}
+.course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.course-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.course-tag-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.course-level{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:0.5px}
+.course-free{font-size:11px;font-weight:700;color:var(--green)}
+.course-title{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.course-meta-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.course-meta-item{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text3)}
+.course-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.course-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.course-chip{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:var(--bg2);color:var(--text2);border:1px solid var(--border)}
+.course-footer{display:flex;align-items:center;justify-content:space-between}
+.course-price{font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+.btn-join{padding:9px 20px;border-radius:10px;font-size:13px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:all .2s}
+.btn-join:hover{transform:translateY(-1px);opacity:0.9}
+</style>
 </head>
 <body>
-<nav class="navbar" id="navbar">
-  <a href="index.html" class="nav-brand"><img src="logo.jpg" alt="Logo" class="nav-logo"/><div class="nav-brand-text"><div class="l1">Sharma Sir's Digital Lab</div><div class="l2">RPSC · RSMSSB · SSC · Railway · REET</div></div></a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
-    <a href="courses.html" class="nav-link active">Courses</a><a href="notes.html" class="nav-link">Notes</a>
-    <a href="current-affairs.html" class="nav-link">Current Affairs</a><a href="test-series.html" class="nav-link">Test Series</a>
-    <a href="downloads.html" class="nav-link">Downloads</a><a href="contact.html" class="nav-cta">Contact</a>
-  </div>
-  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
-</nav>
-<div class="mob-nav" id="mobNav">
-  <a href="index.html">🏠 Home</a><a href="about.html">👤 About</a><a href="courses.html" class="active">📚 Courses</a>
-  <a href="notes.html">📝 Notes</a><a href="current-affairs.html">📰 Current Affairs</a>
-  <a href="test-series.html">🎯 Test Series</a><a href="downloads.html">⬇️ Downloads</a>
-  <div class="mob-div"></div><a href="contact.html">☎️ Contact</a>
+<nav class="navbar"><div class="nav-inner"><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand"><img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'"><div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div></a><button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button><ul class="nav-links" id="nl"><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">🏠 Home</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html">👤 About</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="active">📚 Courses</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html">📝 Notes</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html">📰 Current Affairs</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Test Series</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html">⬇️ Downloads</a></li><li><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="btn-contact">☎️ Contact</a></li></ul></div></nav>
+
+<div class="hero-dark" style="padding:56px 24px 44px">
+  <div class="hero-eyebrow">📚 अध्ययन सामग्री</div>
+  <h1 class="hero-h1">Our <span>Courses</span></h1>
+  <p class="hero-sub">अपनी परीक्षा के अनुसार कोर्स चुनें और सफलता की राह पर चलें।</p>
 </div>
 
-<div class="page-hero">
-  <div class="eyebrow jc">अध्ययन सामग्री</div>
-  <h1 class="page-title">Our <span class="grad">Courses</span></h1>
-  <p class="page-desc">अपनी परीक्षा के अनुसार कोर्स चुनें और सफलता की राह पर चलें।</p>
+<div class="section">
+<div class="section-inner">
+
+  <div class="filter-wrap">
+    <button class="filter-btn active" onclick="filterExam('all',this)">All Exams</button>
+    <button class="filter-btn" onclick="filterExam('rpsc',this)">RPSC</button>
+    <button class="filter-btn" onclick="filterExam('reet',this)">REET</button>
+    <button class="filter-btn" onclick="filterExam('ssc',this)">SSC / CET</button>
+    <button class="filter-btn" onclick="filterExam('railway',this)">Railway</button>
+    <button class="filter-btn" onclick="filterExam('rsmssb',this)">RSMSSB</button>
+  </div>
+
+  <!-- RPSC -->
+  <div class="exam-section" data-exam="rpsc">
+    <div class="exam-sec-head" style="border-left-color:#C0392B">
+      <div class="exam-sec-icon">🏛️</div>
+      <div><div class="exam-sec-name">RPSC <span>Courses</span></div><div class="exam-sec-sub">Rajasthan Public Service Commission</div></div>
+      <span class="badge badge-rd" style="margin-left:auto">RPSC</span>
+    </div>
+    <div class="course-grid">
+      <div class="course-card" style="border-top-color:#C0392B">
+        <div class="course-card" style="border:none;padding:0">
+          <div class="course-tag-wrap">
+            <span class="course-level" style="background:#FDECEA;color:#C0392B">1ST GRADE</span>
+            <span class="course-free">FREE + PAID</span>
+          </div>
+          <div class="course-title">RPSC 1st Grade — School Lecturer</div>
+          <div class="course-meta-row">
+            <span class="course-meta-item">📄 200+ Notes</span>
+            <span class="course-meta-item">🎯 30 Tests</span>
+            <span class="course-meta-item">🎥 50+ Videos</span>
+          </div>
+          <div class="course-desc">Paper-I (GK+GS) और Paper-II (Subject Specific) दोनों की सम्पूर्ण तैयारी। राजस्थान GK, इतिहास, भूगोल, Pedagogy।</div>
+          <div class="course-chips">
+            <span class="course-chip">राजस्थान GK</span><span class="course-chip">इतिहास</span><span class="course-chip">भूगोल</span><span class="course-chip">Pedagogy</span><span class="course-chip">Current Affairs</span>
+          </div>
+          <div class="course-footer">
+            <span class="course-price" style="background:#FDECEA;color:#C0392B">FREE + PAID</span>
+            <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#C0392B">Join Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card" style="border-top:4px solid #E8610A">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:var(--saffron-light);color:var(--saffron)">2ND GRADE</span>
+          <span class="course-free">FREE + PAID</span>
+        </div>
+        <div class="course-title">RPSC 2nd Grade — Senior Teacher</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 250+ Notes</span>
+          <span class="course-meta-item">🎯 35 Tests</span>
+          <span class="course-meta-item">🎥 60+ Videos</span>
+        </div>
+        <div class="course-desc">Senior Teacher Grade-II — GK और विषय-विशेष नोट्स, Previous Papers, Mock Tests। हिंदी, सामाजिक विज्ञान, विज्ञान, गणित।</div>
+        <div class="course-chips">
+          <span class="course-chip">GK</span><span class="course-chip">हिंदी</span><span class="course-chip">सामाजिक विज्ञान</span><span class="course-chip">विज्ञान</span><span class="course-chip">गणित</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:var(--saffron-light);color:var(--saffron)">FREE + PAID</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:var(--saffron)">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REET -->
+  <div class="exam-section" data-exam="reet">
+    <div class="exam-sec-head" style="border-left-color:#0A7D4B">
+      <div class="exam-sec-icon">📖</div>
+      <div><div class="exam-sec-name">REET <span style="color:#0A7D4B">Courses</span></div><div class="exam-sec-sub">Rajasthan Eligibility Exam for Teachers</div></div>
+      <span class="badge badge-gr" style="margin-left:auto">REET</span>
+    </div>
+    <div class="course-grid">
+      <div class="course-card" style="border-top:4px solid #0A7D4B">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:var(--green-light);color:var(--green)">LEVEL 1</span>
+          <span class="course-free" style="color:var(--green)">FREE</span>
+        </div>
+        <div class="course-title">REET Level 1 — Primary (Class 1–5)</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 150+ Notes</span>
+          <span class="course-meta-item">🎯 20 Tests</span>
+          <span class="course-meta-item">🆓 Free</span>
+        </div>
+        <div class="course-desc">बाल विकास, भाषा-I (Hindi), भाषा-II (English/Sanskrit), गणित और EVS की सम्पूर्ण तैयारी।</div>
+        <div class="course-chips">
+          <span class="course-chip">बाल विकास</span><span class="course-chip">हिंदी</span><span class="course-chip">English</span><span class="course-chip">गणित</span><span class="course-chip">EVS</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:var(--green-light);color:var(--green)">FREE</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#0A7D4B">Join Now</a>
+        </div>
+      </div>
+      <div class="course-card" style="border-top:4px solid #16A085">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:#E8F8F5;color:#16A085">LEVEL 2</span>
+          <span class="course-free" style="color:#16A085">FREE</span>
+        </div>
+        <div class="course-title">REET Level 2 — Upper Primary (Class 6–8)</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 180+ Notes</span>
+          <span class="course-meta-item">🎯 25 Tests</span>
+          <span class="course-meta-item">🆓 Free</span>
+        </div>
+        <div class="course-desc">बाल विकास, भाषाएँ और विषय-विशेष — Social Science / Math-Science / Language।</div>
+        <div class="course-chips">
+          <span class="course-chip">बाल विकास</span><span class="course-chip">Social Science</span><span class="course-chip">Science+Math</span><span class="course-chip">Hindi</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:#E8F8F5;color:#16A085">FREE</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#16A085">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SSC/CET -->
+  <div class="exam-section" data-exam="ssc">
+    <div class="exam-sec-head" style="border-left-color:#1A5FA8">
+      <div class="exam-sec-icon">🏢</div>
+      <div><div class="exam-sec-name">SSC / CET / RSMSSB <span style="color:#1A5FA8">Courses</span></div><div class="exam-sec-sub">Staff Selection Commission &amp; Rajasthan CET</div></div>
+      <span class="badge badge-bl" style="margin-left:auto">SSC-CET</span>
+    </div>
+    <div class="course-grid">
+      <div class="course-card" style="border-top:4px solid #1A5FA8">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:var(--blue-light);color:var(--blue)">CET</span>
+          <span class="course-free" style="color:var(--green)">FREE</span>
+        </div>
+        <div class="course-title">Rajasthan CET (10th / 12th Level)</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 120+ Notes</span>
+          <span class="course-meta-item">🎯 15 Tests</span>
+        </div>
+        <div class="course-desc">RSMSSB द्वारा आयोजित CET 10th Level और 12th Level दोनों के लिए GK, Reasoning, Hindi, Math।</div>
+        <div class="course-chips">
+          <span class="course-chip">GK</span><span class="course-chip">Reasoning</span><span class="course-chip">Hindi</span><span class="course-chip">Math</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:var(--blue-light);color:var(--blue)">FREE</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#1A5FA8">Join Now</a>
+        </div>
+      </div>
+      <div class="course-card" style="border-top:4px solid #2980B9">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:#EBF5FB;color:#2980B9">SSC</span>
+          <span class="course-free">FREE + PAID</span>
+        </div>
+        <div class="course-title">SSC GD · CHSL · MTS</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 100+ Notes</span>
+          <span class="course-meta-item">🎯 12 Tests</span>
+        </div>
+        <div class="course-desc">SSC GD Constable, CHSL, MTS — General Studies, Reasoning, Quantitative Aptitude, English।</div>
+        <div class="course-chips">
+          <span class="course-chip">General Studies</span><span class="course-chip">Reasoning</span><span class="course-chip">Quant</span><span class="course-chip">English</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:#EBF5FB;color:#2980B9">FREE + PAID</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#2980B9">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAILWAY -->
+  <div class="exam-section" data-exam="railway">
+    <div class="exam-sec-head" style="border-left-color:#6C3FC1">
+      <div class="exam-sec-icon">🚂</div>
+      <div><div class="exam-sec-name">Railway <span style="color:#6C3FC1">Courses</span></div><div class="exam-sec-sub">RRB Group D, NTPC, ALP</div></div>
+      <span class="badge badge-pu" style="margin-left:auto">Railway</span>
+    </div>
+    <div class="course-grid">
+      <div class="course-card" style="border-top:4px solid #6C3FC1">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:var(--purple-light);color:var(--purple)">Group D</span>
+          <span class="course-free" style="color:var(--green)">FREE</span>
+        </div>
+        <div class="course-title">Railway Group D — CBT</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 80+ Notes</span>
+          <span class="course-meta-item">🎯 10 Tests</span>
+        </div>
+        <div class="course-desc">Science, Mathematics, General Intelligence &amp; Reasoning, General Awareness — सम्पूर्ण तैयारी।</div>
+        <div class="course-chips">
+          <span class="course-chip">Science</span><span class="course-chip">Math</span><span class="course-chip">Reasoning</span><span class="course-chip">GK</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:var(--purple-light);color:var(--purple)">FREE</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#6C3FC1">Join Now</a>
+        </div>
+      </div>
+      <div class="course-card" style="border-top:4px solid #8E44AD">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:#F5EEF8;color:#8E44AD">NTPC</span>
+          <span class="course-free" style="color:var(--green)">FREE + PAID</span>
+        </div>
+        <div class="course-title">RRB NTPC — Graduate Level</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 90+ Notes</span>
+          <span class="course-meta-item">🎯 12 Tests</span>
+        </div>
+        <div class="course-desc">Mathematics, General Intelligence, General Awareness — CBT 1 &amp; CBT 2 दोनों की तैयारी।</div>
+        <div class="course-chips">
+          <span class="course-chip">Math</span><span class="course-chip">Reasoning</span><span class="course-chip">GK</span><span class="course-chip">English</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:#F5EEF8;color:#8E44AD">FREE + PAID</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#8E44AD">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RSMSSB -->
+  <div class="exam-section" data-exam="rsmssb">
+    <div class="exam-sec-head" style="border-left-color:#C17D11">
+      <div class="exam-sec-icon">📋</div>
+      <div><div class="exam-sec-name">RSMSSB <span style="color:#C17D11">Courses</span></div><div class="exam-sec-sub">Rajasthan Subordinate &amp; Ministerial Services</div></div>
+      <span class="badge" style="background:var(--gold-light);color:var(--gold);border-color:rgba(193,125,17,0.25);margin-left:auto">RSMSSB</span>
+    </div>
+    <div class="course-grid">
+      <div class="course-card" style="border-top:4px solid #C17D11">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:var(--gold-light);color:var(--gold)">Patwar</span>
+          <span class="course-free" style="color:var(--green)">FREE</span>
+        </div>
+        <div class="course-title">Patwar / Gram Sevak</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 100+ Notes</span>
+          <span class="course-meta-item">🎯 10 Tests</span>
+        </div>
+        <div class="course-desc">Rajasthan GK, Hindi, Computer, Mathematics — Patwar और Gram Sevak दोनों के लिए।</div>
+        <div class="course-chips">
+          <span class="course-chip">Rajasthan GK</span><span class="course-chip">Hindi</span><span class="course-chip">Computer</span><span class="course-chip">Math</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:var(--gold-light);color:var(--gold)">FREE</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#C17D11">Join Now</a>
+        </div>
+      </div>
+      <div class="course-card" style="border-top:4px solid #D4AC0D">
+        <div class="course-tag-wrap">
+          <span class="course-level" style="background:#FEF9E7;color:#D4AC0D">LDC/JEN</span>
+          <span class="course-free" style="color:var(--green)">FREE + PAID</span>
+        </div>
+        <div class="course-title">LDC / JEN / Various Posts</div>
+        <div class="course-meta-row">
+          <span class="course-meta-item">📄 70+ Notes</span>
+          <span class="course-meta-item">🎯 8 Tests</span>
+        </div>
+        <div class="course-desc">RSMSSB के विभिन्न पदों जैसे LDC, JEN, Hostel Superintendent की सम्पूर्ण तैयारी।</div>
+        <div class="course-chips">
+          <span class="course-chip">GK</span><span class="course-chip">Reasoning</span><span class="course-chip">Hindi</span><span class="course-chip">Computer</span>
+        </div>
+        <div class="course-footer">
+          <span class="course-price" style="background:#FEF9E7;color:#D4AC0D">FREE + PAID</span>
+          <a href="https://t.me/sharmasirdigitallab" class="btn-join" style="background:#D4AC0D">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-dark">
+    <div class="cta-dark-title">🎯 किसी भी Course के लिए Join करें!</div>
+    <div class="cta-dark-sub">Telegram पर सभी Courses के Notes, Tests और Guidance — Free।</div>
+    <div class="cta-btns">
+      <a href="https://t.me/sharmasirdigitallab" class="btn-primary">📢 Telegram Join करें</a>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="btn-ghost-dark">🎯 Free Tests दें</a>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="btn-ghost-dark">📝 Notes</a>
+    </div>
+  </div>
+
 </div>
-
-<div class="filter-bar reveal">
-  <button class="fb active">All Exams</button>
-  <button class="fb">RPSC</button><button class="fb">REET</button>
-  <button class="fb">SSC / CET</button><button class="fb">Railway</button><button class="fb">RSMSSB</button>
 </div>
-
-<div class="content-wrap">
-
-  <div class="exam-block reveal">
-    <div class="exam-block-hdr"><span class="eb-icon">🏛️</span><div><div class="eb-title">RPSC <span class="grad">Courses</span></div><div class="eb-sub">Rajasthan Public Service Commission</div></div><span class="chip chip-s ml">RPSC</span></div>
-    <div class="course-grid">
-      <div class="card ccard"><div class="ctop"><span class="chip chip-s">1st Grade</span><h3>RPSC 1st Grade — School Lecturer</h3><div class="cmeta"><span>📄 200+ Notes</span><span>🎯 30 Tests</span><span>🎥 50+ Videos</span></div></div><div class="cbody"><p>Paper-I (GK+GS) और Paper-II (Subject Specific) दोनों की सम्पूर्ण तैयारी। राजस्थान GK, इतिहास, भूगोल, Pedagogy।</p><div class="ctopics"><span>राजस्थान GK</span><span>इतिहास</span><span>भूगोल</span><span>Pedagogy</span><span>Current Affairs</span></div><div class="cfooter"><span class="chip chip-free">FREE + Paid</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-      <div class="card ccard"><div class="ctop"><span class="chip chip-s">2nd Grade</span><h3>RPSC 2nd Grade — Senior Teacher</h3><div class="cmeta"><span>📄 250+ Notes</span><span>🎯 35 Tests</span><span>🎥 60+ Videos</span></div></div><div class="cbody"><p>Senior Teacher Grade-II — GK और विषय-विशेष नोट्स, Previous Papers, Mock Tests। हिंदी, सामाजिक विज्ञान, विज्ञान, गणित।</p><div class="ctopics"><span>GK</span><span>हिंदी</span><span>सामाजिक विज्ञान</span><span>विज्ञान</span><span>गणित</span></div><div class="cfooter"><span class="chip chip-free">FREE + Paid</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-    </div>
-  </div>
-
-  <div class="exam-block reveal">
-    <div class="exam-block-hdr"><span class="eb-icon">📖</span><div><div class="eb-title">REET <span class="grad">Courses</span></div><div class="eb-sub">Rajasthan Eligibility Exam for Teachers</div></div><span class="chip chip-gr ml">REET</span></div>
-    <div class="course-grid">
-      <div class="card ccard"><div class="ctop"><span class="chip chip-gr">Level 1</span><h3>REET Level 1 — Primary (Class 1–5)</h3><div class="cmeta"><span>📄 150+ Notes</span><span>🎯 20 Tests</span><span>🆓 Free</span></div></div><div class="cbody"><p>बाल विकास, भाषा-I (Hindi), भाषा-II (English/Sanskrit), गणित और EVS की सम्पूर्ण तैयारी।</p><div class="ctopics"><span>बाल विकास</span><span>हिंदी</span><span>English</span><span>गणित</span><span>EVS</span></div><div class="cfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-      <div class="card ccard"><div class="ctop"><span class="chip chip-gr">Level 2</span><h3>REET Level 2 — Upper Primary (Class 6–8)</h3><div class="cmeta"><span>📄 180+ Notes</span><span>🎯 25 Tests</span><span>🆓 Free</span></div></div><div class="cbody"><p>बाल विकास, भाषाएँ और विषय-विशेष — Social Science / Math-Science / Language।</p><div class="ctopics"><span>बाल विकास</span><span>Social Science</span><span>Science+Math</span><span>Hindi</span></div><div class="cfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-    </div>
-  </div>
-
-  <div class="exam-block reveal">
-    <div class="exam-block-hdr"><span class="eb-icon">🏢</span><div><div class="eb-title">SSC / CET / RSMSSB <span class="grad">Courses</span></div><div class="eb-sub">Staff Selection Commission & Rajasthan CET</div></div><span class="chip chip-g ml">SSC·CET</span></div>
-    <div class="course-grid">
-      <div class="card ccard"><div class="ctop"><span class="chip chip-g">CET</span><h3>Rajasthan CET (10th / 12th Level)</h3><div class="cmeta"><span>📄 120+ Notes</span><span>🎯 15 Tests</span></div></div><div class="cbody"><p>RSMSSB द्वारा आयोजित CET 10th Level और 12th Level दोनों के लिए GK, Reasoning, Hindi, Math।</p><div class="ctopics"><span>GK</span><span>Reasoning</span><span>Hindi</span><span>Math</span></div><div class="cfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-      <div class="card ccard"><div class="ctop"><span class="chip chip-g">SSC</span><h3>SSC GD · CHSL · MTS</h3><div class="cmeta"><span>📄 100+ Notes</span><span>🎯 12 Tests</span></div></div><div class="cbody"><p>SSC GD Constable, CHSL, MTS — General Studies, Reasoning, Quantitative Aptitude, English।</p><div class="ctopics"><span>General Studies</span><span>Reasoning</span><span>Quant</span><span>English</span></div><div class="cfooter"><span class="chip chip-free">FREE + Paid</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-    </div>
-  </div>
-
-  <div class="exam-block reveal">
-    <div class="exam-block-hdr"><span class="eb-icon">🚂</span><div><div class="eb-title">Railway <span class="grad">Courses</span></div><div class="eb-sub">Railway Recruitment Board</div></div><span class="chip chip-b ml">Railway</span></div>
-    <div class="course-grid">
-      <div class="card ccard"><div class="ctop"><span class="chip chip-b">NTPC</span><h3>RRB NTPC (Graduate / UG Level)</h3><div class="cmeta"><span>📄 90+ Notes</span><span>🎯 10 Tests</span></div></div><div class="cbody"><p>CBT-1 और CBT-2 दोनों stages — GK, Math, Reasoning, English। पूरी तैयारी एक जगह।</p><div class="ctopics"><span>GK</span><span>Maths</span><span>Reasoning</span><span>English</span></div><div class="cfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-      <div class="card ccard"><div class="ctop"><span class="chip chip-b">Group D</span><h3>Railway Group D (RRC)</h3><div class="cmeta"><span>📄 80+ Notes</span><span>🎯 8 Tests</span></div></div><div class="cbody"><p>Group D CBT — Physics, Chemistry, Biology, Math, GK। PET की सम्पूर्ण जानकारी।</p><div class="ctopics"><span>Science</span><span>Math</span><span>GK</span><span>Reasoning</span></div><div class="cfooter"><span class="chip chip-free">FREE</span><a href="https://t.me/sharmasirdigitallab" target="_blank" class="enroll">Join Now</a></div></div></div>
-    </div>
-  </div>
-
-  <div class="join-box reveal">
-    <h3>तैयारी शुरू करने के लिए आज ही Join करें</h3>
-    <p>सभी Courses Telegram Channel पर उपलब्ध — Join करें और Free Notes पाएं।</p>
-    <div class="jbtns">
-      <a href="https://t.me/sharmasirdigitallab" target="_blank" class="btn-tg">📢 Telegram Join करें</a>
-      <a href="https://wa.me/919251242367" target="_blank" class="btn-wa">💬 WhatsApp</a>
-    </div>
-  </div>
+<footer class="footer"><div class="footer-inner">
+<div class="footer-top">
+<div><img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="footer-brand-logo" onerror="this.style.display='none'"><div class="footer-brand-name">Sharma Sir's Digital Lab</div><div class="footer-tagline">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग। 1000+ छात्र सफल।</div><div class="footer-socials"><a href="https://t.me/sharmasirdigitallab" class="footer-soc">📢 Telegram</a><a href="https://wa.me/919251242367" class="footer-soc">💬 WhatsApp</a><a href="https://youtube.com/@SharmaSirsDigitalLab" class="footer-soc">🎥 YouTube</a><a href="mailto:abhishekchotiya637@gmail.com" class="footer-soc">📧 Email</a></div></div>
+<div><div class="footer-col-title">Exams</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">RPSC 1st &amp; 2nd Grade</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">REET Level 1 &amp; 2</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">SSC / CET / RSMSSB</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/courses.html" class="footer-link">Railway Group D</a></div>
+<div><div class="footer-col-title">Study Material</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="footer-link">📝 Notes &amp; PDFs</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/current-affairs.html" class="footer-link">📰 Current Affairs</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="footer-link">🎯 Test Series</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/downloads.html" class="footer-link">⬇️ Free Downloads</a></div>
+<div><div class="footer-col-title">Quick Links</div><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/about.html" class="footer-link">👤 About Sharma Sir</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/contact.html" class="footer-link">☎️ Contact Us</a><a href="https://t.me/sharmasirdigitallab" class="footer-link">📢 Join Telegram</a><a href="https://wa.me/919251242367" class="footer-link">💬 WhatsApp</a></div>
 </div>
-
-<footer class="footer">
-  <div class="footer-grid">
-    <div><img src="logo.jpg" alt="Logo" class="footer-logo"/><p class="footer-desc">RPSC, RSMSSB, REET, SSC, Railway के लिए राजस्थान की विश्वसनीय ऑनलाइन कोचिंग।</p><div class="footer-socials"><a href="https://t.me/sharmasirdigitallab" target="_blank" class="f-soc">📢</a><a href="https://wa.me/919251242367" target="_blank" class="f-soc">💬</a><a href="https://youtube.com/@SharmaSirsDigitalLab" target="_blank" class="f-soc">🎥</a><a href="mailto:abhishekchotiya637@gmail.com" class="f-soc">📧</a></div></div>
-    <div><div class="f-col-title">Quick Links</div><ul class="f-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="courses.html">Courses</a></li><li><a href="notes.html">Notes</a></li></ul></div>
-    <div><div class="f-col-title">Exams</div><ul class="f-links"><li><a href="courses.html">RPSC</a></li><li><a href="courses.html">REET</a></li><li><a href="courses.html">SSC/CET</a></li><li><a href="courses.html">Railway</a></li></ul></div>
-    <div><div class="f-col-title">Resources</div><ul class="f-links"><li><a href="current-affairs.html">Current Affairs</a></li><li><a href="test-series.html">Test Series</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-  </div>
-  <div class="footer-bottom"><p>© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</p></div>
-</footer>
-<script src="shared.js"></script>
-<script>document.querySelectorAll('.fb').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.fb').forEach(x=>x.classList.remove('active'));b.classList.add('active');}));</script>
+<div class="footer-bottom"><div class="footer-copy">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div><div class="footer-copy">RPSC · REET · SSC · Railway · RSMSSB</div></div>
+</div></footer>
+<script>
+function filterExam(exam, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.exam-section').forEach(s=>{
+    s.style.display = (exam==='all'||s.dataset.exam===exam)?'':'none';
+  });
+}
+function tm(){document.getElementById('nl').classList.toggle('open')}
+</script>
 </body></html>

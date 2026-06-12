@@ -1,379 +1,100 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RPSC 2nd Grade — शिक्षा मनोविज्ञान 30 MCQ | Sharma Sir's Digital Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0b1120;--s:#111827;--bd:rgba(255,255,255,.08);--tx:#e2e8f0;--mu:#64748b;--ac:#8b5cf6;--gr:#22c55e;--rd:#ef4444}
-body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6}
-a{text-decoration:none;color:inherit}
-/* NAV */
-.navbar{position:sticky;top:0;z-index:100;background:rgba(11,17,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(249,115,22,.2)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px}
-.brand{display:flex;align-items:center;gap:9px}
-.nav-logo{width:34px;height:34px;border-radius:7px;object-fit:cover}
-.brand-name{font-weight:800;color:#f97316;font-size:14px;line-height:1.2}
-.brand-sub{font-size:9px;color:#64748b}
-.back-btn{padding:6px 14px;border-radius:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:#fb923c;font-size:12px;font-weight:600;transition:all .2s}
-.back-btn:hover{background:#f97316;color:#fff}
-/* PAGES */
-.page{display:none}
-.page.active{display:block}
-/* START PAGE */
-.start-hero{text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,#8b5cf615,transparent)}
-.badge{display:inline-block;padding:5px 14px;border-radius:999px;background:#8b5cf618;border:1px solid #8b5cf640;color:#8b5cf6;font-size:12px;font-weight:700;margin-bottom:14px}
-.start-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:6px}
-.start-hero h1 span{color:#8b5cf6}
-.start-hero p{color:#64748b;font-size:13px;max-width:520px;margin:0 auto 20px}
-.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
-.mp{padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
-.mp.ac{color:#8b5cf6;border-color:#8b5cf640}
-.mp.gr{color:#22c55e;border-color:rgba(34,197,94,.35)}
-.mp.bl{color:#3b82f6;border-color:rgba(59,130,246,.35)}
-/* START CARD */
-.start-card{max-width:600px;margin:24px auto 0;background:var(--s);border:1px solid var(--bd);border-radius:18px;padding:28px}
-.rules-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:22px}
-.rule{display:flex;gap:10px;font-size:13px;color:#94a3b8;margin-bottom:8px}
-.rule:last-child{margin-bottom:0}
-.rule-dot{color:#8b5cf6;font-weight:800;flex-shrink:0}
-.btn-start{width:100%;padding:14px;border-radius:13px;background:#8b5cf6;color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px #8b5cf640}
-.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px #8b5cf655}
-/* TIMER BAR */
-.timer-bar{max-width:800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:14px;align-items:center}
-.timer-box{display:flex;align-items:center;gap:8px;background:var(--s);border:1px solid var(--bd);padding:8px 16px;border-radius:11px;font-weight:700;flex-shrink:0}
-.t-label{color:#64748b;font-size:12px}
-.t-val{color:#8b5cf6;font-size:18px;font-family:monospace}
-.t-val.urgent{color:#ef4444;animation:blink 1s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.prog-wrap{flex:1}
-.prog-info{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:5px}
-.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,#8b5cf6,#facc15);border-radius:999px;transition:width .3s}
-/* NAVIGATOR */
-.main-wrap{max-width:800px;margin:0 auto;padding:18px 20px 60px}
-.nav-grid-wrap{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;margin-bottom:16px}
-.nav-grid-title{font-size:12px;color:#64748b;font-weight:600;margin-bottom:10px}
-.nav-grid{display:flex;flex-wrap:wrap;gap:5px}
-.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:rgba(255,255,255,.02);font-size:10px;font-weight:700;cursor:pointer;color:#64748b;transition:all .15s;display:flex;align-items:center;justify-content:center}
-.ndot:hover{border-color:#8b5cf6;color:#8b5cf6}
-.ndot.answered{background:#8b5cf618;border-color:#8b5cf6;color:#8b5cf6}
-.ndot.current{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
-/* QUESTION CARD */
-.q-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:16px;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.q-card:hover{border-color:#8b5cf625}
-.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
-.q-num{min-width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#facc15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
-.q-text{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-top:3px}
-.options{display:flex;flex-direction:column;gap:8px}
-.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1.5px solid var(--bd);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;user-select:none}
-.opt:hover{background:#8b5cf608;border-color:#8b5cf640}
-.opt.sel{background:#8b5cf612;border-color:#8b5cf6;color:#fff}
-.opt.correct{background:rgba(34,197,94,.1);border-color:#22c55e;color:#22c55e}
-.opt.wrong{background:rgba(239,68,68,.1);border-color:#ef4444;color:#ef4444}
-.opt.show-ok{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.35);color:#22c55e}
-.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;background:rgba(255,255,255,.03)}
-.opt.sel .ol{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
-.opt.correct .ol{background:#22c55e;border-color:#22c55e;color:#fff}
-.opt.wrong .ol{background:#ef4444;border-color:#ef4444;color:#fff}
-/* NAV BTNS */
-.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
-.btn{padding:10px 20px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .18s}
-.btn-prev{background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#64748b}
-.btn-prev:hover{border-color:#8b5cf6;color:#8b5cf6}
-.btn-next{background:#8b5cf6;color:#fff;box-shadow:0 4px 14px #8b5cf640}
-.btn-next:hover{transform:translateY(-1px)}
-.btn-sub{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
-.btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
-/* RESULT */
-.result-hero{text-align:center;padding:48px 20px 32px;background:radial-gradient(ellipse 60% 50% at 50% 0%,#8b5cf615,transparent)}
-.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px #8b5cf635;position:relative}
-.score-inner{width:122px;height:122px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center}
-.score-num{font-size:32px;font-weight:900;color:#8b5cf6;line-height:1}
-.score-den{font-size:13px;color:#64748b}
-.grade-badge{display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:16px}
-.grade-A{background:rgba(34,197,94,.12);border:2px solid #22c55e;color:#22c55e}
-.grade-B{background:#8b5cf612;border:2px solid #8b5cf6;color:#8b5cf6}
-.grade-C{background:rgba(239,68,68,.12);border:2px solid #ef4444;color:#ef4444}
-.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto 24px;padding:0 20px}
-.r-stat{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:16px;text-align:center}
-.r-val{font-size:24px;font-weight:900;margin-bottom:3px}
-.r-label{font-size:11px;color:#64748b}
-.r-stat.c .r-val{color:#22c55e}
-.r-stat.w .r-val{color:#ef4444}
-.r-stat.s .r-val{color:#64748b}
-.r-stat.p .r-val{color:#8b5cf6}
-/* REVIEW */
-.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}
-.rev-card{background:var(--s);border:1px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:12px}
-.rev-card.ok{border-color:rgba(34,197,94,.3)}
-.rev-card.bad{border-color:rgba(239,68,68,.3)}
-.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}
-.st-ok{background:rgba(34,197,94,.15);color:#22c55e}
-.st-bad{background:rgba(239,68,68,.15);color:#ef4444}
-.st-sk{background:rgba(255,255,255,.06);color:#64748b}
-.rev-q{font-size:13px;font-weight:600;color:#fff;margin-bottom:8px}
-.rev-ans{font-size:12px;margin-top:4px}
-.rev-correct{color:#22c55e}
-.rev-wrong{color:#ef4444}
-.rev-skip{color:#64748b}
-.rev-exp{font-size:12px;color:#64748b;margin-top:6px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;line-height:1.6}
-/* FOOTER */
-.footer{background:rgba(0,0,0,.4);border-top:1px solid var(--bd);padding:28px 20px 18px;text-align:center}
-.s-link{padding:5px 13px;border-radius:999px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:#fb923c;font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}
-.s-link:hover{background:#f97316;color:#fff}
-/* ACTION BTNS */
-.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 20px 24px}
-.btn-restart{padding:11px 24px;border-radius:11px;background:#8b5cf6;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;box-shadow:0 4px 16px #8b5cf640;transition:all .2s}
-.btn-restart:hover{transform:translateY(-1px)}
-.btn-rev{padding:11px 24px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
-.btn-rev:hover{border-color:#8b5cf6;color:#8b5cf6}
-@media(max-width:500px){
-  .q-card{padding:16px 14px}
-  .timer-bar{flex-direction:column;align-items:stretch}
-  .nav-btns{justify-content:center}
-}
-</style>
-</head>
-<body>
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
-      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" alt="Logo" onerror="this.style.display='none'">
-      <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
-    </a>
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="back-btn">← Test Series</a>
-  </div>
-</nav>
+<style>:root{--bg:#FAFAF8;--bg2:#F3F2EF;--bg3:#ECEAE5;--surface:#FFFFFF;--border:#E2DDD5;--navy:#1A1F36;--navy2:#2D3561;--saffron:#E8610A;--saffron2:#FF7A2B;--saffron-light:#FFF0E8;--green:#0A7D4B;--green-light:#E6F5EE;--red:#C0392B;--red-light:#FDECEA;--blue:#1A5FA8;--text:#1A1F36;--text2:#4A5070;--text3:#8890A8;--shadow:0 2px 16px rgba(26,31,54,0.08);--shadow-lg:0 8px 40px rgba(26,31,54,0.12);--radius:14px;--radius-lg:20px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}a{text-decoration:none;color:inherit}.navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(26,31,54,0.07)}.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}.brand{display:flex;align-items:center;gap:11px}.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover}.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}.brand-sub{font-size:10px;color:var(--text3)}.page{display:none}.page.active{display:block}.start-hero{background:linear-gradient(135deg,#1A1F36,#2D3561);text-align:center;padding:52px 24px 40px;position:relative;overflow:hidden}.start-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}.start-eyebrow{display:inline-block;padding:5px 16px;border-radius:999px;background:rgba(232,97,10,0.15);border:1px solid rgba(232,97,10,0.35);color:#FF7A2B;font-size:12px;font-weight:700;margin-bottom:14px;position:relative;z-index:1}.start-h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1;line-height:1.15}.start-h1 span{color:#FF7A2B}.start-sub{color:rgba(255,255,255,0.65);font-size:14px;max-width:500px;margin:0 auto 20px;position:relative;z-index:1}.meta-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}.mp{padding:5px 14px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9)}.start-card{max-width:580px;margin:28px auto;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg)}.rules-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:22px}.rule{display:flex;gap:10px;font-size:13px;color:var(--text2);margin-bottom:8px;align-items:flex-start}.rule:last-child{margin-bottom:0}.rule-dot{color:var(--saffron);font-weight:800;flex-shrink:0}.btn-start-test{width:100%;padding:14px;border-radius:12px;background:var(--saffron);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(232,97,10,0.35)}.btn-start-test:hover{background:var(--saffron2);transform:translateY(-2px)}.timer-bar{max-width:780px;margin:0 auto;padding:16px 20px 0;display:flex;gap:14px;align-items:center}.timer-box{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);padding:9px 18px;border-radius:11px;font-weight:700;flex-shrink:0;box-shadow:var(--shadow)}.t-label{color:var(--text3);font-size:12px}.t-val{font-size:18px;font-family:monospace}.t-val.urgent{color:var(--red);animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}.prog-wrap{flex:1}.prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-bottom:5px}.prog-bar{height:5px;background:var(--bg3);border-radius:999px;overflow:hidden}.prog-fill{height:100%;border-radius:999px;transition:width .3s}.main-wrap{max-width:780px;margin:0 auto;padding:18px 20px 60px}.nav-grid-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}.nav-grid-title{font-size:12px;color:var(--text3);font-weight:600;margin-bottom:10px}.nav-grid{display:flex;flex-wrap:wrap;gap:5px}.ndot{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface);font-size:10px;font-weight:700;cursor:pointer;color:var(--text3);transition:all .15s;display:flex;align-items:center;justify-content:center}.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;animation:fadeIn .3s ease;box-shadow:var(--shadow)}@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.q-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}.q-num{min-width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}.q-text{font-size:14px;font-weight:600;color:var(--navy);line-height:1.6;padding-top:3px}.options{display:flex;flex-direction:column;gap:8px}.opt{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:13px;font-weight:500;color:var(--text2);user-select:none}.opt:hover{background:var(--saffron-light);border-color:var(--saffron);color:var(--saffron)}.opt.sel{background:var(--saffron-light);border-color:var(--saffron);color:var(--saffron)}.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green)}.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red)}.ol{min-width:26px;height:26px;border-radius:7px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0}.opt.sel .ol{background:var(--saffron);border-color:var(--saffron);color:#fff}.opt.correct .ol{background:var(--green);border-color:var(--green);color:#fff}.opt.wrong .ol{background:var(--red);border-color:var(--red);color:#fff}.nav-btns{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}.btn-prev{padding:10px 20px;border-radius:11px;background:var(--surface);border:1.5px solid var(--border);color:var(--text2);font-weight:700;font-size:13px;cursor:pointer;transition:all .18s}.btn-prev:hover{border-color:var(--saffron);color:var(--saffron)}.btn-next{padding:10px 20px;border-radius:11px;color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all .18s}.btn-next:hover{transform:translateY(-1px)}.btn-sub{padding:10px 20px;border-radius:11px;background:var(--green);color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer}.result-hero{text-align:center;padding:48px 20px 32px;background:linear-gradient(135deg,#1A1F36,#2D3561);position:relative;overflow:hidden}.result-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,97,10,0.2),transparent)}.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}.score-inner{width:122px;height:122px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.15)}.score-num{font-size:32px;font-weight:900;line-height:1}.score-den{font-size:13px;color:var(--text3)}.grade-A{background:var(--green-light);border:2px solid var(--green);color:var(--green)}.grade-B{background:var(--saffron-light);border:2px solid var(--saffron);color:var(--saffron)}.grade-C{background:var(--red-light);border:2px solid var(--red);color:var(--red)}.r-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;max-width:680px;margin:0 auto;padding:24px 20px 0}.r-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--shadow)}.r-val{font-size:24px;font-weight:900;margin-bottom:3px}.r-label{font-size:11px;color:var(--text3)}.r-stat.c .r-val{color:var(--green)}.r-stat.w .r-val{color:var(--red)}.r-stat.p .r-val{color:var(--saffron)}.review-section{max-width:760px;margin:0 auto;padding:0 20px 60px}.rev-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px;box-shadow:var(--shadow)}.rev-card.ok{border-left:4px solid var(--green);border-color:var(--green)}.rev-card.bad{border-left:4px solid var(--red);border-color:var(--red)}.rev-status{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:6px}.st-ok{background:var(--green-light);color:var(--green)}.st-bad{background:var(--red-light);color:var(--red)}.st-sk{background:var(--bg2);color:var(--text3)}.rev-q{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px}.rev-ans{font-size:12px;margin-top:4px}.rev-correct{color:var(--green)}.rev-wrong{color:var(--red)}.rev-skip{color:var(--text3)}.rev-exp{font-size:12px;color:var(--text2);margin-top:6px;padding:8px 12px;background:var(--bg2);border-radius:8px;line-height:1.6}.act-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:8px 20px 24px}.btn-restart{padding:11px 24px;border-radius:11px;color:#fff;font-weight:700;font-size:14px;cursor:pointer;border:none;transition:all .2s}.btn-restart:hover{transform:translateY(-1px)}.btn-rev{padding:11px 24px;border-radius:11px;background:var(--surface);border:1.5px solid var(--border);color:var(--text);font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}.btn-rev:hover{border-color:var(--saffron);color:var(--saffron)}.test-footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 20px;text-align:center}.tfs{padding:5px 13px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text2);font-size:12px;font-weight:600;margin:3px;display:inline-block;transition:all .2s}.tfs:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}@media(max-width:500px){.q-card{padding:16px 14px}.timer-bar{flex-direction:column}.nav-btns{justify-content:center}}</style>
+</head><body>
+<nav class="navbar"><div class="nav-inner">
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand"><img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'"><div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · SSC · REET · Railway</div></div></a>
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:7px 16px;border-radius:9px;background:var(--saffron-light);border:1px solid rgba(232,97,10,0.3);color:var(--saffron);font-size:13px;font-weight:700">← Test Series</a>
+</div></nav>
 
-<!-- START PAGE -->
 <div id="pg-start" class="page active">
   <div class="start-hero">
-    <div class="badge">Educational Psychology</div>
-    <h1>RPSC 2nd Grade — <span>शिक्षा मनोविज्ञान 30 MCQ</span></h1>
-    <p>Educational Psychology — विशेष अभ्यास सेट</p>
-    <div class="meta-pills">
-      <span class="mp ac">📝 30 प्रश्न</span>
-      <span class="mp gr">⏱️ 30 मिनट</span>
-      <span class="mp bl">🆓 Free Test</span>
-      <span class="mp ac">📊 Instant Score</span>
-    </div>
+    <div class="start-eyebrow">Educational Psychology</div>
+    <h1 class="start-h1">RPSC 2nd Grade <span>— शिक्षा मनोविज्ञान 30 MCQ</span></h1>
+    <p class="start-sub">Educational Psychology — RPSC/REET विशेष अभ्यास सेट</p>
+    <div class="meta-pills"><span class="mp">📝 30 प्रश्न</span><span class="mp">⏱️ 30 मिनट</span><span class="mp">🆓 Free</span><span class="mp">📊 Instant Score</span></div>
   </div>
   <div class="start-card">
     <div class="rules-box">
       <div class="rule"><span class="rule-dot">●</span><span>कुल <strong>30 प्रश्न</strong> — प्रत्येक 1 अंक।</span></div>
-      <div class="rule"><span class="rule-dot">●</span><span>समय सीमा: <strong>30 मिनट</strong>।</span></div>
-      <div class="rule"><span class="rule-dot">●</span><span>किसी भी प्रश्न पर जा सकते हैं — Navigator से।</span></div>
-      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation दिखेगी।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>समय: <strong>30 मिनट</strong> — Auto Submit।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Navigator से किसी भी प्रश्न पर जाएं।</span></div>
+      <div class="rule"><span class="rule-dot">●</span><span>Submit के बाद Answer Key + Explanation।</span></div>
       <div class="rule"><span class="rule-dot">●</span><span>कोई Negative Marking नहीं।</span></div>
     </div>
-    <button class="btn-start" onclick="startTest()">🚀 Test शुरू करें</button>
+    <button class="btn-start-test" onclick="startTest()">🚀 Test शुरू करें</button>
   </div>
 </div>
 
-<!-- TEST PAGE -->
 <div id="pg-test" class="page">
   <div class="timer-bar">
-    <div class="timer-box">
-      <span class="t-label">⏱️</span>
-      <span class="t-val" id="timer">00:00</span>
-    </div>
+    <div class="timer-box"><span class="t-label">⏱️</span><span class="t-val" id="timer" style="color:#6C3FC1">00:00</span></div>
     <div class="prog-wrap">
-      <div class="prog-info">
-        <span id="q-label">प्रश्न 1/30</span>
-        <span id="ans-count">0 उत्तर</span>
-      </div>
-      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+      <div class="prog-info"><span id="q-label">प्रश्न 1/30</span><span id="ans-count">0 उत्तर</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%;background:#6C3FC1"></div></div>
     </div>
   </div>
   <div class="main-wrap">
-    <div class="nav-grid-wrap">
-      <div class="nav-grid-title">प्रश्न नेविगेटर</div>
-      <div class="nav-grid" id="nav-grid"></div>
-    </div>
+    <div class="nav-grid-wrap"><div class="nav-grid-title">प्रश्न नेविगेटर</div><div class="nav-grid" id="nav-grid"></div></div>
     <div class="q-card" id="q-card">
-      <div class="q-header">
-        <div class="q-num" id="q-num">1</div>
-        <div class="q-text" id="q-text"></div>
-      </div>
+      <div class="q-header"><div class="q-num" id="q-num" style="background:#6C3FC1">1</div><div class="q-text" id="q-text"></div></div>
       <div class="options" id="opts"></div>
     </div>
     <div class="nav-btns">
-      <button class="btn btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
-      <button class="btn btn-next" id="btn-next" onclick="nav(1)">अगला →</button>
-      <button class="btn btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit</button>
+      <button class="btn-prev" id="btn-prev" onclick="nav(-1)">← पिछला</button>
+      <button class="btn-next" id="btn-next" onclick="nav(1)" style="background:#6C3FC1">अगला →</button>
+      <button class="btn-sub" id="btn-sub" onclick="confirmSub()" style="display:none">✅ Submit करें</button>
     </div>
   </div>
 </div>
 
-<!-- RESULT PAGE -->
 <div id="pg-result" class="page">
   <div class="result-hero">
-    <div class="score-ring" id="score-ring">
-      <div class="score-inner">
-        <div class="score-num" id="score-num">0</div>
-        <div class="score-den">/ 30</div>
-      </div>
-    </div>
-    <div class="grade-badge" id="grade-badge">—</div>
-    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px" id="r-title">—</div>
-    <div style="color:#64748b;font-size:13px;margin-bottom:24px" id="r-sub">—</div>
+    <div class="score-ring" id="score-ring"><div class="score-inner"><div class="score-num" id="score-num" style="color:#6C3FC1">0</div><div class="score-den">/ 30</div></div></div>
+    <div class="grade-badge" id="grade-badge" style="display:inline-block;padding:7px 22px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:12px;position:relative;z-index:1">—</div>
+    <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;position:relative;z-index:1" id="r-title">—</div>
+    <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-bottom:8px;position:relative;z-index:1" id="r-sub">—</div>
   </div>
   <div class="r-stats">
     <div class="r-stat c"><div class="r-val" id="r-c">0</div><div class="r-label">✅ सही</div></div>
     <div class="r-stat w"><div class="r-val" id="r-w">0</div><div class="r-label">❌ गलत</div></div>
-    <div class="r-stat s"><div class="r-val" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
-    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 %</div></div>
-    <div class="r-stat" style="border-color:rgba(59,130,246,.3)"><div class="r-val" style="color:#3b82f6" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
+    <div class="r-stat"><div class="r-val" style="color:var(--text3)" id="r-s">0</div><div class="r-label">⏭️ छोड़े</div></div>
+    <div class="r-stat p"><div class="r-val" id="r-p">0%</div><div class="r-label">📊 Score</div></div>
+    <div class="r-stat"><div class="r-val" style="color:var(--blue)" id="r-t">—</div><div class="r-label">⏱️ समय</div></div>
   </div>
   <div class="act-btns">
-    <button class="btn-restart" onclick="restart()">🔄 दोबारा दें</button>
+    <button class="btn-restart" onclick="restart()" style="background:#6C3FC1">🔄 दोबारा दें</button>
     <button class="btn-rev" onclick="toggleRev()">📋 उत्तर देखें</button>
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#e2e8f0;font-weight:700;font-size:14px">📚 और Tests</a>
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" style="padding:11px 20px;border-radius:11px;background:var(--surface);border:1.5px solid var(--border);color:var(--text);font-weight:700;font-size:14px">📚 और Tests</a>
   </div>
   <div class="review-section" id="rev-section" style="display:none">
-    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px">📝 विस्तृत उत्तर समीक्षा</div>
+    <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid var(--border)">📝 विस्तृत उत्तर समीक्षा</div>
     <div id="rev-cards"></div>
   </div>
 </div>
 
-<footer class="footer">
-  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-    <a href="https://t.me/sharmasirdigitallab" class="s-link">📢 Telegram</a>
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="s-link">🎯 Test Series</a>
-    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="s-link">📝 Notes</a>
-  </div>
-  <div style="color:#334155;font-size:11px">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
-</footer>
-
+<div class="test-footer">
+  <div style="margin-bottom:10px"><a href="https://t.me/sharmasirdigitallab" class="tfs">📢 Telegram</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html" class="tfs">🎯 Test Series</a><a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html" class="tfs">📝 Notes</a></div>
+  <div style="color:var(--text3);font-size:11px">© 2026 Sharma Sir's Digital Lab.</div>
+</div>
 <script>
-const QS = [{"q": "मनोविज्ञान को 'आत्मा का विज्ञान' किसने माना?", "o": ["जे.बी. वाटसन", "प्लेटो और अरस्तू", "विलियम जेम्स", "जॉन लॉक"], "a": 1, "e": "प्राचीन यूनानी दार्शनिक प्लेटो और अरस्तू — 16वीं शताब्दी तक यही मान्यता थी।"}, {"q": "'मुझे बच्चा दो, कुछ भी बना सकता हूँ' — यह किसका कथन?", "o": ["बी.एफ. स्किनर", "जे.बी. वाटसन", "थार्नडाइक", "क्लार्क हल"], "a": 1, "e": "जे.बी. वाटसन — व्यवहारवाद के जनक; पर्यावरण को वंशानुक्रम से अधिक महत्वपूर्ण मानते थे।"}, {"q": "विकास के बारे में सत्य कथन?", "o": ["केवल मात्रात्मक", "संचयी और निरंतर प्रक्रिया", "सभी में एक समान", "केवल किशोरावस्था तक"], "a": 1, "e": "विकास Womb to Tomb — निरंतर, गुणात्मक+मात्रात्मक, वैयक्तिक विभिन्नता के साथ।"}, {"q": "पियाजे की 'मूर्त संक्रियात्मक अवस्था' की आयु?", "o": ["0-2 वर्ष", "2-7 वर्ष", "7-11 वर्ष", "11+ वर्ष"], "a": 2, "e": "पियाजे की 4 अवस्थाएं: संवेदी-पेशीय(0-2), पूर्व-संक्रियात्मक(2-7), मूर्त(7-11), औपचारिक(11+)।"}, {"q": "बाल्यावस्था को 'जीवन का अनोखा काल' किसने कहा?", "o": ["रॉस", "किलपैट्रिक", "कोल एवं ब्रूस", "स्टैनले हॉल"], "a": 2, "e": "कोल एवं ब्रूस ने बाल्यावस्था को 'जीवन का अनोखा काल' कहा; रॉस ने 'मिथ्या परिपक्वता'।"}, {"q": "'तनाव और तूफान का काल' — किशोरावस्था के बारे में किसने कहा?", "o": ["किलपैट्रिक", "जी. स्टैनले हॉल", "क्रो एंड क्रो", "हरलॉक"], "a": 1, "e": "जी. स्टैनले हॉल — 'Adolescence' (1904); किशोरावस्था अध्ययन के जनक।"}, {"q": "'प्रयास एवं त्रुटि सिद्धांत' (बिल्ली पर प्रयोग) किसने दिया?", "o": ["इवान पावलव", "बी.एफ. स्किनर", "ई.एल. थार्नडाइक", "कर्ट लेविन"], "a": 2, "e": "थार्नडाइक — S-R Bond Theory; भूखी बिल्ली + मछली का टुकड़ा — Puzzle Box प्रयोग।"}, {"q": "थार्नडाइक के तीन मुख्य नियमों में शामिल नहीं?", "o": ["तत्परता", "अभ्यास", "प्रभाव/संतोष", "बहु-अनुक्रिया"], "a": 3, "e": "तत्परता, अभ्यास, प्रभाव = 3 मुख्य नियम; बहु-अनुक्रिया = गौण नियम।"}, {"q": "पावलव के प्रयोग में भोजन = कौन सा उद्दीपक?", "o": ["अनुबंधित (CS)", "अननुबंधित (UCS)", "कृत्रिम", "तटस्थ"], "a": 1, "e": "भोजन = UCS (स्वाभाविक); घंटी = CS (कृत्रिम/अनुबंधित); लार आना = UCR।"}, {"q": "स्किनर के सिद्धांत में सबसे महत्वपूर्ण तत्व?", "o": ["उद्दीपक उपस्थिति", "पुनर्बलन (Reinforcement)", "अनुकरण", "अचेतन मन"], "a": 1, "e": "स्किनर — Operant Conditioning; पुनर्बलन (positive/negative) से व्यवहार बदलता है।"}, {"q": "'अंतर्दृष्टि का सिद्धांत' किस संप्रदाय से?", "o": ["व्यवहारवाद", "गेस्टाल्टवाद", "मनोविश्लेषणवाद", "निर्मितिवाद"], "a": 1, "e": "गेस्टाल्टवादी (कोहलर, कोफ्का, वर्दीमर) — सुल्तान चिंपांजी; Gestalt = पूर्णाकार।"}, {"q": "बांडुरा के सामाजिक अधिगम में किस पर बल?", "o": ["अंतर्दृष्टि", "प्रेक्षण और मॉडलिंग", "पुरस्कार-दंड", "सामान्यीकरण"], "a": 1, "e": "बांडुरा — Bobo Doll Experiment; बच्चे मॉडल देखकर सीखते हैं (Observational Learning)।"}, {"q": "पूर्व ज्ञान नए अधिगम को प्रभावित न करे = ?", "o": ["धनात्मक स्थानांतरण", "ऋणात्मक स्थानांतरण", "शून्य स्थानांतरण", "ऊर्ध्व स्थानांतरण"], "a": 2, "e": "शून्य स्थानांतरण = Zero Transfer; कबीर दोहे याद होने का भूगोल पर कोई असर नहीं।"}, {"q": "बुद्धि का 'द्वि-कारक सिद्धांत' किसने दिया?", "o": ["अल्फ्रेड बिने", "चार्ल्स स्पीयरमैन", "थर्स्टन", "हावर्ड गार्डनर"], "a": 1, "e": "स्पीयरमैन (1904) — G-factor (सामान्य) + S-factor (विशिष्ट)।"}, {"q": "IQ का सही सूत्र?", "o": ["CA/MA×100", "MA/CA×100", "MA/CA+100", "MA×CA"], "a": 1, "e": "IQ = (MA/CA)×100; विलियम स्टर्न ने MA/CA दिया; टर्मन ने ×100 जोड़ा।"}, {"q": "गार्डनर की 'अंतःवैयक्तिक बुद्धि' किससे?", "o": ["दूसरों को समझना", "स्वयं को समझना", "संगीत", "तार्किक-गणितीय"], "a": 1, "e": "Intrapersonal = स्वयं की भावनाओं/आत्म-चेतना; Interpersonal = दूसरों को समझना।"}, {"q": "'संवेगात्मक बुद्धि' को लोकप्रिय किसने बनाया?", "o": ["पीटर सालोवे", "जॉन मेयर", "डेनियल गोलमैन", "एडवर्ड थार्नडाइक"], "a": 2, "e": "डेनियल गोलमैन — 1995 में 'EI: Why It Can Matter More Than IQ'; सालोवे-मेयर ने अवधारणा दी।"}, {"q": "फ्रायड के सिद्धांत में 'इदम् (Id)' किस पर काम करता है?", "o": ["वास्तविकता", "नैतिकता", "आनंद (Pleasure)", "समाज के नियम"], "a": 2, "e": "Id = Pleasure Principle, पूर्णतः अचेतन; Ego = Reality Principle; Super Ego = नैतिकता।"}, {"q": "'अंतर्मुखी-बहिर्मुखी' वर्गीकरण किसने दिया?", "o": ["कर्ट कोफ्का", "कार्ल जुंग", "गॉर्डन ऑलपोर्ट", "रेमंड कैटेल"], "a": 1, "e": "कार्ल जुंग — Introvert (एकांतप्रिय), Extrovert (मिलनसार), Ambivert (दोनों)।"}, {"q": "TAT परीक्षण किसने बनाया?", "o": ["हरमन रोर्शा", "मॉर्गन एवं मरे", "लियोपोल्ड बेलक", "पाइन एवं टेंडलर"], "a": 1, "e": "1935 में हार्वर्ड में मॉर्गन और मरे — 31 कार्ड (30 चित्र + 1 खाली); अचेतन जानने के लिए।"}, {"q": "मैस्लो के पदानुक्रम की सर्वोच्च आवश्यकता?", "o": ["शारीरिक", "सुरक्षा", "आत्म-सिद्धि", "सम्मान"], "a": 2, "e": "मैस्लो का 5-स्तरीय पिरामिड — शीर्ष पर Self-Actualization (आत्म-सिद्धि)।"}, {"q": "सृजनात्मकता किस चिंतन से संबंधित?", "o": ["अभिसारी चिंतन", "अपसारी चिंतन", "रूढ़िवादी", "आत्मकेंद्रित"], "a": 1, "e": "गिलफोर्ड — Divergent Thinking = नवीन-मौलिक समाधान; Convergent = बुद्धि से संबंधित।"}, {"q": "असफलता का दोष बाहर मढ़ना = कौन सी युक्ति?", "o": ["दमन", "प्रक्षेपण/दोषारोपण", "प्रतिगमन", "उदात्तीकरण"], "a": 1, "e": "Projection = अपनी कमी बाहर (परिस्थिति/व्यक्ति) पर थोपना; Regression = बच्चों जैसा व्यवहार।"}, {"q": "पठन विकार (पढ़ने की अक्षमता) को क्या कहते हैं?", "o": ["डिस्ग्राफिया", "डिस्लेक्सिया", "डिस्कैलकुलिया", "डिस्टीमिया"], "a": 1, "e": "Dyslexia = पठन विकार; Dysgraphia = लेखन; Dyscalculia = गणित।"}, {"q": "वैयक्तिक विभिन्नताओं का प्रथम वैज्ञानिक अध्ययन?", "o": ["सर फ्रांसिस गाल्टन", "डेविड वेक्सलर", "बी.एफ. स्किनर", "जे.एम. कैटेल"], "a": 0, "e": "सर फ्रांसिस गाल्टन — 1869 'Hereditary Genius'; Eugenics के जनक भी।"}, {"q": "NCF-2005 का मुख्य मार्गदर्शी सिद्धांत?", "o": ["विषय-केंद्रित शिक्षण", "बिना बोझ के सीखना", "रटने की पद्धति", "कड़ा अनुशासन"], "a": 1, "e": "यशपाल समिति रिपोर्ट 'Learning Without Burden' (1993) पर आधारित NCF-2005।"}, {"q": "RTE-2009 में Class 1-5 का शिक्षक-छात्र अनुपात?", "o": ["30:1", "35:1", "40:1", "45:1"], "a": 0, "e": "RTE-2009 — प्राथमिक (1-5): 30:1; उच्च प्राथमिक (6-8): 35:1।"}, {"q": "'क्रियात्मक अनुसंधान' का उद्देश्य?", "o": ["व्यापक सिद्धांत बनाना", "विद्यालय की व्यावहारिक समस्याओं का समाधान", "ऐतिहासिक तथ्य संकलन", "प्रयोगशाला में प्रयोग"], "a": 1, "e": "Action Research — शिक्षकों/प्रधानाचार्यों द्वारा अपने विद्यालय की तात्कालिक समस्याओं का हल।"}, {"q": "CCE में 'व्यापक' का अर्थ?", "o": ["एक बड़ी परीक्षा", "केवल शैक्षिक विषय", "केवल सह-शैक्षिक", "शैक्षिक + सह-शैक्षिक दोनों"], "a": 3, "e": "व्यापक = Comprehensive = Scholastic + Co-scholastic दोनों क्षेत्रों का मूल्यांकन।"}, {"q": "कुर्त लेविन का 'क्षेत्रीय सिद्धांत' का सूत्र?", "o": ["B=f(P,E)", "IQ=MA/CA×100", "S→R", "A+B=C"], "a": 0, "e": "कुर्त लेविन — Field Theory: B = f(P, E); व्यवहार = व्यक्ति × मनोवैज्ञानिक वातावरण।"}];
-const TOTAL = QS.length;
-const TIME_LIMIT = 30 * 60;
-const LBL = ['A','B','C','D'];
-let ans = new Array(TOTAL).fill(-1);
-let cur = 0, tLeft = TIME_LIMIT, tInterval = null, startTime = null, revVisible = false;
-
-function startTest() {
-  document.getElementById('pg-start').classList.remove('active');
-  document.getElementById('pg-test').classList.add('active');
-  buildGrid(); renderQ(0); startTimer(); startTime = Date.now();
-}
-function startTimer() {
-  tInterval = setInterval(() => {
-    tLeft--;
-    const m = String(Math.floor(tLeft/60)).padStart(2,'0');
-    const s = String(tLeft%60).padStart(2,'0');
-    const el = document.getElementById('timer');
-    el.textContent = m+':'+s;
-    el.className = 't-val' + (tLeft <= 300 ? ' urgent' : '');
-    if (tLeft <= 0) { clearInterval(tInterval); submitTest(true); }
-  }, 1000);
-}
-function buildGrid() {
-  const g = document.getElementById('nav-grid'); g.innerHTML = '';
-  for (let i = 0; i < TOTAL; i++) {
-    const d = document.createElement('div');
-    d.className = 'ndot'; d.textContent = i+1; d.id = 'nd'+i;
-    d.onclick = () => renderQ(i); g.appendChild(d);
-  }
-  updateUI();
-}
-function updateUI() {
-  for (let i = 0; i < TOTAL; i++) {
-    const d = document.getElementById('nd'+i);
-    d.className = 'ndot' + (i===cur?' current':ans[i]!==-1?' answered':'');
-  }
-  const done = ans.filter(a=>a!==-1).length;
-  document.getElementById('ans-count').textContent = done+' उत्तर';
-  document.getElementById('prog').style.width = (done/TOTAL*100)+'%';
-  document.getElementById('q-label').textContent = 'प्रश्न '+(cur+1)+'/'+TOTAL;
-}
-function renderQ(i) {
-  cur = i;
-  const q = QS[i];
-  document.getElementById('q-num').textContent = i+1;
-  document.getElementById('q-text').textContent = q.q;
-  const c = document.getElementById('opts'); c.innerHTML = '';
-  q.o.forEach((opt,j) => {
-    const d = document.createElement('div');
-    d.className = 'opt' + (ans[i]===j?' sel':'');
-    d.innerHTML = '<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';
-    d.onclick = () => { ans[i]=j; renderQ(i); };
-    c.appendChild(d);
-  });
-  const card = document.getElementById('q-card');
-  card.style.animation='none'; card.offsetHeight; card.style.animation='fadeIn .3s ease';
-  document.getElementById('btn-prev').disabled = i===0;
-  const last = i===TOTAL-1;
-  document.getElementById('btn-next').style.display = last?'none':'';
-  document.getElementById('btn-sub').style.display = last?'':'none';
-  updateUI();
-}
-function nav(d) { const n=cur+d; if(n>=0&&n<TOTAL) renderQ(n); }
-function confirmSub() {
-  const skip = ans.filter(a=>a===-1).length;
-  if (skip>0 && !confirm(skip+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?')) return;
-  submitTest(false);
-}
-function submitTest(timeUp) {
-  clearInterval(tInterval);
-  const taken = Math.round((Date.now()-startTime)/1000);
-  let correct=0,wrong=0,skip=0;
-  ans.forEach((a,i)=>{ if(a===-1) skip++; else if(a===QS[i].a) correct++; else wrong++; });
-  const pct = Math.round(correct/TOTAL*100);
-  document.getElementById('pg-test').classList.remove('active');
-  document.getElementById('pg-result').classList.add('active');
-  document.getElementById('score-num').textContent = correct;
-  document.getElementById('r-c').textContent = correct;
-  document.getElementById('r-w').textContent = wrong;
-  document.getElementById('r-s').textContent = skip;
-  document.getElementById('r-p').textContent = pct+'%';
-  const mm=Math.floor(taken/60), ss=taken%60;
-  document.getElementById('r-t').textContent = mm+'म '+ss+'स';
-  const ring = document.getElementById('score-ring');
-  ring.style.background = 'conic-gradient(var(--ac) 0% '+pct+'%, rgba(255,255,255,.06) 0%)';
-  let grade,gcls,title,sub;
-  if(pct>=80){ grade='🏆 Excellent — A Grade'; gcls='grade-A'; title='शानदार प्रदर्शन!'; sub='आप RPSC 2nd Grade के लिए बेहतरीन तैयारी कर रहे हैं!'; }
-  else if(pct>=60){ grade='👍 Good — B Grade'; gcls='grade-B'; title='अच्छा प्रदर्शन!'; sub='थोड़ी और मेहनत से आप बहुत आगे जाएंगे।'; }
-  else{ grade='📚 Keep Practicing — C Grade'; gcls='grade-C'; title='और अभ्यास करें!'; sub='Sharma Sir के Notes पढ़ें और दोबारा Test दें।'; }
-  document.getElementById('grade-badge').textContent = grade;
-  document.getElementById('grade-badge').className = 'grade-badge '+gcls;
-  document.getElementById('r-title').textContent = (timeUp?'⏰ समय समाप्त! ':'')+title;
-  document.getElementById('r-sub').textContent = sub;
-  buildReview();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function buildReview() {
-  const c = document.getElementById('rev-cards'); c.innerHTML = '';
-  QS.forEach((q,i) => {
-    const ua=ans[i], ok=ua===q.a, sk=ua===-1;
-    const div = document.createElement('div');
-    div.className = 'rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);
-    let st = sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';
-    let ahtml = sk?'<div class="rev-ans rev-skip">आपने छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ आपका उत्तर: '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ आपका: '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';
-    const expHtml = q.e ? '<div class="rev-exp">💡 '+q.e+'</div>' : '';
-    div.innerHTML = st+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ahtml+expHtml;
-    c.appendChild(div);
-  });
-}
-function toggleRev() {
-  revVisible = !revVisible;
-  const rs = document.getElementById('rev-section');
-  rs.style.display = revVisible?'block':'none';
-  if(revVisible) rs.scrollIntoView({behavior:'smooth'});
-}
-function restart() {
-  ans = new Array(TOTAL).fill(-1); cur=0; tLeft=TIME_LIMIT; revVisible=false;
-  document.getElementById('rev-section').style.display='none';
-  document.getElementById('pg-result').classList.remove('active');
-  document.getElementById('pg-test').classList.add('active');
-  buildGrid(); renderQ(0); startTimer(); startTime=Date.now();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+const QS=[{"q": "मनोविज्ञान को 'आत्मा का विज्ञान' किसने माना?", "o": ["जे.बी. वाटसन", "प्लेटो और अरस्तू", "विलियम जेम्स", "जॉन लॉक"], "a": 1, "e": "प्राचीन यूनानी दार्शनिक — 16वीं सदी तक यही मान्यता।"}, {"q": "'मुझे बच्चा दो, कुछ भी बना सकता हूँ' — किसका?", "o": ["स्किनर", "जे.बी. वाटसन", "थार्नडाइक", "क्लार्क हल"], "a": 1, "e": "जे.बी. वाटसन — व्यवहारवाद के जनक।"}, {"q": "विकास के बारे में सत्य कथन?", "o": ["केवल मात्रात्मक", "संचयी और निरंतर", "सभी में एक समान", "केवल किशोरावस्था तक"], "a": 1, "e": "विकास Womb to Tomb — निरंतर, गुणात्मक+मात्रात्मक।"}, {"q": "पियाजे की 'मूर्त संक्रियात्मक अवस्था' की आयु?", "o": ["0-2 वर्ष", "2-7 वर्ष", "7-11 वर्ष", "11+ वर्ष"], "a": 2, "e": "मूर्त-संक्रियात्मक(7-11) — प्रत्यक्ष वस्तुओं पर तार्किक चिंतन।"}, {"q": "बाल्यावस्था को 'जीवन का अनोखा काल' किसने कहा?", "o": ["रॉस", "किलपैट्रिक", "कोल एवं ब्रूस", "स्टैनले हॉल"], "a": 2, "e": "कोल एवं ब्रूस; रॉस ने 'मिथ्या परिपक्वता' कहा।"}, {"q": "'तनाव और तूफान का काल' किसने कहा?", "o": ["किलपैट्रिक", "जी. स्टैनले हॉल", "क्रो एंड क्रो", "हरलॉक"], "a": 1, "e": "जी. स्टैनले हॉल — 'Adolescence' (1904)।"}, {"q": "'प्रयास एवं त्रुटि सिद्धांत' (बिल्ली पर) किसने दिया?", "o": ["इवान पावलव", "बी.एफ. स्किनर", "ई.एल. थार्नडाइक", "कर्ट लेविन"], "a": 2, "e": "थार्नडाइक — S-R Bond Theory; Puzzle Box।"}, {"q": "थार्नडाइक के मुख्य नियमों में शामिल नहीं?", "o": ["तत्परता", "अभ्यास", "प्रभाव/संतोष", "बहु-अनुक्रिया"], "a": 3, "e": "तत्परता, अभ्यास, प्रभाव = मुख्य; बहु-अनुक्रिया = गौण।"}, {"q": "पावलव के प्रयोग में भोजन = कौन सा उद्दीपक?", "o": ["अनुबंधित (CS)", "अननुबंधित (UCS)", "कृत्रिम", "तटस्थ"], "a": 1, "e": "भोजन = UCS; घंटी = CS; लार = UCR।"}, {"q": "स्किनर के सिद्धांत में सबसे महत्वपूर्ण?", "o": ["उद्दीपक उपस्थिति", "पुनर्बलन (Reinforcement)", "अनुकरण", "अचेतन मन"], "a": 1, "e": "Operant Conditioning — पुनर्बलन से व्यवहार बदलता है।"}, {"q": "'अंतर्दृष्टि का सिद्धांत' किस संप्रदाय से?", "o": ["व्यवहारवाद", "गेस्टाल्टवाद", "मनोविश्लेषणवाद", "निर्मितिवाद"], "a": 1, "e": "गेस्टाल्टवादी (कोहलर) — सुल्तान चिंपांजी; Gestalt = पूर्णाकार।"}, {"q": "बांडुरा के सामाजिक अधिगम में किस पर बल?", "o": ["अंतर्दृष्टि", "प्रेक्षण और मॉडलिंग", "पुरस्कार-दंड", "सामान्यीकरण"], "a": 1, "e": "बांडुरा — Bobo Doll Experiment।"}, {"q": "'शून्य स्थानांतरण' का अर्थ?", "o": ["धनात्मक", "ऋणात्मक", "शून्य — कोई प्रभाव नहीं", "ऊर्ध्व"], "a": 2, "e": "Zero Transfer — पुराना ज्ञान नए पर कोई प्रभाव नहीं।"}, {"q": "बुद्धि का 'द्वि-कारक सिद्धांत' किसने दिया?", "o": ["अल्फ्रेड बिने", "चार्ल्स स्पीयरमैन", "थर्स्टन", "हावर्ड गार्डनर"], "a": 1, "e": "स्पीयरमैन — G-factor + S-factor।"}, {"q": "IQ का सही सूत्र?", "o": ["CA/MA×100", "MA/CA×100", "MA/CA+100", "MA×CA"], "a": 1, "e": "IQ = (MA/CA)×100।"}, {"q": "गार्डनर की 'अंतःवैयक्तिक बुद्धि' किससे?", "o": ["दूसरों को समझना", "स्वयं को समझना", "संगीत", "तार्किक"], "a": 1, "e": "Intrapersonal = स्वयं की भावनाओं को समझना।"}, {"q": "'संवेगात्मक बुद्धि' को लोकप्रिय किसने बनाया?", "o": ["पीटर सालोवे", "जॉन मेयर", "डेनियल गोलमैन", "थार्नडाइक"], "a": 2, "e": "डेनियल गोलमैन — 1995 'EI: Why It Can Matter More Than IQ'।"}, {"q": "फ्रायड में 'Id' किस पर काम करता है?", "o": ["वास्तविकता", "नैतिकता", "आनंद (Pleasure)", "समाज"], "a": 2, "e": "Id = Pleasure Principle, अचेतन।"}, {"q": "'अंतर्मुखी-बहिर्मुखी' वर्गीकरण किसने दिया?", "o": ["कर्ट कोफ्का", "कार्ल जुंग", "गॉर्डन ऑलपोर्ट", "रेमंड कैटेल"], "a": 1, "e": "कार्ल जुंग — Introvert, Extrovert, Ambivert।"}, {"q": "TAT परीक्षण किसने बनाया?", "o": ["हरमन रोर्शा", "मॉर्गन एवं मरे", "लियोपोल्ड बेलक", "पाइन एवं टेंडलर"], "a": 1, "e": "1935 हार्वर्ड — मॉर्गन और मरे; 31 कार्ड।"}, {"q": "मैस्लो के पदानुक्रम की सर्वोच्च आवश्यकता?", "o": ["शारीरिक", "सुरक्षा", "आत्म-सिद्धि", "सम्मान"], "a": 2, "e": "मैस्लो — शीर्ष पर Self-Actualization।"}, {"q": "सृजनात्मकता किस चिंतन से?", "o": ["अभिसारी चिंतन", "अपसारी चिंतन", "रूढ़िवादी", "आत्मकेंद्रित"], "a": 1, "e": "गिलफोर्ड — Divergent Thinking।"}, {"q": "असफलता का दोष बाहर मढ़ना = कौन सी युक्ति?", "o": ["दमन", "प्रक्षेपण/दोषारोपण", "प्रतिगमन", "उदात्तीकरण"], "a": 1, "e": "Projection = कमी बाहर थोपना; Regression = बच्चों जैसा।"}, {"q": "पठन विकार को क्या कहते हैं?", "o": ["डिस्ग्राफिया", "डिस्लेक्सिया", "डिस्कैलकुलिया", "डिस्टीमिया"], "a": 1, "e": "Dyslexia = पठन; Dysgraphia = लेखन; Dyscalculia = गणित।"}, {"q": "वैयक्तिक विभिन्नताओं का प्रथम अध्ययन?", "o": ["सर फ्रांसिस गाल्टन", "डेविड वेक्सलर", "बी.एफ. स्किनर", "जे.एम. कैटेल"], "a": 0, "e": "सर फ्रांसिस गाल्टन — 1869 'Hereditary Genius'।"}, {"q": "NCF-2005 का मुख्य सिद्धांत?", "o": ["विषय-केंद्रित", "बिना बोझ के सीखना", "रटने की पद्धति", "कड़ा अनुशासन"], "a": 1, "e": "यशपाल समिति 'Learning Without Burden' (1993)।"}, {"q": "RTE-2009 में Class 1-5 का अनुपात?", "o": ["30:1", "35:1", "40:1", "45:1"], "a": 0, "e": "प्राथमिक (1-5): 30:1; उच्च प्राथमिक (6-8): 35:1।"}, {"q": "'क्रियात्मक अनुसंधान' का उद्देश्य?", "o": ["व्यापक सिद्धांत", "विद्यालय समस्याओं का समाधान", "ऐतिहासिक तथ्य", "प्रयोगशाला प्रयोग"], "a": 1, "e": "Action Research — विद्यालय की तात्कालिक समस्याओं का हल।"}, {"q": "CCE में 'व्यापक' का अर्थ?", "o": ["एक बड़ी परीक्षा", "केवल शैक्षिक विषय", "केवल सह-शैक्षिक", "शैक्षिक + सह-शैक्षिक"], "a": 3, "e": "व्यापक = Scholastic + Co-scholastic दोनों का मूल्यांकन।"}, {"q": "कुर्त लेविन का क्षेत्रीय सिद्धांत सूत्र?", "o": ["B=f(P,E)", "IQ=MA/CA×100", "S→R", "A+B=C"], "a": 0, "e": "Field Theory: B = f(P, E)।"}];
+const TOTAL=QS.length,TIME_LIMIT=30*60,LBL=['A','B','C','D'],AC='#6C3FC1';
+let ans=new Array(TOTAL).fill(-1),cur=0,tLeft=TIME_LIMIT,tI=null,st=null,rv=false;
+function startTest(){document.getElementById('pg-start').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();st=Date.now();}
+function startTimer(){tI=setInterval(()=>{tLeft--;const m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');const el=document.getElementById('timer');el.textContent=m+':'+s;el.className='t-val'+(tLeft<=300?' urgent':'');el.style.color=tLeft<=300?'var(--red)':AC;if(tLeft<=0){clearInterval(tI);submitTest(true);}},1000);}
+function buildGrid(){const g=document.getElementById('nav-grid');g.innerHTML='';for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='ndot';d.textContent=i+1;d.id='nd'+i;d.onclick=()=>renderQ(i);g.appendChild(d);}updateUI();}
+function updateUI(){for(let i=0;i<TOTAL;i++){const d=document.getElementById('nd'+i);if(i===cur)d.style.cssText='background:'+AC+';border-color:'+AC+';color:#fff';else if(ans[i]!==-1)d.style.cssText='background:'+AC+'18;border-color:'+AC+';color:'+AC;else d.style.cssText='';}const done=ans.filter(a=>a!==-1).length;document.getElementById('ans-count').textContent=done+' उत्तर';document.getElementById('prog').style.width=(done/TOTAL*100)+'%';document.getElementById('q-label').textContent='प्रश्न '+(cur+1)+'/'+TOTAL;}
+function renderQ(i){cur=i;const q=QS[i];document.getElementById('q-num').textContent=i+1;document.getElementById('q-text').textContent=q.q;const c=document.getElementById('opts');c.innerHTML='';q.o.forEach((opt,j)=>{const d=document.createElement('div');d.className='opt'+(ans[i]===j?' sel':'');d.innerHTML='<div class="ol">'+LBL[j]+'</div><div>'+opt+'</div>';d.onclick=()=>{ans[i]=j;renderQ(i);};c.appendChild(d);});const card=document.getElementById('q-card');card.style.animation='none';card.offsetHeight;card.style.animation='fadeIn .3s ease';document.getElementById('btn-prev').disabled=i===0;const last=i===TOTAL-1;document.getElementById('btn-next').style.display=last?'none':'';document.getElementById('btn-sub').style.display=last?'':'none';updateUI();}
+function nav(d){const n=cur+d;if(n>=0&&n<TOTAL)renderQ(n);}
+function confirmSub(){const sk=ans.filter(a=>a===-1).length;if(sk>0&&!confirm(sk+' प्रश्न छोड़े हैं। Submit करना चाहते हैं?'))return;submitTest(false);}
+function submitTest(tu){clearInterval(tI);const tk=Math.round((Date.now()-st)/1000);let c=0,w=0,sk=0;ans.forEach((a,i)=>{if(a===-1)sk++;else if(a===QS[i].a)c++;else w++;});const pct=Math.round(c/TOTAL*100);document.getElementById('pg-test').classList.remove('active');document.getElementById('pg-result').classList.add('active');document.getElementById('score-num').textContent=c;document.getElementById('r-c').textContent=c;document.getElementById('r-w').textContent=w;document.getElementById('r-s').textContent=sk;document.getElementById('r-p').textContent=pct+'%';document.getElementById('r-t').textContent=Math.floor(tk/60)+'म '+tk%60+'स';document.getElementById('score-ring').style.background='conic-gradient('+AC+' 0% '+pct+'%, #E2DDD5 0%)';let gb,gcls,tt,sub;if(pct>=80){gb='🏆 Excellent — A Grade';gcls='grade-A';tt='शानदार!';sub='बहुत बढ़िया!';}else if(pct>=60){gb='👍 Good — B Grade';gcls='grade-B';tt='अच्छा!';sub='और मेहनत करें।';}else{gb='📚 Keep Practicing';gcls='grade-C';tt='और अभ्यास करें!';sub='Notes पढ़ें और दोबारा दें।';}document.getElementById('grade-badge').className='grade-badge '+gcls;document.getElementById('grade-badge').textContent=gb;document.getElementById('r-title').textContent=(tu?'⏰ ':'')+tt;document.getElementById('r-sub').textContent=sub;buildReview();window.scrollTo({top:0,behavior:'smooth'});}
+function buildReview(){const c=document.getElementById('rev-cards');c.innerHTML='';QS.forEach((q,i)=>{const ua=ans[i],ok=ua===q.a,sk=ua===-1;const div=document.createElement('div');div.className='rev-card '+(sk?'':'ok bad'.split(' ')[ok?0:1]);let st2=sk?'<span class="rev-status st-sk">⏭️ छोड़ा</span>':ok?'<span class="rev-status st-ok">✅ सही</span>':'<span class="rev-status st-bad">❌ गलत</span>';let ah=sk?'<div class="rev-ans rev-skip">छोड़ा</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>':ok?'<div class="rev-ans rev-correct">✅ '+LBL[ua]+') '+q.o[ua]+'</div>':'<div class="rev-ans rev-wrong">❌ '+LBL[ua]+') '+q.o[ua]+'</div><div class="rev-ans rev-correct">✅ सही: '+LBL[q.a]+') '+q.o[q.a]+'</div>';const exp=q.e?'<div class="rev-exp">💡 '+q.e+'</div>':'';div.innerHTML=st2+'<div class="rev-q">प्र.'+(i+1)+'. '+q.q+'</div>'+ah+exp;c.appendChild(div);});}
+function toggleRev(){rv=!rv;const rs=document.getElementById('rev-section');rs.style.display=rv?'block':'none';if(rv)rs.scrollIntoView({behavior:'smooth'});}
+function restart(){ans=new Array(TOTAL).fill(-1);cur=0;tLeft=TIME_LIMIT;rv=false;document.getElementById('rev-section').style.display='none';document.getElementById('pg-result').classList.remove('active');document.getElementById('pg-test').classList.add('active');buildGrid();renderQ(0);startTimer();st=Date.now();window.scrollTo({top:0,behavior:'smooth'});}
 </script>
-</body>
-</html>
+</body></html>
