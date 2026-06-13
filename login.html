@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Login | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF8;--bg2:#F3F2EF;--bg3:#ECEAE5;
+  --surface:#FFFFFF;--border:#E2DDD5;
+  --navy:#1A1F36;--navy2:#2D3561;
+  --saffron:#E8610A;--saffron2:#FF7A2B;--saffron-light:#FFF0E8;
+  --green:#0A7D4B;--green-light:#E6F5EE;
+  --red:#C0392B;--red-light:#FDECEA;
+  --text:#1A1F36;--text2:#4A5070;--text3:#8890A8;
+  --shadow:0 2px 16px rgba(26,31,54,0.08);
+  --shadow-lg:0 8px 40px rgba(26,31,54,0.12);
+  --radius:14px;--radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:linear-gradient(135deg,#1A1F36,#2D3561);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
+.card{background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);max-width:420px;width:100%;padding:32px 28px;position:relative;z-index:1}
+.logo-row{display:flex;align-items:center;gap:11px;margin-bottom:20px;justify-content:center}
+.nav-logo{width:46px;height:46px;border-radius:11px;object-fit:cover}
+.brand-name{font-weight:800;color:var(--saffron);font-size:17px;line-height:1.2}
+.brand-sub{font-size:11px;color:var(--text3)}
+h1{font-size:20px;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px}
+.sub{text-align:center;color:var(--text3);font-size:13px;margin-bottom:22px}
+.tabs{display:flex;background:var(--bg2);border-radius:11px;padding:4px;margin-bottom:20px}
+.tab{flex:1;text-align:center;padding:9px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text3);cursor:pointer;transition:all .2s;border:none;background:none}
+.tab.active{background:var(--surface);color:var(--saffron);box-shadow:var(--shadow)}
+.panel{display:none}
+.panel.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.field input{width:100%;padding:12px 14px;border-radius:11px;border:1.5px solid var(--border);background:var(--bg2);font-size:14px;font-family:inherit;color:var(--text);transition:all .18s}
+.field input:focus{outline:none;border-color:var(--saffron);background:var(--surface)}
+.btn{width:100%;padding:13px;border-radius:11px;font-size:14px;font-weight:800;border:none;cursor:pointer;transition:all .2s;margin-top:4px}
+.btn-primary{background:var(--saffron);color:#fff;box-shadow:0 4px 16px rgba(232,97,10,0.3)}
+.btn-primary:hover{background:var(--saffron2);transform:translateY(-1px)}
+.btn-google{background:var(--surface);border:1.5px solid var(--border);color:var(--navy);display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-google:hover{border-color:var(--saffron);color:var(--saffron)}
+.btn-secondary{background:var(--bg2);color:var(--text2);border:1.5px solid var(--border)}
+.divider{display:flex;align-items:center;gap:10px;margin:16px 0;color:var(--text3);font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.switch-link{text-align:center;font-size:13px;color:var(--text2);margin-top:14px}
+.switch-link a{color:var(--saffron);font-weight:700;cursor:pointer}
+.msg{font-size:12px;text-align:center;margin-top:10px;padding:8px;border-radius:8px;display:none}
+.msg.error{display:block;background:var(--red-light);color:var(--red)}
+.msg.success{display:block;background:var(--green-light);color:var(--green)}
+.otp-row{display:flex;gap:8px}
+.otp-row input{text-align:center;font-size:18px;letter-spacing:4px}
+#recaptcha-container{display:none}
+.back-home{display:block;text-align:center;margin-top:18px;font-size:12px;color:rgba(255,255,255,0.7)}
+.back-home a{color:#FF7A2B;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo-row">
+    <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'">
+    <div>
+      <div class="brand-name">Sharma Sir's Digital Lab</div>
+      <div class="brand-sub">RPSC · SSC · REET · Railway</div>
+    </div>
+  </div>
+  <h1 id="formTitle">Login करें</h1>
+  <p class="sub">Premium Tests, Notes और Downloads एक्सेस करने के लिए</p>
+
+  <div class="tabs">
+    <button class="tab active" data-method="email">📧 Email</button>
+    <button class="tab" data-method="phone">📱 Mobile OTP</button>
+  </div>
+
+  <!-- Google Sign-in (always visible) -->
+  <button class="btn btn-google" id="googleBtn">
+    <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.3 2.7l5.7-5.7C33.6 6.5 29.1 4.5 24 4.5 13.2 4.5 4.5 13.2 4.5 24S13.2 43.5 24 43.5 43.5 34.8 43.5 24c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 18.9 13 24 13c2.8 0 5.3 1 7.3 2.7l5.7-5.7C33.6 6.5 29.1 4.5 24 4.5c-7.7 0-14.3 4.4-17.7 10.2z"/><path fill="#4CAF50" d="M24 43.5c5 0 9.5-1.9 13-5l-6-5c-1.8 1.4-4.1 2.2-7 2.2-5.3 0-9.7-3.6-11.3-8.4l-6.6 5.1C9.6 38.9 16.2 43.5 24 43.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.4-2.4 4.4-4.4 5.8l6 5C40.5 35.5 43.5 30.2 43.5 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+    Google से Login करें
+  </button>
+
+  <div class="divider">या</div>
+
+  <!-- Email panel -->
+  <div class="panel active" id="panel-email">
+    <form id="emailForm">
+      <div class="field" id="nameField" style="display:none">
+        <label>आपका नाम</label>
+        <input type="text" id="nameInput" placeholder="जैसे: Ramesh Kumar">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="emailInput" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="passwordInput" placeholder="••••••••" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary" id="emailSubmitBtn">Login करें</button>
+    </form>
+    <div class="switch-link">
+      <span id="switchText">अकाउंट नहीं है?</span> <a id="switchLink">अभी Sign Up करें</a>
+    </div>
+  </div>
+
+  <!-- Phone panel -->
+  <div class="panel" id="panel-phone">
+    <div id="phoneStep1">
+      <div class="field">
+        <label>मोबाइल नंबर</label>
+        <input type="tel" id="phoneInput" placeholder="9876543210" maxlength="10">
+      </div>
+      <button class="btn btn-primary" id="sendOtpBtn">OTP भेजें</button>
+    </div>
+    <div id="phoneStep2" style="display:none">
+      <div class="field">
+        <label>OTP डालें (6 अंक)</label>
+        <div class="otp-row">
+          <input type="text" id="otpInput" maxlength="6" placeholder="------">
+        </div>
+      </div>
+      <button class="btn btn-primary" id="verifyOtpBtn">Verify करें</button>
+      <button class="btn btn-secondary" id="resendOtpBtn" style="margin-top:8px">दोबारा OTP भेजें</button>
+    </div>
+  </div>
+
+  <div class="msg" id="msgBox"></div>
+  <div id="recaptcha-container"></div>
+
+  <div class="back-home">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html">← Website पर वापस जाएं</a>
+  </div>
+</div>
+
+<script type="module">
+import {
+  auth, watchAuthState, logout,
+  signupWithEmail, loginWithEmail, loginWithGoogle,
+  setupRecaptcha, sendOtp, verifyOtp
+} from './assets/auth.js';
+
+const msgBox = document.getElementById('msgBox');
+function showMsg(text, type){
+  msgBox.textContent = text;
+  msgBox.className = 'msg ' + type;
+}
+
+// ---- Tabs ----
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(tab => tab.addEventListener('click', () => {
+  tabs.forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + tab.dataset.method).classList.add('active');
+  msgBox.className = 'msg';
+}));
+
+// ---- Email/Password: toggle Login vs SignUp ----
+let isSignup = false;
+const formTitle = document.getElementById('formTitle');
+const nameField = document.getElementById('nameField');
+const emailSubmitBtn = document.getElementById('emailSubmitBtn');
+const switchText = document.getElementById('switchText');
+const switchLink = document.getElementById('switchLink');
+
+switchLink.addEventListener('click', () => {
+  isSignup = !isSignup;
+  if(isSignup){
+    formTitle.textContent = 'नया अकाउंट बनाएं';
+    nameField.style.display = 'block';
+    emailSubmitBtn.textContent = 'Sign Up करें';
+    switchText.textContent = 'पहले से अकाउंट है?';
+    switchLink.textContent = 'Login करें';
+  } else {
+    formTitle.textContent = 'Login करें';
+    nameField.style.display = 'none';
+    emailSubmitBtn.textContent = 'Login करें';
+    switchText.textContent = 'अकाउंट नहीं है?';
+    switchLink.textContent = 'अभी Sign Up करें';
+  }
+  msgBox.className = 'msg';
+});
+
+document.getElementById('emailForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value.trim();
+  const password = document.getElementById('passwordInput').value;
+  const name = document.getElementById('nameInput').value.trim();
+  emailSubmitBtn.disabled = true;
+  emailSubmitBtn.textContent = 'कृपया रुकें...';
+  try{
+    if(isSignup){
+      if(!name){ showMsg('कृपया अपना नाम डालें।', 'error'); throw new Error('no-name'); }
+      await signupWithEmail(name, email, password);
+      showMsg('✅ अकाउंट बन गया! Redirecting...', 'success');
+    } else {
+      await loginWithEmail(email, password);
+      showMsg('✅ Login सफल! Redirecting...', 'success');
+    }
+    setTimeout(() => redirectAfterLogin(), 1200);
+  } catch(err){
+    showMsg(friendlyError(err), 'error');
+  } finally {
+    emailSubmitBtn.disabled = false;
+    emailSubmitBtn.textContent = isSignup ? 'Sign Up करें' : 'Login करें';
+  }
+});
+
+// ---- Google ----
+document.getElementById('googleBtn').addEventListener('click', async () => {
+  try{
+    await loginWithGoogle();
+    showMsg('✅ Login सफल! Redirecting...', 'success');
+    setTimeout(() => redirectAfterLogin(), 1000);
+  } catch(err){
+    showMsg(friendlyError(err), 'error');
+  }
+});
+
+// ---- Phone OTP ----
+setupRecaptcha('googleBtn'); // invisible recaptcha attached, not visible to user
+
+document.getElementById('sendOtpBtn').addEventListener('click', async () => {
+  const phone = document.getElementById('phoneInput').value.trim();
+  if(!/^\d{10}$/.test(phone)){
+    showMsg('कृपया 10 अंकों का सही मोबाइल नंबर डालें।', 'error');
+    return;
+  }
+  const btn = document.getElementById('sendOtpBtn');
+  btn.disabled = true; btn.textContent = 'भेजा जा रहा है...';
+  try{
+    await sendOtp('+91' + phone);
+    document.getElementById('phoneStep1').style.display = 'none';
+    document.getElementById('phoneStep2').style.display = 'block';
+    showMsg('OTP आपके नंबर पर भेज दिया गया है।', 'success');
+  } catch(err){
+    showMsg(friendlyError(err), 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'OTP भेजें';
+  }
+});
+
+document.getElementById('verifyOtpBtn').addEventListener('click', async () => {
+  const code = document.getElementById('otpInput').value.trim();
+  if(code.length !== 6){ showMsg('कृपया 6 अंकों का OTP डालें।', 'error'); return; }
+  try{
+    await verifyOtp(code);
+    showMsg('✅ Login सफल! Redirecting...', 'success');
+    setTimeout(() => redirectAfterLogin(), 1000);
+  } catch(err){
+    showMsg(friendlyError(err), 'error');
+  }
+});
+
+document.getElementById('resendOtpBtn').addEventListener('click', () => {
+  document.getElementById('phoneStep1').style.display = 'block';
+  document.getElementById('phoneStep2').style.display = 'none';
+  document.getElementById('otpInput').value = '';
+});
+
+// ---- Helpers ----
+function friendlyError(err){
+  const code = err.code || '';
+  if(code.includes('email-already-in-use')) return 'यह Email पहले से रजिस्टर्ड है — Login करें।';
+  if(code.includes('user-not-found') || code.includes('wrong-password') || code.includes('invalid-credential')) return 'Email या Password गलत है।';
+  if(code.includes('weak-password')) return 'Password कम से कम 6 अक्षर का होना चाहिए।';
+  if(code.includes('invalid-email')) return 'सही Email डालें।';
+  if(code.includes('invalid-verification-code')) return 'OTP गलत है, फिर से कोशिश करें।';
+  if(code.includes('too-many-requests')) return 'बहुत बार कोशिश हुई है, कुछ देर बाद कोशिश करें।';
+  return err.message || 'कुछ गलत हो गया, फिर से कोशिश करें।';
+}
+
+function redirectAfterLogin(){
+  // Redirect to the page user came from, or dashboard
+  const redirect = new URLSearchParams(window.location.search).get('redirect');
+  window.location.href = redirect || 'https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/dashboard.html';
+}
+
+// If already logged in, redirect immediately
+watchAuthState((user) => {
+  if(user){
+    const redirect = new URLSearchParams(window.location.search).get('redirect');
+    if(redirect) window.location.href = redirect;
+  }
+});
+</script>
+</body>
+</html>

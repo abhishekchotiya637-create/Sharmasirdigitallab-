@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard | Sharma Sir's Digital Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF8;--bg2:#F3F2EF;--surface:#FFFFFF;--border:#E2DDD5;
+  --navy:#1A1F36;--navy2:#2D3561;--saffron:#E8610A;--saffron-light:#FFF0E8;
+  --green:#0A7D4B;--green-light:#E6F5EE;--text:#1A1F36;--text2:#4A5070;--text3:#8890A8;
+  --shadow:0 2px 16px rgba(26,31,54,0.08);--radius:14px;--radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover}
+.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:var(--text3)}
+.logout-btn{padding:8px 18px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);font-size:13px;font-weight:700;color:var(--text2);cursor:pointer}
+.hero{background:linear-gradient(135deg,#1A1F36,#2D3561);text-align:center;padding:46px 24px 36px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
+.hero h1{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;color:#fff;position:relative;z-index:1;margin-bottom:6px}
+.hero p{color:rgba(255,255,255,0.65);font-size:13px;position:relative;z-index:1}
+.wrap{max-width:760px;margin:0 auto;padding:32px 24px 60px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow);margin-bottom:20px}
+.card h2{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:14px}
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.info-row:last-child{border-bottom:none}
+.info-row .label{color:var(--text3)}
+.info-row .value{font-weight:700;color:var(--navy)}
+.purchase-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.purchase-item:last-child{border-bottom:none}
+.empty{text-align:center;color:var(--text3);font-size:13px;padding:20px}
+.nav-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.nav-links a{padding:9px 18px;border-radius:10px;background:var(--saffron-light);color:var(--saffron);font-size:13px;font-weight:700;border:1px solid rgba(232,97,10,0.25)}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-inner">
+  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+    <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'">
+    <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">My Dashboard</div></div>
+  </a>
+  <button class="logout-btn" id="logoutBtn">Logout</button>
+</div></nav>
+
+<div class="hero">
+  <h1>👋 नमस्ते, <span id="userName">Student</span>!</h1>
+  <p>आपका Account और Purchases यहाँ देखें</p>
+</div>
+
+<div class="wrap">
+  <div class="card">
+    <h2>📋 Account Details</h2>
+    <div class="info-row"><span class="label">नाम</span><span class="value" id="dName">—</span></div>
+    <div class="info-row"><span class="label">Email</span><span class="value" id="dEmail">—</span></div>
+    <div class="info-row"><span class="label">Mobile</span><span class="value" id="dPhone">—</span></div>
+    <div class="info-row"><span class="label">Login Method</span><span class="value" id="dMethod">—</span></div>
+  </div>
+
+  <div class="card">
+    <h2>🔓 आपके Unlocked Items</h2>
+    <div id="purchasesList"><div class="empty">अभी कुछ नहीं खरीदा गया है।</div></div>
+  </div>
+
+  <div class="card">
+    <h2>🚀 Quick Links</h2>
+    <div class="nav-links">
+      <a href="premium-content.html">🔒 Premium Tests & Notes</a>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/test-series.html">🎯 Free Test Series</a>
+      <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/notes.html">📝 Free Notes</a>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { auth, watchAuthState, logout, getUserData } from './assets/auth.js';
+
+// Item titles for display (keep in sync with premium-content.html)
+const ITEM_TITLES = {
+  "test-premium-rpsc-gk-4": "🎯 RPSC GK Premium Mock #4",
+  "test-premium-ssc-cgl-set": "📊 SSC CGL Premium Test Set",
+  "notes-cet2026-complete": "📘 CET 2026 Complete Notes (PDF)",
+  "notes-current-affairs-2026": "📰 Current Affairs 2026 (PDF)"
+};
+
+watchAuthState(async (user) => {
+  if (!user) {
+    window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+    return;
+  }
+  document.getElementById('userName').textContent = user.displayName || user.email || user.phoneNumber || 'Student';
+  document.getElementById('dName').textContent = user.displayName || '—';
+  document.getElementById('dEmail').textContent = user.email || '—';
+  document.getElementById('dPhone').textContent = user.phoneNumber || '—';
+
+  const providers = user.providerData.map(p => p.providerId).join(', ');
+  document.getElementById('dMethod').textContent =
+    providers.includes('google') ? 'Google' :
+    providers.includes('phone') ? 'Mobile OTP' :
+    providers.includes('password') ? 'Email/Password' : providers;
+
+  const data = await getUserData(user.uid);
+  const purchases = (data && data.purchases) || [];
+  const list = document.getElementById('purchasesList');
+  if (purchases.length === 0) {
+    list.innerHTML = '<div class="empty">अभी कुछ नहीं खरीदा गया है। <a href="premium-content.html" style="color:var(--saffron);font-weight:700">Premium Zone देखें →</a></div>';
+  } else {
+    list.innerHTML = purchases.map(id =>
+      `<div class="purchase-item">✅ ${ITEM_TITLES[id] || id}</div>`
+    ).join('');
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await logout();
+  window.location.href = 'https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html';
+});
+</script>
+</body>
+</html>
