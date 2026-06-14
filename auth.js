@@ -1,8 +1,6 @@
 // ============================================================
 // Sharma Sir's Digital Lab — Firebase Auth Module
-// ============================================================
-// ⚠️ STEP 1: Paste your firebaseConfig below (from Firebase Console
-//    → Project Settings → General → Your apps → Web app)
+// Firebase Config: sharma-sir-digital-lab-df5c4
 // ============================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -13,10 +11,9 @@ import {
   RecaptchaVerifier, signInWithPhoneNumber
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
-  getFirestore, doc, getDoc, setDoc, updateDoc
+  getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// =============== FIREBASE CONFIG (Sharma Sir's Digital Lab) ===============
 const firebaseConfig = {
   apiKey: "AIzaSyC0KSUHxzJPsk29ETOgojpH6rc003fBLII",
   authDomain: "sharma-sir-digital-lab-df5c4.firebaseapp.com",
@@ -25,7 +22,6 @@ const firebaseConfig = {
   messagingSenderId: "1055829277012",
   appId: "1:1055829277012:web:048eca81306175a51b30c1"
 };
-// =================================================================
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -60,14 +56,12 @@ export async function loginWithGoogle() {
 // ---------- Phone OTP ----------
 let confirmationResult = null;
 
-export function setupRecaptcha(buttonId) {
-  window.recaptchaVerifier = new RecaptchaVerifier(auth, buttonId, {
-    size: "invisible"
-  });
+export function setupRecaptcha(elementId) {
+  if (window.recaptchaVerifier) return;
+  window.recaptchaVerifier = new RecaptchaVerifier(auth, elementId, { size: "invisible" });
 }
 
 export async function sendOtp(phoneNumber) {
-  // phoneNumber format: +91XXXXXXXXXX
   confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier);
   return confirmationResult;
 }
@@ -90,16 +84,20 @@ export async function logout() {
   await signOut(auth);
 }
 
-// ---------- Purchases (Premium Content Access) ----------
-// Each premium item has a unique "itemId" (e.g. "notes-cet2026-history")
+// ---------- Purchases ----------
 export async function hasPurchased(uid, itemId) {
   const snap = await getDoc(doc(db, "users", uid));
   if (!snap.exists()) return false;
-  const purchases = snap.data().purchases || [];
-  return purchases.includes(itemId);
+  return (snap.data().purchases || []).includes(itemId);
 }
 
 export async function getUserData(uid) {
   const snap = await getDoc(doc(db, "users", uid));
   return snap.exists() ? snap.data() : null;
-    }
+}
+
+export async function unlockItem(uid, itemId) {
+  await updateDoc(doc(db, "users", uid), {
+    purchases: arrayUnion(itemId)
+  });
+}

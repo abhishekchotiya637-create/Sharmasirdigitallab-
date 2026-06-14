@@ -3,153 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Premium Notes & Tests | Sharma Sir's Digital Lab</title>
+<title>Premium Zone | Sharma Sir's Digital Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <style>
-:root{
-  --bg:#FAFAF8;--bg2:#F3F2EF;--bg3:#ECEAE5;
-  --surface:#FFFFFF;--border:#E2DDD5;
-  --navy:#1A1F36;--navy2:#2D3561;
-  --saffron:#E8610A;--saffron2:#FF7A2B;--saffron-light:#FFF0E8;
-  --green:#0A7D4B;--green-light:#E6F5EE;
-  --red:#C0392B;--red-light:#FDECEA;
-  --gold:#C17D11;--gold-light:#FEF3E2;
-  --text:#1A1F36;--text2:#4A5070;--text3:#8890A8;
-  --shadow:0 2px 16px rgba(26,31,54,0.08);
-  --shadow-lg:0 8px 40px rgba(26,31,54,0.12);
-  --radius:14px;--radius-lg:20px;
-}
+:root{--bg:#FAFAF8;--bg2:#F3F2EF;--surface:#FFFFFF;--border:#E2DDD5;--navy:#1A1F36;--saffron:#E8610A;--saffron2:#FF7A2B;--saffron-light:#FFF0E8;--green:#0A7D4B;--green-light:#E6F5EE;--red:#C0392B;--red-light:#FDECEA;--text:#1A1F36;--text2:#4A5070;--text3:#8890A8;--shadow:0 2px 16px rgba(26,31,54,0.08);--shadow-lg:0 8px 40px rgba(26,31,54,0.12);--radius:14px;--radius-lg:20px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 a{text-decoration:none;color:inherit}
 .navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{display:flex;align-items:center;gap:11px}
-.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover}
-.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;border-radius:9px;object-fit:cover}
+.brand-name{font-weight:800;color:var(--saffron);font-size:14px;line-height:1.2}
 .brand-sub{font-size:10px;color:var(--text3)}
-.user-pill{padding:7px 16px;border-radius:999px;background:var(--bg2);border:1px solid var(--border);font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;cursor:pointer}
-.hero{background:linear-gradient(135deg,#1A1F36,#2D3561);text-align:center;padding:46px 24px 36px;position:relative;overflow:hidden}
+.user-pill{padding:7px 15px;border-radius:999px;background:var(--bg2);border:1px solid var(--border);font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.hero{background:linear-gradient(135deg,#1A1F36,#2D3561);text-align:center;padding:42px 20px 32px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
-.hero h1{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
 .hero h1 span{color:#FF7A2B}
-.hero p{color:rgba(255,255,255,0.65);font-size:14px;position:relative;z-index:1}
-.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 60px}
-.section-title{font-size:18px;font-weight:800;color:var(--navy);margin:28px 0 14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.item-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
-.item-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.item-title{font-size:14px;font-weight:800;color:var(--navy)}
-.item-desc{font-size:12px;color:var(--text2);flex:1}
-.item-footer{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
-.price{font-size:18px;font-weight:900;color:var(--saffron)}
-.price.free{color:var(--green)}
-.btn{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:800;border:none;cursor:pointer;transition:all .2s}
+.hero p{color:rgba(255,255,255,0.6);font-size:13px;position:relative;z-index:1}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+.login-banner{background:var(--saffron-light);border:1px solid rgba(232,97,10,0.25);border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.login-banner p{font-size:13px;color:var(--text2);font-weight:600}
+.login-banner a{background:var(--saffron);color:#fff;padding:8px 18px;border-radius:9px;font-size:13px;font-weight:800;white-space:nowrap}
+.section-title{font-size:17px;font-weight:800;color:var(--navy);margin:26px 0 14px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.item-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s}
+.item-card:hover{box-shadow:var(--shadow-lg)}
+.item-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.item-title{font-size:14px;font-weight:800;color:var(--navy);line-height:1.35}
+.item-desc{font-size:12px;color:var(--text2);flex:1;line-height:1.55}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px}
+.badge-locked{background:var(--bg2);color:var(--text3)}
+.badge-unlocked{background:var(--green-light);color:var(--green)}
+.item-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;gap:8px}
+.price{font-size:20px;font-weight:900;color:var(--saffron)}
+.price-free{font-size:15px;font-weight:800;color:var(--green)}
+.btn{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:800;border:none;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
 .btn-buy{background:var(--saffron);color:#fff;box-shadow:0 4px 14px rgba(232,97,10,0.3)}
 .btn-buy:hover{background:var(--saffron2);transform:translateY(-1px)}
 .btn-open{background:var(--green);color:#fff}
-.btn-open:hover{background:#0a9a5c}
-.locked-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--text3);background:var(--bg2);padding:3px 10px;border-radius:999px;align-self:flex-start}
-.unlocked-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--green);background:var(--green-light);padding:3px 10px;border-radius:999px;align-self:flex-start}
-.login-banner{background:var(--saffron-light);border:1px solid rgba(232,97,10,0.25);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px;flex-wrap:wrap}
-.login-banner p{font-size:13px;color:var(--text2);font-weight:600}
-.login-banner a{background:var(--saffron);color:#fff;padding:9px 20px;border-radius:10px;font-size:13px;font-weight:800}
+.btn-open:hover{background:#0a9a5c;transform:translateY(-1px)}
+.loading{text-align:center;color:var(--text3);padding:30px;font-size:14px}
 </style>
 </head>
 <body>
-<nav class="navbar"><div class="nav-inner">
-  <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
-    <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'">
-    <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">Premium Zone</div></div>
-  </a>
-  <div class="user-pill" id="userPill">👤 Login करें</div>
-</div></nav>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/index.html" class="brand">
+      <img src="https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg" class="nav-logo" onerror="this.style.display='none'">
+      <div>
+        <div class="brand-name">Sharma Sir's Digital Lab</div>
+        <div class="brand-sub">Premium Zone</div>
+      </div>
+    </a>
+    <div class="user-pill" id="userPill">👤 Login करें</div>
+  </div>
+</nav>
 
 <div class="hero">
   <h1>🔒 <span>Premium</span> Tests & Notes</h1>
-  <p>हर item सिर्फ एक बार खरीदें — Lifetime Access पाएं</p>
+  <p>हर item सिर्फ एक बार खरीदें — Lifetime Access | 1/3 Negative Marking</p>
 </div>
 
 <div class="wrap">
+  <!-- Login banner (for guests) -->
   <div class="login-banner" id="loginBanner" style="display:none">
-    <p>📌 Premium content खरीदने के लिए सबसे पहले Login करें।</p>
-    <a href="login.html">Login / Sign Up →</a>
+    <p>📌 Premium content खरीदने के लिए पहले Login करें।</p>
+    <a href="./login.html">Login / Sign Up →</a>
   </div>
 
-  <div class="section-title">📝 Premium Mock Tests</div>
-  <div class="grid" id="testsGrid"></div>
+  <div class="section-title">🎯 Premium Mock Tests</div>
+  <div class="grid" id="testsGrid"><div class="loading">⏳ Loading...</div></div>
 
   <div class="section-title">📚 Premium Notes (PDF Download)</div>
-  <div class="grid" id="notesGrid"></div>
+  <div class="grid" id="notesGrid"><div class="loading">⏳ Loading...</div></div>
 </div>
 
 <script type="module">
-import { auth, watchAuthState, logout } from './assets/auth.js';
-import { buyItem, checkAccess } from './assets/payment.js';
+import { auth, watchAuthState, logout } from './auth.js';
+import { buyItem, checkAccess } from './payment.js';
 
-// ============ ITEM CATALOG (edit prices/titles here) ============
-const ITEMS = {
+// ================================================================
+// ITEM CATALOG — यहाँ अपने असली Tests/Notes की जानकारी डालें
+// id: unique पहचान (Firestore में यही store होगा)
+// url: Test का HTML file या PDF का सीधा link
+// price: रुपये में (जैसे 29, 49, 99)
+// ================================================================
+const CATALOG = {
   tests: [
-    { id: "test-premium-rpsc-gk-4", title: "RPSC GK Premium Mock #4 (100 Qs)", desc: "नवीनतम पैटर्न — पूर्ण विश्लेषण के साथ 1/3 Negative Marking", price: 19, icon: "🎯", color: "#E8610A", url: "rpsc-gk-premium-4.html" },
-    { id: "test-premium-ssc-cgl-set", title: "SSC CGL Premium Test Set (5 Tests)", desc: "Tier-1 स्तर के 5 फुल लेंथ टेस्ट — Maths + Reasoning + GK", price: 49, icon: "📊", color: "#1A5FA8", url: "ssc-cgl-premium-set.html" },
+    {
+      id: "test-premium-rpsc-gk-4",
+      title: "RPSC GK Premium Mock Test #4 (100 Qs)",
+      desc: "राजस्थान GK + भारत-विश्व GK + मनोविज्ञान — नवीनतम पैटर्न, 1/3 Negative Marking",
+      price: 19,
+      icon: "🎯",
+      color: "#E8610A",
+      url: "./rpsc-gk-premium-4.html"
+    },
+    {
+      id: "test-premium-ssc-cgl-set",
+      title: "SSC CGL Premium Test Set (5 Tests)",
+      desc: "Tier-1 स्तर के 5 फुल लेंथ टेस्ट — Maths + Reasoning + GK + English",
+      price: 49,
+      icon: "📊",
+      color: "#1A5FA8",
+      url: "./ssc-cgl-premium-set.html"
+    }
   ],
   notes: [
-    { id: "notes-cet2026-complete", title: "CET 2026 Complete Notes (PDF)", desc: "History + Polity + Geography + Culture — All-in-one PDF", price: 29, icon: "📘", color: "#6C3FC1", url: "downloads/cet2026-complete-notes.pdf" },
-    { id: "notes-current-affairs-2026", title: "Current Affairs 2026 Compilation (PDF)", desc: "Budget, योजनाएं, खेल — जनवरी से जून 2026", price: 15, icon: "📰", color: "#0A7D4B", url: "downloads/current-affairs-2026.pdf" },
+    {
+      id: "notes-cet2026-complete",
+      title: "CET 2026 Complete Notes (PDF)",
+      desc: "History + Polity + Geography + Culture — परीक्षा दृष्टि से सम्पूर्ण नोट्स",
+      price: 29,
+      icon: "📘",
+      color: "#6C3FC1",
+      url: "./pdf/cet2026-complete-notes.pdf"
+    },
+    {
+      id: "notes-current-affairs-2026",
+      title: "Current Affairs 2026 Compilation (PDF)",
+      desc: "Budget, योजनाएं, खेल — जनवरी से जून 2026 का सम्पूर्ण संकलन",
+      price: 15,
+      icon: "📰",
+      color: "#0A7D4B",
+      url: "./pdf/current-affairs-2026.pdf"
+    }
   ]
 };
-// ===================================================================
 
 let currentUser = null;
 
+// ---- Auth state ----
 watchAuthState(async (user) => {
   currentUser = user;
   const pill = document.getElementById('userPill');
   const banner = document.getElementById('loginBanner');
+
   if (user) {
-    pill.textContent = '👤 ' + (user.displayName || user.email || user.phoneNumber || 'Account');
-    pill.onclick = async () => { if(confirm('Logout करें?')) { await logout(); location.reload(); } };
+    const name = user.displayName || user.email || user.phoneNumber || 'Account';
+    pill.textContent = '👤 ' + name.split(' ')[0].substring(0, 12);
+    pill.onclick = async () => {
+      if (confirm('Logout करना चाहते हैं?')) {
+        await logout();
+        location.reload();
+      }
+    };
     banner.style.display = 'none';
   } else {
     pill.textContent = '👤 Login करें';
-    pill.onclick = () => window.location.href = 'login.html';
+    pill.onclick = () => window.location.href = './login.html?redirect=' + encodeURIComponent(window.location.href);
     banner.style.display = 'flex';
   }
-  renderGrids();
+  await renderAll();
 });
 
-function renderGrids(){
-  renderGrid('testsGrid', ITEMS.tests);
-  renderGrid('notesGrid', ITEMS.notes);
+// ---- Render ----
+async function renderAll() {
+  await renderGrid('testsGrid', CATALOG.tests);
+  await renderGrid('notesGrid', CATALOG.notes);
 }
 
-async function renderGrid(gridId, items){
+async function renderGrid(gridId, items) {
   const grid = document.getElementById(gridId);
-  grid.innerHTML = '';
-  for(const item of items){
+  grid.innerHTML = '<div class="loading">⏳ Loading...</div>';
+  const cards = [];
+  for (const item of items) {
     const unlocked = currentUser ? await checkAccess(item.id) : false;
-    const card = document.createElement('div');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="item-icon" style="background:${item.color}15;color:${item.color}">${item.icon}</div>
-      ${unlocked ? '<span class="unlocked-badge">✅ Unlocked</span>' : '<span class="locked-badge">🔒 Locked</span>'}
-      <div class="item-title">${item.title}</div>
-      <div class="item-desc">${item.desc}</div>
-      <div class="item-footer">
-        ${unlocked ? `<span class="price free">Owned</span>` : `<span class="price">₹${item.price}</span>`}
-        ${unlocked
-          ? `<a href="${item.url}" class="btn btn-open">📂 Open</a>`
-          : `<button class="btn btn-buy" data-id="${item.id}">🔓 Unlock करें</button>`}
-      </div>
-    `;
-    if(!unlocked){
-      card.querySelector('.btn-buy').addEventListener('click', () => {
-        buyItem(item, () => renderGrids());
-      });
-    }
-    grid.appendChild(card);
+    cards.push(buildCard(item, unlocked));
   }
+  grid.innerHTML = '';
+  cards.forEach(c => grid.appendChild(c));
+}
+
+function buildCard(item, unlocked) {
+  const card = document.createElement('div');
+  card.className = 'item-card';
+  card.innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="item-icon" style="background:${item.color}15;color:${item.color}">${item.icon}</div>
+      <span class="badge ${unlocked ? 'badge-unlocked' : 'badge-locked'}">
+        ${unlocked ? '✅ Unlocked' : '🔒 Locked'}
+      </span>
+    </div>
+    <div class="item-title">${item.title}</div>
+    <div class="item-desc">${item.desc}</div>
+    <div class="item-footer">
+      ${unlocked
+        ? '<span class="price-free">✅ Owned</span>'
+        : `<span class="price">₹${item.price}</span>`}
+      ${unlocked
+        ? `<a href="${item.url}" class="btn btn-open">📂 Open</a>`
+        : `<button class="btn btn-buy" data-id="${item.id}">🔓 Unlock करें</button>`}
+    </div>
+  `;
+  if (!unlocked) {
+    card.querySelector('.btn-buy').addEventListener('click', () => {
+      buyItem(item, () => renderAll());
+    });
+  }
+  return card;
 }
 </script>
 </body>
