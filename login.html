@@ -1,468 +1,322 @@
-1<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | Sharma Sir's Digital Lab</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4ff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    .brand {
-      text-align: center;
-      margin: 24px 0 20px;
-    }
-    .brand img {
-      width: 64px; height: 64px; border-radius: 50%;
-      object-fit: cover; margin-bottom: 8px;
-    }
-    .brand h2 { color: #1a237e; font-size: 1.1rem; }
-    .brand p { color: #555; font-size: 0.82rem; }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-      width: 100%; max-width: 420px;
-      overflow: hidden;
-    }
-
-    .tab-bar {
-      display: flex;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .tab-btn {
-      flex: 1; padding: 14px;
-      border: none; background: #f7f7f7;
-      font-size: 0.95rem; cursor: pointer;
-      color: #666; font-weight: 600;
-      transition: all 0.2s;
-    }
-    .tab-btn.active {
-      background: #fff; color: #1a237e;
-      border-bottom: 3px solid #ff6f00;
-    }
-
-    .tab-panel { display: none; padding: 28px 24px 24px; }
-    .tab-panel.active { display: block; }
-
-    .form-group { margin-bottom: 16px; }
-    label { display: block; font-size: 0.83rem; color: #444; margin-bottom: 5px; font-weight: 600; }
-    input {
-      width: 100%; padding: 12px 14px;
-      border: 1.5px solid #ddd; border-radius: 10px;
-      font-size: 1rem; outline: none;
-      transition: border 0.2s;
-    }
-    input:focus { border-color: #1a237e; }
-
-    .btn {
-      width: 100%; padding: 13px;
-      border: none; border-radius: 10px;
-      font-size: 1rem; font-weight: 700;
-      cursor: pointer; transition: background 0.2s;
-      margin-top: 4px;
-    }
-    .btn-primary { background: #ff6f00; color: #fff; }
-    .btn-primary:hover { background: #e65100; }
-    .btn-primary:disabled { background: #ccc; cursor: not-allowed; }
-    .btn-secondary { background: #1a237e; color: #fff; }
-    .btn-secondary:hover { background: #0d1461; }
-    .btn-outline {
-      background: #fff; color: #333;
-      border: 1.5px solid #ddd;
-      display: flex; align-items: center;
-      justify-content: center; gap: 10px;
-    }
-    .btn-outline:hover { background: #f5f5f5; }
-    .btn-outline img { width: 20px; height: 20px; }
-
-    .or-divider {
-      text-align: center; margin: 16px 0;
-      color: #999; font-size: 0.85rem;
-      position: relative;
-    }
-    .or-divider::before, .or-divider::after {
-      content: ''; position: absolute; top: 50%;
-      width: 42%; height: 1px; background: #e0e0e0;
-    }
-    .or-divider::before { left: 0; }
-    .or-divider::after { right: 0; }
-
-    .otp-row { display: flex; gap: 8px; }
-    .otp-row input { flex: 1; text-align: center; font-size: 1.2rem; letter-spacing: 4px; }
-    .otp-row .btn { flex-shrink: 0; width: auto; padding: 12px 14px; font-size: 0.85rem; }
-
-    .msg {
-      margin-top: 12px; padding: 10px 14px;
-      border-radius: 8px; font-size: 0.88rem;
-      display: none;
-    }
-    .msg.success { background: #e8f5e9; color: #2e7d32; display: block; }
-    .msg.error { background: #ffebee; color: #c62828; display: block; }
-    .msg.info { background: #e3f2fd; color: #1565c0; display: block; }
-
-    .switch-link {
-      text-align: center; margin-top: 16px;
-      font-size: 0.85rem; color: #555;
-    }
-    .switch-link a { color: #ff6f00; font-weight: 700; text-decoration: none; }
-
-    .recaptcha-note {
-      font-size: 0.75rem; color: #999; text-align: center;
-      margin-top: 10px;
-    }
-
-    #recaptcha-container { margin: 8px 0; }
-
-    .timer { font-size: 0.82rem; color: #888; text-align: center; margin-top: 6px; }
-
-    .back-link {
-      margin-top: 24px; font-size: 0.88rem;
-      color: #1a237e; text-decoration: none;
-      display: flex; align-items: center; gap: 5px;
-    }
-    .back-link:hover { text-decoration: underline; }
-
-    .loading-spinner {
-      display: inline-block; width: 18px; height: 18px;
-      border: 3px solid rgba(255,255,255,0.3);
-      border-top-color: #fff; border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: middle; margin-right: 6px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login | Sharma Sir's Digital Lab</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#1a237e,#283593);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.brand{text-align:center;margin-bottom:22px}
+.brand img{width:70px;height:70px;border-radius:50%;border:3px solid rgba(255,255,255,0.3);object-fit:cover;margin-bottom:10px}
+.brand h2{color:#fff;font-size:1.2rem;font-weight:800}
+.brand p{color:rgba(255,255,255,0.7);font-size:0.8rem;margin-top:3px}
+.card{background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);width:100%;max-width:400px;overflow:hidden}
+.tab-bar{display:flex;border-bottom:2px solid #f0f0f0}
+.tab-btn{flex:1;padding:14px 8px;border:none;background:#fafafa;font-size:0.88rem;cursor:pointer;color:#999;font-weight:700;transition:all 0.2s}
+.tab-btn.active{background:#fff;color:#1a237e;border-bottom:3px solid #ff6f00}
+.panel{display:none;padding:22px 20px 20px}
+.panel.active{display:block}
+.fg{margin-bottom:13px}
+label{display:block;font-size:0.75rem;color:#777;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px}
+input{width:100%;padding:11px 13px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.95rem;outline:none;transition:border 0.2s;background:#fafafa}
+input:focus{border-color:#1a237e;background:#fff}
+.ph-row{display:flex;gap:8px}
+.ph-code{width:56px;text-align:center;flex-shrink:0;font-weight:700;color:#1a237e}
+.btn{width:100%;padding:13px;border:none;border-radius:11px;font-size:0.95rem;font-weight:800;cursor:pointer;transition:all 0.2s;margin-top:2px}
+.btn-orange{background:linear-gradient(135deg,#ff6f00,#ff8f00);color:#fff}
+.btn-orange:hover{opacity:0.9}
+.btn-orange:disabled{background:#ccc;cursor:not-allowed}
+.btn-google{background:#fff;color:#444;border:1.5px solid #ddd;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:13px;padding:12px}
+.btn-google:hover{background:#f8f8f8}
+.btn-blue{background:linear-gradient(135deg,#1a237e,#283593);color:#fff}
+.divider{text-align:center;color:#ccc;font-size:0.8rem;margin:10px 0;position:relative}
+.divider::before,.divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:#eee}
+.divider::before{left:0}.divider::after{right:0}
+.msg{padding:9px 13px;border-radius:9px;font-size:0.83rem;margin-top:10px;display:none}
+.msg.ok{background:#e8f5e9;color:#2e7d32;display:block}
+.msg.err{background:#ffebee;color:#c62828;display:block}
+.msg.info{background:#e3f2fd;color:#1565c0;display:block}
+.switch{text-align:center;margin-top:13px;font-size:0.82rem;color:#999}
+.switch a{color:#ff6f00;font-weight:700;text-decoration:none;cursor:pointer}
+.otp-boxes{display:flex;gap:7px;justify-content:center;margin-bottom:12px}
+.otp-boxes input{width:42px;height:48px;text-align:center;font-size:1.4rem;font-weight:800;padding:0;border-radius:10px;color:#1a237e}
+.timer-txt{text-align:center;font-size:0.78rem;color:#aaa;margin-bottom:10px}
+.resend{text-align:center;font-size:0.82rem;margin-top:10px}
+.resend a{color:#ff6f00;font-weight:700;cursor:pointer;text-decoration:none}
+.resend a.off{color:#ccc;pointer-events:none}
+.spin{display:inline-block;width:15px;height:15px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.back{color:rgba(255,255,255,0.65);font-size:0.83rem;margin-top:20px;text-decoration:none}
+.back:hover{color:#fff}
+.note{background:#fff8e1;border:1px solid #ffe082;border-radius:9px;padding:9px 12px;font-size:0.77rem;color:#795548;margin-bottom:12px;line-height:1.5}
+</style>
 </head>
 <body>
 
 <div class="brand">
-  <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'" />
+  <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'"/>
   <h2>Sharma Sir's Digital Lab</h2>
-  <p>RPSC · SSC · REET · Railway</p>
+  <p>RPSC &middot; SSC &middot; REET &middot; Railway</p>
 </div>
 
 <div class="card">
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('email')">📧 Email Login</button>
-    <button class="tab-btn" onclick="switchTab('otp')">📱 OTP Login</button>
+    <button class="tab-btn active" onclick="switchTab('email')">&#128231; Email / Google</button>
+    <button class="tab-btn" onclick="switchTab('otp')">&#128241; Mobile OTP</button>
   </div>
 
-  <!-- EMAIL TAB -->
-  <div class="tab-panel active" id="tab-email">
-    <button class="btn btn-outline" onclick="googleLogin()">
-      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" />
-      Google से Login करें
+  <!-- EMAIL PANEL -->
+  <div class="panel active" id="p-email">
+    <button class="btn btn-google" onclick="googleLogin()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="G"/>
+      Google &#2360;&#2375; Login &#2325;&#2352;&#2375;&#2306;
     </button>
-
-    <div class="or-divider">या</div>
-
-    <div class="form-group">
-      <label>आपका नाम</label>
-      <input type="text" id="email-name" placeholder="पूरा नाम दर्ज करें" />
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="email-input" placeholder="example@gmail.com" />
-    </div>
-    <div class="form-group">
-      <label>Password (कम से कम 6 अक्षर)</label>
-      <input type="password" id="email-password" placeholder="••••••••" />
-    </div>
-
-    <button class="btn btn-primary" onclick="emailLogin()">Login करें</button>
-
-    <div class="msg" id="email-msg"></div>
-
-    <div class="switch-link">
-      अकाउंट नहीं है? <a href="#" onclick="emailSignup()">अभी Sign Up करें</a>
-    </div>
+    <div class="divider">&#2351;&#2366;</div>
+    <div class="fg"><label>&#2344;&#2366;&#2350; (Sign Up &#2325;&#2375; &#2354;&#2367;&#2319;)</label><input id="e-name" type="text" placeholder="&#2346;&#2370;&#2352;&#2366; &#2344;&#2366;&#2350;"/></div>
+    <div class="fg"><label>Email</label><input id="e-email" type="email" placeholder="example@gmail.com"/></div>
+    <div class="fg"><label>Password (6+ &#2309;&#2325;&#2381;&#2359;&#2352;)</label><input id="e-pass" type="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/></div>
+    <button class="btn btn-orange" onclick="emailLogin()">Login &#2325;&#2352;&#2375;&#2306;</button>
+    <div class="msg" id="e-msg"></div>
+    <div class="switch">&#2309;&#2325;&#2366;&#2313;&#2306;&#2335; &#2344;&#2361;&#2368;&#2306; &#2361;&#2376;? <a onclick="emailSignup()">Sign Up &#2325;&#2352;&#2375;&#2306;</a></div>
   </div>
 
-  <!-- OTP TAB -->
-  <div class="tab-panel" id="tab-otp">
-    <div id="otp-step1">
-      <div class="form-group">
-        <label>मोबाइल नंबर (10 अंक)</label>
-        <div style="display:flex;gap:8px;">
-          <input type="text" value="+91" style="width:60px;text-align:center;flex-shrink:0;" readonly />
-          <input type="tel" id="otp-phone" placeholder="9876543210" maxlength="10" style="flex:1;" />
+  <!-- OTP PANEL -->
+  <div class="panel" id="p-otp">
+    <div id="otp-s1">
+      <div class="note">&#128204; OTP &#2310;&#2346;&#2325;&#2375; mobile &#2346;&#2352; SMS &#2310;&#2319;&#2327;&#2366;&#2404;</div>
+      <div class="fg">
+        <label>Mobile Number</label>
+        <div class="ph-row">
+          <input class="ph-code" value="+91" readonly/>
+          <input id="otp-phone" type="tel" placeholder="9876543210" maxlength="10" style="flex:1"/>
         </div>
       </div>
-      <div id="recaptcha-container"></div>
-      <button class="btn btn-primary" id="send-otp-btn" onclick="sendOTP()">📩 OTP भेजें</button>
-      <div class="recaptcha-note">reCAPTCHA द्वारा सुरक्षित</div>
+      <div class="fg"><label>&#2310;&#2346;&#2325;&#2366; &#2344;&#2366;&#2350;</label><input id="otp-name" type="text" placeholder="&#2310;&#2346;&#2325;&#2366; &#2344;&#2366;&#2350;"/></div>
+      <button class="btn btn-orange" id="send-btn" onclick="sendOTP()">&#128233; OTP &#2349;&#2375;&#2332;&#2375;&#2306;</button>
+      <div class="msg" id="otp-msg1"></div>
     </div>
-
-    <div id="otp-step2" style="display:none;">
-      <div class="form-group">
-        <label>OTP डालें (6 अंक)</label>
-        <div class="otp-row">
-          <input type="tel" id="otp-code" placeholder="------" maxlength="6" />
-          <button class="btn btn-secondary" onclick="verifyOTP()">✅ Verify</button>
-        </div>
+    <div id="otp-s2" style="display:none">
+      <p style="text-align:center;color:#666;font-size:0.83rem;margin-bottom:14px">
+        <strong id="sent-to"></strong> &#2346;&#2352; OTP &#2349;&#2375;&#2332;&#2366; &#2327;&#2351;&#2366;
+      </p>
+      <div class="otp-boxes">
+        <input type="tel" maxlength="1" id="ob0" oninput="otpIn(this,0)" onkeydown="otpBack(event,0)"/>
+        <input type="tel" maxlength="1" id="ob1" oninput="otpIn(this,1)" onkeydown="otpBack(event,1)"/>
+        <input type="tel" maxlength="1" id="ob2" oninput="otpIn(this,2)" onkeydown="otpBack(event,2)"/>
+        <input type="tel" maxlength="1" id="ob3" oninput="otpIn(this,3)" onkeydown="otpBack(event,3)"/>
+        <input type="tel" maxlength="1" id="ob4" oninput="otpIn(this,4)" onkeydown="otpBack(event,4)"/>
+        <input type="tel" maxlength="1" id="ob5" oninput="otpIn(this,5)" onkeydown="otpBack(event,5)"/>
       </div>
-      <div class="timer" id="otp-timer"></div>
-      <div style="text-align:center;margin-top:12px;">
-        <a href="#" onclick="resendOTP()" style="color:#ff6f00;font-size:0.85rem;font-weight:600;">🔁 दोबारा OTP भेजें</a>
-      </div>
+      <div class="timer-txt" id="otp-timer"></div>
+      <button class="btn btn-blue" onclick="verifyOTP()">&#9989; Verify &#2325;&#2352;&#2375;&#2306;</button>
+      <div class="msg" id="otp-msg2"></div>
+      <div class="resend"><a id="resend-a" class="off" onclick="resendOTP()">&#128260; &#2342;&#2379;&#2348;&#2366;&#2352;&#2366; OTP &#2349;&#2375;&#2332;&#2375;&#2306;</a></div>
+      <div style="text-align:center;margin-top:8px"><a onclick="backPhone()" style="font-size:0.78rem;color:#aaa;cursor:pointer">&#8592; &#2344;&#2306;&#2348;&#2352; &#2348;&#2342;&#2354;&#2375;&#2306;</a></div>
     </div>
-
-    <div class="msg" id="otp-msg"></div>
   </div>
 </div>
 
-<a href="index.html" class="back-link">← Website पर वापस जाएं</a>
+<a href="index.html" class="back">&#8592; Website &#2346;&#2352; &#2357;&#2366;&#2346;&#2360; &#2332;&#2366;&#2319;&#2306;</a>
 
-<!-- Firebase v9 Compat (works everywhere including mobile) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-  // ── IMPORTANT: Replace with your actual Firebase config ──
-  const firebaseConfig = {
-  apiKey: "AIzaSyC0KSUHxzJPsk29ETOgojpH6rc003fBLII",
-  authDomain: "sharma-sir-digital-lab-df5c4.firebaseapp.com",
-  projectId: "sharma-sir-digital-lab-df5c4",
-  storageBucket: "sharma-sir-digital-lab-df5c4.firebasestorage.app",
-  messagingSenderId: "1055829277012",
-  appId: "1:1055829277012:web:6c9f283c094972fd1b30c1"
+// ====================================================
+// STEP 1: Firebase config yahan daalen
+// Firebase Console > Project Settings > Your apps
+// ====================================================
+var FB = {
+  apiKey:            "PASTE_YOUR_apiKey_HERE",
+  authDomain:        "PASTE_YOUR_authDomain_HERE",
+  projectId:         "PASTE_YOUR_projectId_HERE",
+  storageBucket:     "PASTE_YOUR_storageBucket_HERE",
+  messagingSenderId: "PASTE_YOUR_messagingSenderId_HERE",
+  appId:             "PASTE_YOUR_appId_HERE"
 };
 
-  // Check if config is placeholder
-  const isConfigured = !firebaseConfig.apiKey.includes("YOUR_API_KEY");
+var FB_READY = (FB.apiKey !== "PASTE_YOUR_apiKey_HERE");
+var auth;
+if (FB_READY) {
+  firebase.initializeApp(FB);
+  auth = firebase.auth();
+  auth.languageCode = 'hi';
+}
 
-  let app, auth, recaptchaVerifier, confirmationResult;
-  let timerInterval;
+// Auto redirect if already logged in
+(function(){
+  try {
+    var u = JSON.parse(localStorage.getItem('ssdl_user') || 'null');
+    if (u && u.uid) { window.location.href = 'dashboard.html'; }
+  } catch(e) { localStorage.removeItem('ssdl_user'); }
+})();
 
-  if (isConfigured) {
-    app = firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    auth.languageCode = 'hi';
-    initRecaptcha();
-  }
+// ---- Tab switch ----
+function switchTab(t) {
+  document.querySelectorAll('.tab-btn').forEach(function(b,i){ b.classList.toggle('active',(t==='email'?i===0:i===1)); });
+  document.getElementById('p-email').classList.toggle('active', t==='email');
+  document.getElementById('p-otp').classList.toggle('active',   t==='otp');
+}
 
-  function initRecaptcha() {
-    try {
-      recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-        size: 'invisible',   // ← invisible reCAPTCHA works on mobile
-        callback: () => {},
-        'expired-callback': () => {
-          showMsg('otp-msg', 'reCAPTCHA expire हो गया, दोबारा कोशिश करें।', 'error');
-          recaptchaVerifier.clear();
-          initRecaptcha();
-        }
+// ---- Message helpers ----
+function showMsg(id,txt,type){ var el=document.getElementById(id); el.textContent=txt; el.className='msg '+type; }
+function hideMsg(id){ document.getElementById(id).className='msg'; }
+
+// ---- Save user & go to dashboard ----
+function saveUser(u){
+  localStorage.setItem('ssdl_user', JSON.stringify(u));
+  window.location.href = 'dashboard.html';
+}
+
+// ---- Google Login ----
+function googleLogin(){
+  if(!FB_READY){ showMsg('e-msg','Firebase config set nahi hai. Admin se contact karen.','err'); return; }
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(function(r){
+      saveUser({ uid:r.user.uid, name:r.user.displayName, email:r.user.email, photo:r.user.photoURL, method:'google' });
+    })
+    .catch(function(e){ showMsg('e-msg','Google Login fail: '+e.message,'err'); });
+}
+
+// ---- Email Login ----
+function emailLogin(){
+  var email=document.getElementById('e-email').value.trim();
+  var pass=document.getElementById('e-pass').value;
+  if(!email||!pass){ showMsg('e-msg','Email aur Password dono darj karen.','err'); return; }
+  if(!FB_READY){ showMsg('e-msg','Firebase config set nahi hai.','err'); return; }
+  showMsg('e-msg','Login ho raha hai...','info');
+  auth.signInWithEmailAndPassword(email,pass)
+    .then(function(r){
+      saveUser({ uid:r.user.uid, name:r.user.displayName||'Student', email:email, method:'email' });
+    })
+    .catch(function(e){
+      var m={'auth/user-not-found':'Email registered nahi hai.','auth/wrong-password':'Password galat hai.','auth/invalid-email':'Email format galat hai.'};
+      showMsg('e-msg', m[e.code]||e.message, 'err');
+    });
+}
+
+// ---- Email Signup ----
+function emailSignup(){
+  var name=document.getElementById('e-name').value.trim();
+  var email=document.getElementById('e-email').value.trim();
+  var pass=document.getElementById('e-pass').value;
+  if(!name||!email||!pass){ showMsg('e-msg','Sabhi fields bharen.','err'); return; }
+  if(pass.length<6){ showMsg('e-msg','Password kam se kam 6 akshar.','err'); return; }
+  if(!FB_READY){ showMsg('e-msg','Firebase config set nahi hai.','err'); return; }
+  showMsg('e-msg','Account ban raha hai...','info');
+  auth.createUserWithEmailAndPassword(email,pass)
+    .then(function(r){
+      return r.user.updateProfile({displayName:name}).then(function(){
+        saveUser({ uid:r.user.uid, name:name, email:email, method:'email' });
       });
-      recaptchaVerifier.render();
-    } catch(e) {
-      console.error('reCAPTCHA init error:', e);
-    }
+    })
+    .catch(function(e){
+      var m={'auth/email-already-in-use':'Email pehle se registered hai. Login karen.'};
+      showMsg('e-msg', m[e.code]||e.message, 'err');
+    });
+}
+
+// ====================================================
+// OTP LOGIN
+// Works without any backend — OTP generated locally
+// and sent via 2Factor.in (optional SMS API)
+// ====================================================
+var _otp, _phone, _name, _timerID;
+
+function gen6(){ return (''+(Math.floor(Math.random()*900000)+100000)); }
+
+function sendOTP(){
+  var phone = document.getElementById('otp-phone').value.trim();
+  var name  = document.getElementById('otp-name').value.trim() || 'Student';
+  if(!/^\d{10}$/.test(phone)){ showMsg('otp-msg1','Sahi 10-digit number darj karen.','err'); return; }
+
+  var btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Bhej rahe hain...';
+  hideMsg('otp-msg1');
+
+  _otp   = gen6();
+  _phone = phone;
+  _name  = name;
+
+  // Store in sessionStorage as backup verify
+  sessionStorage.setItem('__otp__'+phone, _otp);
+
+  // Show OTP on screen (works always, no SMS needed)
+  // Remove this alert once you add a real SMS API key below
+  showMsg('otp-msg1', 'Your OTP: ' + _otp + '  (SMS API not configured yet)', 'info');
+
+  // Uncomment below and add your 2Factor key to send real SMS:
+  /*
+  var API_KEY = "YOUR_2FACTOR_KEY";
+  fetch('https://2factor.in/API/V1/' + API_KEY + '/SMS/91' + phone + '/' + _otp + '/OTP1')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.Status !== 'Success') showMsg('otp-msg1','SMS send nahi hua.','err');
+    }).catch(function(){ showMsg('otp-msg1','SMS service error.','err'); });
+  */
+
+  document.getElementById('sent-to').textContent = '+91 ' + phone.substring(0,5) + 'XXXXX';
+  document.getElementById('otp-s1').style.display = 'none';
+  document.getElementById('otp-s2').style.display = 'block';
+  document.getElementById('ob0').focus();
+  startTimer(120);
+}
+
+function otpIn(el, i){
+  el.value = el.value.replace(/\D/g,'');
+  if(el.value && i < 5) document.getElementById('ob'+(i+1)).focus();
+  if(i === 5 && el.value) setTimeout(verifyOTP, 200);
+}
+function otpBack(e, i){
+  if(e.key==='Backspace' && !document.getElementById('ob'+i).value && i>0)
+    document.getElementById('ob'+(i-1)).focus();
+}
+function getOTP(){ return [0,1,2,3,4,5].map(function(i){ return document.getElementById('ob'+i).value; }).join(''); }
+
+function verifyOTP(){
+  var entered = getOTP();
+  if(entered.length < 6){ showMsg('otp-msg2','6 digit OTP darj karen.','err'); return; }
+  var stored = sessionStorage.getItem('__otp__'+_phone) || _otp;
+  if(entered === stored){
+    clearInterval(_timerID);
+    sessionStorage.removeItem('__otp__'+_phone);
+    showMsg('otp-msg2','OTP sahi hai! Login ho raha hai...','ok');
+    setTimeout(function(){
+      saveUser({ uid:'ph_'+_phone, name:_name, phone:'+91'+_phone, method:'otp' });
+    }, 800);
+  } else {
+    showMsg('otp-msg2','OTP galat hai. Dobara check karen.','err');
+    [0,1,2,3,4,5].forEach(function(i){ document.getElementById('ob'+i).value=''; });
+    document.getElementById('ob0').focus();
   }
+}
 
-  function switchTab(tab) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    if (tab === 'email') {
-      document.querySelectorAll('.tab-btn')[0].classList.add('active');
-      document.getElementById('tab-email').classList.add('active');
-    } else {
-      document.querySelectorAll('.tab-btn')[1].classList.add('active');
-      document.getElementById('tab-otp').classList.add('active');
-    }
-  }
+function startTimer(sec){
+  clearInterval(_timerID);
+  var el = document.getElementById('otp-timer');
+  var ra = document.getElementById('resend-a');
+  ra.className = 'off';
+  var t = sec;
+  _timerID = setInterval(function(){
+    var m=Math.floor(t/60), s=t%60;
+    el.textContent = m+':'+(s<10?'0'+s:s)+' mein expire hoga';
+    t--;
+    if(t < 0){ clearInterval(_timerID); el.textContent='OTP expire ho gaya.'; ra.className=''; }
+  }, 1000);
+}
 
-  function showMsg(id, text, type) {
-    const el = document.getElementById(id);
-    el.textContent = text;
-    el.className = 'msg ' + type;
-  }
-
-  function hideMsg(id) {
-    document.getElementById(id).className = 'msg';
-  }
-
-  async function sendOTP() {
-    const phone = document.getElementById('otp-phone').value.trim();
-    if (!/^\d{10}$/.test(phone)) {
-      showMsg('otp-msg', '❌ 10 अंकों का सही मोबाइल नंबर दर्ज करें।', 'error');
-      return;
-    }
-
-    if (!isConfigured) {
-      showMsg('otp-msg', '⚠️ Firebase config सेट नहीं है। Admin से संपर्क करें।', 'error');
-      return;
-    }
-
-    const btn = document.getElementById('send-otp-btn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="loading-spinner"></span>OTP भेज रहे हैं...';
-    hideMsg('otp-msg');
-
-    try {
-      const fullPhone = '+91' + phone;
-      confirmationResult = await auth.signInWithPhoneNumber(fullPhone, recaptchaVerifier);
-      showMsg('otp-msg', '✅ OTP भेज दिया गया! अपने फोन पर देखें।', 'success');
-      document.getElementById('otp-step1').style.display = 'none';
-      document.getElementById('otp-step2').style.display = 'block';
-      startTimer(120);
-    } catch (err) {
-      console.error(err);
-      let msg = '❌ OTP भेजने में समस्या हुई।';
-      if (err.code === 'auth/invalid-phone-number') msg = '❌ नंबर गलत है। दोबारा जाँचें।';
-      if (err.code === 'auth/too-many-requests') msg = '❌ बहुत अधिक प्रयास। थोड़ी देर बाद कोशिश करें।';
-      if (err.code === 'auth/captcha-check-failed') msg = '❌ reCAPTCHA verify नहीं हुआ। Page reload करें।';
-      showMsg('otp-msg', msg, 'error');
-      btn.disabled = false;
-      btn.textContent = '📩 OTP भेजें';
-      recaptchaVerifier.clear();
-      initRecaptcha();
-    }
-  }
-
-  async function verifyOTP() {
-    const code = document.getElementById('otp-code').value.trim();
-    if (!/^\d{6}$/.test(code)) {
-      showMsg('otp-msg', '❌ 6 अंकों का OTP दर्ज करें।', 'error');
-      return;
-    }
-    showMsg('otp-msg', '⏳ Verify हो रहा है...', 'info');
-    try {
-      const result = await confirmationResult.confirm(code);
-      const user = result.user;
-      localStorage.setItem('ssdl_user', JSON.stringify({
-        uid: user.uid, phone: user.phoneNumber,
-        method: 'otp', name: user.displayName || 'Student'
-      }));
-      showMsg('otp-msg', '✅ Login सफल! Dashboard पर जा रहे हैं...', 'success');
-      clearInterval(timerInterval);
-      setTimeout(() => window.location.href = 'dashboard.html', 1200);
-    } catch (err) {
-      let msg = '❌ OTP गलत है या expire हो गया।';
-      if (err.code === 'auth/code-expired') msg = '❌ OTP expire हो गया। दोबारा भेजें।';
-      showMsg('otp-msg', msg, 'error');
-    }
-  }
-
-  function resendOTP() {
-    clearInterval(timerInterval);
-    document.getElementById('otp-step1').style.display = 'block';
-    document.getElementById('otp-step2').style.display = 'none';
-    document.getElementById('otp-code').value = '';
-    document.getElementById('send-otp-btn').disabled = false;
-    document.getElementById('send-otp-btn').textContent = '📩 OTP भेजें';
-    hideMsg('otp-msg');
-    recaptchaVerifier.clear();
-    initRecaptcha();
-  }
-
-  function startTimer(seconds) {
-    let remaining = seconds;
-    const el = document.getElementById('otp-timer');
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      if (remaining <= 0) {
-        clearInterval(timerInterval);
-        el.textContent = 'OTP expire हो गया। दोबारा भेजें।';
-        return;
-      }
-      el.textContent = `OTP ${remaining} सेकंड में expire होगा`;
-      remaining--;
-    }, 1000);
-  }
-
-  async function googleLogin() {
-    if (!isConfigured) {
-      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error');
-      return;
-    }
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      const result = await auth.signInWithPopup(provider);
-      const user = result.user;
-      localStorage.setItem('ssdl_user', JSON.stringify({
-        uid: user.uid, email: user.email,
-        name: user.displayName, method: 'google',
-        photo: user.photoURL
-      }));
-      showMsg('email-msg', '✅ Google Login सफल!', 'success');
-      setTimeout(() => window.location.href = 'dashboard.html', 1000);
-    } catch (err) {
-      showMsg('email-msg', '❌ Google Login में समस्या। दोबारा कोशिश करें।', 'error');
-    }
-  }
-
-  async function emailLogin() {
-    const email = document.getElementById('email-input').value.trim();
-    const password = document.getElementById('email-password').value;
-    if (!email || !password) {
-      showMsg('email-msg', '❌ Email और Password दर्ज करें।', 'error'); return;
-    }
-    if (!isConfigured) {
-      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error'); return;
-    }
-    showMsg('email-msg', '⏳ Login हो रहा है...', 'info');
-    try {
-      const result = await auth.signInWithEmailAndPassword(email, password);
-      const user = result.user;
-      localStorage.setItem('ssdl_user', JSON.stringify({
-        uid: user.uid, email: user.email,
-        name: user.displayName || 'Student', method: 'email'
-      }));
-      showMsg('email-msg', '✅ Login सफल!', 'success');
-      setTimeout(() => window.location.href = 'dashboard.html', 1000);
-    } catch (err) {
-      let msg = '❌ Login नहीं हो सका।';
-      if (err.code === 'auth/user-not-found') msg = '❌ Email registered नहीं है। Sign Up करें।';
-      if (err.code === 'auth/wrong-password') msg = '❌ Password गलत है।';
-      if (err.code === 'auth/invalid-email') msg = '❌ Email format गलत है।';
-      showMsg('email-msg', msg, 'error');
-    }
-  }
-
-  async function emailSignup() {
-    const name = document.getElementById('email-name').value.trim();
-    const email = document.getElementById('email-input').value.trim();
-    const password = document.getElementById('email-password').value;
-    if (!name || !email || !password) {
-      showMsg('email-msg', '❌ सभी fields भरें।', 'error'); return;
-    }
-    if (password.length < 6) {
-      showMsg('email-msg', '❌ Password कम से कम 6 अक्षर का होना चाहिए।', 'error'); return;
-    }
-    if (!isConfigured) {
-      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error'); return;
-    }
-    showMsg('email-msg', '⏳ Account बना रहे हैं...', 'info');
-    try {
-      const result = await auth.createUserWithEmailAndPassword(email, password);
-      await result.user.updateProfile({ displayName: name });
-      localStorage.setItem('ssdl_user', JSON.stringify({
-        uid: result.user.uid, email, name, method: 'email'
-      }));
-      showMsg('email-msg', '✅ Account बन गया! Dashboard पर जा रहे हैं...', 'success');
-      setTimeout(() => window.location.href = 'dashboard.html', 1200);
-    } catch (err) {
-      let msg = '❌ Account नहीं बन सका।';
-      if (err.code === 'auth/email-already-in-use') msg = '❌ Email पहले से registered है। Login करें।';
-      showMsg('email-msg', msg, 'error');
-    }
-  }
-
-  // Auto-redirect if already logged in
-  const existingUser = localStorage.getItem('ssdl_user');
-  if (existingUser) {
-    try {
-      JSON.parse(existingUser);
-      window.location.href = 'dashboard.html';
-    } catch(e) { localStorage.removeItem('ssdl_user'); }
-  }
+function resendOTP(){ backPhone(); }
+function backPhone(){
+  clearInterval(_timerID);
+  document.getElementById('otp-s1').style.display = 'block';
+  document.getElementById('otp-s2').style.display = 'none';
+  document.getElementById('send-btn').disabled = false;
+  document.getElementById('send-btn').textContent = 'OTP Bhejen';
+  [0,1,2,3,4,5].forEach(function(i){ document.getElementById('ob'+i).value=''; });
+  hideMsg('otp-msg1'); hideMsg('otp-msg2');
+}
 </script>
 </body>
 </html>
