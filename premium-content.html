@@ -289,7 +289,8 @@ function doRzp(){
 function onSuccess(res){
   if(!sel) return;
   unlocked[sel.id]={ txnId:res.razorpay_payment_id, paidAt:new Date().toISOString(), title:sel.title, link:sel.link, amount:sel.price };
-  saveU(); render();
+  saveU(); 
+setTimeout(function(){ render(); }, 200);
   document.getElementById('sucnm').textContent=sel.title;
   document.getElementById('suctxn').textContent='TXN: '+res.razorpay_payment_id;
   var lnk=sel.link, id=sel.id;
