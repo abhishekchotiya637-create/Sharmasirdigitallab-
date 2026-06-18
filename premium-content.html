@@ -3,548 +3,466 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Zone | Sharma Sir's Digital Lab</title>
+  <title>Login | Sharma Sir's Digital Lab</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f4f6fa; color: #222; }
-
-    .topbar {
-      background: #1a237e; color: #fff;
-      padding: 14px 20px; display: flex;
-      align-items: center; justify-content: space-between;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
-    .topbar a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 700; }
-    .topbar .sub { font-size: 0.75rem; opacity: 0.75; }
-    .user-pill {
-      background: rgba(255,255,255,0.15); border-radius: 20px;
-      padding: 6px 14px; font-size: 0.85rem;
-      display: flex; align-items: center; gap: 6px;
+    .brand {
+      text-align: center;
+      margin: 24px 0 20px;
+    }
+    .brand img {
+      width: 64px; height: 64px; border-radius: 50%;
+      object-fit: cover; margin-bottom: 8px;
+    }
+    .brand h2 { color: #1a237e; font-size: 1.1rem; }
+    .brand p { color: #555; font-size: 0.82rem; }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      width: 100%; max-width: 420px;
+      overflow: hidden;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #ff6f00 100%);
-      color: #fff; text-align: center; padding: 36px 20px 30px;
+    .tab-bar {
+      display: flex;
+      border-bottom: 1px solid #e0e0e0;
     }
-    .hero h1 { font-size: 1.6rem; font-weight: 800; }
-    .hero h1 span { color: #ffca28; }
-    .hero p { margin-top: 8px; font-size: 0.88rem; opacity: 0.9; }
+    .tab-btn {
+      flex: 1; padding: 14px;
+      border: none; background: #f7f7f7;
+      font-size: 0.95rem; cursor: pointer;
+      color: #666; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #fff; color: #1a237e;
+      border-bottom: 3px solid #ff6f00;
+    }
 
-    .login-notice {
-      background: #fff3cd; color: #856404;
-      margin: 20px 16px; padding: 14px 16px;
-      border-radius: 12px; text-align: center;
-      border: 1px solid #ffc107;
+    .tab-panel { display: none; padding: 28px 24px 24px; }
+    .tab-panel.active { display: block; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 0.83rem; color: #444; margin-bottom: 5px; font-weight: 600; }
+    input {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid #ddd; border-radius: 10px;
+      font-size: 1rem; outline: none;
+      transition: border 0.2s;
+    }
+    input:focus { border-color: #1a237e; }
+
+    .btn {
+      width: 100%; padding: 13px;
+      border: none; border-radius: 10px;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-primary { background: #ff6f00; color: #fff; }
+    .btn-primary:hover { background: #e65100; }
+    .btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-secondary { background: #1a237e; color: #fff; }
+    .btn-secondary:hover { background: #0d1461; }
+    .btn-outline {
+      background: #fff; color: #333;
+      border: 1.5px solid #ddd;
+      display: flex; align-items: center;
+      justify-content: center; gap: 10px;
+    }
+    .btn-outline:hover { background: #f5f5f5; }
+    .btn-outline img { width: 20px; height: 20px; }
+
+    .or-divider {
+      text-align: center; margin: 16px 0;
+      color: #999; font-size: 0.85rem;
+      position: relative;
+    }
+    .or-divider::before, .or-divider::after {
+      content: ''; position: absolute; top: 50%;
+      width: 42%; height: 1px; background: #e0e0e0;
+    }
+    .or-divider::before { left: 0; }
+    .or-divider::after { right: 0; }
+
+    .otp-row { display: flex; gap: 8px; }
+    .otp-row input { flex: 1; text-align: center; font-size: 1.2rem; letter-spacing: 4px; }
+    .otp-row .btn { flex-shrink: 0; width: auto; padding: 12px 14px; font-size: 0.85rem; }
+
+    .msg {
+      margin-top: 12px; padding: 10px 14px;
+      border-radius: 8px; font-size: 0.88rem;
       display: none;
     }
-    .login-notice a {
-      display: inline-block; margin-top: 10px;
-      background: #ff6f00; color: #fff;
-      padding: 9px 24px; border-radius: 8px;
-      text-decoration: none; font-weight: 700; font-size: 0.9rem;
+    .msg.success { background: #e8f5e9; color: #2e7d32; display: block; }
+    .msg.error { background: #ffebee; color: #c62828; display: block; }
+    .msg.info { background: #e3f2fd; color: #1565c0; display: block; }
+
+    .switch-link {
+      text-align: center; margin-top: 16px;
+      font-size: 0.85rem; color: #555;
+    }
+    .switch-link a { color: #ff6f00; font-weight: 700; text-decoration: none; }
+
+    .recaptcha-note {
+      font-size: 0.75rem; color: #999; text-align: center;
+      margin-top: 10px;
     }
 
-    .section {
-      max-width: 700px; margin: 0 auto;
-      padding: 0 16px 30px;
-    }
-    .section-title {
-      font-size: 1.2rem; font-weight: 800;
-      color: #1a237e; margin: 28px 0 14px;
-      display: flex; align-items: center; gap: 8px;
-    }
+    #recaptcha-container { margin: 8px 0; }
 
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-    }
+    .timer { font-size: 0.82rem; color: #888; text-align: center; margin-top: 6px; }
 
-    .content-card {
-      background: #fff; border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      overflow: hidden; position: relative;
+    .back-link {
+      margin-top: 24px; font-size: 0.88rem;
+      color: #1a237e; text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
     }
-    .card-badge {
-      position: absolute; top: 12px; right: 12px;
-      background: #ff6f00; color: #fff;
-      font-size: 0.72rem; font-weight: 700;
-      padding: 3px 9px; border-radius: 20px;
-    }
-    .card-body { padding: 16px; }
-    .card-icon { font-size: 2rem; margin-bottom: 8px; }
-    .card-title { font-size: 1rem; font-weight: 700; color: #1a237e; margin-bottom: 4px; }
-    .card-desc { font-size: 0.82rem; color: #666; margin-bottom: 12px; line-height: 1.5; }
-    .card-meta { font-size: 0.78rem; color: #888; margin-bottom: 12px; }
-    .card-price {
-      font-size: 1.1rem; font-weight: 800; color: #2e7d32;
-      margin-bottom: 10px;
-    }
-    .card-price .original {
-      text-decoration: line-through; color: #999;
-      font-size: 0.85rem; font-weight: 400;
-      margin-left: 4px;
-    }
+    .back-link:hover { text-decoration: underline; }
 
-    .btn-buy {
-      width: 100%; padding: 11px;
-      border: none; border-radius: 9px;
-      font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; background: #ff6f00; color: #fff;
-      transition: background 0.2s;
+    .loading-spinner {
+      display: inline-block; width: 18px; height: 18px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle; margin-right: 6px;
     }
-    .btn-buy:hover { background: #e65100; }
-    .btn-buy.unlocked { background: #2e7d32; cursor: default; }
-    .btn-buy:disabled { background: #ccc; cursor: not-allowed; }
-
-    .unlock-tag {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: #e8f5e9; color: #2e7d32;
-      font-size: 0.78rem; font-weight: 700;
-      padding: 4px 10px; border-radius: 20px;
-      margin-bottom: 8px;
-    }
-
-    .empty-state {
-      text-align: center; padding: 40px 20px;
-      color: #999;
-    }
-    .empty-state .icon { font-size: 3rem; margin-bottom: 10px; }
-
-    /* Razorpay branding strip */
-    .rzp-strip {
-      display: flex; align-items: center; justify-content: center;
-      gap: 5px; margin-top: 8px;
-      font-size: 0.72rem; color: #999;
-    }
-
-    .card-price .discount {
-      background: #fff3e0; color: #e65100;
-      font-size: 0.72rem; font-weight: 700;
-      padding: 2px 7px; border-radius: 10px; margin-left: 6px;
-    }
-    .card-badge.unlocked-badge { background: #2e7d32; }
-
-    /* Payment Bottom Sheet */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55); z-index: 1000;
-      align-items: flex-end; justify-content: center;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: #fff; border-radius: 20px 20px 0 0;
-      width: 100%; max-width: 480px;
-      padding: 10px 24px 32px;
-      animation: slideUp 0.25s ease;
-    }
-    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .modal-handle {
-      width: 40px; height: 4px; background: #ddd;
-      border-radius: 4px; margin: 12px auto 20px;
-    }
-    .modal-header { text-align: center; margin-bottom: 18px; }
-    .modal-header h3 { font-size: 1rem; color: #1a237e; line-height: 1.4; }
-    .modal-header .item-price { font-size: 2rem; font-weight: 800; color: #ff6f00; margin-top: 4px; }
-    .modal-header .item-sub { font-size: 0.8rem; color: #888; }
-    .pay-icons {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      justify-content: center; margin-bottom: 18px;
-    }
-    .pay-icon-pill {
-      background: #f5f5f5; border-radius: 8px;
-      padding: 5px 11px; font-size: 0.78rem;
-      color: #555; font-weight: 600;
-    }
-    .btn-rzp {
-      width: 100%; padding: 15px;
-      border: none; border-radius: 12px;
-      font-size: 1rem; font-weight: 800; cursor: pointer;
-      background: linear-gradient(135deg, #072654 0%, #3399cc 100%);
-      color: #fff; transition: opacity 0.2s;
-    }
-    .btn-rzp:hover { opacity: 0.9; }
-    .btn-rzp:disabled { opacity: 0.5; cursor: not-allowed; }
-    .rzp-footer {
-      text-align: center; margin-top: 10px;
-      font-size: 0.74rem; color: #aaa;
-    }
-    .btn-cancel {
-      width: 100%; padding: 12px; border-radius: 10px;
-      border: 1.5px solid #e0e0e0; background: #fff;
-      color: #666; font-size: 0.9rem; cursor: pointer;
-      margin-top: 10px; font-weight: 600;
-    }
-
-    /* Success overlay */
-    .success-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6); z-index: 2000;
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .success-overlay.open { display: flex; }
-    .success-box {
-      background: #fff; border-radius: 20px;
-      padding: 36px 24px; text-align: center;
-      max-width: 340px; width: 100%;
-      animation: popIn 0.3s ease;
-    }
-    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .success-box .s-icon { font-size: 3.5rem; margin-bottom: 10px; }
-    .success-box h3 { color: #2e7d32; font-size: 1.2rem; margin-bottom: 6px; }
-    .success-box .s-name { font-weight: 700; color: #1a237e; font-size: 0.9rem; margin-bottom: 12px; }
-    .success-box .txn-id {
-      font-family: monospace; background: #f5f5f5;
-      padding: 8px 12px; border-radius: 8px;
-      font-size: 0.78rem; color: #555; margin-bottom: 14px;
-    }
-    .success-box p { font-size: 0.83rem; color: #666; margin-bottom: 18px; }
-    .btn-access {
-      width: 100%; padding: 13px; background: #2e7d32; color: #fff;
-      border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer;
-    }
-
-    .loading-skeleton {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.4s infinite;
-      border-radius: 14px; height: 200px;
-    }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div>
-    <a href="index.html">Sharma Sir's Digital Lab</a>
-    <div class="sub">Premium Zone</div>
-  </div>
-  <div class="user-pill" id="user-pill">
-    <span>👤</span>
-    <span id="user-name-top">Login करें</span>
-  </div>
+<div class="brand">
+  <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'" />
+  <h2>Sharma Sir's Digital Lab</h2>
+  <p>RPSC · SSC · REET · Railway</p>
 </div>
 
-<div class="hero">
-  <h1>🔒 <span>Premium</span> Tests & Notes</h1>
-  <p>हर item सिर्फ एक बार खरीदें — Lifetime Access | 1/3 Negative Marking</p>
-</div>
-
-<div class="login-notice" id="login-notice">
-  <strong>📌 Premium content खरीदने के लिए पहले Login करें।</strong>
-  <br />
-  <a href="login.html">Login / Sign Up →</a>
-</div>
-
-<div class="section">
-  <div class="section-title">🎯 Premium Mock Tests</div>
-  <div class="content-grid" id="tests-grid">
-    <div class="loading-skeleton"></div>
-    <div class="loading-skeleton"></div>
+<div class="card">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('email')">📧 Email Login</button>
+    <button class="tab-btn" onclick="switchTab('otp')">📱 OTP Login</button>
   </div>
 
-  <div class="section-title">📚 Premium Notes (PDF Download)</div>
-  <div class="content-grid" id="notes-grid">
-    <div class="loading-skeleton"></div>
-    <div class="loading-skeleton"></div>
-  </div>
-</div>
-
-<!-- Razorpay Payment Bottom Sheet -->
-<div class="modal-overlay" id="pay-modal">
-  <div class="modal">
-    <div class="modal-handle"></div>
-    <div class="modal-header">
-      <h3 id="modal-item-name">—</h3>
-      <div class="item-price" id="modal-item-price">₹0</div>
-      <div class="item-sub">Secure Payment via Razorpay</div>
-    </div>
-    <div class="pay-icons">
-      <div class="pay-icon-pill">💳 Card</div>
-      <div class="pay-icon-pill">📱 UPI</div>
-      <div class="pay-icon-pill">🏦 Net Banking</div>
-      <div class="pay-icon-pill">💰 Wallet</div>
-      <div class="pay-icon-pill">📲 EMI</div>
-    </div>
-    <button class="btn-rzp" id="rzp-pay-btn" onclick="initiateRazorpay()">
-      <span id="rzp-btn-text">Pay Now — Secure Checkout</span>
+  <!-- EMAIL TAB -->
+  <div class="tab-panel active" id="tab-email">
+    <button class="btn btn-outline" onclick="googleLogin()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" />
+      Google से Login करें
     </button>
-    <div class="rzp-footer">🔒 Secured by <strong>Razorpay</strong> &nbsp;|&nbsp; SSL Encrypted</div>
-    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+
+    <div class="or-divider">या</div>
+
+    <div class="form-group">
+      <label>आपका नाम</label>
+      <input type="text" id="email-name" placeholder="पूरा नाम दर्ज करें" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="email-input" placeholder="example@gmail.com" />
+    </div>
+    <div class="form-group">
+      <label>Password (कम से कम 6 अक्षर)</label>
+      <input type="password" id="email-password" placeholder="••••••••" />
+    </div>
+
+    <button class="btn btn-primary" onclick="emailLogin()">Login करें</button>
+
+    <div class="msg" id="email-msg"></div>
+
+    <div class="switch-link">
+      अकाउंट नहीं है? <a href="#" onclick="emailSignup()">अभी Sign Up करें</a>
+    </div>
+  </div>
+
+  <!-- OTP TAB -->
+  <div class="tab-panel" id="tab-otp">
+    <div id="otp-step1">
+      <div class="form-group">
+        <label>मोबाइल नंबर (10 अंक)</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" value="+91" style="width:60px;text-align:center;flex-shrink:0;" readonly />
+          <input type="tel" id="otp-phone" placeholder="9876543210" maxlength="10" style="flex:1;" />
+        </div>
+      </div>
+      <div id="recaptcha-container"></div>
+      <button class="btn btn-primary" id="send-otp-btn" onclick="sendOTP()">📩 OTP भेजें</button>
+      <div class="recaptcha-note">reCAPTCHA द्वारा सुरक्षित</div>
+    </div>
+
+    <div id="otp-step2" style="display:none;">
+      <div class="form-group">
+        <label>OTP डालें (6 अंक)</label>
+        <div class="otp-row">
+          <input type="tel" id="otp-code" placeholder="------" maxlength="6" />
+          <button class="btn btn-secondary" onclick="verifyOTP()">✅ Verify</button>
+        </div>
+      </div>
+      <div class="timer" id="otp-timer"></div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href="#" onclick="resendOTP()" style="color:#ff6f00;font-size:0.85rem;font-weight:600;">🔁 दोबारा OTP भेजें</a>
+      </div>
+    </div>
+
+    <div class="msg" id="otp-msg"></div>
   </div>
 </div>
 
-<!-- Payment Success Screen -->
-<div class="success-overlay" id="success-overlay">
-  <div class="success-box">
-    <div class="s-icon">🎉</div>
-    <h3>Payment Successful!</h3>
-    <div class="s-name" id="success-item-name"></div>
-    <div class="txn-id" id="success-txn">Transaction ID: —</div>
-    <p>Content unlock हो गया है। नीचे button से access करें।</p>
-    <button class="btn-access" id="success-access-btn">✅ Content Access करें</button>
-  </div>
-</div>
+<a href="index.html" class="back-link">← Website पर वापस जाएं</a>
 
-<!-- Razorpay SDK -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- Firebase v9 Compat (works everywhere including mobile) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
-  // ═══════════════════════════════════════════════════════
-  //  ⚙️  CONFIG — Replace with YOUR values
-  // ═══════════════════════════════════════════════════════
-  const CONFIG = {
-    // Get from: dashboard.razorpay.com → Settings → API Keys
-    // Test key (no real money): rzp_test_XXXXXXXXXXXX
-    // Live key (real payments): rzp_live_XXXXXXXXXXXX
-    RAZORPAY_KEY_ID: "rzp_test_YOUR_KEY_ID_HERE",
-
-    BUSINESS_NAME: "Sharma Sir's Digital Lab",
-    LOGO_URL: "https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg"
+  // ── IMPORTANT: Replace with your actual Firebase config ──
+  const firebaseConfig = {
+    apiKey: "AIzaSyC_YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-  // ═══════════════════════════════════════════════════════
-  //  📦  CONTENT DATA — Add/edit your tests and notes here
-  // ═══════════════════════════════════════════════════════
-  const PREMIUM_TESTS = [
-    {
-      id: "test_rpsc_1", icon: "🎯",
-      title: "RPSC 2nd Grade Full Mock Test",
-      desc: "GK + Subject — वास्तविक परीक्षा पैटर्न। 150 प्रश्न, 3 घंटे।",
-      meta: "150 MCQ • 3 Hours • RPSC Pattern",
-      price: 49, originalPrice: 99,
-      link: "https://forms.gle/YOUR_FORM_LINK_1"
-    },
-    {
-      id: "test_reet_1", icon: "📝",
-      title: "REET Level 2 Science & Math Mock",
-      desc: "Science + Math + Child Dev. — 150 प्रश्न, REET pattern।",
-      meta: "150 MCQ • 2.5 Hours • REET Pattern",
-      price: 49, originalPrice: 99,
-      link: "https://forms.gle/YOUR_FORM_LINK_2"
-    },
-    {
-      id: "test_ssc_1", icon: "🏆",
-      title: "SSC CGL Tier-1 Full Mock Test",
-      desc: "Reasoning + QA + English + GK — 100 प्रश्न, 60 मिनट।",
-      meta: "100 MCQ • 60 Min • SSC Pattern",
-      price: 39, originalPrice: 79,
-      link: "https://forms.gle/YOUR_FORM_LINK_3"
-    },
-    {
-      id: "test_raj_1", icon: "🦁",
-      title: "Rajasthan GK Mega Mock Test",
-      desc: "History + Geography + Art & Culture — 200 प्रश्न।",
-      meta: "200 MCQ • 2 Hours • All Exams",
-      price: 59, originalPrice: 120,
-      link: "https://forms.gle/YOUR_FORM_LINK_4"
-    }
-  ];
+  // Check if config is placeholder
+  const isConfigured = !firebaseConfig.apiKey.includes("YOUR_API_KEY");
 
-  const PREMIUM_NOTES = [
-    {
-      id: "note_raj_history", icon: "📜",
-      title: "Rajasthan History Complete Notes",
-      desc: "राजस्थान इतिहास के सभी topics — RPSC, REET, RSMSSB के लिए।",
-      meta: "PDF • 180 Pages • Hindi Medium",
-      price: 29, originalPrice: 59,
-      link: "https://drive.google.com/YOUR_FILE_1"
-    },
-    {
-      id: "note_raj_geo", icon: "🗺️",
-      title: "Rajasthan Geography Notes",
-      desc: "जिले, नदियाँ, अभ्यारण्य, जलवायु — सम्पूर्ण नोट्स।",
-      meta: "PDF • 120 Pages • Hindi Medium",
-      price: 29, originalPrice: 59,
-      link: "https://drive.google.com/YOUR_FILE_2"
-    },
-    {
-      id: "note_child_dev", icon: "👶",
-      title: "Child Development & Pedagogy Notes",
-      desc: "REET/CTET के लिए बाल विकास — सभी theories और MCQ।",
-      meta: "PDF • 90 Pages • Hindi Medium",
-      price: 19, originalPrice: 39,
-      link: "https://drive.google.com/YOUR_FILE_3"
-    },
-    {
-      id: "note_current", icon: "📰",
-      title: "Current Affairs Jan–Jun 2026",
-      desc: "राजस्थान + राष्ट्रीय करंट अफेयर्स — 6 महीने का संग्रह।",
-      meta: "PDF • 200+ Pages • Updated",
-      price: 39, originalPrice: 79,
-      link: "https://drive.google.com/YOUR_FILE_4"
-    }
-  ];
+  let app, auth, recaptchaVerifier, confirmationResult;
+  let timerInterval;
 
-  // ═══════════════════════════════════════════════════════
-  //  👤  USER & UNLOCKED STATE
-  // ═══════════════════════════════════════════════════════
-  let currentUser = null;
-  let unlockedItems = {};   // { itemId: { txnId, paidAt, link } }
-  let selectedItem = null;
-
-  function loadUser() {
-    try { const s = localStorage.getItem('ssdl_user'); if (s) currentUser = JSON.parse(s); } catch(e) {}
-    try { const u = localStorage.getItem('ssdl_unlocked_v2'); if (u) unlockedItems = JSON.parse(u); } catch(e) {}
+  if (isConfigured) {
+    app = firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    auth.languageCode = 'hi';
+    initRecaptcha();
   }
 
-  function saveUnlocked() {
-    localStorage.setItem('ssdl_unlocked_v2', JSON.stringify(unlockedItems));
+  function initRecaptcha() {
+    try {
+      recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        size: 'invisible',   // ← invisible reCAPTCHA works on mobile
+        callback: () => {},
+        'expired-callback': () => {
+          showMsg('otp-msg', 'reCAPTCHA expire हो गया, दोबारा कोशिश करें।', 'error');
+          recaptchaVerifier.clear();
+          initRecaptcha();
+        }
+      });
+      recaptchaVerifier.render();
+    } catch(e) {
+      console.error('reCAPTCHA init error:', e);
+    }
   }
 
-  function isUnlocked(id) { return !!unlockedItems[id]; }
-
-  function initUI() {
-    if (currentUser) {
-      const name = (currentUser.name || currentUser.phone || 'Student').split(' ')[0];
-      document.getElementById('user-name-top').textContent = '👤 ' + name;
-      document.getElementById('login-notice').style.display = 'none';
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    if (tab === 'email') {
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('tab-email').classList.add('active');
     } else {
-      document.getElementById('login-notice').style.display = 'block';
+      document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      document.getElementById('tab-otp').classList.add('active');
     }
   }
 
-  // ═══════════════════════════════════════════════════════
-  //  🃏  RENDER CARDS
-  // ═══════════════════════════════════════════════════════
-  function disc(p, o) { return Math.round((1 - p/o) * 100); }
-
-  function renderCard(item, type) {
-    const unlocked = isUnlocked(item.id);
-    return `
-      <div class="content-card">
-        <div class="card-badge ${unlocked ? 'unlocked-badge' : ''}">${unlocked ? '✅ Unlocked' : '🔒 Premium'}</div>
-        <div class="card-body">
-          <div class="card-icon">${item.icon}</div>
-          <div class="card-title">${item.title}</div>
-          <div class="card-desc">${item.desc}</div>
-          <div class="card-meta">${item.meta}</div>
-          ${unlocked ? `
-            <div class="unlock-tag">✅ Purchased — Lifetime Access</div>
-            <button class="btn-buy unlocked" onclick="openContent('${item.link}','${item.id}')">
-              ${type==='test' ? '🎯 Test दें' : '⬇️ Download करें'}
-            </button>
-          ` : `
-            <div class="card-price">₹${item.price}
-              <span class="original">₹${item.originalPrice}</span>
-              <span class="discount">${disc(item.price,item.originalPrice)}% OFF</span>
-            </div>
-            <button class="btn-buy buy" onclick="buyItem('${item.id}','${item.title}',${item.price},'${item.link}')">
-              🛒 Razorpay से खरीदें
-            </button>
-            <div class="rzp-strip">🔒 Secured by Razorpay</div>
-          `}
-        </div>
-      </div>`;
+  function showMsg(id, text, type) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'msg ' + type;
   }
 
-  function renderAll() {
-    document.getElementById('tests-grid').innerHTML = PREMIUM_TESTS.map(t=>renderCard(t,'test')).join('');
-    document.getElementById('notes-grid').innerHTML = PREMIUM_NOTES.map(n=>renderCard(n,'note')).join('');
+  function hideMsg(id) {
+    document.getElementById(id).className = 'msg';
   }
 
-  // ═══════════════════════════════════════════════════════
-  //  💳  RAZORPAY FLOW
-  // ═══════════════════════════════════════════════════════
-  function buyItem(id, title, price, link) {
-    if (!currentUser) {
-      if (confirm('⚠️ पहले Login करें।\nLogin page पर जाएं?'))
-        window.location.href = 'login.html';
+  async function sendOTP() {
+    const phone = document.getElementById('otp-phone').value.trim();
+    if (!/^\d{10}$/.test(phone)) {
+      showMsg('otp-msg', '❌ 10 अंकों का सही मोबाइल नंबर दर्ज करें।', 'error');
       return;
     }
-    if (CONFIG.RAZORPAY_KEY_ID.includes('YOUR_KEY')) {
-      alert('⚠️ Admin: CONFIG.RAZORPAY_KEY_ID set करें।'); return;
+
+    if (!isConfigured) {
+      showMsg('otp-msg', '⚠️ Firebase config सेट नहीं है। Admin से संपर्क करें।', 'error');
+      return;
     }
-    selectedItem = { id, title, price, link };
-    document.getElementById('modal-item-name').textContent = title;
-    document.getElementById('modal-item-price').textContent = '₹' + price;
-    document.getElementById('rzp-pay-btn').disabled = false;
-    document.getElementById('rzp-btn-text').textContent = 'Pay ₹' + price + ' — Secure Checkout';
-    document.getElementById('pay-modal').classList.add('open');
-  }
 
-  function closeModal() {
-    document.getElementById('pay-modal').classList.remove('open');
-    selectedItem = null;
-  }
-
-  function initiateRazorpay() {
-    if (!selectedItem) return;
-    const btn = document.getElementById('rzp-pay-btn');
+    const btn = document.getElementById('send-otp-btn');
     btn.disabled = true;
-    document.getElementById('rzp-btn-text').textContent = 'Opening Razorpay...';
-
-    const options = {
-      key: CONFIG.RAZORPAY_KEY_ID,
-      amount: selectedItem.price * 100,   // in paise
-      currency: "INR",
-      name: CONFIG.BUSINESS_NAME,
-      description: selectedItem.title,
-      image: CONFIG.LOGO_URL,
-      prefill: {
-        name:    currentUser.name  || "Student",
-        email:   currentUser.email || "",
-        contact: (currentUser.phone || "").replace('+91','')
-      },
-      theme: { color: "#1a237e" },
-      modal: {
-        ondismiss: function() {
-          btn.disabled = false;
-          document.getElementById('rzp-btn-text').textContent =
-            'Pay ₹' + selectedItem.price + ' — Secure Checkout';
-        }
-      },
-      handler: function(response) { onPaymentSuccess(response); }
-    };
+    btn.innerHTML = '<span class="loading-spinner"></span>OTP भेज रहे हैं...';
+    hideMsg('otp-msg');
 
     try {
-      const rzp = new Razorpay(options);
-      rzp.on('payment.failed', function(r) {
-        btn.disabled = false;
-        document.getElementById('rzp-btn-text').textContent = 'Retry Payment';
-        alert('❌ Payment fail: ' + (r.error.description || 'Unknown error'));
-      });
-      rzp.open();
-      closeModal();
-    } catch(e) {
+      const fullPhone = '+91' + phone;
+      confirmationResult = await auth.signInWithPhoneNumber(fullPhone, recaptchaVerifier);
+      showMsg('otp-msg', '✅ OTP भेज दिया गया! अपने फोन पर देखें।', 'success');
+      document.getElementById('otp-step1').style.display = 'none';
+      document.getElementById('otp-step2').style.display = 'block';
+      startTimer(120);
+    } catch (err) {
+      console.error(err);
+      let msg = '❌ OTP भेजने में समस्या हुई।';
+      if (err.code === 'auth/invalid-phone-number') msg = '❌ नंबर गलत है। दोबारा जाँचें।';
+      if (err.code === 'auth/too-many-requests') msg = '❌ बहुत अधिक प्रयास। थोड़ी देर बाद कोशिश करें।';
+      if (err.code === 'auth/captcha-check-failed') msg = '❌ reCAPTCHA verify नहीं हुआ। Page reload करें।';
+      showMsg('otp-msg', msg, 'error');
       btn.disabled = false;
-      document.getElementById('rzp-btn-text').textContent = 'Pay ₹' + selectedItem.price;
-      alert('❌ Razorpay load नहीं हुआ। Internet check करें।');
+      btn.textContent = '📩 OTP भेजें';
+      recaptchaVerifier.clear();
+      initRecaptcha();
     }
   }
 
-  function onPaymentSuccess(response) {
-    if (!selectedItem) return;
-    unlockedItems[selectedItem.id] = {
-      txnId: response.razorpay_payment_id,
-      paidAt: new Date().toISOString(),
-      title: selectedItem.title,
-      link: selectedItem.link,
-      amount: selectedItem.price
-    };
-    saveUnlocked();
-
-    document.getElementById('success-item-name').textContent = selectedItem.title;
-    document.getElementById('success-txn').textContent = 'TXN: ' + response.razorpay_payment_id;
-    const link = selectedItem.link;
-    const id   = selectedItem.id;
-    document.getElementById('success-access-btn').onclick = function() {
-      document.getElementById('success-overlay').classList.remove('open');
-      renderAll();
-      window.open(link, '_blank');
-    };
-    document.getElementById('success-overlay').classList.add('open');
-    renderAll();
+  async function verifyOTP() {
+    const code = document.getElementById('otp-code').value.trim();
+    if (!/^\d{6}$/.test(code)) {
+      showMsg('otp-msg', '❌ 6 अंकों का OTP दर्ज करें।', 'error');
+      return;
+    }
+    showMsg('otp-msg', '⏳ Verify हो रहा है...', 'info');
+    try {
+      const result = await confirmationResult.confirm(code);
+      const user = result.user;
+      localStorage.setItem('ssdl_user', JSON.stringify({
+        uid: user.uid, phone: user.phoneNumber,
+        method: 'otp', name: user.displayName || 'Student'
+      }));
+      showMsg('otp-msg', '✅ Login सफल! Dashboard पर जा रहे हैं...', 'success');
+      clearInterval(timerInterval);
+      setTimeout(() => window.location.href = 'dashboard.html', 1200);
+    } catch (err) {
+      let msg = '❌ OTP गलत है या expire हो गया।';
+      if (err.code === 'auth/code-expired') msg = '❌ OTP expire हो गया। दोबारा भेजें।';
+      showMsg('otp-msg', msg, 'error');
+    }
   }
 
-  function openContent(link, id) {
-    if (!isUnlocked(id)) { alert('❌ पहले खरीदें।'); return; }
-    window.open(link, '_blank');
+  function resendOTP() {
+    clearInterval(timerInterval);
+    document.getElementById('otp-step1').style.display = 'block';
+    document.getElementById('otp-step2').style.display = 'none';
+    document.getElementById('otp-code').value = '';
+    document.getElementById('send-otp-btn').disabled = false;
+    document.getElementById('send-otp-btn').textContent = '📩 OTP भेजें';
+    hideMsg('otp-msg');
+    recaptchaVerifier.clear();
+    initRecaptcha();
   }
 
-  // ═══════════════════════════════════════════════════════
-  //  🚀  INIT
-  // ═══════════════════════════════════════════════════════
-  loadUser();
-  initUI();
-  
+  function startTimer(seconds) {
+    let remaining = seconds;
+    const el = document.getElementById('otp-timer');
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      if (remaining <= 0) {
+        clearInterval(timerInterval);
+        el.textContent = 'OTP expire हो गया। दोबारा भेजें।';
+        return;
+      }
+      el.textContent = `OTP ${remaining} सेकंड में expire होगा`;
+      remaining--;
+    }, 1000);
+  }
+
+  async function googleLogin() {
+    if (!isConfigured) {
+      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error');
+      return;
+    }
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const result = await auth.signInWithPopup(provider);
+      const user = result.user;
+      localStorage.setItem('ssdl_user', JSON.stringify({
+        uid: user.uid, email: user.email,
+        name: user.displayName, method: 'google',
+        photo: user.photoURL
+      }));
+      showMsg('email-msg', '✅ Google Login सफल!', 'success');
+      setTimeout(() => window.location.href = 'dashboard.html', 1000);
+    } catch (err) {
+      showMsg('email-msg', '❌ Google Login में समस्या। दोबारा कोशिश करें।', 'error');
+    }
+  }
+
+  async function emailLogin() {
+    const email = document.getElementById('email-input').value.trim();
+    const password = document.getElementById('email-password').value;
+    if (!email || !password) {
+      showMsg('email-msg', '❌ Email और Password दर्ज करें।', 'error'); return;
+    }
+    if (!isConfigured) {
+      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error'); return;
+    }
+    showMsg('email-msg', '⏳ Login हो रहा है...', 'info');
+    try {
+      const result = await auth.signInWithEmailAndPassword(email, password);
+      const user = result.user;
+      localStorage.setItem('ssdl_user', JSON.stringify({
+        uid: user.uid, email: user.email,
+        name: user.displayName || 'Student', method: 'email'
+      }));
+      showMsg('email-msg', '✅ Login सफल!', 'success');
+      setTimeout(() => window.location.href = 'dashboard.html', 1000);
+    } catch (err) {
+      let msg = '❌ Login नहीं हो सका।';
+      if (err.code === 'auth/user-not-found') msg = '❌ Email registered नहीं है। Sign Up करें।';
+      if (err.code === 'auth/wrong-password') msg = '❌ Password गलत है।';
+      if (err.code === 'auth/invalid-email') msg = '❌ Email format गलत है।';
+      showMsg('email-msg', msg, 'error');
+    }
+  }
+
+  async function emailSignup() {
+    const name = document.getElementById('email-name').value.trim();
+    const email = document.getElementById('email-input').value.trim();
+    const password = document.getElementById('email-password').value;
+    if (!name || !email || !password) {
+      showMsg('email-msg', '❌ सभी fields भरें।', 'error'); return;
+    }
+    if (password.length < 6) {
+      showMsg('email-msg', '❌ Password कम से कम 6 अक्षर का होना चाहिए।', 'error'); return;
+    }
+    if (!isConfigured) {
+      showMsg('email-msg', '⚠️ Firebase config सेट नहीं है।', 'error'); return;
+    }
+    showMsg('email-msg', '⏳ Account बना रहे हैं...', 'info');
+    try {
+      const result = await auth.createUserWithEmailAndPassword(email, password);
+      await result.user.updateProfile({ displayName: name });
+      localStorage.setItem('ssdl_user', JSON.stringify({
+        uid: result.user.uid, email, name, method: 'email'
+      }));
+      showMsg('email-msg', '✅ Account बन गया! Dashboard पर जा रहे हैं...', 'success');
+      setTimeout(() => window.location.href = 'dashboard.html', 1200);
+    } catch (err) {
+      let msg = '❌ Account नहीं बन सका।';
+      if (err.code === 'auth/email-already-in-use') msg = '❌ Email पहले से registered है। Login करें।';
+      showMsg('email-msg', msg, 'error');
+    }
+  }
+
+  // Auto-redirect if already logged in
+  const existingUser = localStorage.getItem('ssdl_user');
+  if (existingUser) {
+    try {
+      JSON.parse(existingUser);
+      window.location.href = 'dashboard.html';
+    } catch(e) { localStorage.removeItem('ssdl_user'); }
+  }
+</script>
+</body>
+</html>
