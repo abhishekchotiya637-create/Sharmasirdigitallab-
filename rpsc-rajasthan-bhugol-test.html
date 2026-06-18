@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RPSC 2nd Grade: राजस्थान का भौगोलिक परिदृश्य | Sharma Sir Digital Lab</title>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --accent: #f59e0b;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .logo-circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px; color: #1e3a8a;
+    }
+    .site-title { font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .site-sub { font-size: 11px; opacity: .8; }
+    #userStatus { font-size: 12px; opacity: .9; }
+
+    /* ── Hero Banner ── */
+    .hero {
+      background: linear-gradient(120deg, #1e3a8a 0%, #1d4ed8 50%, #1a56db 100%);
+      color: #fff;
+      padding: 28px 20px 24px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #1e3a8a;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .hero h1 { font-size: clamp(18px, 5vw, 26px); font-weight: 800; margin-bottom: 8px; }
+    .hero p { font-size: 13px; opacity: .85; max-width: 500px; margin: 0 auto 16px; }
+    .hero-stats {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .stat-chip {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 20px 16px 60px; }
+
+    /* ── Premium Lock ── */
+    #premiumLock {
+      background: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(245,158,11,.15);
+    }
+    .lock-icon { font-size: 48px; margin-bottom: 12px; }
+    #premiumLock h2 { font-size: 20px; color: var(--text); margin-bottom: 8px; }
+    #premiumLock p { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+    .price-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 8px 24px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+    .price-tag span { font-size: 13px; font-weight: 400; opacity: .85; }
+    .btn-pay {
+      background: linear-gradient(135deg, var(--accent), #d97706);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      max-width: 320px;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 14px rgba(245,158,11,.4);
+    }
+    .btn-pay:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(245,158,11,.5); }
+    .btn-pay:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .login-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .login-note a { color: var(--primary); font-weight: 600; text-decoration: none; }
+
+    /* ── Test Content (hidden until purchased) ── */
+    #testContent { display: none; }
+
+    /* ── Timer ── */
+    #timerBar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    #timerBar .label { font-size: 12px; color: var(--muted); }
+    #timerDisplay {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+    }
+    #timerDisplay.warning { color: var(--accent); }
+    #timerDisplay.danger { color: var(--danger); }
+    .timer-meta { font-size: 12px; color: var(--muted); text-align: right; }
+
+    /* ── Progress ── */
+    .progress-wrap { margin-bottom: 20px; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #60a5fa); border-radius: 3px; transition: width .3s; }
+
+    /* ── Section Header ── */
+    .section-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px 8px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 24px;
+    }
+
+    /* ── Question Card ── */
+    .q-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+      transition: border-color .2s;
+    }
+    .q-card:hover { border-color: #93c5fd; }
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 18px 12px;
+    }
+    .q-num {
+      background: var(--primary);
+      color: #fff;
+      min-width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .q-text { font-size: 14px; line-height: 1.65; font-weight: 500; }
+    .q-note { font-size: 12px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
+    /* ── Options ── */
+    .options { padding: 0 18px 16px 58px; display: flex; flex-direction: column; gap: 8px; }
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      line-height: 1.5;
+      transition: all .15s;
+    }
+    .option-label:hover { border-color: var(--primary); background: #eff6ff; }
+    .option-label input[type="radio"] { margin-top: 3px; accent-color: var(--primary); flex-shrink: 0; }
+
+    /* ── After submit states ── */
+    .option-label.correct { border-color: var(--success); background: #f0fdf4; color: #15803d; font-weight: 600; }
+    .option-label.wrong   { border-color: var(--danger);  background: #fef2f2; color: #b91c1c; }
+    .option-label.skipped { border-color: var(--accent);  background: #fffbeb; }
+
+    /* ── Explanation ── */
+    .explanation {
+      display: none;
+      margin: 0 18px 16px 58px;
+      background: #f0f9ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #1e3a8a;
+      line-height: 1.6;
+    }
+    .explanation.show { display: block; }
+
+    /* ── Submit Button ── */
+    .submit-wrap { text-align: center; margin: 24px 0 10px; }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      padding: 14px 48px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(26,86,219,.35);
+      transition: transform .15s;
+    }
+    .btn-submit:hover { transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* ── Result Panel ── */
+    #resultPanel {
+      display: none;
+      background: var(--card);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(26,86,219,.12);
+    }
+    #resultPanel h2 { font-size: 22px; color: var(--primary); margin-bottom: 6px; }
+    .result-score {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin: 12px 0;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .result-chip {
+      border-radius: 8px;
+      padding: 12px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .chip-correct { background: #f0fdf4; color: var(--success); border: 1px solid #86efac; }
+    .chip-wrong   { background: #fef2f2; color: var(--danger);  border: 1px solid #fca5a5; }
+    .chip-skip    { background: #fffbeb; color: #d97706;        border: 1px solid #fcd34d; }
+    .chip-marks   { background: #eff6ff; color: var(--primary); border: 1px solid #93c5fd; }
+    .result-chip span { display: block; font-size: 26px; font-weight: 900; margin-bottom: 2px; }
+    .rank-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), #d97706);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .btn-retry {
+      margin-top: 18px;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 10px 32px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .btn-retry:hover { background: var(--primary); color: #fff; }
+
+    /* ── Negative Marking Note ── */
+    .neg-note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12.5px;
+      color: #9a3412;
+      margin-bottom: 16px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .options { padding-left: 16px; }
+      .explanation { margin-left: 16px; }
+      .hero h1 { font-size: 18px; }
+      #timerDisplay { font-size: 18px; }
+    }
+
+    /* ── Loader ── */
+    #loader {
+      position: fixed; inset: 0;
+      background: rgba(248,250,252,.92);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999; flex-direction: column; gap: 12px;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 4px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loader p { font-size: 14px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+  <p>Loading...</p>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-left">
+    <div class="logo-circle">SS</div>
+    <div>
+      <div class="site-title">Sharma Sir Digital Lab</div>
+      <div class="site-sub">RPSC • SSC • REET • Railway</div>
+    </div>
+  </div>
+  <div id="userStatus">जाँच हो रही है...</div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">🏆 Premium Test — RPSC 2nd Grade</div>
+  <h1>राजस्थान का भौगोलिक परिदृश्य</h1>
+  <p>Advanced Level • 50 MCQs • 1/3 Negative Marking • 60 Minutes</p>
+  <div class="hero-stats">
+    <span class="stat-chip">📝 50 प्रश्न</span>
+    <span class="stat-chip">⏱ 60 मिनट</span>
+    <span class="stat-chip">➖ 1/3 नकारात्मक अंक</span>
+    <span class="stat-chip">🎯 Advanced Level</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Premium Lock (shown to non-buyers) -->
+  <div id="premiumLock">
+    <div class="lock-icon">🔒</div>
+    <h2>यह Test Premium Content है</h2>
+    <p>RPSC 2nd Grade के सर्वश्रेष्ठ 50 Advanced Geography प्रश्न — Detailed Explanation सहित। एक बार खरीदें, जब चाहें दें।</p>
+    <div class="price-tag">₹19 <span>/ एकमुश्त</span></div>
+    <br>
+    <button class="btn-pay" id="btnPay" onclick="initiatePayment()">🔓 अभी खरीदें — ₹19</button>
+    <div class="login-note" id="loginNote">
+      खाता नहीं है? <a href="login.html">Login / Register करें</a>
+    </div>
+  </div>
+
+  <!-- Test Content (unlocked after purchase) -->
+  <div id="testContent">
+
+    <!-- Timer -->
+    <div id="timerBar">
+      <div>
+        <div class="label">समय शेष</div>
+        <div id="timerDisplay">60:00</div>
+      </div>
+      <div class="timer-meta">
+        <div id="answeredCount">उत्तरित: 0/50</div>
+        <div style="margin-top:4px;font-size:11px;color:#94a3b8;">प्रत्येक गलत उत्तर पर ⅓ अंक कटेगा</div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>प्रगति</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+
+    <!-- Negative Marking Note -->
+    <div class="neg-note">
+      ⚠️ <strong>नकारात्मक अंकन:</strong> प्रत्येक सही उत्तर पर <strong>+1</strong> अंक और प्रत्येक गलत उत्तर पर <strong>–⅓ अंक</strong> काटा जाएगा। अनुत्तरित प्रश्नों पर कोई अंक नहीं।
+    </div>
+
+    <!-- Result Panel -->
+    <div id="resultPanel">
+      <h2>🎉 परिणाम</h2>
+      <div class="result-score" id="finalScore">0</div>
+      <div style="color:var(--muted);font-size:13px;">कुल 50 अंकों में से</div>
+      <div class="result-grid">
+        <div class="result-chip chip-correct"><span id="r_correct">0</span>सही</div>
+        <div class="result-chip chip-wrong"><span id="r_wrong">0</span>गलत</div>
+        <div class="result-chip chip-skip"><span id="r_skip">0</span>छोड़े</div>
+        <div class="result-chip chip-marks"><span id="r_marks">0</span>नेट अंक</div>
+      </div>
+      <div class="rank-badge" id="rankBadge">—</div>
+      <br>
+      <button class="btn-retry" onclick="retryTest()">🔄 दोबारा दें</button>
+    </div>
+
+    <!-- Questions -->
+    <div id="questionsContainer"></div>
+
+    <div class="submit-wrap">
+      <button class="btn-submit" id="btnSubmit" onclick="submitTest()">✅ Test जमा करें</button>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+/* ─── Firebase Config ─── */
+const firebaseConfig = {
+  apiKey: "AIzaSyBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", // ← अपनी key यहाँ लगाएं
+  authDomain: "sharma-sir-digital-lab-df5c4.firebaseapp.com",
+  projectId: "sharma-sir-digital-lab-df5c4",
+  storageBucket: "sharma-sir-digital-lab-df5c4.appspot.com",
+  messagingSenderId: "XXXXXXXXXXXX",
+  appId: "1:XXXXXXXXXXXX:web:XXXXXXXXXXXXXXXXXXXX"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+/* ─── Config ─── */
+const PRODUCT_ID   = "rpsc_geo_bhugol_50";
+const PRODUCT_NAME = "RPSC 2nd Grade: राजस्थान भौगोलिक परिदृश्य (50 MCQ)";
+const PRICE_PAISE  = 1900; // ₹19
+const RZP_KEY      = "rzp_live_T1BZHB6I7wPUmw";
+const TOTAL_TIME   = 60 * 60; // 60 minutes in seconds
+
+/* ─── Question Data ─── */
+const questions = [
+  // Section 1: भौतिक प्रदेश
+  { id:1, section:"1. भौतिक प्रदेश एवं भू-आकृतिक संरचना",
+    q:"राजस्थान के भौतिक विभागों के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. राज्य के 61.11% भू-भाग पर पश्चिमी रेतीले मैदान का विस्तार है।\n2. अरावली पर्वतीय प्रदेश राज्य के 9.3% भू-भाग पर विस्तृत है।\n3. पूर्वी मैदान का निर्माण टेथिस सागर के अवशेष के रूप में हुआ है।\n4. हाड़ौती का पठार मालवा के पठार का ही उत्तरी विस्तार है।",
+    opts:["(A) 1, 2 और 3","(B) 1, 2 और 4","(C) 2, 3 और 4","(D) उपर्युक्त सभी"],
+    ans:1, exp:"पूर्वी मैदान टेथिस सागर का नहीं बल्कि गंगा-यमुना नदियों द्वारा जमा जलोढ़ मिट्टी से निर्मित है। अतः कथन 3 गलत है।" },
+  { id:2, section:null,
+    q:"राजस्थान के निम्नलिखित पर्वत शिखरों को उनकी ऊँचाई के अनुसार अवरोही क्रम में व्यवस्थित कीजिए:",
+    opts:["(A) सेर, जर्गा, अचलगढ़, रघुनाथगढ़, तारागढ़","(B) जर्गा, सेर, अचलगढ़, तारागढ़, रघुनाथगढ़","(C) सेर, अचलगढ़, जर्गा, रघुनाथगढ़, तारागढ़","(D) जर्गा, अचलगढ़, सेर, रघुनाथगढ़, तारागढ़"],
+    ans:0, exp:"अवरोही क्रम: सेर (1597m) > जर्गा (1431m) > अचलगढ़ (1380m) > रघुनाथगढ़ (1055m) > तारागढ़ (873m)।" },
+  { id:3, section:null,
+    q:"'बाप बोल्डर बेड' राजस्थान के किस जिले में स्थित है तथा यह किस भू-वैज्ञानिक काल से संबंधित है?",
+    opts:["(A) जैसलमेर — जुरैसिक काल","(B) जोधपुर — परमो-कार्बोनिफेरस काल","(C) बीकानेर — इओसीन काल","(D) बाड़मेर — क्रिटेशियस काल"],
+    ans:1, exp:"बाप बोल्डर बेड जोधपुर जिले में हिमानीकृत चट्टानों के अवशेष हैं, जो परमो-कार्बोनिफेरस काल के हैं।" },
+  { id:4, section:null,
+    q:"अरावली श्रेणी के संबंध में असत्य कथन की पहचान कीजिए:",
+    opts:["(A) यह विश्व की प्राचीनतम वलित पर्वतमाला है।","(B) मूल आधार 'देहली सुपर ग्रुप' की चट्टानों से निर्मित है।","(C) कुल लंबाई 692 किमी है, लगभग 80% राजस्थान में है।","(D) महान भारतीय जलविभाजक रेखा अरावली के पूर्वी ढालों के समानांतर नहीं गुजरती।"],
+    ans:3, exp:"महान भारतीय जलविभाजक रेखा अरावली के अक्ष के सहारे ही गुजरती है, न कि पूर्वी ढालों के समानांतर।" },
+  { id:5, section:null,
+    q:"सूची-I (स्थलाकृति) को सूची-II से सुमेलित कीजिए:\n(a) भाकर, (b) गिरवा, (c) वागड़, (d) मेवल\n(1) उदयपुर के चारों ओर तश्तरीनुमा पहाड़ियाँ, (2) सिरोही में तीव्र ढाल वाली पहाड़ियाँ, (3) बाँसवाड़ा व डूंगरपुर, (4) डूंगरपुर व बाँसवाड़ा के मध्य",
+    opts:["(A) a-2, b-1, c-3, d-4","(B) a-1, b-2, c-4, d-3","(C) a-2, b-1, c-4, d-3","(D) a-1, b-2, c-3, d-4"],
+    ans:0, exp:"भाकर = सिरोही की तीव्र ढाल पहाड़ियाँ; गिरवा = उदयपुर की तश्तरीनुमा; वागड़ = डूंगरपुर-बाँसवाड़ा; मेवल = दोनों के बीच।" },
+  { id:6, section:null,
+    q:"राजस्थान के पश्चिमी मरुस्थलीय भाग में पाई जाने वाली कम गहरी, लवणीय व दलदली झीलें स्थानीय भाषा में क्या कहलाती हैं?",
+    opts:["(A) खादर व खादर भूमि","(B) रन या टाट","(C) जोहड़ व नाडा","(D) धोरे व धरियन"],
+    ans:1, exp:"दलदली और लवणीय झीलें 'रन' या 'टाट' कहलाती हैं (जैसे थोब, कनोद, परिहारा)।" },
+  { id:7, section:null,
+    q:"'छप्पन का मैदान' राजस्थान के किस भाग में स्थित है और यह किन नदियों द्वारा निर्मित है?",
+    opts:["(A) उत्तर-पूर्वी भाग — बाणगंगा व साबी","(B) दक्षिणी भाग — माही व उसकी सहायक नदियाँ","(C) पश्चिमी भाग — लूनी व सुकड़ी","(D) दक्षिण-पूर्वी भाग — चंबल व कालीसिंध"],
+    ans:1, exp:"56 नदी-नालों का समूह प्रतापगढ़ और बाँसवाड़ा के मध्य माही नदी बेसिन में स्थित है।" },
+  { id:8, section:null,
+    q:"अरावली पर्वतमाला के दरों को दक्षिण से उत्तर के क्रम में व्यवस्थित कीजिए:\n1. सूरा घाट, 2. सोमेश्वर की नाल, 3. हाथी दर्रा, 4. देसूरी की नाल",
+    opts:["(A) 3, 4, 2, 1","(B) 1, 2, 3, 4","(C) 4, 3, 1, 2","(D) 2, 4, 3, 1"],
+    ans:0, exp:"दक्षिण से उत्तर: हाथी दर्रा (उदयपुर) → देसूरी नाल (पाली) → सोमेश्वर (पाली) → सूरा घाट (अजमेर)।" },
+  { id:9, section:null,
+    q:"'विंध्यन कगार भूमि' मुख्य रूप से किन नदियों के मध्य स्थित है और किस प्रकार के पत्थरों से निर्मित है?",
+    opts:["(A) चंबल और बनास — बलुआ पत्थर","(B) बनास और साबरमती — ग्रेनाइट","(C) माही और सोम — चूना पत्थर","(D) लूनी और जवाई — बेसाल्ट"],
+    ans:0, exp:"विंध्यन कगार चंबल और बनास के बीच बलुआ पत्थरों से निर्मित है — धौलपुर, करौली, सवाई माधोपुर में।" },
+  { id:10, section:null,
+    q:"'लाठी सीरीज़' क्या है?",
+    opts:["(A) एक विशिष्ट प्रकार की भेड़ की नस्ल","(B) जैसलमेर में पोकरण से मोहनगढ़ तक विस्तृत भूगर्भीय जल पट्टी","(C) थार के मरुस्थल में पाई जाने वाली चूने की परत","(D) अरावली की एक उप-शाखा"],
+    ans:1, exp:"पोकरण से मोहनगढ़ तक ~60 किमी लंबी भूगर्भीय जलपट्टी जहाँ सेवण घास बहुतायत में पाई जाती है।" },
+
+  // Section 2: जलवायु एवं मृदा
+  { id:11, section:"2. जलवायु एवं मृदा संसाधन",
+    q:"कोपेन के जलवायु वर्गीकरण के अनुसार 'Aw' प्रकार की जलवायु राजस्थान के किन जिलों में पाई जाती है?",
+    opts:["(A) जैसलमेर, बाड़मेर, बीकानेर","(B) जयपुर, अलवर, दौसा","(C) बाँसवाड़ा, डूंगरपुर, झालावाड़","(D) सीकर, झुंझुनूं, नागौर"],
+    ans:2, exp:"Aw = उष्णकटिबंधीय आर्द्र जलवायु — दक्षिणी राजस्थान (बाँसवाड़ा, डूंगरपुर, झालावाड़) में पाई जाती है।" },
+  { id:12, section:null,
+    q:"थॉर्नथ्वेट के जलवायु वर्गीकरण के अनुसार 'EA'd' जलवायु प्रदेश का मुख्य जिला कौन सा है?",
+    opts:["(A) जैसलमेर","(B) चूरू","(C) सवाई माधोपुर","(D) उदयपुर"],
+    ans:0, exp:"EA'd = पूर्णतः शुष्क मरुस्थलीय जलवायु — मुख्य जिला जैसलमेर है।" },
+  { id:13, section:null,
+    q:"राजस्थान में शीतकालीन वर्षा 'मावट' के संबंध में कौन सा कथन सही नहीं है?",
+    opts:["(A) भूमध्य सागर और कैस्पियन सागर से उत्पत्ति होती है।","(B) पश्चिमी विक्षोभों के कारण होती है।","(C) रबी फसल के लिए 'गोल्डन ड्रॉप्स' कहलाती है।","(D) यह वर्षा केवल दक्षिणी-पूर्वी भागों तक सीमित रहती है।"],
+    ans:3, exp:"मावट पूरे राजस्थान में, विशेषकर उत्तरी और पश्चिमी भागों में अधिक प्रभावी होती है।" },
+  { id:14, section:null,
+    q:"राजस्थान में सर्वाधिक वार्षिक तापांतर और दैनिक तापांतर वाले जिले क्रमशः कौन से हैं?",
+    opts:["(A) चूरू और जैसलमेर","(B) जैसलमेर और चूरू","(C) बीकानेर और झालावाड़","(D) कोटा और धौलपुर"],
+    ans:0, exp:"सर्वाधिक वार्षिक तापांतर — चूरू; सर्वाधिक दैनिक तापांतर — जैसलमेर (रेतीली मिट्टी के कारण)।" },
+  { id:15, section:null,
+    q:"'अर्ध-शुष्क जलवायु प्रदेश (BShw)' की पूर्वी सीमा का निर्धारण कौन सी समवर्षा रेखा करती है?",
+    opts:["(A) 25 सेमी","(B) 50 सेमी","(C) 40 सेमी","(D) 75 सेमी"],
+    ans:2, exp:"40 सेमी समवर्षा रेखा अर्ध-शुष्क मरुस्थल की पूर्वी सीमा (अरावली के पश्चिम में) बनाती है।" },
+  { id:16, section:null,
+    q:"USDA Soil Taxonomy के अनुसार राजस्थान के पश्चिमी भाग में मुख्य मृदा कौन सी है?",
+    opts:["(A) अल्फीसोल्स","(B) इनसेप्टीसोल्स","(C) एरिडोसोल्स एवं एन्टीसोल्स","(D) वर्टीसोल्स"],
+    ans:2, exp:"पश्चिमी शुष्क क्षेत्र की रेतीली मिट्टी को एरिडोसोल्स (शुष्क) और एन्टीसोल्स (अविकसित) कहा जाता है।" },
+  { id:17, section:null,
+    q:"राजस्थान के हाड़ौती पठार में पाई जाने वाली गहरी काली मिट्टी को वैज्ञानिक भाषा में क्या कहते हैं?",
+    opts:["(A) वर्टीसोल्स","(B) अल्फीसोल्स","(C) इनसेप्टीसोल्स","(D) एरिडोसोल्स"],
+    ans:0, exp:"हाड़ौती की काली मिट्टी क्ले-प्रधान होती है जिसे वैज्ञानिक भाषा में वर्टीसोल्स कहते हैं।" },
+  { id:18, section:null,
+    q:"मृदा अपरदन के युग्मों पर विचार कीजिए:\n1. अवनालिका अपरदन — चंबल बेसिन\n2. चादरी अपरदन — सिरोही व राजसमंद के पर्वतीय ढाल\n3. वायु अपरदन — पश्चिमी राजस्थान\nकौन से युग्म सुमेलित हैं?",
+    opts:["(A) केवल 1 और 2","(B) केवल 2 और 3","(C) केवल 1 और 3","(D) 1, 2 और 3"],
+    ans:3, exp:"तीनों युग्म सही हैं — चंबल में अवनालिका, पहाड़ों पर चादरी और मरुस्थल में वायु अपरदन।" },
+  { id:19, section:null,
+    q:"'जिप्सिफेरस' और 'रेवेरीना' मिट्टी राजस्थान के किन जिलों में क्रमशः पाई जाती है?",
+    opts:["(A) बीकानेर और श्रीगंगानगर","(B) जैसलमेर और बाड़मेर","(C) जालौर और सिरोही","(D) नागौर और जोधपुर"],
+    ans:0, exp:"जिप्सिफेरस मिट्टी बीकानेर में और रेवेरीना (नदी निर्मित जलोढ़ का शुष्क रूप) श्रीगंगानगर में मिलती है।" },
+  { id:20, section:null,
+    q:"राजस्थान में 'सेम' (Water Logging) से सर्वाधिक ग्रसित क्षेत्र कौन सा है और उपचार में क्या प्रयुक्त होता है?",
+    opts:["(A) चंबल कमांड — रॉक फॉस्फेट","(B) IGNP क्षेत्र (हनुमानगढ़-श्रीगंगानगर) — जिप्सम","(C) माही बजाज सागर — चूना पत्थर","(D) जवाई बांध क्षेत्र — जस्ता"],
+    ans:1, exp:"इंदिरा गांधी नहर क्षेत्र में अत्यधिक सिंचाई से भूमि दलदली हो गई है; उपचार के लिए जिप्सम का प्रयोग होता है।" },
+
+  // Section 3: अपवाह तंत्र
+  { id:21, section:"3. अपवाह तंत्र एवं झीलें",
+    q:"नदियों को उनके उद्गम स्थल से सुमेलित कीजिए:\n(a) बनास, (b) बाणगंगा, (c) बेड़च, (d) साबी\n(1) खमनोर की पहाड़ियाँ (राजसमंद), (2) बैराठ की पहाड़ियाँ (जयपुर), (3) गोगुंदा की पहाड़ियाँ (उदयपुर), (4) सेवर की पहाड़ियाँ (जयपुर)",
+    opts:["(A) a-1, b-2, c-3, d-4","(B) a-2, b-1, c-4, d-3","(C) a-1, b-3, c-2, d-4","(D) a-4, b-2, c-3, d-1"],
+    ans:0, exp:"बनास → खमनोर (राजसमंद); बाणगंगा → बैराठ (जयपुर); बेड़च → गोगुंदा (उदयपुर); साबी → सेवर (जयपुर)।" },
+  { id:22, section:null,
+    q:"चंबल नदी के संबंध में कौन सा कथन असत्य है?",
+    opts:["(A) यह राजस्थान की एकमात्र बारहमासी नदी है।","(B) यह चौरासीगढ़ (चित्तौड़गढ़) के निकट प्रवेश करती है।","(C) दक्षिण से उत्तर बांधों का क्रम: जवाहर सागर, कोटा बैराज, राणा प्रताप सागर, गांधी सागर।","(D) यह सर्वाधिक अवनालिका अपरदन के लिए जानी जाती है।"],
+    ans:2, exp:"सही क्रम (दक्षिण → उत्तर): गांधी सागर (MP) → राणा प्रताप सागर → जवाहर सागर → कोटा बैराज।" },
+  { id:23, section:null,
+    q:"राजस्थान की वह कौन सी नदियाँ हैं जो अपना जल अरब सागर की ओर ले जाती हैं?",
+    opts:["(A) बनास, बेड़च, कोठारी, खारी","(B) लूनी, माही, सोम, साबरमती","(C) घग्गर, कांतली, साबी, काकनेय","(D) चंबल, कालीसिंध, परवन, पार्वती"],
+    ans:1, exp:"लूनी, माही, सोम, साबरमती और पश्चिमी बनास अपना जल अरब सागर (कच्छ का रन / खंभात की खाड़ी) में ले जाती हैं।" },
+  { id:24, section:null,
+    q:"'त्रिवेणी संगम' के संबंध में कौन सा युग्म सुमेलित नहीं है?",
+    opts:["(A) बीगोद (भीलवाड़ा) — बनास, बेड़च, मेनाल","(B) राजमहल (टोंक) — बनास, डाई, खारी","(C) बेणेश्वर (डूंगरपुर) — माही, सोम, जाखम","(D) रामेश्वर घाट (सवाई माधोपुर) — चंबल, बनास, सीप"],
+    ans:4, exp:"दिए गए सभी विकल्प राजस्थान के प्रसिद्ध त्रिवेणी संगमों को सही प्रदर्शित करते हैं। कोई गलत नहीं।",
+    note:"(E) सभी सुमेलित हैं" },
+  { id:25, section:null,
+    q:"अंतःप्रवाह की सबसे लंबी नदी कौन सी है और 'मसूरदी' किस नदी का स्थानीय नाम है?",
+    opts:["(A) कांतली और काकनेय","(B) घग्गर और काकनेय (कोटड़ी गाँव)","(C) साबी और मेंथा","(D) घग्गर और रूपारेल"],
+    ans:1, exp:"अंतःप्रवाह की सबसे लंबी नदी घग्गर है। काकनेय (काकनी) नदी को जैसलमेर में 'मसूरदी' कहते हैं।" },
+  { id:26, section:null,
+    q:"लूनी नदी के जल के खारेपन का मुख्य कारण क्या है और किस स्थान के बाद जल खारा होता है?",
+    opts:["(A) सोडियम क्लोराइड युक्त चट्टानें — बालोतरा","(B) उद्योगों का अपशिष्ट — समदड़ी","(C) वर्षा की कमी — सांचौर","(D) टेथिस सागर का अवशेष — डीडवाना"],
+    ans:0, exp:"बालोतरा तक लूनी का पानी मीठा रहता है, उसके बाद लवणीय मिट्टी के कारण खारा हो जाता है।" },
+  { id:27, section:null,
+    q:"सांभर झील के संबंध में विचार कीजिए:\n1. भारत की सबसे बड़ी अंतःस्थलीय नमक उत्पादन करने वाली झील है।\n2. देश के कुल नमक का लगभग 8.7% उत्पादित होता है।\n3. इसमें मेंथा, रूपनगढ़, खारी और खंडेल नदियां गिरती हैं।",
+    opts:["(A) केवल 1 और 2","(B) केवल 2 और 3","(C) केवल 1 और 3","(D) 1, 2 और 3"],
+    ans:3, exp:"सांभर झील भारत के कुल नमक का 8.7% बनाती है। चारों नदियाँ इसमें गिरती हैं।" },
+  { id:28, section:null,
+    q:"'कावोध', 'पोकरण', 'बाप' और 'रेवासा' झीलें किस प्रकार की झीलें हैं?",
+    opts:["(A) मीठे पानी की झीलें","(B) खारे पानी की झीलें (प्लाया झीलें)","(C) विवर्तनिक झीलें","(D) क्रेटर झीलें"],
+    ans:1, exp:"मरुस्थलीय भागों में हवा के अपरदन से बनी अस्थायी खारे पानी की झीलें 'प्लाया' कहलाती हैं।" },
+  { id:29, section:null,
+    q:"जयसमंद झील (उदयपुर) के संबंध में असत्य कथन चुनिए:",
+    opts:["(A) इसे 'ढेबर झील' भी कहते हैं।","(B) यह राजस्थान की सबसे बड़ी कृत्रिम मीठे पानी की झील है।","(C) इससे 'श्यामपुरा' और 'भट' नहरें निकाली गई हैं।","(D) सबसे बड़े टापू का नाम 'प्यारी' और सबसे छोटे का 'बाबा का भाकड़ा' है।"],
+    ans:3, exp:"सबसे बड़े टापू का नाम 'बाबा का भाकड़ा' और सबसे छोटे का नाम 'प्यारी' है — विकल्प में उल्टा लिखा है।" },
+  { id:30, section:null,
+    q:"'चूलिया जलप्रपात' किस नदी पर तथा किस जिले में स्थित है?",
+    opts:["(A) चंबल नदी — चित्तौड़गढ़","(B) मेनाल नदी — भीलवाड़ा","(C) मांगली नदी — बूंदी","(D) बनास नदी — राजसमंद"],
+    ans:0, exp:"भैंसरोडगढ़ (चित्तौड़गढ़) के निकट चंबल नदी पर 18 मीटर ऊँचा चूलिया जलप्रपात स्थित है।" },
+
+  // Section 4: वन, वन्यजीव
+  { id:31, section:"4. वन, वन्यजीव एवं संरक्षण",
+    q:"ISFR 2021 के अनुसार राजस्थान के कुल भौगोलिक क्षेत्रफल के कितने % भाग पर वनावरण है?",
+    opts:["(A) 9.60%","(B) 4.87%","(C) 7.42%","(D) 10.41%"],
+    ans:1, exp:"ISFR 2021 के अनुसार वनावरण 4.87% (16,654.96 वर्ग किमी) और वृक्षावरण 2.56% है।" },
+  { id:32, section:null,
+    q:"वैधानिक स्थिति के आधार पर राजस्थान में सर्वाधिक क्षेत्र पर कौन से वन पाए जाते हैं?",
+    opts:["(A) आरक्षित वन","(B) सुरक्षित/रक्षित वन","(C) अवर्गीकृत वन","(D) उष्णकटिबंधीय कांटेदार वन"],
+    ans:1, exp:"सुरक्षित/रक्षित (Protected) वन लगभग 56% से अधिक भाग पर विस्तृत हैं।" },
+  { id:33, section:null,
+    q:"राजस्थान के किस जिले में 'उष्णकटिबंधीय शुष्क पतझड़ वन' (धोकड़ा वन) मुख्य रूप से पाए जाते हैं?",
+    opts:["(A) करौली, सवाई माधोपुर, अलवर","(B) जैसलमेर, बाड़मेर, बीकानेर","(C) बाँसवाड़ा, डूंगरपुर, उदयपुर","(D) सिरोही (आबू पर्वतीय क्षेत्र)"],
+    ans:0, exp:"धोकड़ा (Anogeissus pendula) वन राज्य में सर्वाधिक क्षेत्रफल पर — विशेषकर उत्तर-पूर्वी व मध्य भागों में।" },
+  { id:34, section:null,
+    q:"'खेजड़ी' को राजस्थान का राज्य वृक्ष कब घोषित किया गया और इसे वेदों में क्या कहा गया?",
+    opts:["(A) 1981 — जांटी","(B) 1983 — शमी","(C) 1985 — पेमेइ","(D) 1982 — क्रायोफिला"],
+    ans:1, exp:"31 अक्टूबर 1983 को खेजड़ी को राज्य वृक्ष घोषित किया गया। ग्रंथों में इसे 'शमी' और स्थानीय में 'जांटी' कहते हैं।" },
+  { id:35, section:null,
+    q:"सूची-I (वन्यजीव अभ्यारण्य) को सूची-II से सुमेलित कीजिए:\n(a) राष्ट्रीय मरु उद्यान, (b) सीतामाता, (c) तालछापर, (d) कुंभलगढ़\n(1) गोडावण, (2) उड़न गिलहरी, (3) कृष्ण मृग, (4) भेड़िये की प्रजनन स्थली",
+    opts:["(A) a-1, b-2, c-3, d-4","(B) a-2, b-1, c-4, d-3","(C) a-1, b-3, c-2, d-4","(D) a-4, b-2, c-3, d-1"],
+    ans:0, exp:"राष्ट्रीय मरु उद्यान = गोडावण; सीतामाता = उड़न गिलहरी; तालछापर = कृष्ण मृग; कुंभलगढ़ = भेड़िया।" },
+  { id:36, section:null,
+    q:"राजस्थान का चौथा 'टाइगर रिजर्व' किसे घोषित किया गया है?",
+    opts:["(A) रामगढ़ विषधारी (बूंदी)","(B) मुकुंदरा हिल्स","(C) धौलपुर-करौली","(D) सरिस्का (अलवर)"],
+    ans:0, exp:"रामगढ़ विषधारी (बूंदी) को 2022 में भारत का 52वाँ और राजस्थान का 4वाँ टाइगर रिजर्व घोषित किया गया।" },
+  { id:37, section:null,
+    q:"'कनक सागर' और 'रोटू' राजस्थान के भूगोल में किस रूप में जाने जाते हैं?",
+    opts:["(A) जैव-प्रौद्योगिकी पार्क और मृगवन","(B) पक्षी अभ्यारण्य और राष्ट्रीय उद्यान","(C) आखेट निषिद्ध क्षेत्र और कंजर्वेशन रिजर्व","(D) रामसर साइट्स"],
+    ans:2, exp:"कनक सागर (बूंदी) = आखेट निषिद्ध क्षेत्र; रोटू (नागौर) = संरक्षण रिजर्व।" },
+  { id:38, section:null,
+    q:"राजस्थान के 'रामसर साइट्स' में कौन से स्थल शामिल हैं?",
+    opts:["(A) सांभर झील और केवलादेव राष्ट्रीय उद्यान","(B) जयसमंद और सरिस्का","(C) पचपदरा और राष्ट्रीय मरु उद्यान","(D) आनासागर और नक्की झील"],
+    ans:0, exp:"केवलादेव को 1981 में और सांभर झील को 1990 में रामसर आर्द्रभूमि सूची में शामिल किया गया।" },
+  { id:39, section:null,
+    q:"कौन सा राष्ट्रीय उद्यान 'यूनेस्को विश्व प्राकृतिक धरोहर सूची' में है और इसे यह दर्जा कब मिला?",
+    opts:["(A) रणथंभौर — 1980","(B) केवलादेव घाना — 1985","(C) मुकुंदरा हिल्स — 2012","(D) राष्ट्रीय मरु उद्यान — 1992"],
+    ans:1, exp:"भरतपुर स्थित केवलादेव घाना राष्ट्रीय उद्यान को 1985 में यूनेस्को विश्व प्राकृतिक धरोहर सूची में शामिल किया गया।" },
+  { id:40, section:null,
+    q:"'धोक' (Anogeissus pendula) वृक्षों के वन मुख्य रूप से अरावली के किस भाग में पाए जाते हैं?",
+    opts:["(A) ऊँचाई वाले क्षेत्रों में — अत्यधिक वर्षा की आवश्यकता","(B) मध्य एवं निचली अरावली — ईंधन व कोयला बनाने हेतु उपयुक्त","(C) पश्चिमी मरुस्थल — मरुद्भिद पौधा","(D) दक्षिणी भाग — सदाबहार वन"],
+    ans:1, exp:"धोक के वन शुष्क और सहिष्णु हैं। अरावली के निचले भागों में बहुतायत; इनकी लकड़ी कोयला बनाने के काम आती है।" },
+
+  // Section 5: कृषि, सिंचाई, खनिज
+  { id:41, section:"5. कृषि, सिंचाई एवं खनिज परिदृश्य",
+    q:"राजस्थान में 'वाइरा' या 'वाल्नरा' कृषि क्या है?",
+    opts:["(A) शुष्क क्षेत्रों में आधुनिक खेती","(B) मैदानी भागों में उन्नत बागवानी","(C) दक्षिणी राजस्थान में आदिवासियों द्वारा स्थानांतरित कृषि (Slash and Burn)","(D) पहाड़ों पर सीढ़ीदार खेती"],
+    ans:2, exp:"आदिवासियों द्वारा वनों को जलाकर की जाने वाली झूमिंग कृषि को राजस्थान में 'वाल्नरा' कहते हैं।" },
+  { id:42, section:null,
+    q:"राजस्थान की फसलों की उन्नत किस्मों में कौन सा युग्म सुमेलित नहीं है?",
+    opts:["(A) मक्का — माही कंचन, माही धवल","(B) चावल — माही सुगंधा","(C) गेहूँ — राज 3077, कल्याण सोना","(D) कपास — चंबल, साबरमती"],
+    ans:3, exp:"चंबल और साबरमती कपास की नहीं, बल्कि अन्य फसलों की किस्में/नदी के नाम हैं। कपास की किस्म बीकानेरी नरमा है।" },
+  { id:43, section:null,
+    q:"'इंदिरा गांधी नहर परियोजना' के बारे में असत्य कथन चुनिए:\n1. मुख्य नहर की लंबाई 445 किमी है।\n2. 'कंवरसेन लिफ्ट नहर' सबसे लंबी लिफ्ट नहर है।\n3. सभी लिफ्ट नहरें मुख्य नहर के बाईं ओर निकाली गई हैं।",
+    opts:["(A) केवल 1","(B) केवल 3","(C) केवल 1 और 2","(D) 1, 2 और 3"],
+    ans:1, exp:"IGNP की सभी लिफ्ट नहरें मुख्य नहर के 'दाईं ओर' (Right side) निकाली गई हैं, बाईं ओर नहीं।" },
+  { id:44, section:null,
+    q:"किस सिंचाई परियोजना में 'फव्वारा सिंचाई पद्धति' अनिवार्य कर दी गई है?",
+    opts:["(A) नर्मदा नहर परियोजना","(B) चंबल घाटी परियोजना","(C) माही बजाज सागर परियोजना","(D) सिद्धमुख नोहर परियोजना"],
+    ans:3, exp:"सिद्धमुख नोहर परियोजना में जल की बचत हेतु फव्वारा सिंचाई अनिवार्य की गई है।" },
+  { id:45, section:null,
+    q:"किन खनिजों के उत्पादन में राजस्थान का भारत में एकाधिकार (100% या लगभग) है?",
+    opts:["(A) वोलस्टोनाइट, जैस्पर, गार्नेट (तामड़ा)","(B) लोहा, तांबा, कोयला","(C) जिप्सम, रॉक फॉस्फेट, डोलोमाइट","(D) संगमरमर, ग्रेनाइट, चूना पत्थर"],
+    ans:0, exp:"वोलस्टोनाइट, जैस्पर और गार्नेट के उत्पादन में राजस्थान का भारत में एकाधिकार है।" },
+  { id:46, section:null,
+    q:"सूची-I (खनिज) को सूची-II (खनन क्षेत्र) से सुमेलित कीजिए:\n(a) तांबा, (b) सीसा-जस्ता, (c) टंगस्टन, (d) लोहा\n(1) खेतड़ी-सिंघाना, (2) जावर/रामपुरा-आगुचा, (3) डेगाना (भाकरी), (4) मोरीजा-बनोला/नाथरा की पाल",
+    opts:["(A) a-1, b-2, c-3, d-4","(B) a-2, b-1, c-4, d-3","(C) a-1, b-3, c-2, d-4","(D) a-4, b-2, c-3, d-1"],
+    ans:0, exp:"तांबा = खेतड़ी-सिंघाना; सीसा-जस्ता = जावर/रामपुरा-आगुचा; टंगस्टन = डेगाना; लोहा = मोरीजा-बनोला।" },
+  { id:47, section:null,
+    q:"'बाड़मेर-सांचौर बेसिन' किस खनिज के व्यावसायिक उत्पादन के लिए प्रसिद्ध है?",
+    opts:["(A) प्राकृतिक गैस — डांडेवाला, तनोट","(B) पेट्रोलियम — मंगला, भाग्यम, ऐश्वर्या, सरस्वती","(C) लिग्नाइट कोयला — कपूरड़ी, जालीपा","(D) यूरेनियम — उमरा, रोहिल"],
+    ans:1, exp:"बाड़मेर-सांचौर बेसिन में मंगला, भाग्यम, ऐश्वर्या और सरस्वती तेल कुओं से कच्चे तेल का उत्पादन होता है।" },
+  { id:48, section:null,
+    q:"'ग्रेनाइट सिटी' किस जिले को कहा जाता है और गुलाबी संगमरमर (Pink Marble) कहाँ पाया जाता है?",
+    opts:["(A) जालौर और बाबरमल (उदयपुर)","(B) जैसलमेर और मकराना (नागौर)","(C) सिरोही और भैंसलाना (जयपुर)","(D) राजसमंद और सतरंग (पाली)"],
+    ans:0, exp:"जालौर को 'ग्रेनाइट सिटी' कहते हैं। गुलाबी संगमरमर बाबरमल (उदयपुर) में पाया जाता है।" },
+  { id:49, section:null,
+    q:"'जाखम बांध परियोजना' राजस्थान के किस जिले में है और इसकी भौगोलिक विशेषता क्या है?",
+    opts:["(A) बाँसवाड़ा — राजस्थान का सबसे लंबा बांध","(B) प्रतापगढ़ — 81 मीटर ऊँचाई के साथ राजस्थान का सबसे ऊँचा बांध","(C) चित्तौड़गढ़ — भराव क्षमता में सबसे बड़ा","(D) कोटा — पूर्णतः कंक्रीट से बना पहला बांध"],
+    ans:1, exp:"जाखम बांध प्रतापगढ़ जिले में है और 81 मीटर की ऊँचाई के साथ यह राजस्थान का सबसे ऊँचा बांध है।" },
+  { id:50, section:null,
+    q:"किस स्थान पर 'ग्रीन मार्बल' (सर्पेन्टाइन) का सर्वाधिक खनन होता है और 'सोनू क्षेत्र' (जैसलमेर) किस खनिज के लिए विख्यात है?",
+    opts:["(A) ऋषभदेव (उदयपुर) और स्टील ग्रेड चूना पत्थर","(B) मकराना (नागौर) और जिप्सम","(C) आंधी (जयपुर) और रॉक फॉस्फेट","(D) हिंडौन (करौली) और बलुआ पत्थर"],
+    ans:0, exp:"ऋषभदेव (उदयपुर) में ग्रीन मार्बल का खनन होता है। सोनू क्षेत्र (जैसलमेर) स्टील ग्रेड चूना पत्थर के लिए विख्यात है।" }
+];
+
+/* ─── State ─── */
+let currentUser = null;
+let hasPurchased = false;
+let timerInterval = null;
+let secondsLeft = TOTAL_TIME;
+let submitted = false;
+
+/* ─── Auth Check ─── */
+auth.onAuthStateChanged(async user => {
+  document.getElementById('loader').style.display = 'none';
+  currentUser = user;
+  if (user) {
+    document.getElementById('userStatus').textContent = '👤 ' + (user.displayName || user.email || 'User');
+    document.getElementById('loginNote').style.display = 'none';
+    await checkPurchase(user.uid);
+  } else {
+    document.getElementById('userStatus').textContent = '🔒 Login करें';
+    showLock();
+  }
+});
+
+async function checkPurchase(uid) {
+  try {
+    const ref = db.collection('users').doc(uid).collection('purchases').doc(PRODUCT_ID);
+    const snap = await ref.get();
+    if (snap.exists && snap.data().paid) {
+      unlockTest();
+    } else {
+      showLock();
+    }
+  } catch(e) {
+    console.error(e);
+    showLock();
+  }
+}
+
+function showLock() {
+  document.getElementById('premiumLock').style.display = 'block';
+  document.getElementById('testContent').style.display = 'none';
+}
+
+function unlockTest() {
+  hasPurchased = true;
+  document.getElementById('premiumLock').style.display = 'none';
+  document.getElementById('testContent').style.display = 'block';
+  renderQuestions();
+  startTimer();
+}
+
+/* ─── Payment ─── */
+function initiatePayment() {
+  if (!currentUser) {
+    alert('पहले Login करें।\nLogin page पर जाएं।');
+    return;
+  }
+  const btn = document.getElementById('btnPay');
+  btn.disabled = true;
+  btn.textContent = '⏳ Processing...';
+
+  const options = {
+    key: RZP_KEY,
+    amount: PRICE_PAISE,
+    currency: "INR",
+    name: "Sharma Sir Digital Lab",
+    description: PRODUCT_NAME,
+    image: "",
+    handler: async function(response) {
+      await savePurchase(response.razorpay_payment_id);
+    },
+    prefill: {
+      name: currentUser.displayName || "",
+      email: currentUser.email || "",
+      contact: currentUser.phoneNumber || ""
+    },
+    theme: { color: "#1a56db" },
+    modal: {
+      ondismiss: function() {
+        btn.disabled = false;
+        btn.textContent = '🔓 अभी खरीदें — ₹19';
+      }
+    }
+  };
+  const rzp = new Razorpay(options);
+  rzp.open();
+}
+
+async function savePurchase(paymentId) {
+  try {
+    await db.collection('users').doc(currentUser.uid)
+      .collection('purchases').doc(PRODUCT_ID).set({
+        paid: true,
+        paymentId: paymentId,
+        productName: PRODUCT_NAME,
+        amount: PRICE_PAISE / 100,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    unlockTest();
+  } catch(e) {
+    console.error(e);
+    alert('भुगतान सफल हुआ लेकिन unlock में समस्या हुई। कृपया page reload करें।');
+  }
+}
+
+/* ─── Render Questions ─── */
+function renderQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  let lastSection = null;
+
+  questions.forEach((q, idx) => {
+    if (q.section && q.section !== lastSection) {
+      lastSection = q.section;
+      const sec = document.createElement('div');
+      sec.className = 'section-header';
+      sec.textContent = q.section;
+      container.appendChild(sec);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'qcard-' + q.id;
+
+    // Format question text (newlines → <br>)
+    const qText = q.q.replace(/\n/g, '<br>');
+
+    let optsHTML = '';
+    q.opts.forEach((opt, oi) => {
+      optsHTML += `
+        <label class="option-label" id="opt-${q.id}-${oi}">
+          <input type="radio" name="q${q.id}" value="${oi}" onchange="onAnswer(${q.id})">
+          ${opt}
+        </label>`;
+    });
+
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num">${q.id}</div>
+        <div>
+          <div class="q-text">${qText}</div>
+          ${q.note ? `<div class="q-note">${q.note}</div>` : ''}
+        </div>
+      </div>
+      <div class="options">${optsHTML}</div>
+      <div class="explanation" id="exp-${q.id}">💡 <strong>व्याख्या:</strong> ${q.exp}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function onAnswer(qid) {
+  if (submitted) return;
+  updateProgress();
+}
+
+function updateProgress() {
+  let answered = 0;
+  questions.forEach(q => {
+    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+  });
+  document.getElementById('answeredCount').textContent = `उत्तरित: ${answered}/50`;
+  const pct = Math.round(answered / 50 * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+/* ─── Timer ─── */
+function startTimer() {
+  timerInterval = setInterval(() => {
+    secondsLeft--;
+    updateTimerDisplay();
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      submitTest(true);
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
+  const s = (secondsLeft % 60).toString().padStart(2, '0');
+  const el = document.getElementById('timerDisplay');
+  el.textContent = m + ':' + s;
+  el.className = secondsLeft <= 300 ? (secondsLeft <= 60 ? 'danger' : 'warning') : '';
+}
+
+/* ─── Submit ─── */
+function submitTest(timeout = false) {
+  if (submitted) return;
+  if (!timeout && !confirm('क्या आप Test जमा करना चाहते हैं?')) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('btnSubmit').disabled = true;
+
+  let correct = 0, wrong = 0, skipped = 0;
+
+  questions.forEach(q => {
+    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+    const expEl = document.getElementById(`exp-${q.id}`);
+    expEl.classList.add('show');
+
+    if (!sel) {
+      skipped++;
+      // Highlight correct answer
+      document.getElementById(`opt-${q.id}-${q.ans}`).classList.add('skipped');
+    } else {
+      const chosen = parseInt(sel.value);
+      if (chosen === q.ans) {
+        correct++;
+        document.getElementById(`opt-${q.id}-${chosen}`).classList.add('correct');
+      } else {
+        wrong++;
+        document.getElementById(`opt-${q.id}-${chosen}`).classList.add('wrong');
+        document.getElementById(`opt-${q.id}-${q.ans}`).classList.add('correct');
+      }
+    }
+    // Disable all options
+    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(r => r.disabled = true);
+  });
+
+  const netMarks = (correct - wrong / 3).toFixed(2);
+  const pct = (correct / 50 * 100).toFixed(1);
+
+  // Show result
+  const rp = document.getElementById('resultPanel');
+  rp.style.display = 'block';
+  document.getElementById('finalScore').textContent = pct + '%';
+  document.getElementById('r_correct').textContent = correct;
+  document.getElementById('r_wrong').textContent = wrong;
+  document.getElementById('r_skip').textContent = skipped;
+  document.getElementById('r_marks').textContent = netMarks;
+
+  let rank = correct >= 45 ? '🥇 अत्युत्तम' : correct >= 38 ? '🥈 उत्कृष्ट' :
+             correct >= 30 ? '🥉 अच्छा' : correct >= 20 ? '📚 और पढ़ें' : '💪 मेहनत जारी रखें';
+  document.getElementById('rankBadge').textContent = rank;
+
+  rp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Save score to Firestore
+  if (currentUser) {
+    db.collection('users').doc(currentUser.uid)
+      .collection('testScores').doc(PRODUCT_ID + '_' + Date.now()).set({
+        product: PRODUCT_ID,
+        correct, wrong, skipped,
+        netMarks: parseFloat(netMarks),
+        pct: parseFloat(pct),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }).catch(console.error);
+  }
+}
+
+function retryTest() {
+  submitted = false;
+  secondsLeft = TOTAL_TIME;
+  document.getElementById('resultPanel').style.display = 'none';
+  document.getElementById('btnSubmit').disabled = false;
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressPct').textContent = '0%';
+  document.getElementById('answeredCount').textContent = 'उत्तरित: 0/50';
+  renderQuestions();
+  startTimer();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
