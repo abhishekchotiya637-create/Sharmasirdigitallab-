@@ -110,33 +110,98 @@
     }
     .empty-state .icon { font-size: 3rem; margin-bottom: 10px; }
 
-    /* Payment Modal */
+    /* Razorpay branding strip */
+    .rzp-strip {
+      display: flex; align-items: center; justify-content: center;
+      gap: 5px; margin-top: 8px;
+      font-size: 0.72rem; color: #999;
+    }
+
+    .card-price .discount {
+      background: #fff3e0; color: #e65100;
+      font-size: 0.72rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 10px; margin-left: 6px;
+    }
+    .card-badge.unlocked-badge { background: #2e7d32; }
+
+    /* Payment Bottom Sheet */
     .modal-overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.5); z-index: 1000;
-      align-items: center; justify-content: center;
-      padding: 20px;
+      background: rgba(0,0,0,0.55); z-index: 1000;
+      align-items: flex-end; justify-content: center;
     }
     .modal-overlay.open { display: flex; }
     .modal {
-      background: #fff; border-radius: 16px;
-      max-width: 400px; width: 100%;
-      padding: 28px 24px;
+      background: #fff; border-radius: 20px 20px 0 0;
+      width: 100%; max-width: 480px;
+      padding: 10px 24px 32px;
+      animation: slideUp 0.25s ease;
     }
-    .modal h3 { font-size: 1.1rem; color: #1a237e; margin-bottom: 16px; }
-    .modal p { font-size: 0.88rem; color: #555; line-height: 1.6; margin-bottom: 16px; }
-    .modal .price-big { font-size: 1.8rem; font-weight: 800; color: #ff6f00; text-align: center; margin: 12px 0; }
-    .upi-id {
-      background: #f0f4ff; border-radius: 10px;
-      padding: 12px 16px; text-align: center;
-      font-family: monospace; font-size: 1.1rem;
-      color: #1a237e; font-weight: 700;
-      margin-bottom: 14px; user-select: all;
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .modal-handle {
+      width: 40px; height: 4px; background: #ddd;
+      border-radius: 4px; margin: 12px auto 20px;
     }
-    .modal-btns { display: flex; gap: 10px; }
-    .modal-btns button { flex: 1; padding: 11px; border-radius: 9px; font-size: 0.9rem; font-weight: 700; border: none; cursor: pointer; }
-    .modal-btns .close-btn { background: #f5f5f5; color: #333; }
-    .modal-btns .done-btn { background: #2e7d32; color: #fff; }
+    .modal-header { text-align: center; margin-bottom: 18px; }
+    .modal-header h3 { font-size: 1rem; color: #1a237e; line-height: 1.4; }
+    .modal-header .item-price { font-size: 2rem; font-weight: 800; color: #ff6f00; margin-top: 4px; }
+    .modal-header .item-sub { font-size: 0.8rem; color: #888; }
+    .pay-icons {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin-bottom: 18px;
+    }
+    .pay-icon-pill {
+      background: #f5f5f5; border-radius: 8px;
+      padding: 5px 11px; font-size: 0.78rem;
+      color: #555; font-weight: 600;
+    }
+    .btn-rzp {
+      width: 100%; padding: 15px;
+      border: none; border-radius: 12px;
+      font-size: 1rem; font-weight: 800; cursor: pointer;
+      background: linear-gradient(135deg, #072654 0%, #3399cc 100%);
+      color: #fff; transition: opacity 0.2s;
+    }
+    .btn-rzp:hover { opacity: 0.9; }
+    .btn-rzp:disabled { opacity: 0.5; cursor: not-allowed; }
+    .rzp-footer {
+      text-align: center; margin-top: 10px;
+      font-size: 0.74rem; color: #aaa;
+    }
+    .btn-cancel {
+      width: 100%; padding: 12px; border-radius: 10px;
+      border: 1.5px solid #e0e0e0; background: #fff;
+      color: #666; font-size: 0.9rem; cursor: pointer;
+      margin-top: 10px; font-weight: 600;
+    }
+
+    /* Success overlay */
+    .success-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 2000;
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .success-overlay.open { display: flex; }
+    .success-box {
+      background: #fff; border-radius: 20px;
+      padding: 36px 24px; text-align: center;
+      max-width: 340px; width: 100%;
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-box .s-icon { font-size: 3.5rem; margin-bottom: 10px; }
+    .success-box h3 { color: #2e7d32; font-size: 1.2rem; margin-bottom: 6px; }
+    .success-box .s-name { font-weight: 700; color: #1a237e; font-size: 0.9rem; margin-bottom: 12px; }
+    .success-box .txn-id {
+      font-family: monospace; background: #f5f5f5;
+      padding: 8px 12px; border-radius: 8px;
+      font-size: 0.78rem; color: #555; margin-bottom: 14px;
+    }
+    .success-box p { font-size: 0.83rem; color: #666; margin-bottom: 18px; }
+    .btn-access {
+      width: 100%; padding: 13px; background: #2e7d32; color: #fff;
+      border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer;
+    }
 
     .loading-skeleton {
       background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -185,138 +250,153 @@
   </div>
 </div>
 
-<!-- Payment Modal -->
+<!-- Razorpay Payment Bottom Sheet -->
 <div class="modal-overlay" id="pay-modal">
   <div class="modal">
-    <h3 id="modal-title">Purchase करें</h3>
-    <div class="price-big" id="modal-price">₹99</div>
-    <p>नीचे दिए UPI ID पर payment करें, फिर "Payment किया" बटन दबाएं।</p>
-    <div class="upi-id" id="upi-display" onclick="copyUPI()">
-      <abhishek5384@ybl>
-      abhishekchotiya865-1@oksbi
-      <br /><small style="font-size:0.7rem;color:#888;">(tap to copy)</small>
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <h3 id="modal-item-name">—</h3>
+      <div class="item-price" id="modal-item-price">₹0</div>
+      <div class="item-sub">Secure Payment via Razorpay</div>
     </div>
-    <p style="font-size:0.78rem;color:#c62828;">⚠️ Payment screenshot WhatsApp पर भेजें: <strong>925-124-2367</strong></p>
-    <div class="modal-btns">
-      <button class="close-btn" onclick="closeModal()">❌ Cancel</button>
-      <button class="done-btn" onclick="markPaid()">✅ Payment किया</button>
+    <div class="pay-icons">
+      <div class="pay-icon-pill">💳 Card</div>
+      <div class="pay-icon-pill">📱 UPI</div>
+      <div class="pay-icon-pill">🏦 Net Banking</div>
+      <div class="pay-icon-pill">💰 Wallet</div>
+      <div class="pay-icon-pill">📲 EMI</div>
     </div>
+    <button class="btn-rzp" id="rzp-pay-btn" onclick="initiateRazorpay()">
+      <span id="rzp-btn-text">Pay Now — Secure Checkout</span>
+    </button>
+    <div class="rzp-footer">🔒 Secured by <strong>Razorpay</strong> &nbsp;|&nbsp; SSL Encrypted</div>
+    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
   </div>
 </div>
 
+<!-- Payment Success Screen -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="s-icon">🎉</div>
+    <h3>Payment Successful!</h3>
+    <div class="s-name" id="success-item-name"></div>
+    <div class="txn-id" id="success-txn">Transaction ID: —</div>
+    <p>Content unlock हो गया है। नीचे button से access करें।</p>
+    <button class="btn-access" id="success-access-btn">✅ Content Access करें</button>
+  </div>
+</div>
+
+<!-- Razorpay SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
-  // ─────────────────────────────────────────────
-  // PREMIUM CONTENT DATA
-  // Edit this to add/remove tests and notes
-  // ─────────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════
+  //  ⚙️  CONFIG — Replace with YOUR values
+  // ═══════════════════════════════════════════════════════
+  const CONFIG = {
+    // Get from: dashboard.razorpay.com → Settings → API Keys
+    // Test key (no real money): rzp_test_XXXXXXXXXXXX
+    // Live key (real payments): rzp_live_XXXXXXXXXXXX
+    RAZORPAY_KEY_ID: "rzp_test_YOUR_KEY_ID_HERE",
+
+    BUSINESS_NAME: "Sharma Sir's Digital Lab",
+    LOGO_URL: "https://abhishekchotiya637-create.github.io/Sharmasirdigitallab-/logo.jpg"
+  };
+
+  // ═══════════════════════════════════════════════════════
+  //  📦  CONTENT DATA — Add/edit your tests and notes here
+  // ═══════════════════════════════════════════════════════
   const PREMIUM_TESTS = [
     {
-      id: "test_rpsc_1",
-      icon: "🎯",
+      id: "test_rpsc_1", icon: "🎯",
       title: "RPSC 2nd Grade Full Mock Test",
-      desc: "GK + Subject — वास्तविक परीक्षा पैटर्न पर आधारित। 150 प्रश्न, 3 घंटे।",
+      desc: "GK + Subject — वास्तविक परीक्षा पैटर्न। 150 प्रश्न, 3 घंटे।",
       meta: "150 MCQ • 3 Hours • RPSC Pattern",
-      price: 49,
-      originalPrice: 99,
-      link: "https://forms.gle/YOUR_FORM_LINK_1"  // Replace with actual test link
+      price: 49, originalPrice: 99,
+      link: "https://forms.gle/YOUR_FORM_LINK_1"
     },
     {
-      id: "test_reet_1",
-      icon: "📝",
+      id: "test_reet_1", icon: "📝",
       title: "REET Level 2 Science & Math Mock",
       desc: "Science + Math + Child Dev. — 150 प्रश्न, REET pattern।",
       meta: "150 MCQ • 2.5 Hours • REET Pattern",
-      price: 49,
-      originalPrice: 99,
+      price: 49, originalPrice: 99,
       link: "https://forms.gle/YOUR_FORM_LINK_2"
     },
     {
-      id: "test_ssc_1",
-      icon: "🏆",
+      id: "test_ssc_1", icon: "🏆",
       title: "SSC CGL Tier-1 Full Mock Test",
       desc: "Reasoning + QA + English + GK — 100 प्रश्न, 60 मिनट।",
       meta: "100 MCQ • 60 Min • SSC Pattern",
-      price: 39,
-      originalPrice: 79,
+      price: 39, originalPrice: 79,
       link: "https://forms.gle/YOUR_FORM_LINK_3"
     },
     {
-      id: "test_raj_1",
-      icon: "🦁",
+      id: "test_raj_1", icon: "🦁",
       title: "Rajasthan GK Mega Mock Test",
       desc: "History + Geography + Art & Culture — 200 प्रश्न।",
       meta: "200 MCQ • 2 Hours • All Exams",
-      price: 59,
-      originalPrice: 120,
+      price: 59, originalPrice: 120,
       link: "https://forms.gle/YOUR_FORM_LINK_4"
     }
   ];
 
   const PREMIUM_NOTES = [
     {
-      id: "note_raj_history",
-      icon: "📜",
+      id: "note_raj_history", icon: "📜",
       title: "Rajasthan History Complete Notes",
       desc: "राजस्थान इतिहास के सभी topics — RPSC, REET, RSMSSB के लिए।",
       meta: "PDF • 180 Pages • Hindi Medium",
-      price: 29,
-      originalPrice: 59,
-      link: "https://drive.google.com/YOUR_FILE_1"  // Replace with actual Google Drive link
+      price: 29, originalPrice: 59,
+      link: "https://drive.google.com/YOUR_FILE_1"
     },
     {
-      id: "note_raj_geo",
-      icon: "🗺️",
+      id: "note_raj_geo", icon: "🗺️",
       title: "Rajasthan Geography Notes",
       desc: "जिले, नदियाँ, अभ्यारण्य, जलवायु — सम्पूर्ण नोट्स।",
       meta: "PDF • 120 Pages • Hindi Medium",
-      price: 29,
-      originalPrice: 59,
+      price: 29, originalPrice: 59,
       link: "https://drive.google.com/YOUR_FILE_2"
     },
     {
-      id: "note_child_dev",
-      icon: "👶",
+      id: "note_child_dev", icon: "👶",
       title: "Child Development & Pedagogy Notes",
       desc: "REET/CTET के लिए बाल विकास — सभी theories और MCQ।",
       meta: "PDF • 90 Pages • Hindi Medium",
-      price: 19,
-      originalPrice: 39,
+      price: 19, originalPrice: 39,
       link: "https://drive.google.com/YOUR_FILE_3"
     },
     {
-      id: "note_current",
-      icon: "📰",
+      id: "note_current", icon: "📰",
       title: "Current Affairs Jan–Jun 2026",
       desc: "राजस्थान + राष्ट्रीय करंट अफेयर्स — 6 महीने का संग्रह।",
       meta: "PDF • 200+ Pages • Updated",
-      price: 39,
-      originalPrice: 79,
+      price: 39, originalPrice: 79,
       link: "https://drive.google.com/YOUR_FILE_4"
     }
   ];
 
-  // ─────────────────────────────────────────────
-  // USER STATE
-  // ─────────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════
+  //  👤  USER & UNLOCKED STATE
+  // ═══════════════════════════════════════════════════════
   let currentUser = null;
-  let unlockedItems = [];
+  let unlockedItems = {};   // { itemId: { txnId, paidAt, link } }
   let selectedItem = null;
 
   function loadUser() {
-    try {
-      const stored = localStorage.getItem('ssdl_user');
-      if (stored) currentUser = JSON.parse(stored);
-    } catch(e) { currentUser = null; }
-
-    try {
-      const ul = localStorage.getItem('ssdl_unlocked');
-      if (ul) unlockedItems = JSON.parse(ul);
-    } catch(e) { unlockedItems = []; }
+    try { const s = localStorage.getItem('ssdl_user'); if (s) currentUser = JSON.parse(s); } catch(e) {}
+    try { const u = localStorage.getItem('ssdl_unlocked_v2'); if (u) unlockedItems = JSON.parse(u); } catch(e) {}
   }
+
+  function saveUnlocked() {
+    localStorage.setItem('ssdl_unlocked_v2', JSON.stringify(unlockedItems));
+  }
+
+  function isUnlocked(id) { return !!unlockedItems[id]; }
 
   function initUI() {
     if (currentUser) {
-      const name = currentUser.name || currentUser.phone || 'Student';
+      const name = (currentUser.name || currentUser.phone || 'Student').split(' ')[0];
       document.getElementById('user-name-top').textContent = '👤 ' + name;
       document.getElementById('login-notice').style.display = 'none';
     } else {
@@ -324,18 +404,16 @@
     }
   }
 
-  // ─────────────────────────────────────────────
-  // RENDER CARDS
-  // ─────────────────────────────────────────────
-  function isUnlocked(id) {
-    return unlockedItems.includes(id);
-  }
+  // ═══════════════════════════════════════════════════════
+  //  🃏  RENDER CARDS
+  // ═══════════════════════════════════════════════════════
+  function disc(p, o) { return Math.round((1 - p/o) * 100); }
 
   function renderCard(item, type) {
     const unlocked = isUnlocked(item.id);
     return `
       <div class="content-card">
-        <div class="card-badge">${unlocked ? '✅ Unlocked' : '🔒 Premium'}</div>
+        <div class="card-badge ${unlocked ? 'unlocked-badge' : ''}">${unlocked ? '✅ Unlocked' : '🔒 Premium'}</div>
         <div class="card-body">
           <div class="card-icon">${item.icon}</div>
           <div class="card-title">${item.title}</div>
@@ -343,40 +421,45 @@
           <div class="card-meta">${item.meta}</div>
           ${unlocked ? `
             <div class="unlock-tag">✅ Purchased — Lifetime Access</div>
-            <button class="btn-buy unlocked" onclick="openContent('${item.link}', '${item.id}')">
-              ${type === 'test' ? '🎯 Test दें' : '⬇️ Download करें'}
+            <button class="btn-buy unlocked" onclick="openContent('${item.link}','${item.id}')">
+              ${type==='test' ? '🎯 Test दें' : '⬇️ Download करें'}
             </button>
           ` : `
-            <div class="card-price">₹${item.price} <span class="original">₹${item.originalPrice}</span></div>
-            <button class="btn-buy" onclick="buyItem('${item.id}', '${item.title}', ${item.price}, '${item.link}')">
-              🛒 खरीदें
+            <div class="card-price">₹${item.price}
+              <span class="original">₹${item.originalPrice}</span>
+              <span class="discount">${disc(item.price,item.originalPrice)}% OFF</span>
+            </div>
+            <button class="btn-buy buy" onclick="buyItem('${item.id}','${item.title}',${item.price},'${item.link}')">
+              🛒 Razorpay से खरीदें
             </button>
+            <div class="rzp-strip">🔒 Secured by Razorpay</div>
           `}
         </div>
-      </div>
-    `;
+      </div>`;
   }
 
   function renderAll() {
-    const testsGrid = document.getElementById('tests-grid');
-    const notesGrid = document.getElementById('notes-grid');
-
-    testsGrid.innerHTML = PREMIUM_TESTS.map(t => renderCard(t, 'test')).join('');
-    notesGrid.innerHTML = PREMIUM_NOTES.map(n => renderCard(n, 'note')).join('');
+    document.getElementById('tests-grid').innerHTML = PREMIUM_TESTS.map(t=>renderCard(t,'test')).join('');
+    document.getElementById('notes-grid').innerHTML = PREMIUM_NOTES.map(n=>renderCard(n,'note')).join('');
   }
 
-  // ─────────────────────────────────────────────
-  // PURCHASE FLOW
-  // ─────────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════
+  //  💳  RAZORPAY FLOW
+  // ═══════════════════════════════════════════════════════
   function buyItem(id, title, price, link) {
     if (!currentUser) {
-      alert('⚠️ पहले Login करें।\n\nLogin page पर जा रहे हैं...');
-      window.location.href = 'login.html';
+      if (confirm('⚠️ पहले Login करें।\nLogin page पर जाएं?'))
+        window.location.href = 'login.html';
       return;
     }
+    if (CONFIG.RAZORPAY_KEY_ID.includes('YOUR_KEY')) {
+      alert('⚠️ Admin: CONFIG.RAZORPAY_KEY_ID set करें।'); return;
+    }
     selectedItem = { id, title, price, link };
-    document.getElementById('modal-title').textContent = '🛒 ' + title;
-    document.getElementById('modal-price').textContent = '₹' + price;
+    document.getElementById('modal-item-name').textContent = title;
+    document.getElementById('modal-item-price').textContent = '₹' + price;
+    document.getElementById('rzp-pay-btn').disabled = false;
+    document.getElementById('rzp-btn-text').textContent = 'Pay ₹' + price + ' — Secure Checkout';
     document.getElementById('pay-modal').classList.add('open');
   }
 
@@ -385,45 +468,83 @@
     selectedItem = null;
   }
 
-  function copyUPI() {
-    const upiText = 'abhishekchotiya865-1@oksbi':// Replace with your UPI
-    navigator.clipboard.writeText(upiText).then(() => {
-      alert('✅ UPI ID copy हो गई: ' + upiText);
-    }).catch(() => {
-      prompt('UPI ID copy करें:', upiText);
-    });
+  function initiateRazorpay() {
+    if (!selectedItem) return;
+    const btn = document.getElementById('rzp-pay-btn');
+    btn.disabled = true;
+    document.getElementById('rzp-btn-text').textContent = 'Opening Razorpay...';
+
+    const options = {
+      key: CONFIG.RAZORPAY_KEY_ID,
+      amount: selectedItem.price * 100,   // in paise
+      currency: "INR",
+      name: CONFIG.BUSINESS_NAME,
+      description: selectedItem.title,
+      image: CONFIG.LOGO_URL,
+      prefill: {
+        name:    currentUser.name  || "Student",
+        email:   currentUser.email || "",
+        contact: (currentUser.phone || "").replace('+91','')
+      },
+      theme: { color: "#1a237e" },
+      modal: {
+        ondismiss: function() {
+          btn.disabled = false;
+          document.getElementById('rzp-btn-text').textContent =
+            'Pay ₹' + selectedItem.price + ' — Secure Checkout';
+        }
+      },
+      handler: function(response) { onPaymentSuccess(response); }
+    };
+
+    try {
+      const rzp = new Razorpay(options);
+      rzp.on('payment.failed', function(r) {
+        btn.disabled = false;
+        document.getElementById('rzp-btn-text').textContent = 'Retry Payment';
+        alert('❌ Payment fail: ' + (r.error.description || 'Unknown error'));
+      });
+      rzp.open();
+      closeModal();
+    } catch(e) {
+      btn.disabled = false;
+      document.getElementById('rzp-btn-text').textContent = 'Pay ₹' + selectedItem.price;
+      alert('❌ Razorpay load नहीं हुआ। Internet check करें।');
+    }
   }
 
-  function markPaid() {
+  function onPaymentSuccess(response) {
     if (!selectedItem) return;
-    // Unlock item locally (in real app, verify via backend)
-    if (!unlockedItems.includes(selectedItem.id)) {
-      unlockedItems.push(selectedItem.id);
-      localStorage.setItem('ssdl_unlocked', JSON.stringify(unlockedItems));
-    }
-    closeModal();
-    alert(`✅ ${selectedItem.title}\n\nPayment record हो गया!\n\nNote: Admin verification के बाद access मिलेगा। Screenshot WhatsApp पर जरूर भेजें: 925-124-2367`);
+    unlockedItems[selectedItem.id] = {
+      txnId: response.razorpay_payment_id,
+      paidAt: new Date().toISOString(),
+      title: selectedItem.title,
+      link: selectedItem.link,
+      amount: selectedItem.price
+    };
+    saveUnlocked();
+
+    document.getElementById('success-item-name').textContent = selectedItem.title;
+    document.getElementById('success-txn').textContent = 'TXN: ' + response.razorpay_payment_id;
+    const link = selectedItem.link;
+    const id   = selectedItem.id;
+    document.getElementById('success-access-btn').onclick = function() {
+      document.getElementById('success-overlay').classList.remove('open');
+      renderAll();
+      window.open(link, '_blank');
+    };
+    document.getElementById('success-overlay').classList.add('open');
     renderAll();
   }
 
   function openContent(link, id) {
-    if (!isUnlocked(id)) {
-      alert('❌ पहले खरीदें।');
-      return;
-    }
+    if (!isUnlocked(id)) { alert('❌ पहले खरीदें।'); return; }
     window.open(link, '_blank');
   }
 
-  // ─────────────────────────────────────────────
-  // INIT
-  // ─────────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════
+  //  🚀  INIT
+  // ═══════════════════════════════════════════════════════
   loadUser();
   initUI();
-
-  // Simulate loading delay then render
-  setTimeout(() => {
-    renderAll();
-  }, 800);
-</script>
-</body>
-</html>
+  
