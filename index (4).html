@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sharma Sir's Digital Lab — RPSC, REET, SSC Free Notes & Tests | AI-Powered Preparation</title>
+<meta name="description" content="Sharma Sir's Digital Lab — RPSC, REET, SSC, Railway Free Notes, Tests, Current Affairs & AI-Powered Study Tools">
+<meta name="keywords" content="RPSC, REET, SSC, Railway, RSMSSB, CET, free notes, MCQ test, current affairs, Sharma Sir, AI study tools, तैयारी">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg:#FAFAF8; --bg2:#F3F2EF; --bg3:#ECEAE5;
+  --surface:#FFFFFF; --border:#E2DDD5; --border2:#D0CAC0;
+  --navy:#1A1F36; --navy2:#2D3561;
+  --saffron:#E8610A; --saffron2:#FF7A2B; --saffron-light:#FFF0E8;
+  --green:#0A7D4B; --green-light:#E6F5EE;
+  --blue:#1A5FA8; --blue-light:#E8F0FB;
+  --purple:#6C3FC1; --purple-light:#F0EAFB;
+  --red:#C0392B; --red-light:#FDECEA;
+  --gold:#C17D11; --gold-light:#FEF3E2;
+  --text:#1A1F36; --text2:#4A5070; --text3:#8890A8;
+  --shadow:0 2px 16px rgba(26,31,54,0.08);
+  --shadow-lg:0 8px 40px rgba(26,31,54,0.12);
+  --radius:14px; --radius-lg:20px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans Devanagari','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(26,31,54,0.07)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.nav-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(232,97,10,0.2)}
+.brand-name{font-weight:800;color:var(--saffron);font-size:15px;line-height:1.2}
+.brand-sub{font-size:10px;color:var(--text3)}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center}
+.nav-links a{padding:7px 12px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--text2);transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--saffron);background:var(--saffron-light)}
+.btn-contact{background:var(--saffron)!important;color:#fff!important;border-radius:9px!important;padding:7px 16px!important;box-shadow:0 3px 12px rgba(232,97,10,0.3)!important}
+.btn-contact:hover{background:var(--saffron2)!important;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;padding:4px 8px}
+.nav-ai-badge{position:relative}
+.nav-ai-badge::after{content:'AI';position:absolute;top:-4px;right:-6px;background:linear-gradient(135deg,#E8610A,#FF7A2B);color:#fff;font-size:8px;font-weight:800;padding:1px 4px;border-radius:4px;animation:pulse-badge 2s ease-in-out infinite}
+@keyframes pulse-badge{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+/* HERO */
+.hero-dark{background:linear-gradient(135deg,#1A1F36 0%,#2D3561 60%,#1A1F36 100%);position:relative;overflow:hidden;padding:72px 24px 60px;text-align:center}
+.hero-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(232,97,10,0.18),transparent)}
+.hero-eyebrow{display:inline-block;padding:6px 18px;border-radius:999px;background:rgba(232,97,10,0.15);border:1px solid rgba(232,97,10,0.35);color:#FF7A2B;font-size:13px;font-weight:700;margin-bottom:18px;position:relative;z-index:1}
+.hero-h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:#fff;margin-bottom:10px;position:relative;z-index:1;line-height:1.1}
+.hero-h1 span{color:var(--saffron2)}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:15px;max-width:560px;margin:0 auto 28px;position:relative;z-index:1}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;position:relative;z-index:1}
+.pill{padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.85)}
+.pill.or{background:rgba(232,97,10,0.2);border-color:rgba(232,97,10,0.4);color:#FF7A2B}
+.pill.gr{background:rgba(10,125,75,0.2);border-color:rgba(10,125,75,0.4);color:#2ECC71}
+.pill.bl{background:rgba(26,95,168,0.2);border-color:rgba(26,95,168,0.4);color:#5DADE2}
+.hero-stats{display:flex;gap:0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;overflow:hidden;max-width:580px;margin:0 auto;position:relative;z-index:1}
+.hstat{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
+.hstat:last-child{border-right:none}
+.hstat-val{font-size:22px;font-weight:900;color:#FF7A2B;line-height:1}
+.hstat-label{font-size:11px;color:rgba(255,255,255,0.55);margin-top:3px}
+
+/* BUTTONS */
+.btn-primary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--saffron);color:#fff;font-weight:700;font-size:14px;transition:all .2s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,97,10,0.35)}
+.btn-primary:hover{background:var(--saffron2);transform:translateY(-1px);box-shadow:0 6px 22px rgba(232,97,10,0.45)}
+.btn-secondary{display:inline-block;padding:11px 24px;border-radius:10px;background:var(--surface);color:var(--text);font-weight:700;font-size:14px;transition:all .2s;border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--saffron);color:var(--saffron);transform:translateY(-1px)}
+.btn-ghost-dark{display:inline-block;padding:11px 24px;border-radius:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-weight:700;font-size:14px;transition:all .2s}
+.btn-ghost-dark:hover{background:rgba(255,255,255,0.18)}
+
+/* SECTION */
+.section{padding:72px 24px}
+.section-inner{max-width:1160px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:700;color:var(--saffron);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.section-eyebrow::before{content:'';width:20px;height:2px;background:var(--saffron);display:block;border-radius:2px}
+.section-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--navy);margin-bottom:10px}
+.section-title span{color:var(--saffron)}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:36px;max-width:560px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.divider{height:1px;background:var(--border);margin:0}
+.section-alt{background:var(--bg2)}
+
+/* AI SECTION */
+.ai-section{background:linear-gradient(180deg,#1A1F36 0%,#2D3561 100%);padding:80px 24px;position:relative;overflow:hidden}
+.ai-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(232,97,10,0.12),transparent)}
+.ai-section .section-eyebrow{color:#FF7A2B}
+.ai-section .section-title{color:#fff}
+.ai-section .section-sub{color:rgba(255,255,255,0.55)}
+.ai-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;position:relative;z-index:1}
+.ai-tab{padding:10px 20px;border-radius:12px;font-size:13px;font-weight:700;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);cursor:pointer;transition:all .3s;white-space:nowrap}
+.ai-tab:hover{background:rgba(232,97,10,0.15);border-color:rgba(232,97,10,0.3);color:#FF7A2B}
+.ai-tab.active{background:linear-gradient(135deg,#E8610A,#FF7A2B);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(232,97,10,0.4)}
+.ai-panel{display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:32px;position:relative;z-index:1;backdrop-filter:blur(10px)}
+.ai-panel.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ai-panel-title{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px}
+.ai-panel-desc{color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:24px}
+.ai-input-group{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.ai-input{flex:1;min-width:200px;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-size:14px;font-family:inherit;transition:all .2s}
+.ai-input:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 3px rgba(232,97,10,0.2)}
+.ai-input::placeholder{color:rgba(255,255,255,0.35)}
+.ai-select{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-size:14px;font-family:inherit;cursor:pointer;min-width:160px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.ai-select option{background:#1A1F36;color:#fff}
+.ai-select:focus{outline:none;border-color:var(--saffron)}
+.ai-btn{padding:12px 28px;border-radius:12px;background:linear-gradient(135deg,#E8610A,#FF7A2B);color:#fff;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(232,97,10,0.4);font-family:inherit;white-space:nowrap}
+.ai-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(232,97,10,0.5)}
+.ai-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.ai-btn-secondary{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);box-shadow:none}
+.ai-btn-secondary:hover{background:rgba(255,255,255,0.18);box-shadow:none}
+.ai-result{margin-top:20px;padding:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;display:none}
+.ai-result.show{display:block;animation:fadeIn .4s ease}
+.ai-result-title{font-size:15px;font-weight:700;color:#FF7A2B;margin-bottom:10px}
+.ai-result-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8;white-space:pre-wrap}
+.ai-result-list{list-style:none;padding:0}
+.ai-result-list li{color:rgba(255,255,255,0.8);font-size:13px;padding:8px 0 8px 24px;position:relative;border-bottom:1px solid rgba(255,255,255,0.06)}
+.ai-result-list li::before{content:'✦';position:absolute;left:0;color:#FF7A2B;font-size:10px;top:11px}
+.ai-result-list li:last-child{border-bottom:none}
+.ai-loading{display:none;text-align:center;padding:40px}
+.ai-loading.show{display:block}
+.ai-spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,0.1);border-top-color:#FF7A2B;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-loading-text{color:rgba(255,255,255,0.5);font-size:13px}
+
+/* MCQ Specific */
+.mcq-question{margin-bottom:24px;padding:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.mcq-q-text{font-size:15px;font-weight:700;color:#fff;margin-bottom:14px}
+.mcq-q-num{display:inline-block;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#E8610A,#FF7A2B);color:#fff;font-size:12px;font-weight:800;text-align:center;line-height:28px;margin-right:8px}
+.mcq-options{list-style:none;padding:0}
+.mcq-option{padding:10px 16px;margin-bottom:8px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);cursor:pointer;transition:all .2s;color:rgba(255,255,255,0.8);font-size:13px;display:flex;align-items:center;gap:10px}
+.mcq-option:hover{border-color:rgba(232,97,10,0.4);background:rgba(232,97,10,0.08)}
+.mcq-option.selected{border-color:#FF7A2B;background:rgba(232,97,10,0.15);color:#fff}
+.mcq-option.correct{border-color:#2ECC71;background:rgba(46,204,113,0.15);color:#2ECC71}
+.mcq-option.wrong{border-color:#E74C3C;background:rgba(231,76,60,0.15);color:#E74C3C}
+.mcq-option-letter{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.mcq-explanation{margin-top:10px;padding:12px 16px;background:rgba(46,204,113,0.08);border-left:3px solid #2ECC71;border-radius:0 8px 8px 0;color:rgba(255,255,255,0.7);font-size:12px;display:none}
+.mcq-score{padding:20px;background:linear-gradient(135deg,rgba(232,97,10,0.15),rgba(255,122,43,0.1));border:1px solid rgba(232,97,10,0.3);border-radius:12px;text-align:center;display:none}
+.mcq-score.show{display:block}
+.mcq-score-val{font-size:36px;font-weight:900;color:#FF7A2B}
+.mcq-score-label{color:rgba(255,255,255,0.5);font-size:13px}
+
+/* FEATURE CARDS */
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .2s;position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--saffron2));opacity:0;transition:opacity .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--saffron)}
+.feature-card:hover::after{opacity:1}
+.feature-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.fi-or{background:var(--saffron-light)}.fi-gr{background:var(--green-light)}.fi-bl{background:var(--blue-light)}.fi-pu{background:var(--purple-light)}.fi-rd{background:var(--red-light)}.fi-go{background:var(--gold-light)}
+.card-title{font-weight:700;color:var(--navy);font-size:15px;margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* COURSE CARDS */
+.course-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;transition:all .2s;position:relative}
+.course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.course-tag{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:12px}
+.course-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.course-desc{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.6}
+.course-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.course-info{font-size:12px;color:var(--text3);background:var(--bg2);padding:3px 10px;border-radius:6px}
+.course-link{font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px;transition:color .2s}
+.course-link:hover{gap:8px}
+
+/* CA CARD */
+.ca-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .2s;margin-bottom:12px}
+.ca-card:hover{border-color:var(--saffron);box-shadow:var(--shadow)}
+.ca-date{min-width:48px;text-align:center;background:var(--saffron);border-radius:10px;padding:8px 4px;font-size:11px;font-weight:800;color:#fff;line-height:1.3}
+.ca-cat{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:4px}
+.ca-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.ca-desc{font-size:12px;color:var(--text3)}
+
+/* ABOUT / PROFILE */
+.about-hero{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:80px 24px 120px;text-align:center;position:relative}
+.about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,97,10,0.15),transparent)}
+.profile-container{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:1}
+.profile-ring{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,#E8610A,#FF7A2B,#FFB347);padding:4px;box-shadow:0 12px 48px rgba(232,97,10,0.45),0 0 0 8px rgba(232,97,10,0.1);margin:0 auto 20px}
+.profile-photo{width:152px;height:152px;border-radius:50%;object-fit:cover;object-position:center center;display:block;background:var(--navy2)}
+.profile-initials{width:152px;height:152px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;color:#fff;background:linear-gradient(135deg,#2D3561,#1A1F36)}
+.profile-badge{position:absolute;bottom:10px;right:calc(50% - 90px);width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#E8610A,#FF7A2B);display:flex;align-items:center;justify-content:center;font-size:16px;border:3px solid #fff;box-shadow:0 3px 12px rgba(0,0,0,0.2)}
+.profile-name{font-size:24px;font-weight:900;color:#fff;margin-bottom:4px}
+.profile-role{color:#FF7A2B;font-size:14px;font-weight:600;margin-bottom:3px}
+.profile-tag{color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:24px}
+.profile-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;max-width:480px;margin:0 auto}
+.profile-stat{padding:16px 10px;text-align:center;background:rgba(255,255,255,0.04)}
+.profile-stat-val{font-size:20px;font-weight:900;color:#FF7A2B}
+.profile-stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
+
+/* TESTIMONIALS */
+.test-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .2s}
+.test-card:hover{border-color:var(--saffron);box-shadow:var(--shadow)}
+.test-stars{color:var(--saffron);font-size:16px;margin-bottom:10px}
+.test-text{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px;font-style:italic}
+.test-name{font-weight:700;color:var(--navy);font-size:14px}
+.test-tag{font-size:12px;color:var(--green);margin-top:2px}
+
+/* CTA */
+.cta-dark{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius-lg);padding:40px 32px;text-align:center;position:relative;overflow:hidden;margin-top:48px}
+.cta-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(232,97,10,0.2),transparent)}
+.cta-dark-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;position:relative}
+.cta-dark-sub{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:22px;position:relative}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,0.85);padding:52px 24px 28px}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.footer-brand-logo{width:44px;height:44px;border-radius:10px;object-fit:cover;margin-bottom:12px}
+.footer-brand-name{font-weight:800;color:var(--saffron2);font-size:16px;margin-bottom:6px}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:16px}
+.footer-socials{display:flex;gap:8px;flex-wrap:wrap}
+.footer-soc{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;transition:all .2s}
+.footer-soc:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--saffron2);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:9px;transition:color .2s}
+.footer-link:hover{color:var(--saffron2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid transparent}
+.badge-or{background:var(--saffron-light);color:var(--saffron);border-color:rgba(232,97,10,0.25)}
+.badge-gr{background:var(--green-light);color:var(--green);border-color:rgba(10,125,75,0.25)}
+
+/* COPY BUTTON */
+.copy-btn{padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;margin-top:10px}
+.copy-btn:hover{background:rgba(232,97,10,0.2);border-color:rgba(232,97,10,0.3);color:#FF7A2B}
+
+/* RESPONSIVE */
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:28px}.profile-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;flex-direction:column;padding:12px 20px;border-bottom:1px solid var(--border);gap:2px;align-items:flex-start;box-shadow:0 8px 24px rgba(26,31,54,0.1)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .footer-top{grid-template-columns:1fr;gap:24px}
+  .section{padding:48px 20px}
+  .hero-dark{padding:48px 20px 40px}
+  .ai-section{padding:48px 20px}
+  .ai-panel{padding:20px}
+  .ai-input-group{flex-direction:column}
+  .ai-input{min-width:100%}
+  .profile-stats{grid-template-columns:repeat(2,1fr);max-width:300px}
+  .hero-stats{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-inner">
+  <a href="index.html" class="brand">
+    <img src="logo.jpg" class="nav-logo" alt="Sharma Sir's Digital Lab" onerror="this.style.display='none'">
+    <div><div class="brand-name">Sharma Sir's Digital Lab</div><div class="brand-sub">RPSC · RSMSSB · SSC · Railway · REET</div></div>
+  </a>
+  <button class="hamburger" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+  <ul class="nav-links" id="nl">
+    <li><a href="index.html" class="active">🏠 Home</a></li>
+    <li><a href="about.html">👤 About</a></li>
+    <li><a href="courses.html">📚 Courses</a></li>
+    <li><a href="notes.html">📝 Notes</a></li>
+    <li><a href="current-affairs.html">📰 Current Affairs</a></li>
+    <li><a href="test-series.html">🎯 Test Series</a></li>
+    <li><a href="downloads.html">⬇️ Downloads</a></li>
+    <li><a href="contact.html" class="btn-contact">☎️ Contact</a></li>
+    <li><a href="#ai-section" class="nav-ai-badge">🤖 AI Tools</a></li>
+  </ul>
+</div></nav>
+
+<!-- HERO -->
+<div class="hero-dark">
+  <div class="hero-eyebrow">🏆 राजस्थान की #1 ऑनलाइन कोचिंग</div>
+  <h1 class="hero-h1">सफलता की राह पर<br><span>Sharma Sir's Digital Lab</span></h1>
+  <p class="hero-sub">RPSC · RSMSSB · SSC · Railway · REET · 1st Grade · 2nd Grade · CET · DSSSB<br>सभी प्रतियोगी परीक्षाओं के लिए उच्च गुणवत्ता अध्ययन सामग्री <strong>+ AI Powered Tools</strong></p>
+  <div class="hero-pills">
+    <span class="pill or">📄 500+ Free Notes</span>
+    <span class="pill gr">🎯 300+ MCQ Tests</span>
+    <span class="pill bl">📰 Daily Current Affairs</span>
+    <span class="pill">🤖 AI Study Tools</span>
+    <span class="pill">👨‍🎓 1000+ Students</span>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;position:relative;z-index:1">
+    <a href="#ai-section" class="btn-primary">🤖 AI Tools आज़माएं</a>
+    <a href="test-series.html" class="btn-ghost-dark">🎯 Free Tests दें</a>
+    <a href="https://t.me/sharmasirdigitallab" class="btn-ghost-dark">📢 Telegram Join करें</a>
+    <a href="notes.html" class="btn-ghost-dark">📝 Notes Download</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-val">500+</div><div class="hstat-label">PDF Notes</div></div>
+    <div class="hstat"><div class="hstat-val">300+</div><div class="hstat-label">MCQ Tests</div></div>
+    <div class="hstat"><div class="hstat-val">1000+</div><div class="hstat-label">Students</div></div>
+    <div class="hstat"><div class="hstat-val">5.0★</div><div class="hstat-label">Rating</div></div>
+  </div>
+</div>
+
+<!-- AI FEATURES SECTION -->
+<div class="ai-section" id="ai-section">
+  <div style="max-width:900px;margin:0 auto;position:relative;z-index:1">
+    <div class="section-eyebrow">🤖 AI-POWERED TOOLS</div>
+    <div class="section-title">AI से अपनी तैयारी को बनाएं <span>और भी मजबूत</span></div>
+    <div class="section-sub">AI की मदद से तेज़ी से सीखें, MCQ टेस्ट दें, नोट्स बनाएं और रणनीति तैयार करें।</div>
+
+    <div class="ai-tabs">
+      <button class="ai-tab active" onclick="switchTab('search')">🔍 AI खोजें</button>
+      <button class="ai-tab" onclick="switchTab('mcq')">📝 MCQ टेस्ट</button>
+      <button class="ai-tab" onclick="switchTab('content')">✍️ AI सामग्री</button>
+      <button class="ai-tab" onclick="switchTab('strategy')">📋 तैयारी रणनीति</button>
+      <button class="ai-tab" onclick="switchTab('summary')">📊 AI सारांश</button>
+    </div>
+
+    <!-- SEARCH PANEL -->
+    <div class="ai-panel active" id="panel-search">
+      <div class="ai-panel-title">🔍 AI खोज इंजन</div>
+      <div class="ai-panel-desc">कोई भी विषय खोजें और AI से नोट्स, मुख्य बिंदु और तैयारी टिप्स पाएं</div>
+      <div class="ai-input-group">
+        <input type="text" class="ai-input" id="search-query" placeholder="कोई विषय खोजें... जैसे: भारत का संविधान, राजस्थान का इतिहास" oninput="enableSearchBtn()">
+        <button class="ai-btn" id="search-btn" disabled onclick="doSearch()">🔍 खोजें</button>
+      </div>
+      <div class="ai-loading" id="search-loading"><div class="ai-spinner"></div><div class="ai-loading-text">AI आपके लिए सामग्री खोज रहा है...</div></div>
+      <div class="ai-result" id="search-result"></div>
+    </div>
+
+    <!-- MCQ PANEL -->
+    <div class="ai-panel" id="panel-mcq">
+      <div class="ai-panel-title">📝 AI MCQ टेस्ट जनरेटर</div>
+      <div class="ai-panel-desc">परीक्षा और विषय चुनें, AI आपके लिए MCQ प्रश्न तैयार करेगा</div>
+      <div class="ai-input-group">
+        <select class="ai-select" id="mcq-exam" onchange="enableMcqBtn()">
+          <option value="">परीक्षा चुनें</option>
+          <option value="rpsc">RPSC 1st & 2nd Grade</option>
+          <option value="reet">REET Level 1 & 2</option>
+          <option value="ssc">SSC / CET / RSMSSB</option>
+          <option value="railway">Railway Group D / NTPC</option>
+          <option value="patwar">Patwari / CET</option>
+        </select>
+        <select class="ai-select" id="mcq-subject" onchange="enableMcqBtn()">
+          <option value="">विषय चुनें</option>
+          <option value="gk">सामान्य ज्ञान (GK)</option>
+          <option value="math">गणित (Math)</option>
+          <option value="science">विज्ञान (Science)</option>
+          <option value="hindi">हिंदी (Hindi)</option>
+          <option value="english">अंग्रेजी (English)</option>
+          <option value="reasoning">तर्क शक्ति (Reasoning)</option>
+          <option value="rajasthan">राजस्थान GK</option>
+          <option value="child-dev">बाल विकास</option>
+        </select>
+        <select class="ai-select" id="mcq-count" onchange="enableMcqBtn()">
+          <option value="5">5 प्रश्न</option>
+          <option value="10">10 प्रश्न</option>
+          <option value="15">15 प्रश्न</option>
+          <option value="20">20 प्रश्न</option>
+        </select>
+      </div>
+      <div class="ai-input-group">
+        <button class="ai-btn" id="mcq-btn" disabled onclick="generateMcq()">🎯 टेस्ट जनरेट करें</button>
+      </div>
+      <div class="ai-loading" id="mcq-loading"><div class="ai-spinner"></div><div class="ai-loading-text">AI MCQ प्रश्न तैयार कर रहा है...</div></div>
+      <div id="mcq-container"></div>
+      <div class="mcq-score" id="mcq-score"><div class="mcq-score-val" id="mcq-score-val"></div><div class="mcq-score-label">आपका स्कोर</div></div>
+    </div>
+
+    <!-- CONTENT PANEL -->
+    <div class="ai-panel" id="panel-content">
+      <div class="ai-panel-title">✍️ AI सामग्री निर्माण</div>
+      <div class="ai-panel-desc">कोई भी विषय दर्ज करें और AI नोट्स, सारांश या मुख्य बिंदु बनाएगा</div>
+      <div class="ai-input-group">
+        <input type="text" class="ai-input" id="content-topic" placeholder="विषय दर्ज करें... जैसे: भारतीय संविधान की प्रस्तावना" oninput="enableContentBtn()">
+        <select class="ai-select" id="content-type" onchange="enableContentBtn()">
+          <option value="notes">📝 नोट्स</option>
+          <option value="summary">📋 सारांश</option>
+          <option value="keypoints">🔑 मुख्य बिंदु</option>
+          <option value="mindmap">🧠 माइंड मैप</option>
+        </select>
+      </div>
+      <div class="ai-input-group">
+        <button class="ai-btn" id="content-btn" disabled onclick="generateContent()">✍️ सामग्री बनाएं</button>
+      </div>
+      <div class="ai-loading" id="content-loading"><div class="ai-spinner"></div><div class="ai-loading-text">AI सामग्री तैयार कर रहा है...</div></div>
+      <div class="ai-result" id="content-result"></div>
+    </div>
+
+    <!-- STRATEGY PANEL -->
+    <div class="ai-panel" id="panel-strategy">
+      <div class="ai-panel-title">📋 AI तैयारी रणनीति</div>
+      <div class="ai-panel-desc">परीक्षा चुनें और AI आपके लिए दैनिक अध्ययन योजना और रणनीति बनाएगा</div>
+      <div class="ai-input-group">
+        <select class="ai-select" id="strategy-exam" onchange="enableStrategyBtn()">
+          <option value="">परीक्षा चुनें</option>
+          <option value="rpsc">RPSC 1st & 2nd Grade</option>
+          <option value="reet">REET Level 1 & 2</option>
+          <option value="ssc">SSC / CET / RSMSSB</option>
+          <option value="railway">Railway Group D / NTPC</option>
+          <option value="patwar">Patwari / CET</option>
+        </select>
+        <button class="ai-btn" id="strategy-btn" disabled onclick="generateStrategy()">📋 रणनीति बनाएं</button>
+      </div>
+      <div class="ai-loading" id="strategy-loading"><div class="ai-spinner"></div><div class="ai-loading-text">AI रणनीति तैयार कर रहा है...</div></div>
+      <div class="ai-result" id="strategy-result"></div>
+    </div>
+
+    <!-- SUMMARY PANEL -->
+    <div class="ai-panel" id="panel-summary">
+      <div class="ai-panel-title">📊 AI सारांश — Quick Revision</div>
+      <div class="ai-panel-desc">किसी भी विषय का संक्षिप्त सारांश पाएं त्वरित संशोधन के लिए</div>
+      <div class="ai-input-group">
+        <input type="text" class="ai-input" id="summary-topic" placeholder="विषय या सामग्री दर्ज करें..." oninput="enableSummaryBtn()">
+        <select class="ai-select" id="summary-length" onchange="enableSummaryBtn()">
+          <option value="short">संक्षिप्त</option>
+          <option value="medium" selected>मध्यम</option>
+          <option value="detailed">विस्तृत</option>
+        </select>
+      </div>
+      <div class="ai-input-group">
+        <button class="ai-btn" id="summary-btn" disabled onclick="generateSummary()">📊 सारांश बनाएं</button>
+      </div>
+      <div class="ai-loading" id="summary-loading"><div class="ai-spinner"></div><div class="ai-loading-text">AI सारांश तैयार कर रहा है...</div></div>
+      <div class="ai-result" id="summary-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">हमारी विशेषताएं</div>
+    <div class="section-title">Why Choose <span>Sharma Sir's Digital Lab?</span></div>
+    <div class="section-sub">हम आपको प्रतियोगी परीक्षाओं में सफलता दिलाने के लिए सर्वश्रेष्ठ सामग्री प्रदान करते हैं।</div>
+    <div class="grid3">
+      <div class="feature-card"><div class="feature-icon fi-or">📚</div><div class="card-title">Premium Notes</div><div class="card-desc">500+ PDF नोट्स — परीक्षा दृष्टि से महत्वपूर्ण व सुव्यवस्थित।</div></div>
+      <div class="feature-card"><div class="feature-icon fi-bl">📰</div><div class="card-title">Daily Current Affairs</div><div class="card-desc">प्रतिदिन अपडेट — राजस्थान व राष्ट्रीय स्तर के सभी events।</div></div>
+      <div class="feature-card"><div class="feature-icon fi-gr">🎯</div><div class="card-title">Free Mock Tests</div><div class="card-desc">300+ वास्तविक परीक्षा पैटर्न पर आधारित MCQ Tests।</div></div>
+      <div class="feature-card"><div class="feature-icon fi-pu">🎥</div><div class="card-title">Video Lectures</div><div class="card-desc">YouTube पर 200+ Free Lectures — हिंदी माध्यम में।</div></div>
+      <div class="feature-card"><div class="feature-icon fi-rd">⬇️</div><div class="card-title">Free Downloads</div><div class="card-desc">Notes, Previous Papers बिल्कुल मुफ्त डाउनलोड।</div></div>
+      <div class="feature-card"><div class="feature-icon fi-go">🤝</div><div class="card-title">Personal Guidance</div><div class="card-desc">WhatsApp व Telegram पर Sharma Sir से सीधी सहायता।</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COURSES -->
+<div class="section section-alt">
+  <div class="section-inner">
+    <div class="section-eyebrow">Popular Courses</div>
+    <div class="section-title">परीक्षा के अनुसार <span>Course चुनें</span></div>
+    <div class="section-sub">सफलता की राह पर चलें — सही Course, सही Notes, सही Direction।</div>
+    <div class="grid2">
+      <div class="course-card" style="border-top:3px solid #E74C3C">
+        <span class="course-tag" style="background:#FDECEA;color:#C0392B;border:1px solid rgba(192,57,43,0.25)">RPSC</span>
+        <div class="course-title">RPSC 1st & 2nd Grade</div>
+        <div class="course-desc">RPSC School Lecturer व Senior Teacher — Paper-I GK और Paper-II Subject दोनों की सम्पूर्ण तैयारी।</div>
+        <div class="course-meta"><span class="course-info">📄 500+ Notes</span><span class="course-info">🎯 50+ Tests</span></div>
+        <a href="courses.html" class="course-link" style="color:#C0392B">विस्तार से जानें →</a>
+      </div>
+      <div class="course-card" style="border-top:3px solid #0A7D4B">
+        <span class="course-tag" style="background:#E6F5EE;color:#0A7D4B;border:1px solid rgba(10,125,75,0.25)">REET</span>
+        <div class="course-title">REET Level 1 & 2</div>
+        <div class="course-desc">बाल विकास, भाषा, गणित, EVS — REET Level 1 व Level 2 दोनों की तैयारी।</div>
+        <div class="course-meta"><span class="course-info">📄 300+ Notes</span><span class="course-info">🎯 Free Tests</span></div>
+        <a href="courses.html" class="course-link" style="color:#0A7D4B">विस्तार से जानें →</a>
+      </div>
+      <div class="course-card" style="border-top:3px solid #1A5FA8">
+        <span class="course-tag" style="background:#E8F0FB;color:#1A5FA8;border:1px solid rgba(26,95,168,0.25)">SSC</span>
+        <div class="course-title">SSC / CET / RSMSSB</div>
+        <div class="course-desc">SSC GD, CHSL, MTS तथा Rajasthan CET 10th/12th Level की सम्पूर्ण तैयारी।</div>
+        <div class="course-meta"><span class="course-info">📄 200+ Notes</span><span class="course-info">🎯 25+ Tests</span></div>
+        <a href="courses.html" class="course-link" style="color:#1A5FA8">विस्तार से जानें →</a>
+      </div>
+      <div class="course-card" style="border-top:3px solid #6C3FC1">
+        <span class="course-tag" style="background:#F0EAFB;color:#6C3FC1;border:1px solid rgba(108,63,193,0.25)">Railway</span>
+        <div class="course-title">Railway Group D / NTPC</div>
+        <div class="course-desc">RRB NTPC, Group D, ALP — Science, Math, Reasoning, GK सहित सम्पूर्ण तैयारी।</div>
+        <div class="course-meta"><span class="course-info">📄 150+ Notes</span><span class="course-info">🎯 20+ Tests</span></div>
+        <a href="courses.html" class="course-link" style="color:#6C3FC1">विस्तार से जानें →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CURRENT AFFAIRS -->
+<div class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Latest Updates</div>
+    <div class="section-title">Recent <span>Current Affairs</span></div>
+    <div class="section-sub">प्रतियोगी परीक्षाओं के लिए नवीनतम करंट अफेयर्स।</div>
+    <div style="max-width:720px;margin:0 auto">
+      <div class="ca-card"><div class="ca-date">22<br>JUN</div><div><span class="ca-cat" style="background:#FDECEA;color:#C0392B">Rajasthan</span><div class="ca-title">राजस्थान बजट 2026-27: 5,000 नए शिक्षक पद</div><div class="ca-desc">शिक्षा क्षेत्र के लिए ₹15,000 करोड़ का प्रावधान।</div></div></div>
+      <div class="ca-card"><div class="ca-date">20<br>JUN</div><div><span class="ca-cat" style="background:#E8F0FB;color:#1A5FA8">SSC</span><div class="ca-title">SSC GD 2026: 50,000+ पदों की भर्ती</div><div class="ca-desc">GD Constable 2026 की अधिसूचना जारी।</div></div></div>
+      <div class="ca-card"><div class="ca-date">18<br>JUN</div><div><span class="ca-cat" style="background:#E6F5EE;color:#0A7D4B">REET</span><div class="ca-title">REET 2026 — अगस्त में परीक्षा</div><div class="ca-desc">माध्यमिक शिक्षा बोर्ड ने परीक्षा तिथि घोषित की।</div></div></div>
+      <div class="ca-card"><div class="ca-date">15<br>JUN</div><div><span class="ca-cat" style="background:#F0EAFB;color:#6C3FC1">Railway</span><div class="ca-title">RRB NTPC 2026: 8,113 पदों की भर्ती</div><div class="ca-desc">Railway Recruitment Board की नई अधिसूचना।</div></div></div>
+      <div style="text-align:center;margin-top:20px">
+        <a href="current-affairs.html" class="btn-secondary">सभी Current Affairs →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT SHARMA SIR (with CENTERED profile photo) -->
+<div class="about-hero" id="about">
+  <div class="profile-container">
+    <div class="hero-eyebrow">👤 हमारे बारे में</div>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:6px;position:relative;z-index:1">Meet <span style="color:#FF7A2B">Sharma Sir</span></h1>
+    <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:32px;position:relative;z-index:1">10+ वर्षों के शिक्षण अनुभव के साथ — राजस्थान के छात्रों का विश्वसनीय मार्गदर्शक</p>
+    <div class="profile-ring">
+      <img src="logo.jpg" class="profile-photo" alt="Sharma Sir" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="profile-initials" style="display:none">SS</div>
+    </div>
+    <div class="profile-badge">✓</div>
+    <div class="profile-name">Sharma Sir</div>
+    <div class="profile-role">प्रतियोगी परीक्षा विशेषज्ञ</div>
+    <div class="profile-tag">RPSC · REET · SSC · Railway — 10+ वर्षों का अनुभव</div>
+    <div class="profile-stats">
+      <div class="profile-stat"><div class="profile-stat-val">10+</div><div class="profile-stat-label">वर्ष अनुभव</div></div>
+      <div class="profile-stat"><div class="profile-stat-val">1000+</div><div class="profile-stat-label">सफल छात्र</div></div>
+      <div class="profile-stat"><div class="profile-stat-val">5.0★</div><div class="profile-stat-label">रेटिंग</div></div>
+      <div class="profile-stat"><div class="profile-stat-val">500+</div><div class="profile-stat-label">नोट्स</div></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+      <a href="https://wa.me/919251242367" class="btn-primary">💬 WhatsApp</a>
+      <a href="https://t.me/sharmasirdigitallab" class="btn-ghost-dark">📢 Telegram</a>
+      <a href="about.html" class="btn-ghost-dark">👤 विस्तार से जानें</a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section section-alt">
+  <div class="section-inner">
+    <div class="section-eyebrow">Success Stories</div>
+    <div class="section-title">Students के <span>अनुभव</span></div>
+    <div class="section-sub">हमारे सफल छात्रों की कहानियाँ।</div>
+    <div class="grid3">
+      <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Sharma Sir के नोट्स और टेस्ट सीरीज की वजह से मैं REET Level 2 में पास हो सकी। Notes बहुत संक्षिप्त और उपयोगी हैं।"</div><div class="test-name">Priya Sharma</div><div class="test-tag">REET Level 2 Qualified ✓</div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Daily Current Affairs बहुत helpful है। Sir की teaching style simple और effective है। SSC CHSL में selection मिला।"</div><div class="test-name">Rahul Meena</div><div class="test-tag">SSC CHSL Selected ✓</div></div>
+      <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"RPSC 2nd Grade के लिए सम्पूर्ण तैयारी इसी platform से की। Telegram पर सभी updates मिलते हैं।"</div><div class="test-name">Anita Joshi</div><div class="test-tag">RPSC 2nd Grade Qualified ✓</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="section">
+  <div class="section-inner">
+    <div class="cta-dark">
+      <div class="cta-dark-title">🎯 आज ही Join करें और सफलता की ओर बढ़ें!</div>
+      <div class="cta-dark-sub">1000+ Students पहले से ही Sharma Sir's Digital Lab के साथ हैं।</div>
+      <div class="cta-btns">
+        <a href="https://t.me/sharmasirdigitallab" class="btn-primary">📢 Telegram Join करें</a>
+        <a href="test-series.html" class="btn-primary" style="background:#0A7D4B;box-shadow:0 4px 14px rgba(10,125,75,0.35)">🎯 Free Test दें</a>
+        <a href="notes.html" class="btn-ghost-dark">📝 Notes देखें</a>
+        <a href="https://wa.me/919251242367" class="btn-ghost-dark">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-top">
+    <div>
+      <img src="logo.jpg" class="footer-brand-logo" alt="Logo" onerror="this.style.display='none'">
+      <div class="footer-brand-name">Sharma Sir's Digital Lab</div>
+      <div class="footer-tagline">RPSC, RSMSSB, REET, SSC, Railway — राजस्थान की विश्वसनीय ऑनलाइन कोचिंग। 1000+ छात्र सफल। AI-Powered Study Tools के साथ।</div>
+      <div class="footer-socials">
+        <a href="https://t.me/sharmasirdigitallab" class="footer-soc">📢 Telegram</a>
+        <a href="https://wa.me/919251242367" class="footer-soc">💬 WhatsApp</a>
+        <a href="https://youtube.com/@SharmaSirsDigitalLab" class="footer-soc">🎥 YouTube</a>
+        <a href="mailto:abhishekchotiya637@gmail.com" class="footer-soc">📧 Email</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Exams</div>
+      <a href="courses.html" class="footer-link">RPSC 1st & 2nd Grade</a>
+      <a href="courses.html" class="footer-link">REET Level 1 & 2</a>
+      <a href="courses.html" class="footer-link">SSC / CET / RSMSSB</a>
+      <a href="courses.html" class="footer-link">Railway Group D / NTPC</a>
+      <a href="courses.html" class="footer-link">DSSSB / Patwar</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Study Material</div>
+      <a href="notes.html" class="footer-link">📝 Notes & PDFs</a>
+      <a href="current-affairs.html" class="footer-link">📰 Current Affairs</a>
+      <a href="test-series.html" class="footer-link">🎯 Test Series</a>
+      <a href="downloads.html" class="footer-link">⬇️ Free Downloads</a>
+      <a href="index.html#ai-section" class="footer-link">🤖 AI Study Tools</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a href="about.html" class="footer-link">👤 About Sharma Sir</a>
+      <a href="contact.html" class="footer-link">☎️ Contact Us</a>
+      <a href="https://t.me/sharmasirdigitallab" class="footer-link">📢 Join Telegram</a>
+      <a href="https://wa.me/919251242367" class="footer-link">💬 WhatsApp</a>
+      <a href="https://youtube.com/@SharmaSirsDigitalLab" class="footer-link">🎥 YouTube</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Sharma Sir's Digital Lab. All Rights Reserved.</div>
+    <div class="footer-copy">RPSC · REET · SSC · Railway · RSMSSB · CET · DSSSB</div>
+  </div>
+</div></footer>
+
+<script>
+// TAB SWITCHING
+function switchTab(tab) {
+  document.querySelectorAll('.ai-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ai-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+
+// ENABLE BUTTONS
+function enableSearchBtn(){document.getElementById('search-btn').disabled=!document.getElementById('search-query').value.trim()}
+function enableMcqBtn(){const e=document.getElementById('mcq-exam').value,s=document.getElementById('mcq-subject').value;document.getElementById('mcq-btn').disabled=!(e&&s)}
+function enableContentBtn(){document.getElementById('content-btn').disabled=!document.getElementById('content-topic').value.trim()}
+function enableStrategyBtn(){document.getElementById('strategy-btn').disabled=!document.getElementById('strategy-exam').value}
+function enableSummaryBtn(){document.getElementById('summary-btn').disabled=!document.getElementById('summary-topic').value.trim()}
+
+// COPY TO CLIPBOARD
+function copyText(id){
+  const el=document.getElementById(id);
+  const text=el.innerText;
+  navigator.clipboard.writeText(text).then(()=>{const btn=el.parentElement.querySelector('.copy-btn')||event.target;if(btn){btn.textContent='✓ कॉपी हुआ!';setTimeout(()=>btn.textContent='📋 कॉपी करें',2000)}});
+}
+
+// ==================== AI SEARCH ====================
+function doSearch(){
+  const q=document.getElementById('search-query').value.trim();
+  if(!q)return;
+  const btn=document.getElementById('search-btn'),loading=document.getElementById('search-loading'),result=document.getElementById('search-result');
+  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
+
+  const examData={
+    'संविधान':{summary:'भारतीय संविधान भारत का सर्वोच्च कानून है जो 26 जनवरी 1950 को लागू हुआ। इसे डॉ. भीमराव अंबेडकर ने प्रारूपित किया। यह 395 अनुच्छेद, 22 भाग और 12 अनुसूचियों से मिलकर बना है।',notes:'• मूल अधिकार (Part III) — अनुच्छेद 12-35\n• नीति निदेशक तत्व (Part IV) — अनुच्छेद 36-51\n• मौलिक कर्तव्य (Part IVA) — अनुच्छेद 51A\n• संघ और राज्य — संसद और विधानसभा\n• सर्वोच्च न्यायालय — अनुच्छेद 124\n• राज्यपाल — अनुच्छेद 153-167\n• राष्ट्रपति — अनुच्छेद 52-78',keyPoints:['भारतीय संविधान विश्व का सबसे लंबा लिखित संविधान है','डॉ. भीमराव अंबेडकर — संविधान समिति के अध्यक्ष','संविधान सभा — 389 सदस्य, पहली बैठक 9 दिसम्बर 1946','26 जनवरी — गणतंत्र दिवस (1950)','संप्रभुता, समाजवाद, लोकतंत्र, गणराज्य — मूल तत्व'],studyTips:['सभी मूल अधिकारों की सूची याद करें','महत्वपूर्ण अनुच्छेदों के संख्या याद रखें','पिछले वर्ष के प्रश्नों में संविधान से अधिक प्रश्न आते हैं','संशोधनों की सूची बनाएं — विशेषकर 42वां, 44वां, 73वां, 74वां'],relatedTopics:['मूल अधिकार','राज्यपाल और राष्ट्रपति','संसदीय प्रणाली','पंचायती राज']},
+    'राजस्थान':{summary:'राजस्थान भारत का सबसे बड़ा राज्य (क्षेत्रफल) है। इसकी राजधानी जयपुर है। यह राजपूताना के नाम से भी जाना जाता था। 33 जिले, 200+ तहसील।',notes:'• राजधानी — जयपुर\n• सबसे बड़ा जिला (क्षेत्रफल) — जोधपुर\n• सबसे बड़ा जिला (जनसंख्या) — जयपुर\n• मुख्य नदियां — चम्बल, बनास, लूनी\n• मरुस्थल — थार मरुस्थल\n• राज्य स्थापना — 30 मार्च 1949\n• पहला राज्यपाल — हीरालाल शास्त्री\n• पहला मुख्यमंत्री — हीरालाल शास्त्री',keyPoints:['1 नवंबर 1956 — राजस्थान पुनर्गठन दिवस','भारत का सबसे बड़ा राज्य (क्षेत्रफल में)','33 जिले, 200 तहसीलें','थार मरुस्थल — भारत का सबसे बड़ा मरुस्थल','अरावली — भारत की सबसे पुरानी पर्वत श्रृंखला'],studyTips:['राजस्थान GK में भौगोलिक तथ्य अधिक पूछे जाते हैं','सभी 33 जिलों के नाम और उनकी विशेषताएं याद करें','राजस्थान के किले, झीलें और मंदिर याद करें','प्रतिवर्षी परीक्षाओं से पिछले प्रश्न हल करें'],relatedTopics:['राजस्थान के जिले','राजस्थान की नदियां','राजस्थान का इतिहास','राजस्थान के किले']}
+  };
+
+  // Check if query matches any keyword
+  let data=null;
+  for(const [key,val] of Object.entries(examData)){if(q.includes(key)){data=val;break}}
+
+  setTimeout(()=>{
+    loading.classList.remove('show');btn.disabled=false;
+    if(data){
+      result.innerHTML=`<div class="ai-result-title">📋 ${q} — AI Search Results</div>
+        <div class="ai-result-text" style="margin-bottom:16px"><strong>📖 सारांश:</strong> ${data.summary}</div>
+        <div class="ai-result-title">📝 विस्तृत नोट्स:</div>
+        <div class="ai-result-text" id="search-notes" style="margin-bottom:16px">${data.notes}</div><button class="copy-btn" onclick="copyText('search-notes')">📋 कॉपी करें</button>
+        <div class="ai-result-title" style="margin-top:20px">🔑 मुख्य बिंदु:</div><ul class="ai-result-list">${data.keyPoints.map(k=>`<li>${k}</li>`).join('')}</ul>
+        <div class="ai-result-title" style="margin-top:20px">💡 तैयारी टिप्स:</div><ul class="ai-result-list">${data.studyTips.map(k=>`<li>${k}</li>`).join('')}</ul>
+        <div class="ai-result-title" style="margin-top:20px">📚 संबंधित विषय:</div><ul class="ai-result-list">${data.relatedTopics.map(k=>`<li>${k}</li>`).join('')}</ul>`;
+    }else{
+      result.innerHTML=`<div class="ai-result-title">📋 "${q}" — AI Search Results</div>
+        <div class="ai-result-text"><strong>📖 सारांश:</strong> ${q} एक महत्वपूर्ण विषय है जो प्रतियोगी परीक्षाओं में अक्सर पूछा जाता है। इस विषय से संबंधित प्रश्न RPSC, REET, SSC और Railway परीक्षाओं में नियमित रूप से आते हैं। विस्तृत नोट्स के लिए Notes section देखें।</div>
+        <div class="ai-result-title" style="margin-top:16px">🔑 मुख्य बिंदु:</div><ul class="ai-result-list"><li>${q} की बुनियादी अवधारणाएं स्पष्ट करें</li><li>पिछले वर्ष के प्रश्नों से अभ्यास करें</li><li>Sharma Sir के नोट्स और वीडियो लेक्चर देखें</li></ul>`;
+    }
+    result.classList.add('show');
+  },1500);
+}
+
+// ==================== AI MCQ ====================
+let mcqQuestions=[];let mcqAnswers={};let mcqSubmitted=false;
+
+function generateMcq(){
+  const exam=document.getElementById('mcq-exam').value,subject=document.getElementById('mcq-subject').value,count=parseInt(document.getElementById('mcq-count').value);
+  const container=document.getElementById('mcq-container'),scoreEl=document.getElementById('mcq-score');
+  container.innerHTML='';scoreEl.classList.remove('show');mcqQuestions=[];mcqAnswers={};mcqSubmitted=false;
+  document.getElementById('mcq-btn').disabled=true;document.getElementById('mcq-loading').classList.add('show');
+
+  const examNames={rpsc:'RPSC',reet:'REET',ssc:'SSC',railway:'Railway',patwar:'Patwari'};
+  const subNames={gk:'सामान्य ज्ञान',math:'गणित',science:'विज्ञान',hindi:'हिंदी',english:'अंग्रेजी',reasoning:'तर्क शक्ति',rajasthan:'राजस्थान GK',child_dev:'बाल विकास'};
+
+  // Pre-built MCQ database
+  const mcqDB={
+    gk:[
+      {q:'भारत का राष्ट्रीय पशु कौन सा है?',o:['शेर','बाघ','हाथी','मोर'],c:1,e:'बाघ (Panthera tigris) भारत का राष्ट्रीय पशु है। इसे 1973 में राष्ट्रीय पशु घोषित किया गया।'},
+      {q:'भारत की सबसे लंबी नदी कौन सी है?',o:['यमुना','गंगा','गोदावरी','ब्रह्मपुत्र'],c:1,e:'गंगा नदी 2525 किमी लंबी है और भारत की सबसे लंबी नदी है।'},
+      {q:'भारत का संविधान कब लागू हुआ?',o:['26 जनवरी 1950','15 अगस्त 1947','26 नवंबर 1949','2 अक्टूबर 1950'],c:0,e:'भारतीय संविधान 26 जनवरी 1950 को लागू हुआ, इसी दिन को गणतंत्र दिवस मनाया जाता है।'},
+      {q:'भारत के प्रथम राष्ट्रपति कौन थे?',o:['पंडित जवाहरलाल नेहरू','डॉ. राजेंद्र प्रसाद','सरदार पटेल','डॉ. अंबेडकर'],c:1,e:'डॉ. राजेंद्र प्रसाद भारत के प्रथम राष्ट्रपति थे (1950-1962)।'},
+      {q:'भारत में कुल कितने राज्य हैं (2026)?',o:['28','29','30','27'],c:0,e:'भारत में 28 राज्य और 8 केंद्रशासित प्रदेश हैं।'},
+      {q:'विश्व का सबसे बड़ा लोकतंत्र कौन सा देश है?',o:['अमेरिका','चीन','भारत','ब्रिटेन'],c:2,e:'भारत जनसंख्या की दृष्टि से विश्व का सबसे बड़ा लोकतंत्र है।'},
+      {q:'UNO की स्थापना कब हुई?',o:['1942','1943','1944','1945'],c:3,e:'संयुक्त राष्ट्र संघ (UNO) 24 अक्टूबर 1945 को स्थापित हुआ।'},
+      {q:'भारत का राष्ट्रीय गीत किसने लिखा?',o:['रवींद्रनाथ टैगोर','बैकुंठ लाल','महात्मा गांधी','जवाहरलाल नेहरू'],c:0,e:'जन गण मन रवींद्रनाथ टैगोर द्वारा लिखा गया था, यह बंगाली भाषा में लिखा गया था।'},
+      {q:'भारत की सबसे ऊंची चोटी कौन सी है?',o:['नंदा देवी','कंचनजंगा','K2','माउंट एवरेस्ट'],c:0,e:'भारत के क्षेत्र में सबसे ऊंची चोटी K2 (गॉडविन ऑस्टिन) 8,611 मीटर है, लेकिन नंदा देवी भारत में पूरी तरह स्थित सबसे ऊंची चोटी है।'},
+      {q:'भारत का राष्ट्रीय फूल कौन सा है?',o:['गुलाब','कमल','चंपा','सूर्यमुखी'],c:1,e:'कमल भारत का राष्ट्रीय फूल है। यह पवित्रता और सुंदरता का प्रतीक है।'}
+    ],
+    rajasthan:[
+      {q:'राजस्थान की राजधानी क्या है?',o:['जोधपुर','उदयपुर','जयपुर','अजमेर'],c:2,e:'जयपुर राजस्थान की राजधानी है, इसे गुलाबी नगरी भी कहा जाता है।'},
+      {q:'राजस्थान में कुल कितने जिले हैं?',o:['30','33','35','32'],c:1,e:'राजस्थान में 33 जिले हैं। सबसे नया जिला अनूपगढ़ है (2023)।'},
+      {q:'थार मरुस्थल किस नाम से भी जाना जाता है?',o:['सहारा','ग्रेट इंडियन डेजर्ट','गोबी','कालाहारी'],c:1,e:'थार मरुस्थर को Great Indian Desert (महान भारतीय मरुस्थल) के नाम से जाना जाता है।'},
+      {q:'राजस्थान का सबसे बड़ा जिला (क्षेत्रफल) कौन सा है?',o:['जयपुर','जोधपुर','बीकानेर','बाड़मेर'],c:1,e:'जोधपुर राजस्थान का सबसे बड़ा जिला है (22,850 वर्ग किमी)।'},
+      {q:'राजस्थान दिवस कब मनाया जाता है?',o:['30 मार्च','1 नवंबर','26 जनवरी','15 अगस्त'],c:0,e:'राजस्थान दिवस 30 मार्च को मनाया जाता है — 1949 में इस दिन राजस्थान राज्य बना था।'},
+      {q:'अरावली पर्वतमाला किस राज्य से होकर गुजरती है?',o:['मध्य प्रदेश','गुजरात','राजस्थान','महाराष्ट्र'],c:2,e:'अरावली पर्वतमाला मुख्य रूप से राजस्थान से होकर गुजरती है। यह भारत की सबसे पुरानी पर्वत श्रृंखला है।'},
+      {q:'राजस्थान का सबसे बड़ा झील कौन सी है?',o:['पिछोला','फतेह सागर','सांभर','राजसमंद'],c:2,e:'सांभर झील राजस्थान की सबसे बड़ी झील है, जो जयपुर के पास स्थित है।'},
+      {q:'राजस्थान का पहला राज्यपाल कौन थे?',o:['हीरालाल शास्त्री','जय नारायण व्यास','सी.एस. वेंकटाचारी','गुमानी लाल'],c:0,e:'हीरालाल शास्त्री राजस्थान के पहले राज्यपाल थे (1949)।'},
+      {q:'किशनगढ़ शैली किस कला से संबंधित है?',o:['लघु चित्रकला','भित्तिचित्र','मूर्तिकला','साहित्य'],c:1,e:'किशनगढ़ भित्तिचित्र शैली राजस्थान की प्रसिद्ध चित्रकला शैली है।'},
+      {q:'राजस्थान का सबसे ऊंची चोटी कौन सी है?',o:['सेर','जरगा','गुरु शिखर','अर्बुदा'],c:2,e:'गुरु शिखर (1,722 मीटर) राजस्थान की सबसे ऊंची चोटी है, जो माउंट आबू में है।'}
+    ],
+    math:[
+      {q:'अनुपात 3:5 में 15 का क्या मान होगा?',o:['20','25','30','35'],c:1,e:'3:5 = 15:x → x = (5×15)/3 = 25'},
+      {q:'एक त्रिभुज के तीनों कोणों का योग कितना होता है?',o:['90°','180°','270°','360°'],c:1,e:'किसी भी त्रिभुज के तीनों आंतरिक कोणों का योग हमेशा 180° होता है।'},
+      {q:'15% का 200 कितना होगा?',o:['25','30','35','40'],c:1,e:'200 × 15/100 = 30'},
+      {q:'एक वृत्त की त्रिज्या 7 सेमी है। क्षेत्रफल कितना होगा?',o:['144 वर्ग सेमी','154 वर्ग सेमी','176 वर्ग सेमी','196 वर्ग सेमी'],c:1,e:'πr² = (22/7) × 7 × 7 = 154 वर्ग सेमी'},
+      {q:'साधारण ब्याज: ₹5000 पर 2 वर्ष में 10% ब्याज कितना?',o:['₹500','₹800','₹1000','₹1200'],c:2,e:'SI = P×R×T/100 = 5000×10×2/100 = ₹1000'}
+    ],
+    science:[
+      {q:'पानी का रासायनिक सूत्र क्या है?',o:['H2','H2O','HO2','OH'],c:1,e:'पानी का रासायनिक सूत्र H₂O है, जिसमें 2 हाइड्रोजन और 1 ऑक्सीजन अणु होते है।'},
+      {q:'प्रकाश का वेग कितना है?',o:['3 × 10⁸ m/s','3 × 10⁶ m/s','3 × 10¹⁰ m/s','3 × 10⁴ m/s'],c:0,e:'प्रकाश का वेग निर्वात में 3 × 10⁸ मीटर/सेकंड है।'},
+      {q:'मानव शरीर में कुल कितनी हड्डियां होती हैं?',o:['204','206','208','210'],c:1,e:'एक स्वस्थ वयस्क मानव शरीर में 206 हड्डियां होती हैं।'},
+      {q:'जीवन की मूल इकाई क्या है?',o:['अणु','परमाणु','कोशिका','ऊतक'],c:2,e:'कोशिका जीवन की सबसे छोटी संरचनात्मक और कार्यात्मक इकाई है।'},
+      {q:'पृथ्वी का एकमात्र प्राकृतिक उपग्रह कौन सा है?',o:['सूर्य','मंगल','चंद्रमा','शुक्र'],c:2,e:'चंद्रमा पृथ्वी का एकमात्र प्राकृतिक उपग्रह है।'}
+    ],
+    hindi:[
+      {q:'"पुस्तक" शब्द का बहुवचन क्या है?',o:['पुस्तकें','पुस्तकों','पुस्तकी','पुस्तका'],c:0,e:'हिंदी में "पुस्तक" का बहुवचन "पुस्तकें" होता है।'},
+      {q:'"नदी" शब्द का पर्यायवाची क्या है?',o:['सरिता','तालाब','खाई','कुआं'],c:0,e:'"नदी" का पर्यायवाची "सरिता" है। दोनों शब्द समान अर्थ रखते हैं।'},
+      {q:'हिंदी वर्णमाला में कुल कितने स्वर हैं?',o:['11','13','14','12'],c:1,e:'हिंदी वर्णमाला में 13 स्वर (अ, आ, इ, ई, उ, ऊ, ऋ, ए, ऐ, ओ, औ, अं, अः) हैं।'},
+      {q:'"विद्यालय" शब्द में कौन सा समास है?',o:['तत्पुरुष','द्विगु','कर्मधारय','अव्ययीभाव'],c:0,e:'"विद्या + आलय = विद्यालय" — यह तत्पुरुष समास है।'},
+      {q:'"गृह" का देशज शब्द क्या है?',o:['घर','मकान','भवन','द्वार'],c:0,e:'"गृह" (संस्कृत) का देशज/तद्भव शब्द "घर" है।'}
+    ],
+    english:[
+      {q:'"Beautiful" का विलोम (Antonym) क्या है?',o:['Pretty','Ugly','Handsome','Lovely'],c:1,e:'Beautiful का विलोम Ugly है।'},
+      {q:'"She writes a letter." का Passive Voice क्या होगा?',o:['A letter is written by her.','A letter was written by her.','A letter has been written by her.','A letter will be written by her.'],c:0,e:'Simple Present (writes) → is written (by her)'},
+      {q:'"Book" का बहुवचन क्या है?',o:['Bookes','Books','Bookies','Bookies'],c:1,e:'Book का बहुवचन Books होता है।'},
+      {q:'"He has been working since morning." में कौन सा Tense है?',o:['Present Perfect','Present Perfect Continuous','Past Perfect','Past Continuous'],c:1,e:'has/have + been + V-ing + since/for → Present Perfect Continuous Tense'},
+      {q:'"Happy" का पर्यायवाची (Synonym) क्या है?',o:['Sad','Glad','Angry','Tired'],c:1,e:'Happy का पर्यायवाची Glad/Joyful है।'}
+    ],
+    reasoning:[
+      {q:'अनुक्रम पूरा करें: 2, 4, 8, 16, ?',o:['24','28','32','36'],c:2,e:'2×2=4, 4×2=8, 8×2=16, 16×2=32 — प्रत्येक संख्या 2 से गुनी हो रही है।'},
+      {q:'दिए गए शब्दों में असंगत शब्द ज्ञात करें: Apple, Mango, Potato, Banana',o:['Apple','Mango','Potato','Banana'],c:2,e:'Apple, Mango, Banana — फल हैं, लेकिन Potato — सब्जी है।'},
+      {q:'A का भाई B, B की बहन C। A और C का क्या रिश्ता है?',o:['भाई-बहन','माता-पुत्र','पिता-पुत्री','चाचा-भतीजी'],c:0,e:'A (भाई) ← B (बहन) C। A और C भाई-बहन हैं।'},
+      {q:'6:36 :: 9:? — अनुपात ज्ञात करें',o:['45','54','63','72'],c:1,e:'6×6=36, इसी प्रकार 9×6=54'},
+      {q:'CLOCKS:GHKLMN :: ? — अगला शब्द ज्ञात करें',o:['DOORSTEP','WALLS','SHOWCASE','WINDOWS'],c:3,e:'CLOCKS में C+3=F, L+3=O... इसी पैटर्न से WINDOWS'}
+    ],
+    child_dev:[
+      {q:'पियाजे के संज्ञानात्मक विकास का चरण 0-2 वर्ष कौन सा है?',o:['संवेदनात्मक चरण','पूर्वसंचालन चरण','ठोस संक्रिया','औपचारिक संक्रिया'],c:0,e:'पियाजे के अनुसार 0-2 वर्ष — संवेदनात्मक चरण (Sensorimotor Stage)।'},
+      {q:'विगोत्स्की ने किस प्रकार की समझ पर बल दिया?',o:['स्वतंत्र अन्वेषण','सामाजिक निर्माण','अनुबंधात्मक अन्वेषण','मौलिक अन्वेषण'],c:1,e:'विगोत्स्की ने "सामाजिक निर्माणवाद" पर बल दिया — बच्चे समाज से सीखते हैं।'},
+      {q:'बाल विकास का अध्ययन किस विज्ञान में किया जाता है?',o:['भौतिकी','रसायन','मनोविज्ञान','जीव विज्ञान'],c:2,e:'बाल विकास विकासात्मक मनोविज्ञान (Developmental Psychology) में अध्ययन किया जाता है।'},
+      {q:'इरिक्सन के अनुसार विश्वास बनाम अविश्वास किस चरण का है?',o:['स्वायत्तता बनाम लज्जा','पहचान बनाम भूमिका भ्रम','विश्वास बनाम अविश्वास','मेहनत बनाम हीन भावना'],c:2,e:'इरिक्सन का प्रथम चरण (0-1.5 वर्ष) — विश्वास बनाम अविश्वास।'},
+      {q:'कोलबर्ग के नैतिक विकास का पहला चरण कौन सा है?',o:['पूर्व-परंपरागत','परंपरागत','परंपरागत उत्तर-परंपरागत','सार्वभौमिक नैतिक सिद्धांत'],c:0,e:'कोलबर्ग का पहला चरण (0-7 वर्ष) — पूर्व-परंपरागत (Pre-conventional)।'}
+    ]
+  };
+
+  const pool=mcqDB[subject]||mcqDB.gk;
+  const shuffled=[...pool].sort(()=>Math.random()-0.5).slice(0,count);
+
+  setTimeout(()=>{
+    document.getElementById('mcq-loading').classList.remove('show');
+    document.getElementById('mcq-btn').disabled=false;
+    mcqQuestions=shuffled;
+
+    let html=`<div style="margin-bottom:20px;padding:16px;background:rgba(255,255,255,0.06);border-radius:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div style="color:rgba(255,255,255,0.6);font-size:13px">📋 ${examNames[exam]} — ${subNames[subject]} — ${shuffled.length} प्रश्न</div>
+      <button class="ai-btn" onclick="submitMcq()" id="submit-mcq-btn">✅ जमा करें</button>
+    </div>`;
+
+    shuffled.forEach((q,i)=>{
+      html+=`<div class="mcq-question" id="mcq-q-${i}">
+        <div class="mcq-q-text"><span class="mcq-q-num">${i+1}</span>${q.q}</div>
+        <div class="mcq-options">${q.o.map((opt,j)=>`<div class="mcq-option" onclick="selectOption(${i},${j})" id="mcq-${i}-${j}"><span class="mcq-option-letter">${String.fromCharCode(65+j)}</span>${opt}</div>`).join('')}</div>
+        <div class="mcq-explanation" id="mcq-exp-${i}">💡 ${q.e}</div>
+      </div>`;
+    });
+
+    container.innerHTML=html;
+  },1500);
+}
+
+function selectOption(qi,oi){
+  if(mcqSubmitted)return;
+  mcqAnswers[qi]=oi;
+  for(let j=0;j<4;j++){
+    document.getElementById(`mcq-${qi}-${j}`).classList.remove('selected');
+  }
+  document.getElementById(`mcq-${qi}-${oi}`).classList.add('selected');
+}
+
+function submitMcq(){
+  mcqSubmitted=true;
+  let score=0;
+  mcqQuestions.forEach((q,i)=>{
+    const correct=q.c;
+    const selected=mcqAnswers[i];
+    if(selected===correct)score++;
+    // Show correct/wrong
+    for(let j=0;j<4;j++){
+      const el=document.getElementById(`mcq-${i}-${j}`);
+      if(j===correct)el.classList.add('correct');
+      if(j===selected&&j!==correct)el.classList.add('wrong');
+    }
+    document.getElementById(`mcq-exp-${i}`).style.display='block';
+  });
+  const total=mcqQuestions.length;
+  const pct=Math.round((score/total)*100);
+  const scoreEl=document.getElementById('mcq-score');
+  document.getElementById('mcq-score-val').textContent=`${score}/${total} (${pct}%)`;
+  scoreEl.classList.add('show');
+  const btn=document.getElementById('submit-mcq-btn');
+  if(btn){btn.textContent='🔄 नया टेस्ट दें';btn.onclick=()=>{mcqSubmitted=false;generateMcq()}}
+}
+
+// ==================== AI CONTENT CREATION ====================
+function generateContent(){
+  const topic=document.getElementById('content-topic').value.trim();
+  const type=document.getElementById('content-type').value;
+  if(!topic)return;
+  const btn=document.getElementById('content-btn'),loading=document.getElementById('content-loading'),result=document.getElementById('content-result');
+  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
+
+  const typeLabels={notes:'📝 विस्तृत नोट्स',summary:'📋 सारांश',keypoints:'🔑 मुख्य बिंदु',mindmap:'🧠 माइंड मैप'};
+
+  setTimeout(()=>{
+    loading.classList.remove('show');btn.disabled=false;
+    let content='';
+    switch(type){
+      case 'notes':
+        content=`<div class="ai-result-title">${typeLabels[type]} — "${topic}"</div>
+          <div class="ai-result-text" id="content-text">📌 <strong>${topic}</strong> — विस्तृत नोट्स\n\n1. परिचय:\n   ${topic} प्रतियोगी परीक्षाओं का एक अत्यंत महत्वपूर्ण विषय है। इस विषय से RPSC, REET, SSC और Railway परीक्षाओं में नियमित रूप से प्रश्न पूछे जाते हैं।\n\n2. मुख्य अवधारणाएं:\n   • ${topic} की मूल अवधारणाओं को समझना आवश्यक है\n   • इसका परीक्षा के लिए सीधा संबंध है\n   • पिछले वर्षों के प्रश्नों में 2-3 प्रश्न निश्चित आते हैं\n\n3. महत्वपूर्ण तथ्य:\n   • इस विषय के अंतर्गत कई उप-विषय आते हैं\n   • प्रत्येक उप-विषय से संबंधित मूल बातें याद करें\n   • तिथियां और घटनाएं याद रखना महत्वपूर्ण है\n\n4. तैयारी रणनीति:\n   • Sharma Sir के नोट्स PDF डाउनलोड करें\n   • प्रतिदिन 1-2 घंटे इस विषय पर दें\n   • MCQ टेस्ट देकर आत्ममूल्यांकन करें\n\n5. संदर्भ सामग्री:\n   • NCERT कक्षा 6-12 की पुस्तकें\n   • Sharma Sir के वीडियो लेक्चर\n   • पिछले वर्ष के प्रश्न पत्र</div><button class="copy-btn" onclick="copyText('content-text')">📋 कॉपी करें</button>`;
+        break;
+      case 'summary':
+        content=`<div class="ai-result-title">${typeLabels[type]} — "${topic}"</div>
+          <div class="ai-result-text" id="content-text">${topic} एक महत्वपूर्ण विषय है जो भारतीय प्रतियोगी परीक्षाओं में अक्सर पूछा जाता है। इस विषय की मूल अवधारणाओं, महत्वपूर्ण तथ्यों और कालक्रम को समझना परीक्षा के लिए आवश्यक है। RPSC, REET, SSC और Railway सभी परीक्षाओं में इस विषय से संबंधित प्रश्न नियमित रूप से आते हैं।</div><button class="copy-btn" onclick="copyText('content-text')">📋 कॉपी करें</button>`;
+        break;
+      case 'keypoints':
+        content=`<div class="ai-result-title">${typeLabels[type]} — "${topic}"</div>
+          <ul class="ai-result-list" id="content-text"><li>${topic} की बुनियादी परिभाषा और अर्थ स्पष्ट करें</li><li>इस विषय के प्रमुख घटनाक्रम और कालक्रम याद करें</li><li>संबंधित महत्वपूर्ण व्यक्तित्वों के नाम और योगदान</li><li>राजस्थान और भारत स्तर पर इसका क्या महत्व है</li><li>पिछले वर्ष के प्रश्नों में कौन-कौन से बिंदु पूछे गए</li><li>परीक्षा के लिए सबसे महत्वपूर्ण 5 तथ्य</li></ul><button class="copy-btn" onclick="copyText('content-text')">📋 कॉपी करें</button>`;
+        break;
+      case 'mindmap':
+        content=`<div class="ai-result-title">${typeLabels[type]} — "${topic}"</div>
+          <div class="ai-result-text" id="content-text" style="font-family:monospace;line-height:2">
+                          ${topic}
+                         /    |    \\
+            परिचय    मुख्य तथ्य    महत्वपूर्ण व्यक्ति
+           /  \\       /   \\       /   \\
+      इतिहास  परिभाषा  तिथियां  स्थान  नाम  योगदान
+          \\    |    /
+           तैयारी टिप्स
+           /     |     \\
+      नोट्स  MCQ  वीडियो</div><button class="copy-btn" onclick="copyText('content-text')">📋 कॉपी करें</button>`;
+        break;
+    }
+    result.innerHTML=content;result.classList.add('show');
+  },1500);
+}
+
+// ==================== AI STRATEGY ====================
+function generateStrategy(){
+  const exam=document.getElementById('strategy-exam').value;
+  if(!exam)return;
+  const btn=document.getElementById('strategy-btn'),loading=document.getElementById('strategy-loading'),result=document.getElementById('strategy-result');
+  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
+
+  const examNames={rpsc:'RPSC 1st & 2nd Grade',reet:'REET Level 1 & 2',ssc:'SSC / CET / RSMSSB',railway:'Railway Group D / NTPC',patwar:'Patwari / CET'};
+  const strategies={
+    rpsc:{plan:'📅 RPSC तैयारी योजना (6 माह):\n\n🟢 माह 1-2: बुनियादी मजबूती\n   • GK — भारत और राजस्थान\n   • विषय — Paper-II की मूल अवधारणाएं\n   • प्रतिदिन 4 घंटे अध्ययन\n\n🟡 माह 3-4: विषय गहराई\n   • Paper-I — सामान्य ज्ञान\n   • Paper-II — विशेष विषय\n   • MCQ टेस्ट प्रतिदिन\n\n🔴 माह 5-6: संशोधन\n   • पिछले वर्ष के पेपर हल\n   • Mock Test दें\n   • कमजोर क्षेत्रों पर ध्यान',tips:['Paper-I में GK सबसे महत्वपूर्ण है','Paper-II में विषय विशेषज्ञता जरूरी है','प्रतिदिन 50 MCQ हल करें','Current Affairs प्रतिदिन पढ़ें','Sharma Sir के नोट्स PDF अवश्य डाउनलोड करें']},
+    reet:{plan:'📅 REET तैयारी योजना (4 माह):\n\n🟢 माह 1: बाल विकास और शिक्षाशास्त्र\n   • पियाजे, विगोत्स्की, इरिक्सन\n   • शिक्षण विधियां\n\n🟡 माह 2: भाषा और गणित\n   • हिंदी व्याकरण, अपठित गद्यांश\n   • गणित — अंकगणित, बीजगणित\n\n🔴 माह 3: EVS और GK\n   • पर्यावरण अध्ययन\n   • राजस्थान GK\n\n⚡ माह 4: Mock Tests\n   • प्रतिदिन 2 Mock Tests\n   • गलतियों पर ध्यान',tips:['बाल विकास सबसे अधिक वेटेज वाला विषय है','सभी शिक्षाशास्त्रियों के सिद्धांत याद करें','REET Level 1 और 2 दोनों के syllabus अलग हैं','प्रतिदिन टाइम टेबल बनाकर पढ़ाई करें']},
+    ssc:{plan:'📅 SSC तैयारी योजना (3 माह):\n\n🟢 माह 1: Reasoning और Math\n   • Reasoning — प्रतिदिन 100 प्रश्न\n   • Math — सभी अध्याय\n\n🟡 माह 2: GK और English\n   • GK — भारत, राजस्थान, विज्ञान\n   • English — व्याकरण, Comprehension\n\n🔴 माह 3: Practice\n   • पिछले 5 वर्ष के पेपर\n   • Mock Test\n   • Speed Improvement',tips:['Reasoning सबसे स्कोरिंग विषय है','Math में Short Tricks सीखें','English Vocabulary प्रतिदिन बढ़ाएं','प्रतिदिन 8-10 घंटे अध्ययन करें']},
+    railway:{plan:'📅 Railway तैयारी योजना (3 माह):\n\n🟢 माह 1: Math और Reasoning\n   • संख्या पद्धति, LCM/HCF\n   • रक्त संबंध, दिशा परीक्षण\n\n🟡 माह 2: GK और Science\n   • भारत और राजस्थान GK\n   • Physics, Chemistry, Biology\n\n🔴 माह 3: Current Affairs + Mock\n   • Last 6 months Current Affairs\n   • Daily 2 Mock Tests',tips:['Railway में GK सबसे अधिक पूछा जाता है','Math में Speed बहुत जरूरी है','Science के मूल सिद्धांत स्पष्ट करें','Time Management सबसे जरूरी है']},
+    patwar:{plan:'📅 Patwar तैयारी योजना (3 माह):\n\n🟢 माह 1: राजस्थान GK और भूगोल\n   • राजस्थान का पूरा इतिहास\n   • भौगोलिक संरचना, जलवायु\n\n🟡 माह 2: Math और Computer\n   • अंकगणित, औसत, प्रतिशत\n   • Computer की मूल अवधारणाएं\n\n🔴 माह 3: Model Papers\n   • पिछले पेपर हल\n   • Mock Tests',tips:['राजस्थान GK सबसे महत्वपूर्ण है','Math में 50% से अधिक प्रश्न आते हैं','कृषि भूमि नियम भी याद करें']}
+  };
+
+  setTimeout(()=>{
+    loading.classList.remove('show');btn.disabled=false;
+    const s=strategies[exam]||strategies.rpsc;
+    result.innerHTML=`<div class="ai-result-title">📋 ${examNames[exam]} — AI तैयारी रणनीति</div>
+      <div class="ai-result-text" id="strategy-text" style="margin-bottom:20px">${s.plan}</div><button class="copy-btn" onclick="copyText('strategy-text')" style="margin-bottom:20px">📋 कॉपी करें</button>
+      <div class="ai-result-title">💡 विशेष टिप्स:</div><ul class="ai-result-list">${s.tips.map(t=>`<li>${t}</li>`).join('')}</ul>`;
+    result.classList.add('show');
+  },1500);
+}
+
+// ==================== AI SUMMARY ====================
+function generateSummary(){
+  const topic=document.getElementById('summary-topic').value.trim();
+  const length=document.getElementById('summary-length').value;
+  if(!topic)return;
+  const btn=document.getElementById('summary-btn'),loading=document.getElementById('summary-loading'),result=document.getElementById('summary-result');
+  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
+
+  const lengthLabels={short:'संक्षिप्त (150-200 शब्द)',medium:'मध्यम (300-400 शब्द)',detailed:'विस्तृत (500-700 शब्द)'};
+
+  setTimeout(()=>{
+    loading.classList.remove('show');btn.disabled=false;
+    result.innerHTML=`<div class="ai-result-title">📊 AI सारांश (${lengthLabels[length]}) — "${topic}"</div>
+      <div class="ai-result-text" id="summary-text" style="margin-bottom:20px"><strong>📖 सारांश:</strong> ${topic} प्रतियोगी परीक्षाओं के लिए एक अत्यंत महत्वपूर्ण विषय है। यह विषय RPSC, REET, SSC, Railway और अन्य प्रतियोगी परीक्षाओं में नियमित रूप से पूछा जाता है। इस विषय की बुनियादी अवधारणाओं को स्पष्ट रूप से समझना परीक्षा में सफलता के लिए आवश्यक है।${length==='detailed'?' विस्तृत नोट्स के लिए Sharma Sir की Notes Section देखें जहां प्रत्येक विषय को व्यापक रूप से समझाया गया है, साथ ही प्रतिदिन के MCQ Tests देकर अपनी तैयारी का आकलन करें।':''}</div><button class="copy-btn" onclick="copyText('summary-text')" style="margin-bottom:16px">📋 कॉपी करें</button>
+      <div class="ai-result-title">🔑 मुख्य बिंदु:</div><ul class="ai-result-list"><li>${topic} की मूल परिभाषा और अर्थ</li><li>इतिहास और विकास क्रम</li><li>वर्तमान प्रासंगिकता</li><li>परीक्षा के लिए महत्वपूर्ण तथ्य</li><li>राजस्थान और भारत संदर्भ</li></ul>
+      <div class="ai-result-title" style="margin-top:20px">📌 महत्वपूर्ण तथ्य:</div><ul class="ai-result-list"><li>यह विषय हर वर्ष 2-4 प्रश्न देता है</li><li>NCERT कक्षा 6-12 से संबंधित</li><li>Sharma Sir के वीडियो लेक्चर से गहराई से समझें</li></ul>
+      <div class="ai-result-title" style="margin-top:20px">💡 त्वरित संशोधन टिप:</div><ul class="ai-result-list"><li>फ्लैशकार्ड बनाकर मुख्य तिथियां याद करें</li><li>पिछले वर्ष के प्रश्नों में इस विषय से आए प्रश्न हल करें</li><li>AI MCQ टेस्ट देकर आत्ममूल्यांकन करें</li></ul>`;
+    result.classList.add('show');
+  },1500);
+}
+
+// Hamburger menu
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.hamburger')&&!e.target.closest('.nav-links')){
+    document.getElementById('nl').classList.remove('open');
+  }
+});
+</script>
+
+</body></html>
